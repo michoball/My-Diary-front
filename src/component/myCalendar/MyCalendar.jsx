@@ -93,18 +93,6 @@ function MyCalendar() {
       )}
 
       <CalendarView>
-        {/* <button
-            type="click"
-            style={{
-              backgroundColor: "orange",
-              height: "50px",
-              width: "100px",
-              cursor: "pointer",
-            }}
-            onClick={changeViewStyle}
-          >
-            calendar
-          </button> */}
         <CalendarContainer>
           <DefaultCalendar
             initialView={CALENDAR_VIEW_STYLE.calender.initialView}
