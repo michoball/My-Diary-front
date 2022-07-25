@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { calendarCss } from "../../UI/calendar/Calendar.styles";
+import { calendarCss } from "../../utill/calendar/Calendar.styles";
 
 export const HomeContainer = styled.div`
   display: flex;

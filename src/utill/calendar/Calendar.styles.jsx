@@ -2,10 +2,14 @@ import styled, { css } from "styled-components";
 
 export const calendarCss = css`
   .fc {
+    background-color: white;
+
     /* td, th {
   border: 0 none;
 } */
-
+    .fc-button-primary {
+      width: 65px;
+    }
     .fc-button-primary:not(:disabled) {
       border: 1px solid white;
       background-color: #f2a7a7;
@@ -26,6 +30,7 @@ export const calendarCss = css`
     .fc-button-primary:not(:disabled).fc-button-active,
     .fc-button-primary:not(:disabled),
     .fc-button-primary:not(:disabled) {
+      border: 1px solid white;
       :active,
       :focus {
         box-shadow: none !important;
@@ -33,30 +38,32 @@ export const calendarCss = css`
       }
     }
 
-    .fc-col-header-cell {
-      color: white !important;
-    }
     .fc-col-header {
-      padding: 20px;
-      background-color: #ff3d3d;
+      padding: 10px;
+      background-color: white;
+      .fc-col-header-cell {
+        color: white !important;
+      }
     }
 
     .fc-prev-button,
     .fc-next-button {
+      margin: 1px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      width: 70px !important;
-      height: 40px !important;
-      margin: 1px !important;
-      background-color: #f23d4c !important;
+      width: 50px !important;
+      height: 35px !important;
+      background-color: transparent !important;
 
-      &:hover {
-        background-color: #f2727d !important;
-      }
       span {
-        color: white;
+        color: #f23d4c;
         font-weight: bold;
+        font-size: 40px;
+      }
+      &:hover {
+        transform: scale(1.1);
+        background-color: transparent !important;
       }
     }
 

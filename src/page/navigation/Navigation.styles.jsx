@@ -4,13 +4,13 @@ import styled from "styled-components";
 export const NavigationContainer = styled.div`
   /* position: fixed; */
   top: 0;
-  height: 70px;
+  height: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 3px solid #bbb;
   /* box-shadow: 5px 5px 8px 1px rgba(0, 0, 0, 0.5); */
 `;
 

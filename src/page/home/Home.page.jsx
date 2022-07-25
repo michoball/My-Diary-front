@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultCalendar } from "../../UI/calendar/Calendar.config";
+import { DefaultCalendar } from "../../utill/calendar/Calendar.config";
 import { useSelector } from "react-redux";
 import { selectCalendar } from "../../features/calendar/calendarSlice.select";
 

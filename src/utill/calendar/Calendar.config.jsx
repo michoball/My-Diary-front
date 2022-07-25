@@ -10,9 +10,9 @@ export const CALENDAR_VIEW_STYLE = {
   calender: {
     initialView: "dayGridMonth",
     headerToolbar: {
-      left: "title",
-      center: "prev,next today",
-      right: "dayGridMonth,timeGridWeek,timeGridDay",
+      left: "prev title next",
+      center: "today dayGridMonth,timeGridWeek",
+      right: "",
     },
   },
 
@@ -22,6 +22,24 @@ export const CALENDAR_VIEW_STYLE = {
       left: "title",
       center: "prev,next today",
       right: "listMonth,listWeek,listDay",
+    },
+  },
+};
+
+const CUSTOM_VIEW_STYLE = {
+  dayGridMonth: {
+    titleFormat: {
+      year: "numeric",
+      month: "short",
+    },
+  },
+  timeGridWeek: {
+    titleFormat: {
+      month: "short",
+      day: "2-digit",
+    },
+    dayHeaderFormat: {
+      weekday: "short",
     },
   },
 };
@@ -47,11 +65,7 @@ export const DefaultCalendar = React.forwardRef((props, ref) => {
         // locale="ko"
         height="100%"
         businessHours={true}
-        titleFormat={{
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        }}
+        views={CUSTOM_VIEW_STYLE}
         //일일 초과 일정 more 클릭시 미니 창으로 보기
         dayMaxEvents={true}
         ref={ref}

@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const FormInputContainer = styled.div`
   display: flex;
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
 export const Input = styled.input`
   padding: 5px 10px;
-  font-size: 20px;
+  font-size: 16px;
   border: none;
   border-bottom: 3px solid gray;
   background-color: transparent;
@@ -25,8 +25,8 @@ export const Input = styled.input`
 
 export const FromInputLabel = styled.label`
   color: black;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 10px;
   letter-spacing: 0.7px;
 `;

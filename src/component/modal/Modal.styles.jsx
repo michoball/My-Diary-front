@@ -12,10 +12,20 @@ export const BackdropStyle = styled.div`
 
 export const ModalWrapperStyle = styled.div`
   position: fixed;
-  top: 30vh;
-  left: 20%;
-  width: 600px;
-  height: 500px;
-  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 3px solid black;
+
   background-color: white;
+
+  z-index: 100;
 `;
