@@ -62,7 +62,7 @@ export const DefaultCalendar = React.forwardRef((props, ref) => {
         //     text: "목록",
         //   },
         // }}
-        // locale="ko"
+
         height="100%"
         businessHours={true}
         views={CUSTOM_VIEW_STYLE}

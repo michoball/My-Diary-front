@@ -1,4 +1,4 @@
-export const reducerAction = {
+export const calendarAction = {
   addEvent: (state, action) => {
     state.eventList = state.eventList.concat({ ...action.payload });
   },

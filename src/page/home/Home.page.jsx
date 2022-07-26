@@ -1,7 +1,7 @@
 import React from "react";
 import { DefaultCalendar } from "../../utill/calendar/Calendar.config";
 import { useSelector } from "react-redux";
-import { selectCalendar } from "../../features/calendar/calendarSlice.select";
+import { selectCalendar } from "../../features/calendar/calendar.select";
 
 import { HomeCalendar, HomeContainer, CalendarWrapper } from "./Home.styles";
 

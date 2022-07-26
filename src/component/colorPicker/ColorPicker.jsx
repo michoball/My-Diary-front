@@ -1,16 +1,21 @@
 import { ColorPalletContainer, CircleColorPicker } from "./ColorPicker.styles";
-import { CirclePicker } from "react-color";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 export const COLOR_TYPE_TABLE = [
   "#f44336",
   "#9c27b0",
   "#2196f3",
   "#4caf50",
   "#ffeb3b",
+  "#ff9f89",
 ];
 
-function ColorPicker({ onColorPick }) {
-  const [pickedColor, setPickedColor] = useState("#f44336");
+function ColorPicker({ onColorPick, colorSelected }) {
+  const [pickedColor, setPickedColor] = useState(colorSelected);
+  useEffect(() => {
+    setPickedColor(colorSelected);
+  }, [colorSelected]);
+
   const colorPickHandler = (color) => {
     onColorPick(color.hex);
     setPickedColor(color.hex);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { calendarAction } from "../../features/calendar/calendarSlice";
+import { calendarActions } from "../../features/calendar/calendarSlice";
 import FormInput from "../../UI/formInput/FormInput";
 import ColorPicker from "../colorPicker/ColorPicker";
 import { EventEditcontainer, EventEditForm } from "./EventEdit.styles";
@@ -35,7 +35,7 @@ function EventEdit({ eventData, onConfirm }) {
 
   const eventRemoveHandler = () => {
     console.log(id);
-    dispatch(calendarAction.removeEvent({ id }));
+    dispatch(calendarActions.removeEvent({ id }));
     onConfirm();
   };
 
@@ -50,7 +50,7 @@ function EventEdit({ eventData, onConfirm }) {
       endTime === undefined ? editEnd + "T24:00" : editEnd + "T" + endTime;
     console.log(startSet, endSet);
     dispatch(
-      calendarAction.editEvent({
+      calendarActions.editEvent({
         id,
         title: editTitle,
         start: startSet,

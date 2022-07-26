@@ -3,7 +3,6 @@ import { CirclePicker } from "react-color";
 
 export const ColorPalletContainer = styled.div`
   position: relative;
-  width: 100%;
   height: 70px;
   display: flex;
   justify-content: center;

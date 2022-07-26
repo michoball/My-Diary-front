@@ -1,7 +1,7 @@
 import { DefaultCalendar } from "../../../utill/calendar/Calendar.config";
 import { ThreeDots } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import { selectCalendar } from "../../../features/calendar/calendarSlice.select";
+import { selectCalendar } from "../../../features/calendar/calendar.select";
 
 import { SidebarCalendarContainer } from "./SidebarCalendar.styles";
 const SidebarCalendar = () => {

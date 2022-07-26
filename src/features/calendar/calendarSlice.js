@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { reducerAction } from "./calendar.action";
+import { calendarAction } from "./calendar.action";
 const initialEvent = [
   //종일 이벤트
   {
@@ -20,9 +20,6 @@ const initialEvent = [
     daysOfWeek: ["0"],
     startRecur: "2022-07-01",
     endRecur: "2022-07-30",
-    //시간 없으면 allDay 로 표시
-    // startTime: "12:00:00",
-    // endTime: "18:00:00",
   },
   // 시간별 단기 일정
   {
@@ -55,10 +52,10 @@ const initialState = {
 export const calendarSlice = createSlice({
   name: "calendar",
   initialState,
-  reducers: reducerAction,
+  reducers: calendarAction,
   extraReducers: (builder) => {},
 });
 
-export const calendarAction = calendarSlice.actions;
+export const calendarActions = calendarSlice.actions;
 
 export default calendarSlice.reducer;
