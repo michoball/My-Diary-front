@@ -5,7 +5,7 @@ import {
   SideBarWrapper,
 } from "./SideBar.styles";
 
-import { CategoryView } from "../categoryView/CategoryView";
+import CategoryView from "../categoryView/CategoryView";
 import SidebarCalendar from "../calendars/sidebar/SidebarCalendar";
 
 function SideBar() {

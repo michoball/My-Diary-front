@@ -3,33 +3,35 @@ import { customLabelAction } from "./customLabel.action";
 
 const initialLabels = [
   {
-    id: "123",
-    groupId: "Job",
+    groupId: "1215gq4raf",
+    groupTitle: "Defalut",
+    allDay: false,
+    color: "#ffeb3b",
+  },
+  {
+    groupId: "12afaef3",
+    groupTitle: "Job",
     allDay: true,
     color: "#4caf50",
   },
   {
-    id: "1215gq4raf",
-    groupId: "Default",
-    allDay: false,
-    color: "#2196f3",
-  },
-  {
-    id: "12",
+    groupId: "1hwhw2",
     color: "#f44336",
-    groupId: "regular Work",
+    groupTitle: "regular Work",
     daysOfWeek: ["0"],
+    allDay: true,
   },
 
   {
-    groupId: "family event",
-    id: "afea4",
+    groupTitle: "family event",
+    groupId: "afea4",
     color: "#2196f3",
+    allDay: false,
   },
   {
-    id: "133584fasefa-arnla",
+    groupId: "133584fasefa-arnla",
     title: "event 2",
-    groupId: "forbidden",
+    groupTitle: "forbidden",
     color: "#ff9f89",
     overlap: false,
     display: "background",
@@ -38,7 +40,8 @@ const initialLabels = [
 ];
 
 const initialState = {
-  LabelList: initialLabels,
+  labelLists: initialLabels,
+  selectedLabel: null,
   loading: false,
   error: null,
 };

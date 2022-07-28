@@ -1,1 +1,3 @@
-export const selectLabelList = (state) => state.customLabel.LabelList;
+export const selectCustomLabelLists = (state) => state.customLabel.labelLists;
+
+export const selectSelectedLabel = (state) => state.customLabel.selectedLabel;

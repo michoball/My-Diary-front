@@ -87,9 +87,5 @@ export const CalendarContainer = styled.div`
         }
       }
     }
-    .fc-event {
-      border: 1px solid black !important;
-      font-size: 12px;
-    }
   }
 `;

@@ -1,31 +1,44 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { calendarActions } from "../../features/calendar/calendarSlice";
-import FormInput from "../../UI/formInput/FormInput";
 import ColorPicker from "../colorPicker/ColorPicker";
-import { EventEditcontainer, EventEditForm } from "./EventEdit.styles";
+import ToggleSwitch from "../../UI/toggleSwitch/ToggleSwitch";
+import SelectButton from "../../UI/selectButton/SelectButton";
+
+import {
+  EventEditcontainer,
+  EventEditForm,
+  ConfirmBtn,
+  BtnContainer,
+  ColorSection,
+  OptionContainer,
+  EventFormInput,
+  CancelBtn,
+} from "./EventEdit.styles";
 import { Trash3Fill, XOctagonFill, Check2Circle } from "react-bootstrap-icons";
 import TimeConvertor from "../../utill/timeConvertor";
+import Modal from "../modal/Modal";
 
 function EventEdit({ eventData, onConfirm }) {
   const dispatch = useDispatch();
 
-  const { start, end, id, backgroundColor, allDay } = eventData;
-  console.log(allDay);
+  const { start, startStr, end, endStr } = eventData;
+
   const convertedStart = TimeConvertor(start);
   const convertedEnd = TimeConvertor(end);
+  console.log(eventData);
 
   const [editEvent, setEditEvent] = useState({
     editTitle: eventData.title,
-    editStart: convertedStart.day,
-    startTime: convertedStart.time,
-    editEnd: convertedEnd.day,
-    endTime: convertedEnd.time,
+    editStart: eventData.allDay ? startStr : convertedStart,
+    editEnd: eventData.allDay ? endStr : convertedEnd,
     color: eventData.backgroundColor,
+    allDay: eventData.allDay,
+    groupId: eventData.groupId,
   });
-  const [colorPick, setColorPick] = useState(backgroundColor);
+  const [colorPick, setColorPick] = useState(eventData.backgroundColor);
 
-  const { editStart, startTime, editEnd, endTime, editTitle } = editEvent;
+  const { editStart, editEnd, editTitle, allDay, groupId } = editEvent;
 
   const onChangeHandler = (e) => {
     setEditEvent((prev) => {
@@ -34,8 +47,8 @@ function EventEdit({ eventData, onConfirm }) {
   };
 
   const eventRemoveHandler = () => {
-    console.log(id);
-    dispatch(calendarActions.removeEvent({ id }));
+    // console.log(id);
+    dispatch(calendarActions.removeEvent({ id: eventData.id }));
     onConfirm();
   };
 
@@ -44,17 +57,14 @@ function EventEdit({ eventData, onConfirm }) {
     if (editStart === "") {
       return alert("fill all input");
     }
-    let startSet =
-      startTime === undefined ? editStart : editStart + "T" + startTime;
-    let endSet =
-      endTime === undefined ? editEnd + "T24:00" : editEnd + "T" + endTime;
-    console.log(startSet, endSet);
+
     dispatch(
       calendarActions.editEvent({
-        id,
+        id: eventData.id,
+        groupId,
         title: editTitle,
-        start: startSet,
-        end: endSet,
+        start: editStart,
+        end: editEnd,
         color: colorPick,
         allDay: allDay,
       })
@@ -62,61 +72,73 @@ function EventEdit({ eventData, onConfirm }) {
     onConfirm();
   };
 
+  const SelectedLabelHanlder = (label) => {
+    console.log(label);
+    setEditEvent((prev) => {
+      return { ...prev, ...label };
+    });
+    console.log(editEvent);
+    setColorPick(label.color);
+  };
+
   return (
-    <EventEditcontainer>
-      <EventEditForm onSubmit={editSubmitHandler}>
-        <FormInput
-          label="제목"
-          type="text"
-          name="editTitle"
-          value={editTitle}
-          onChange={onChangeHandler}
-        />
-        <FormInput
-          label="시작날짜"
-          type="date"
-          name="editStart"
-          value={editStart}
-          onChange={onChangeHandler}
-        />
-        <FormInput
-          label="시작시간"
-          type="time"
-          name="startTime"
-          value={startTime}
-          onChange={onChangeHandler}
-          disabled={allDay ? true : false}
-        />
-        <FormInput
-          label="마침날짜"
-          type="date"
-          name="editEnd"
-          value={editEnd}
-          onChange={onChangeHandler}
-        />
-        <FormInput
-          label="마침시간"
-          type="time"
-          name="endTime"
-          value={endTime}
-          onChange={onChangeHandler}
-          disabled={allDay ? true : false}
-        />
-        <ColorPicker onColorPick={setColorPick} />
-        <div className="actions" style={{ marginTop: "10px" }}>
-          <button type="click" onClick={eventRemoveHandler}>
-            <Trash3Fill />
-          </button>
-          <button type="submit">
-            <Check2Circle />
-            confirm
-          </button>
-          <button type="click" onClick={onConfirm}>
-            <XOctagonFill />
-          </button>
-        </div>
-      </EventEditForm>
-    </EventEditcontainer>
+    <Modal toggleModal={() => onConfirm()}>
+      <EventEditcontainer>
+        <CancelBtn type="click" onClick={() => onConfirm()}>
+          <XOctagonFill />
+        </CancelBtn>
+        <EventEditForm onSubmit={editSubmitHandler}>
+          <OptionContainer>
+            <ToggleSwitch
+              switchData={{ title: "종일", type: "allDay" }}
+              disabled={true}
+              allDay={allDay}
+            />
+            <SelectButton onLabelChange={SelectedLabelHanlder} />
+          </OptionContainer>
+
+          <EventFormInput
+            label="제목"
+            type="text"
+            name="editTitle"
+            value={editTitle}
+            onChange={onChangeHandler}
+          />
+          <EventFormInput
+            label="시작날짜"
+            type={allDay ? "date" : "datetime-local"}
+            name="editStart"
+            value={editStart}
+            onChange={onChangeHandler}
+          />
+          <EventFormInput
+            label="마침날짜"
+            type={allDay ? "date" : "datetime-local"}
+            name="editEnd"
+            value={editEnd}
+            onChange={onChangeHandler}
+          />
+
+          <ColorSection>
+            <label>Color</label>
+            <ColorPicker colorSelected={colorPick} onColorPick={setColorPick} />
+          </ColorSection>
+          <BtnContainer>
+            <ConfirmBtn type="submit">
+              <Check2Circle />
+              confirm
+            </ConfirmBtn>
+            <ConfirmBtn
+              className="delete"
+              type="click"
+              onClick={eventRemoveHandler}
+            >
+              <Trash3Fill /> Delete
+            </ConfirmBtn>
+          </BtnContainer>
+        </EventEditForm>
+      </EventEditcontainer>
+    </Modal>
   );
 }
 

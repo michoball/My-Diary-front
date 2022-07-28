@@ -1,30 +1,29 @@
-import { useState } from "react";
 import "./ToggleSwitch.css";
 
-function ToggleSwitch({ switchData, allDay, onSwitchEvent }) {
-  // const [isAllDay, setIsAllDay] = useState(allDay);
-
+function ToggleSwitch({
+  title,
+  type,
+  allDay,
+  onSwitchEvent = () => {},
+  ...otherProps
+}) {
   const clickToggleHandler = () => {
-    // setIsAllDay(!isAllDay);
     onSwitchEvent(!allDay);
   };
 
   return (
-    <div class="toggle-container">
-      <span>{switchData.title}</span>
+    <div className="toggle-container">
+      <span>{title && title}</span>
       <input
         type="checkbox"
         className="toggle"
         id="isToggled"
         checked={allDay ? true : false}
         onChange={() => onSwitchEvent(!allDay)}
+        {...otherProps}
       />
-      <label
-        htmlFor={switchData.type}
-        className="label"
-        onClick={clickToggleHandler}
-      >
-        <div class="ball"></div>
+      <label htmlFor={type} className="label" onClick={clickToggleHandler}>
+        <div className="ball"></div>
       </label>
     </div>
   );

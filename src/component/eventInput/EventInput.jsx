@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../../features/calendar/calendarSlice";
 import { v4 as uuidv4 } from "uuid";
 
@@ -16,26 +16,56 @@ import {
   OptionContainer,
   EventFormInput,
 } from "./EventInput.styles";
+import Modal from "../modal/Modal";
+import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
 
 const defaultEvent = {
   groupId: "",
   title: "",
   start: "",
   end: "",
-  color: "",
+  color: "#f44336",
+  allDay: false,
 };
 
 function EventInput({ onConfirm }) {
   const [newEvent, setNewEvent] = useState(defaultEvent);
-  const [colorPick, setColorPick] = useState("#f44336");
-  const [allDay, setAllDay] = useState(false);
   const dispatch = useDispatch();
-  const { title, start, end } = newEvent;
+  const selectedLabel = useSelector(selectSelectedLabel);
 
-  const inputChange = (e) => {
+  const { title, start, end, color, allDay } = newEvent;
+
+  useEffect(() => {
+    if (selectedLabel) {
+      SelectedLabelHanlder(selectedLabel);
+    }
+  }, [selectedLabel]);
+
+  const inputChangeHandler = (e) => {
     setNewEvent((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
+  };
+
+  const allDayChangeHandler = (isAllDay) => {
+    setNewEvent((prev) => {
+      return { ...prev, allDay: isAllDay };
+    });
+  };
+  const ColorChangeHandler = (color) => {
+    setNewEvent((prev) => {
+      return { ...prev, color: color };
+    });
+  };
+
+  const SelectedLabelHanlder = (label) => {
+    setNewEvent((prev) => {
+      return { ...prev, ...label, title: label.groupTitle };
+    });
+  };
+
+  const defaultSetting = () => {
+    setNewEvent(defaultEvent);
   };
 
   const submitHanbler = (e) => {
@@ -44,97 +74,72 @@ function EventInput({ onConfirm }) {
     if (title === "" || start === "" || end === "") {
       return alert("이벤트를 입력하시오");
     }
-    console.log(start, end);
-    // const startSet = allDay ? start : start + "T" + startTime;
-    // const endSet = allDay ? end + "T24:00" : end + "T" + endTime;
+
+    const endSet = allDay ? end + "T24:00" : end;
 
     dispatch(
-      calendarActions.addEvent({
-        id: uuidv4(),
-        title,
-        start,
-        end,
-        color: colorPick,
-        allDay,
-      })
+      calendarActions.addEvent({ ...newEvent, id: uuidv4(), end: endSet })
     );
     onConfirm();
-    setNewEvent(defaultEvent);
-  };
-
-  const toggleAllDayHandler = (checked) => {
-    setAllDay(checked);
-  };
-
-  const SelectedLabelHanlder = (label) => {
-    setNewEvent((prev) => {
-      return { ...prev, ...label, title: label.id };
-    });
-    setColorPick(label.color);
-    setAllDay(label.allDay);
+    defaultSetting();
   };
 
   return (
-    <InputContainer>
-      <InputForm onSubmit={submitHanbler}>
-        <EventFormInput
-          label="제목"
-          type="text"
-          name="title"
-          value={title}
-          className="title"
-          onChange={inputChange}
-        />
-        <OptionContainer>
-          <ToggleSwitch
-            switchData={{ title: "종일", type: "allDay" }}
-            onSwitchEvent={toggleAllDayHandler}
-            allDay={allDay}
+    <Modal
+      onClick={defaultSetting}
+      toggleModal={() => {
+        onConfirm();
+      }}
+    >
+      <InputContainer>
+        <InputForm onSubmit={submitHanbler}>
+          <EventFormInput
+            label="제목"
+            type="text"
+            name="title"
+            value={title}
+            className="title"
+            onChange={inputChangeHandler}
           />
-          <SelectButton onLabelChange={SelectedLabelHanlder} />
-        </OptionContainer>
+          <OptionContainer>
+            <ToggleSwitch
+              title="종일"
+              type="allDay"
+              onSwitchEvent={allDayChangeHandler}
+              allDay={allDay}
+            />
+            <SelectButton />
+          </OptionContainer>
 
-        <EventFormInput
-          label="시작"
-          type={allDay ? "date" : "datetime-local"}
-          name="start"
-          value={start}
-          onChange={inputChange}
-        />
-        {/* <EventFormInput
-          label="시작시간"
-          type="time"
-          name="startTime"
-          value={startTime}
-          onChange={inputChange}
-          disabled={allDay ? true : false}
-        /> */}
-        <EventFormInput
-          label="마침"
-          type={allDay ? "date" : "datetime-local"}
-          name="end"
-          value={end}
-          onChange={inputChange}
-        />
-        {/* <EventFormInput
-          label="마침시간"
-          type="time"
-          name="endTime"
-          value={endTime}
-          onChange={inputChange}
-          disabled={allDay ? true : false}
-        /> */}
-        <ColorSection>
-          <label>Color</label>
-          <ColorPicker colorSelected={colorPick} onColorPick={setColorPick} />
-        </ColorSection>
+          <EventFormInput
+            label="시작"
+            type={allDay ? "date" : "datetime-local"}
+            name="start"
+            value={start}
+            onChange={inputChangeHandler}
+          />
+          <EventFormInput
+            label="마침"
+            type={allDay ? "date" : "datetime-local"}
+            name="end"
+            value={end}
+            onChange={inputChangeHandler}
+          />
+          <ColorSection>
+            <label>Color</label>
+            <ColorPicker
+              colorSelected={color}
+              onColorPick={ColorChangeHandler}
+            />
+          </ColorSection>
 
-        <SubmitBtn type="submit">
-          <Check2Circle />
-          submit
-        </SubmitBtn>
-      </InputForm>
-    </InputContainer>
+          <SubmitBtn type="submit">
+            <Check2Circle />
+            submit
+          </SubmitBtn>
+        </InputForm>
+      </InputContainer>
+    </Modal>
   );
 }
 

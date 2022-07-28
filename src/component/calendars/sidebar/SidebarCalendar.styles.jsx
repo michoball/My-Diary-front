@@ -64,9 +64,5 @@ export const SidebarCalendarContainer = styled.div`
         }
       }
     }
-
-    .fc-event {
-      border: 1px solid black !important;
-    }
   }
 `;

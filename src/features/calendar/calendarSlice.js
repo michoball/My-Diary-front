@@ -8,19 +8,9 @@ const initialEvent = [
     allDay: true,
     start: "2022-07-05T00:00:00",
     end: "2022-07-06T24:00:00",
-    color: "green",
+    color: "#4caf50",
   },
-  // 정기 일정 포맷 object
-  {
-    id: "12",
-    title: "Go to market",
-    color: "red",
-    // 정기 만의 부분
-    groupId: "131afase",
-    daysOfWeek: ["0"],
-    startRecur: "2022-07-01",
-    endRecur: "2022-07-30",
-  },
+
   // 시간별 단기 일정
   {
     id: "afea4",
@@ -40,6 +30,31 @@ const initialEvent = [
     overlap: false,
     display: "background",
     allDay: true,
+  },
+  // 정기 일정 포맷 object
+  {
+    id: "12",
+    title: "Go to market",
+    color: "#f44336",
+    groupId: "131afase",
+    allDay: true,
+
+    // 정기 만의 부분
+    daysOfWeek: ["0"],
+    startRecur: "2022-07-01",
+    endRecur: "2022-07-30",
+  },
+  {
+    id: "12abbag64",
+    title: "Go",
+    groupId: "blueEvents",
+    allDay: false,
+
+    daysOfWeek: ["4"],
+    startTime: "10:45:00",
+    endTime: "12:45:00",
+    startRecur: "2022-07-01",
+    endRecur: "2022-07-30",
   },
 ];
 

@@ -1,7 +1,6 @@
 import { PlusCircle } from "react-bootstrap-icons";
 import { useState } from "react";
 import EventInput from "../eventInput/EventInput";
-import Modal from "../modal/Modal";
 import { CreateButtonContainer } from "./CreateButton.styles";
 
 const CreateButton = () => {
@@ -14,9 +13,7 @@ const CreateButton = () => {
   return (
     <>
       {isInputFrom && (
-        <Modal toggleModal={() => setIsInputFrom(!isInputFrom)}>
-          <EventInput onConfirm={() => setIsInputFrom(!isInputFrom)} />
-        </Modal>
+        <EventInput onConfirm={() => setIsInputFrom(!isInputFrom)} />
       )}
       <CreateButtonContainer type="click" onClick={showInputFromHandler}>
         <PlusCircle /> create

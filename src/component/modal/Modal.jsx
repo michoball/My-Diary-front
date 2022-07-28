@@ -3,8 +3,8 @@ import reactDom from "react-dom";
 
 import { BackdropStyle, ModalWrapperStyle } from "./Modal.styles";
 
-const Backdrop = ({ toggleModal }) => {
-  return <BackdropStyle onClick={toggleModal}></BackdropStyle>;
+const Backdrop = ({ onToggleModal }) => {
+  return <BackdropStyle onClick={onToggleModal}></BackdropStyle>;
 };
 
 const ModalWrapper = ({ children }) => {
@@ -15,7 +15,7 @@ const Modal = ({ toggleModal, children }) => {
   return (
     <>
       {reactDom.createPortal(
-        <Backdrop toggleModal={toggleModal} />,
+        <Backdrop onToggleModal={toggleModal} />,
         document.getElementById("backdorp")
       )}
       {reactDom.createPortal(

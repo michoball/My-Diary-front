@@ -1,12 +1,12 @@
 import React from "react";
 import { DefaultCalendar } from "../../utill/calendar/Calendar.config";
 import { useSelector } from "react-redux";
-import { selectCalendar } from "../../features/calendar/calendar.select";
+import { selectCalendarEvents } from "../../features/calendar/calendar.select";
 
 import { HomeCalendar, HomeContainer, CalendarWrapper } from "./Home.styles";
 
 function Home() {
-  const { eventList } = useSelector(selectCalendar);
+  const eventList = useSelector(selectCalendarEvents);
 
   return (
     <HomeContainer>

@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCalendar } from "../../../features/calendar/calendar.select";
+import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import {
   DefaultCalendar,
@@ -19,7 +19,7 @@ import {
 } from "./MainCalendar.styles";
 
 function MyCalendar() {
-  const { eventList } = useSelector(selectCalendar);
+  const eventList = useSelector(selectCalendarEvents);
   const [isEditFrom, setIsEditFrom] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectable, setSelectable] = useState(true);
@@ -40,6 +40,7 @@ function MyCalendar() {
   // };
 
   const eventChangehandler = (e) => {
+    console.log(e);
     const { id, title, startStr, endStr, allDay, backgroundColor } = e.event;
     dispatch(
       calendarActions.editEvent({
@@ -47,8 +48,8 @@ function MyCalendar() {
         title,
         start: startStr,
         end: endStr,
-        allDay: allDay ? allDay : "",
-        color: backgroundColor === "" ? "" : backgroundColor,
+        allDay: allDay,
+        color: backgroundColor,
       })
     );
   };
@@ -74,18 +75,17 @@ function MyCalendar() {
   // };
 
   const headerContentHandler = (e) => {
+    //생성한 event들이 처음 달력에 mount될 때
     // console.log(e);
   };
 
   return (
     <>
       {isEditFrom && (
-        <Modal toggleModal={() => setIsEditFrom(!isEditFrom)}>
-          <EventEdit
-            eventData={selectedEvent}
-            onConfirm={() => setIsEditFrom(!isEditFrom)}
-          />
-        </Modal>
+        <EventEdit
+          eventData={selectedEvent}
+          onConfirm={() => setIsEditFrom(!isEditFrom)}
+        />
       )}
       <CalendarWrapper>
         <CalendarView>
@@ -94,8 +94,10 @@ function MyCalendar() {
             <DefaultCalendar
               initialView={CALENDAR_VIEW_STYLE.calender.initialView}
               headerToolbar={CALENDAR_VIEW_STYLE.calender.headerToolbar}
-              selectable={selectable}
+              // 요일 칸 클릭
+              // selectable={selectable}
               // select={handleSelect}
+              displayEventTime={false}
               allDaySlot={false}
               eventClick={handleEventClick}
               events={eventList}

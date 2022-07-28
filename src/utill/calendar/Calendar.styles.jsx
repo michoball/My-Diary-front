@@ -70,6 +70,13 @@ export const calendarCss = css`
     .fc-list-table .fc-list-day-cushion {
       background-color: rgb(0, 0, 0, 20%) !important;
     }
+    .fc-daygrid-event {
+      font-size: 12px;
+
+      &.fc-daygrid-block-event {
+        border: 1px solid black !important;
+      }
+    }
   }
 `;
 

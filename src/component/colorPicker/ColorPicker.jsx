@@ -20,6 +20,7 @@ function ColorPicker({ onColorPick, colorSelected }) {
     onColorPick(color.hex);
     setPickedColor(color.hex);
   };
+
   return (
     <ColorPalletContainer>
       <CircleColorPicker

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import FormInput from "../../UI/formInput/FormInput";
 
-export const InputContainer = styled.div`
+export const LabelInputcontainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -9,15 +9,12 @@ export const InputContainer = styled.div`
   padding: 10px;
   border-radius: 10px;
 `;
-export const EventFormInput = styled(FormInput)`
-  margin-bottom: 20px;
 
-  &.title {
-    margin-bottom: 30px;
-  }
+export const LabelFormInput = styled(FormInput)`
+  margin-bottom: 20px;
 `;
 
-export const InputForm = styled.form`
+export const LabelInputForm = styled.form`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,22 +24,21 @@ export const InputForm = styled.form`
   padding-top: 50px;
 `;
 
-export const OptionContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 175px;
-  height: 100px;
-  padding: 5px;
+export const AllDayBtn = styled.div`
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 50px;
 
-  border: 2px solid black;
-  border-radius: 10px;
+  .toggle-label {
+    font-size: 20px;
+    font-weight: bold;
+    width: 50px;
+    margin: 10px 0;
+  }
 `;
 
 export const ColorSection = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 10px;
   width: 300px;
   height: 100px;
 
@@ -52,7 +48,7 @@ export const ColorSection = styled.div`
   }
 `;
 
-export const SubmitBtn = styled.button`
+export const AddBtn = styled.button`
   width: 100px;
   height: 50px;
   background-color: rgba(0, 132, 255, 0.5);
