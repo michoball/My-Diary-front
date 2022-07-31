@@ -26,7 +26,7 @@ export const CalendarContainer = styled.div`
 
   ${calendarCss} {
     th {
-      border: 1px solid #ff3d3d;
+      border: 2px solid #ff3d3d;
       border-right: none;
     }
     .fc-theme-standard .fc-scrollgrid {
@@ -42,18 +42,18 @@ export const CalendarContainer = styled.div`
         display: flex;
         &:first-child {
           flex: 0.4;
-          min-width: 400px;
+          min-width: 320px;
           .fc-toolbar-title {
             margin: 0 10px;
             font-size: 25px;
           }
         }
         &:nth-child(2) {
-          flex: 0.3;
-          margin: 0 10px;
+          flex: 0.4;
+          margin: 0 20px;
+          gap: 10px;
         }
         &:last-child {
-          display: none;
         }
       }
     }
@@ -77,6 +77,17 @@ export const CalendarContainer = styled.div`
       }
     }
 
+    .fc-daygrid-day {
+      .fc-daygrid-day-bottom {
+        text-align: center;
+
+        .fc-daygrid-more-link {
+          font-size: 24px;
+          color: orange;
+        }
+      }
+    }
+
     .fc-timegrid {
       table .fc-col-header {
         .fc-col-header-cell {
@@ -87,5 +98,40 @@ export const CalendarContainer = styled.div`
         }
       }
     }
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  z-index: 5;
+`;
+
+export const BanButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 40px;
+  width: 50px;
+  margin-right: 10px;
+
+  border-radius: 10px;
+  text-transform: uppercase;
+
+  background-color: rgba(255, 0, 0, 0.7);
+  cursor: pointer;
+
+  :active {
+    transform: scale(0.98);
+  }
+
+  svg {
+    font-size: 20px;
   }
 `;

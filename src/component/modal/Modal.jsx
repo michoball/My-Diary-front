@@ -3,7 +3,7 @@ import reactDom from "react-dom";
 
 import { BackdropStyle, ModalWrapperStyle } from "./Modal.styles";
 
-const Backdrop = ({ onToggleModal }) => {
+export const Backdrop = ({ onToggleModal }) => {
   return <BackdropStyle onClick={onToggleModal}></BackdropStyle>;
 };
 

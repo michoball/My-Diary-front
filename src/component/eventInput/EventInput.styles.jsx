@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FormInput from "../../UI/formInput/FormInput";
+import { FormInputContainer } from "../../UI/formInput/FormInput.styles";
 
 export const InputContainer = styled.div`
   display: flex;
@@ -9,64 +9,75 @@ export const InputContainer = styled.div`
   padding: 10px;
   border-radius: 10px;
 `;
-export const EventFormInput = styled(FormInput)`
+export const EventInputContainer = styled.div`
+  display: flex;
   margin-bottom: 20px;
+`;
 
-  &.title {
-    margin-bottom: 30px;
-  }
+export const BasicInput = styled.div`
+  padding: 10px;
+  width: 300px;
+`;
+
+export const AdvanceInput = styled.div`
+  width: 300px;
+  padding: 10px;
+  background-color: blanchedalmond;
+  border: 2px solid #bbb;
+  border-radius: 10px;
+`;
+export const OptionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const InputForm = styled.form`
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 10px;
-  padding-top: 50px;
-`;
 
-export const OptionContainer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 175px;
-  height: 100px;
-  padding: 5px;
+  ${FormInputContainer} {
+    margin-bottom: 20px;
+  }
 
-  border: 2px solid black;
-  border-radius: 10px;
-`;
-
-export const ColorSection = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 10px;
-  width: 300px;
-  height: 100px;
-
-  label {
+  input[type="datetime-local"],
+  input[type="date"] {
     font-weight: bold;
-    font-size: 20px;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
   }
 `;
 
+export const ColorSection = styled.div`
+  display: flex;
+  margin: 10px 0;
+
+  label {
+    font-weight: bold;
+  }
+`;
+export const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+`;
+
 export const SubmitBtn = styled.button`
-  width: 100px;
-  height: 50px;
-  background-color: rgba(0, 132, 255, 0.5);
-  border: none;
+  width: 200px;
+  height: 40px;
+  background-color: rgba(0, 132, 255, 0.7);
+  border: 2px solid #bbb;
   border-radius: 10px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
 
-  font-size: 16px;
   color: whitesmoke;
   cursor: pointer;
   :hover {
@@ -75,4 +86,18 @@ export const SubmitBtn = styled.button`
   svg {
     margin-right: 5px;
   }
+`;
+
+export const CancelBtn = styled.button`
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  border: none;
+  background-color: transparent;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 10;
 `;

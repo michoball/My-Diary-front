@@ -26,10 +26,11 @@ const initialEvent = [
     start: "2022-07-26T00:00",
     end: "2022-07-28T00:00",
     color: "#ff9f89",
+    allDay: true,
+
     // 배경 만의 부분
     overlap: false,
     display: "background",
-    allDay: true,
   },
   // 정기 일정 포맷 object
   {
@@ -37,18 +38,22 @@ const initialEvent = [
     title: "Go to market",
     color: "#f44336",
     groupId: "131afase",
+    start: "2022-07-26T00:00",
+    end: "2022-07-28T00:00",
     allDay: true,
 
     // 정기 만의 부분
     daysOfWeek: ["0"],
     startRecur: "2022-07-01",
-    endRecur: "2022-07-30",
+    endRecur: "2022-09-30",
   },
   {
     id: "12abbag64",
-    title: "Go",
+    title: "oaaa",
     groupId: "blueEvents",
-    allDay: false,
+    color: "#ff9f89",
+
+    // allDay: false,
 
     daysOfWeek: ["4"],
     startTime: "10:45:00",
@@ -60,6 +65,7 @@ const initialEvent = [
 
 const initialState = {
   eventList: [...initialEvent],
+  // selectedEvent: null,
   loading: false,
   error: null,
 };

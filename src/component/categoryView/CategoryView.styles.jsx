@@ -19,10 +19,8 @@ export const TitleContainer = styled.div`
 
 export const CategoryAddBtn = styled.button`
   display: flex;
-
   background-color: transparent;
   border: none;
-
   font-weight: bold;
   font-size: 20px;
 

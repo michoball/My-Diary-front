@@ -1,37 +1,64 @@
 import styled from "styled-components";
-import FormInput from "../../UI/formInput/FormInput";
+import { FormInputContainer } from "../../UI/formInput/FormInput.styles";
 
 export const EventEditcontainer = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 10px;
+`;
 
+export const EditInputContainer = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+`;
+
+export const BasicInput = styled.div`
+  padding: 10px;
+  width: 300px;
+`;
+
+export const AdvanceInput = styled.div`
+  width: 300px;
+  padding: 10px;
+  background-color: blanchedalmond;
+  border: 2px solid #bbb;
+
+  border-radius: 10px;
+`;
+
+export const OptionContainer = styled.div`
+  display: flex;
+  justify-content: center;
   align-items: center;
 `;
 
-export const EventFormInput = styled(FormInput)`
-  margin-bottom: 20px;
-
-  &.title {
-    margin-bottom: 30px;
-  }
-`;
-
 export const EventEditForm = styled.form`
-  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 10px;
-  padding-top: 60px;
 
-  input[type="datetime-local"]::-webkit-calendar-picker-indicator,
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    cursor: pointer;
+  ${FormInputContainer} {
+    margin-bottom: 20px;
+  }
+
+  input[type="datetime-local"],
+  input[type="date"] {
+    font-weight: bold;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ColorSection = styled.div`
+  display: flex;
+  margin: 10px 0;
+
+  label {
+    font-weight: bold;
   }
 `;
 
@@ -39,18 +66,14 @@ export const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 50px;
 
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  width: 100%;
 `;
 
 export const ConfirmBtn = styled.button`
-  width: 80px;
-  height: 30px;
-  background-color: rgba(0, 132, 255, 0.5);
+  width: 150px;
+  height: 40px;
+  background-color: rgba(0, 132, 255, 0.7);
   border: none;
   border-radius: 10px;
 
@@ -58,13 +81,13 @@ export const ConfirmBtn = styled.button`
   justify-content: center;
   align-items: center;
 
-  margin: 0 5px;
-  font-size: 14px;
+  margin-right: 5px;
+
   color: whitesmoke;
   cursor: pointer;
 
   &.delete {
-    background-color: rgba(245, 12, 4, 0.5);
+    background-color: rgba(245, 12, 4, 0.7);
   }
 
   :hover {
@@ -72,43 +95,20 @@ export const ConfirmBtn = styled.button`
   }
 
   svg {
-    margin-right: 3px;
+    font-size: 18px;
+    margin-right: 5px;
   }
 `;
 
 export const CancelBtn = styled.button`
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: -30px;
+  right: -10px;
   border: none;
   background-color: transparent;
   color: red;
-  font-size: 20px;
-
+  font-size: 30px;
+  font-weight: bold;
   cursor: pointer;
   z-index: 10;
-`;
-
-export const ColorSection = styled.div`
-  position: absolute;
-  bottom: 40px;
-  left: 10px;
-  width: 300px;
-  height: 90px;
-
-  label {
-    font-weight: bold;
-    font-size: 20px;
-  }
-`;
-export const OptionContainer = styled.div`
-  position: absolute;
-  top: 30px;
-  right: 0;
-  width: 175px;
-  height: 100px;
-  padding: 5px;
-
-  border: 2px solid black;
-  border-radius: 10px;
 `;

@@ -3,12 +3,12 @@ import "./ToggleSwitch.css";
 function ToggleSwitch({
   title,
   type,
-  allDay,
+  toggleValue,
   onSwitchEvent = () => {},
   ...otherProps
 }) {
   const clickToggleHandler = () => {
-    onSwitchEvent(!allDay);
+    onSwitchEvent(!toggleValue);
   };
 
   return (
@@ -18,8 +18,8 @@ function ToggleSwitch({
         type="checkbox"
         className="toggle"
         id="isToggled"
-        checked={allDay ? true : false}
-        onChange={() => onSwitchEvent(!allDay)}
+        checked={toggleValue ? true : false}
+        onChange={() => onSwitchEvent(!toggleValue)}
         {...otherProps}
       />
       <label htmlFor={type} className="label" onClick={clickToggleHandler}>

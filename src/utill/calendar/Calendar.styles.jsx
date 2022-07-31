@@ -9,9 +9,10 @@ export const calendarCss = css`
 } */
     .fc-button-primary {
       width: 65px;
+      margin-right: 10px;
     }
     .fc-button-primary:not(:disabled) {
-      border: 1px solid white;
+      border: none;
       background-color: #f2a7a7;
       &.fc-button-active {
         background-color: #f23d4c;

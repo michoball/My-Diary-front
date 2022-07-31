@@ -5,7 +5,7 @@ export const ListContainer = styled.li`
   justify-content: space-between;
   align-items: center;
   margin: 5px 0;
-  padding: 5px;
+  padding: 5px 2.5px;
 
   border-bottom: 1px solid #f2f2f2;
   cursor: pointer;
@@ -23,6 +23,7 @@ export const ListItemContainer = styled.div`
   display: flex;
   font-size: 16px;
   font-weight: bold;
+  width: 100%;
 `;
 
 export const ListInfoContainer = styled.div`

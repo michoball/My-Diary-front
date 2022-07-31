@@ -16,9 +16,9 @@ export const LogoContainer = styled(Link)`
   font-size: 30px;
   font-weight: bold;
   width: 150px;
-  color: rgb(242, 114, 125);
+  color: #f2727d;
   text-transform: uppercase;
-  text-shadow: 2px 2px 3px rgba(242, 114, 125, 0.6);
+  text-shadow: 2px 2px 0px rgba(242, 167, 167, 0.8);
 `;
 
 export const NavLinks = styled.div`

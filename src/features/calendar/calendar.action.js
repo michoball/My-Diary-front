@@ -11,9 +11,16 @@ export const calendarAction = {
     // const exitingEvent = state.eventList.find(
     //   (event) => event.id === action.payload.id
     // );
-
+    console.log(action.payload);
     state.eventList = state.eventList.map((event) =>
       event.id === action.payload.id ? { ...event, ...action.payload } : event
     );
   },
+  // selectEvent: (state, action) => {
+  //   const findEvent = state.eventList.find(
+  //     (event) => event.id === action.payload.id
+  //   );
+
+  //   state.selectedEvent = findEvent;
+  // },
 };

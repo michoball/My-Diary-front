@@ -7,12 +7,18 @@ export const FormInputContainer = styled.div`
 
 export const Input = styled.input`
   padding: 5px 10px;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
-  border-bottom: 3px solid gray;
+  border-bottom: 3px solid #bbb;
   background-color: transparent;
   outline: none;
   color: black;
+
+  /* :disabled {
+    border-radius: 10px;
+    border-bottom: 3px solid white;
+    background-color: rgba(187, 187, 187, 0.6);
+  } */
 
   :-webkit-autofill,
   :-webkit-autofill:hover,
@@ -25,7 +31,7 @@ export const Input = styled.input`
 
 export const FromInputLabel = styled.label`
   color: black;
-  font-size: 20px;
+
   font-weight: bold;
   margin-right: 10px;
   letter-spacing: 0.7px;

@@ -26,11 +26,11 @@ export const SideContentWapper = styled.div`
 `;
 
 export const ListViewBox = styled(SideContentWapper)`
-  height: calc(45vh - 55px);
+  height: calc(40vh - 55px);
   margin-top: 5px;
 `;
 
 export const CalendarBox = styled(SideContentWapper)`
-  height: calc(55vh - 55px);
+  height: calc(60vh - 55px);
   margin-bottom: 5px;
 `;

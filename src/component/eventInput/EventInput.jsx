@@ -2,19 +2,24 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../../features/calendar/calendarSlice";
 import { v4 as uuidv4 } from "uuid";
+import FormInput from "../../UI/formInput/FormInput";
 
 import ColorPicker from "../colorPicker/ColorPicker";
 import ToggleSwitch from "../../UI/toggleSwitch/ToggleSwitch";
-import SelectButton from "../../UI/selectButton/SelectButton";
+import SelectButton from "../selectButton/SelectButton";
 
-import { Check2Circle } from "react-bootstrap-icons";
+import { Check2Circle, X } from "react-bootstrap-icons";
 import {
   InputContainer,
   InputForm,
   SubmitBtn,
   ColorSection,
   OptionContainer,
-  EventFormInput,
+  BtnContainer,
+  CancelBtn,
+  EventInputContainer,
+  BasicInput,
+  AdvanceInput,
 } from "./EventInput.styles";
 import Modal from "../modal/Modal";
 import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
@@ -41,6 +46,12 @@ function EventInput({ onConfirm }) {
     }
   }, [selectedLabel]);
 
+  const SelectedLabelHanlder = (label) => {
+    setNewEvent((prev) => {
+      return { ...prev, ...label, title: label.groupTitle };
+    });
+  };
+
   const inputChangeHandler = (e) => {
     setNewEvent((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -55,12 +66,6 @@ function EventInput({ onConfirm }) {
   const ColorChangeHandler = (color) => {
     setNewEvent((prev) => {
       return { ...prev, color: color };
-    });
-  };
-
-  const SelectedLabelHanlder = (label) => {
-    setNewEvent((prev) => {
-      return { ...prev, ...label, title: label.groupTitle };
     });
   };
 
@@ -86,57 +91,66 @@ function EventInput({ onConfirm }) {
 
   return (
     <Modal
-      onClick={defaultSetting}
       toggleModal={() => {
         onConfirm();
       }}
     >
+      <CancelBtn type="click" onClick={() => onConfirm()}>
+        <X />
+      </CancelBtn>
       <InputContainer>
         <InputForm onSubmit={submitHanbler}>
-          <EventFormInput
-            label="제목"
-            type="text"
-            name="title"
-            value={title}
-            className="title"
-            onChange={inputChangeHandler}
-          />
-          <OptionContainer>
-            <ToggleSwitch
-              title="종일"
-              type="allDay"
-              onSwitchEvent={allDayChangeHandler}
-              allDay={allDay}
-            />
-            <SelectButton />
-          </OptionContainer>
+          <EventInputContainer>
+            <BasicInput>
+              <FormInput
+                label="제목"
+                type="text"
+                name="title"
+                value={title}
+                className="title"
+                onChange={inputChangeHandler}
+              />
 
-          <EventFormInput
-            label="시작"
-            type={allDay ? "date" : "datetime-local"}
-            name="start"
-            value={start}
-            onChange={inputChangeHandler}
-          />
-          <EventFormInput
-            label="마침"
-            type={allDay ? "date" : "datetime-local"}
-            name="end"
-            value={end}
-            onChange={inputChangeHandler}
-          />
-          <ColorSection>
-            <label>Color</label>
-            <ColorPicker
-              colorSelected={color}
-              onColorPick={ColorChangeHandler}
-            />
-          </ColorSection>
-
-          <SubmitBtn type="submit">
-            <Check2Circle />
-            submit
-          </SubmitBtn>
+              <FormInput
+                label="시작"
+                type={allDay ? "date" : "datetime-local"}
+                name="start"
+                value={start}
+                onChange={inputChangeHandler}
+              />
+              <FormInput
+                label="마침"
+                type={allDay ? "date" : "datetime-local"}
+                name="end"
+                value={end}
+                onChange={inputChangeHandler}
+              />
+              <ColorSection>
+                <label>Color</label>
+                <ColorPicker
+                  colorSelected={color}
+                  onColorPick={ColorChangeHandler}
+                />
+              </ColorSection>
+            </BasicInput>
+            <AdvanceInput>
+              <OptionContainer>
+                <ToggleSwitch
+                  title="종일"
+                  type="allDay"
+                  onSwitchEvent={allDayChangeHandler}
+                  toggleValue={allDay}
+                />
+                <SelectButton />
+              </OptionContainer>
+            </AdvanceInput>
+          </EventInputContainer>
+          <BtnContainer>
+            <SubmitBtn type="submit">
+              <Check2Circle />
+              submit
+            </SubmitBtn>
+          </BtnContainer>
         </InputForm>
       </InputContainer>
     </Modal>

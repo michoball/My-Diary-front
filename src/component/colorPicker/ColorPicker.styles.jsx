@@ -3,16 +3,28 @@ import { CirclePicker } from "react-color";
 
 export const ColorPalletContainer = styled.div`
   position: relative;
-  height: 70px;
+  height: 100px;
+  width: 200px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  .warning {
+    font-size: 10px;
+    color: red;
+    display: none;
+    margin-bottom: 10px;
+    &.disable {
+      display: block;
+    }
+  }
 `;
 
 export const CircleColorPicker = styled(CirclePicker)`
   display: flex;
   align-items: center;
   justify-content: center;
+
   span div :focus {
     transform: scale(1);
     width: 20px;

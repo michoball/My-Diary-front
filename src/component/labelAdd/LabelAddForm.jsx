@@ -12,9 +12,10 @@ import {
   AddBtn,
   LabelInputForm,
   AllDayBtn,
+  CancelBtn,
 } from "./LabelAddForm.styles";
 
-import { Check2Circle } from "react-bootstrap-icons";
+import { Check2Circle, X } from "react-bootstrap-icons";
 
 import Modal from "../modal/Modal";
 import { customLabelActions } from "../../features/customLabel/customLabelSlice";
@@ -72,6 +73,9 @@ const LabelAddForm = ({ onConfirm }) => {
       }}
     >
       <LabelInputcontainer>
+        <CancelBtn type="click" onClick={() => onConfirm()}>
+          <X />
+        </CancelBtn>
         <LabelInputForm onSubmit={submitHanbler}>
           <LabelFormInput
             label="그룹명"
@@ -89,7 +93,7 @@ const LabelAddForm = ({ onConfirm }) => {
             <ToggleSwitch
               type="allDay"
               onSwitchEvent={allDayChangeHandler}
-              allDay={allDay}
+              toggleValue={allDay}
             />
           </AllDayBtn>
           <ColorSection>

@@ -8,7 +8,6 @@ export const customLabelAction = {
       alert("You already have the same group name. Please use another name");
       return;
     }
-    console.log(action);
     state.labelLists = state.labelLists.concat({ ...action.payload });
   },
   removeLabel: (state, action) => {
@@ -25,6 +24,9 @@ export const customLabelAction = {
     );
   },
   editLabel: (state, action) => {},
+  clearLabel: (state) => {
+    state.selectedLabel = null;
+  },
   selectLabel: (state, action) => {
     const findLabel = state.labelLists.find(
       (label) => label.groupId === action.payload

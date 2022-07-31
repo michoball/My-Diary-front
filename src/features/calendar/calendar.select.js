@@ -11,7 +11,7 @@ export const selectCalendarEvents = createSelector(
 
 // export const selectEditEvent = createSelector(
 //   [selectCalendarEvents],
-//   (EditEvent) => {
-//     return EditEvent.find;
+//   (event) => {
+//     return event.selectedEvent;
 //   }
 // );
