@@ -28,7 +28,7 @@ function ColorPicker({ onColorPick, colorSelected, disable }) {
   return (
     <ColorPalletContainer>
       <span className={`warning ${disable && "disable"}`}>
-        you can't change color in edit mode
+        you can't change color in this mode
       </span>
       <CircleColorPicker
         color={pickedColor}

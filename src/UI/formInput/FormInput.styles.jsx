@@ -2,10 +2,19 @@ import styled from "styled-components";
 
 export const FormInputContainer = styled.div`
   display: flex;
-  margin: 5px 0;
+  margin-bottom: 15px;
+  width: 250px;
+  &.title {
+    margin-bottom: 25px;
+  }
+  &.time {
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Input = styled.input`
+  margin-left: 10px;
   padding: 5px 10px;
   font-size: 14px;
   border: none;
@@ -14,11 +23,11 @@ export const Input = styled.input`
   outline: none;
   color: black;
 
-  /* :disabled {
+  :disabled {
     border-radius: 10px;
     border-bottom: 3px solid white;
-    background-color: rgba(187, 187, 187, 0.6);
-  } */
+    background-color: rgba(43, 43, 43, 0.8);
+  }
 
   :-webkit-autofill,
   :-webkit-autofill:hover,
@@ -31,8 +40,6 @@ export const Input = styled.input`
 
 export const FromInputLabel = styled.label`
   color: black;
-
   font-weight: bold;
-  margin-right: 10px;
   letter-spacing: 0.7px;
 `;

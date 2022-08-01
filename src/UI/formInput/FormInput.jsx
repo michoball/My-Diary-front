@@ -4,9 +4,9 @@ import { Input, FormInputContainer, FromInputLabel } from "./FormInput.styles";
 const FormInput = (props) => {
   const { label, className, ...otherProps } = props;
   return (
-    <FormInputContainer>
+    <FormInputContainer className={className}>
       <FromInputLabel htmlFor={label}>{label && label}</FromInputLabel>
-      <Input {...otherProps} className={className} />
+      <Input {...otherProps} />
     </FormInputContainer>
   );
 };

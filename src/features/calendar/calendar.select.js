@@ -9,9 +9,9 @@ export const selectCalendarEvents = createSelector(
   }
 );
 
-// export const selectEditEvent = createSelector(
-//   [selectCalendarEvents],
-//   (event) => {
-//     return event.selectedEvent;
-//   }
-// );
+export const selectEditEvent = createSelector(
+  [selectCalendarReducer],
+  (event) => {
+    return event.selectedEvent;
+  }
+);

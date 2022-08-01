@@ -1,5 +1,5 @@
 export const TimeConvertor = (time) => {
-  const timeConvert = new Date(time).toISOString().split(":00.")[0];
+  const timeConvert = time.split("T")[0];
 
   return timeConvert;
 };

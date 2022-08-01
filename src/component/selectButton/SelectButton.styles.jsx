@@ -13,5 +13,7 @@ export const SelectContainer = styled.div`
     border: 2px solid black;
     border-radius: 10px;
     padding: 1px;
+    width: 120px;
+    text-align: center;
   }
 `;

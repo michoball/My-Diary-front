@@ -17,6 +17,7 @@ function SelectButton() {
     <SelectContainer>
       <label>Label</label>
       <select onChange={labelChangeHandler}>
+        <option value="">--default--</option>
         {listOfLabels.map((label) => {
           return <SelectOption key={label.groupId} label={label} />;
         })}

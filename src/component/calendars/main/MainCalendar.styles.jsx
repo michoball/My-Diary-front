@@ -7,6 +7,7 @@ export const CalendarWrapper = styled.div`
   min-width: 800px;
   max-width: 1200px;
   height: calc(100vh - 80px);
+  z-index: ${({ zvalue }) => zvalue};
 `;
 
 export const CalendarView = styled.div`
@@ -78,6 +79,12 @@ export const CalendarContainer = styled.div`
     }
 
     .fc-daygrid-day {
+      &.fc-day {
+        cursor: pointer;
+        :hover {
+          background-color: rgba(187, 187, 187, 0.4);
+        }
+      }
       .fc-daygrid-day-bottom {
         text-align: center;
 

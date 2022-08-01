@@ -20,10 +20,5 @@ export const ModalWrapperStyle = styled.div`
   align-items: center;
   justify-content: center;
 
-  border-radius: 10px;
-  border: 3px solid black;
-
-  background-color: white;
-
   z-index: 100;
 `;

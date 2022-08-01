@@ -28,15 +28,6 @@ const initialLabels = [
     color: "#2196f3",
     allDay: false,
   },
-  {
-    groupId: "133584fasefa-arnla",
-    title: "event 2",
-    groupTitle: "forbidden",
-    color: "#ff9f89",
-    overlap: false,
-    display: "background",
-    allDay: true,
-  },
 ];
 
 const initialState = {

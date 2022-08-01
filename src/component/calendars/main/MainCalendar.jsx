@@ -1,6 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
+import {
+  selectCalendarEvents,
+  selectEditEvent,
+} from "../../../features/calendar/calendar.select";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import {
   DefaultCalendar,
@@ -10,9 +13,10 @@ import { v4 as uuidv4 } from "uuid";
 
 import CreateButton from "../../createButton/CreateButton";
 import EventEdit from "../../eventEdit/EventEdit";
+
 import { TimeRecurConvertor } from "../../../utill/timeConvertor";
 
-import { ThreeDots, ShieldX } from "react-bootstrap-icons";
+import { ThreeDots, CalendarX } from "react-bootstrap-icons";
 import {
   CalendarContainer,
   CalendarView,
@@ -23,17 +27,24 @@ import {
 import { Backdrop } from "../../modal/Modal";
 
 function MyCalendar() {
-  const eventList = useSelector(selectCalendarEvents);
   const [isEditFrom, setIsEditFrom] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectable, setSelectable] = useState(false);
+
+  const eventList = useSelector(selectCalendarEvents);
+  const selectedEvent = useSelector(selectEditEvent);
+
   // const calendarRef = useRef(null);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (selectedEvent) {
+      console.log(selectedEvent);
+    }
+  }, [selectedEvent]);
+
   const handleEventClick = (event) => {
     const eventData = event.event;
-
-    setSelectedEvent(eventData);
+    dispatch(calendarActions.selectEvent({ id: eventData.id }));
     setIsEditFrom(!isEditFrom);
   };
 
@@ -99,13 +110,11 @@ function MyCalendar() {
 
   return (
     <>
-      {isEditFrom && (
-        <EventEdit
-          eventData={selectedEvent}
-          onConfirm={() => setIsEditFrom(!isEditFrom)}
-        />
+      {isEditFrom && <EventEdit onConfirm={() => setIsEditFrom(!isEditFrom)} />}
+      {selectable && (
+        <Backdrop onToggleModal={() => setSelectable(!selectable)} />
       )}
-      <CalendarWrapper>
+      <CalendarWrapper zvalue={selectable ? 15 : 0}>
         <CalendarView>
           <CalendarContainer>
             <ButtonContainer>
@@ -113,13 +122,11 @@ function MyCalendar() {
                 type="click"
                 onClick={() => setSelectable(!selectable)}
               >
-                <ShieldX />
+                <CalendarX />
               </BanButton>
               <CreateButton />
             </ButtonContainer>
-            {selectable && (
-              <Backdrop onToggleModal={() => setSelectable(!selectable)} />
-            )}
+
             <DefaultCalendar
               initialView={CALENDAR_VIEW_STYLE.calender.initialView}
               headerToolbar={CALENDAR_VIEW_STYLE.calender.headerToolbar}

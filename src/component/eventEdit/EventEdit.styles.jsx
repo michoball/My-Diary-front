@@ -2,36 +2,79 @@ import styled from "styled-components";
 import { FormInputContainer } from "../../UI/formInput/FormInput.styles";
 
 export const EventEditcontainer = styled.div`
+  position: relative;
+  border-radius: 10px;
+  border-top-right-radius: 0;
+  flex-direction: column;
+  border: 3px solid black;
+  background-color: white;
+  padding: 10px;
+`;
+
+export const EventToggerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
+  position: absolute;
+  top: 5px;
+  right: -32px;
+  overflow: hidden;
+`;
+
+export const EventTogger = styled.button`
+  position: relative;
+  background-color: white;
+  height: 50px;
+  width: 30px;
+
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: bold;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &.active {
+    background-color: #f2727d;
+    border-top-right-radius: 15px;
+  }
+
+  :hover {
+    border-top-right-radius: 15px;
+    background-color: #f23d4c;
+  }
+  :active {
+    transform: translateX(-2px);
+  }
+
+  :disabled {
+    &.active {
+      color: unset;
+    }
+  }
 `;
 
 export const EditInputContainer = styled.div`
   display: flex;
-  margin-bottom: 20px;
-`;
-
-export const BasicInput = styled.div`
-  padding: 10px;
-  width: 300px;
-`;
-
-export const AdvanceInput = styled.div`
-  width: 300px;
-  padding: 10px;
-  background-color: blanchedalmond;
-  border: 2px solid #bbb;
-
+  margin-bottom: 10px;
   border-radius: 10px;
+`;
+
+export const BasicInputBg = styled.div`
+  padding: 10px;
+  width: 300px;
 `;
 
 export const OptionContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 15px;
+  padding: 10px;
+
+  background-color: blanchedalmond;
+  border: 2px solid #bbb;
+  border-radius: 10px;
 `;
 
 export const EventEditForm = styled.form`
@@ -55,7 +98,7 @@ export const EventEditForm = styled.form`
 
 export const ColorSection = styled.div`
   display: flex;
-  margin: 10px 0;
+  flex-direction: column;
 
   label {
     font-weight: bold;
@@ -74,7 +117,7 @@ export const ConfirmBtn = styled.button`
   width: 150px;
   height: 40px;
   background-color: rgba(0, 132, 255, 0.7);
-  border: none;
+  border: 2px solid #bbb;
   border-radius: 10px;
 
   display: flex;
@@ -95,7 +138,6 @@ export const ConfirmBtn = styled.button`
   }
 
   svg {
-    font-size: 18px;
     margin-right: 5px;
   }
 `;
