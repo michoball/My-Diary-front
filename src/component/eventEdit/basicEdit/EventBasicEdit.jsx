@@ -33,14 +33,13 @@ const defaultEvent = {
   allDay: false,
 };
 
-function EventBasicEdit({ onConfirm }) {
+function EventBasicEdit({ confirm }) {
   const [editEvent, setEditEvent] = useState(defaultEvent);
   const [isDisable, setIsDisable] = useState(false);
 
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
-  console.log(editEvent);
 
   // 편집할 input에 따른 label 태그 바꾸기
   useEffect(() => {
@@ -76,7 +75,7 @@ function EventBasicEdit({ onConfirm }) {
 
   const eventRemoveHandler = () => {
     dispatch(calendarActions.removeEvent({ id }));
-    onConfirm();
+    confirm();
   };
 
   const editSubmitHandler = (e) => {
@@ -99,8 +98,8 @@ function EventBasicEdit({ onConfirm }) {
       alert("something went wrong~!", error);
     }
 
-    alert("정상적으로 일정이 만들어졌습니다. ");
-    onConfirm();
+    alert("일정이 조정되었습니다. ");
+    confirm();
   };
   const colorChangeHandler = (color) => {
     setEditEvent((prev) => {

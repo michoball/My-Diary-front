@@ -49,18 +49,6 @@ function AdvanceInput() {
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
 
-  const selectedDay = (day) => {
-    setAdvancedEventData((prev) => {
-      return { ...prev, daysOfWeek: [...day] };
-    });
-  };
-
-  const onChangeHandler = (e) => {
-    setAdvancedEventData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-
   useEffect(() => {
     if (selectedLabel) {
       SelectedLabelHanlder(selectedLabel);
@@ -77,7 +65,13 @@ function AdvanceInput() {
     });
   };
 
-  const inputChangeHandler = (e) => {
+  const selectedDay = (day) => {
+    setAdvancedEventData((prev) => {
+      return { ...prev, daysOfWeek: [...day] };
+    });
+  };
+
+  const onChangeHandler = (e) => {
     setAdvancedEventData((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -108,16 +102,24 @@ function AdvanceInput() {
       endRecur === "" ||
       daysOfWeek.length === 0
     ) {
+      console.log(
+        "title : ",
+        title,
+        "sRecur: ",
+        startRecur,
+        "eRecur :",
+        endRecur,
+        "dayofweek : ",
+        daysOfWeek
+      );
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     try {
-      const endSet = allDay ? endRecur + "T24:00" : endRecur;
-
       dispatch(
         calendarActions.addEvent({
           ...advancedEventData,
           id: uuidv4(),
-          end: endSet,
+          endRecur: endRecur + "T24:00",
         })
       );
     } catch (error) {
@@ -137,7 +139,7 @@ function AdvanceInput() {
             name="title"
             value={title}
             className="title"
-            onChange={inputChangeHandler}
+            onChange={onChangeHandler}
           />
 
           <FormInput
@@ -160,7 +162,7 @@ function AdvanceInput() {
             type="time"
             name="startTime"
             value={startTime}
-            onChange={inputChangeHandler}
+            onChange={onChangeHandler}
             disabled={allDay ? true : false}
           />
           <FormInput
@@ -169,7 +171,7 @@ function AdvanceInput() {
             type="time"
             name="endTime"
             value={endTime}
-            onChange={inputChangeHandler}
+            onChange={onChangeHandler}
             disabled={allDay ? true : false}
           />
         </BasicInputBg>

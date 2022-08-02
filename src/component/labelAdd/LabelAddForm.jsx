@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import FormInput from "../../UI/formInput/FormInput";
 
 import ColorPicker from "../colorPicker/ColorPicker";
 import ToggleSwitch from "../../UI/toggleSwitch/ToggleSwitch";
 
 import {
   LabelInputcontainer,
-  LabelFormInput,
   ColorSection,
   AddBtn,
   LabelInputForm,
@@ -25,9 +25,17 @@ const defaultLabel = {
   color: "#f44336",
   allDay: false,
 };
+const abvancedLabel = {
+  daysOfWeek: ["1"],
+  startRecur: "",
+  endRecur: "",
+  startTime: "",
+  endTime: "",
+};
 
 const LabelAddForm = ({ onConfirm }) => {
   const [newLabel, setNewLabel] = useState(defaultLabel);
+  const [isAdvanced, setIsAdvanced] = useState(false);
   const dispatch = useDispatch();
 
   const { groupTitle, color, allDay } = newLabel;
@@ -43,10 +51,14 @@ const LabelAddForm = ({ onConfirm }) => {
       return { ...prev, allDay: isAllDay };
     });
   };
-  const ColorChangeHandler = (color) => {
+  const colorChangeHandler = (color) => {
     setNewLabel((prev) => {
       return { ...prev, color: color };
     });
+  };
+
+  const recurrLabelChangeHandler = (recurr) => {
+    setIsAdvanced(recurr);
   };
 
   const defaultSetting = () => {
@@ -60,7 +72,18 @@ const LabelAddForm = ({ onConfirm }) => {
       return alert("그룹명을 입력하시오");
     }
 
-    dispatch(customLabelActions.addLabel({ groupId: uuidv4(), ...newLabel }));
+    try {
+      const finalLabel = isAdvanced
+        ? { ...newLabel, ...abvancedLabel }
+        : newLabel;
+
+      dispatch(
+        customLabelActions.addLabel({ groupId: uuidv4(), ...finalLabel })
+      );
+    } catch (error) {
+      alert("Can not make that Label", error);
+    }
+
     onConfirm();
     defaultSetting();
   };
@@ -72,12 +95,12 @@ const LabelAddForm = ({ onConfirm }) => {
         onConfirm();
       }}
     >
+      <CancelBtn type="click" onClick={() => onConfirm()}>
+        <X />
+      </CancelBtn>
       <LabelInputcontainer>
-        <CancelBtn type="click" onClick={() => onConfirm()}>
-          <X />
-        </CancelBtn>
         <LabelInputForm onSubmit={submitHanbler}>
-          <LabelFormInput
+          <FormInput
             label="그룹명"
             type="text"
             name="groupTitle"
@@ -87,20 +110,24 @@ const LabelAddForm = ({ onConfirm }) => {
           />
 
           <AllDayBtn>
-            <label htmlFor="종일" className="toggle-label">
-              종일
-            </label>
             <ToggleSwitch
               type="allDay"
+              title="종일"
               onSwitchEvent={allDayChangeHandler}
               toggleValue={allDay}
+            />
+            <ToggleSwitch
+              type="recurr"
+              title="정기 일정"
+              onSwitchEvent={recurrLabelChangeHandler}
+              toggleValue={isAdvanced}
             />
           </AllDayBtn>
           <ColorSection>
             <label>Color</label>
             <ColorPicker
               colorSelected={color}
-              onColorPick={ColorChangeHandler}
+              onColorPick={colorChangeHandler}
             />
           </ColorSection>
           <AddBtn type="submit">

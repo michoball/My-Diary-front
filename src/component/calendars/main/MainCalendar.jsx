@@ -31,16 +31,8 @@ function MyCalendar() {
   const [selectable, setSelectable] = useState(false);
 
   const eventList = useSelector(selectCalendarEvents);
-  const selectedEvent = useSelector(selectEditEvent);
-
   // const calendarRef = useRef(null);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (selectedEvent) {
-      console.log(selectedEvent);
-    }
-  }, [selectedEvent]);
 
   const handleEventClick = (event) => {
     const eventData = event.event;
@@ -53,7 +45,7 @@ function MyCalendar() {
     const advenceData = eventDataChanger(e.event);
 
     dispatch(
-      calendarActions.editEvent({
+      calendarActions.addEvent({
         id,
         title,
         start: startStr,

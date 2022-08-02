@@ -35,7 +35,7 @@ const advanceEvent = {
   endTime: "",
 };
 
-function EventAdvanceEdit({ onConfirm }) {
+function EventAdvanceEdit({ confirm }) {
   const [advancedEventData, setAdvancedEventData] = useState(advanceEvent);
   const [isDisable, setIsDisable] = useState(false);
   const {
@@ -90,7 +90,7 @@ function EventAdvanceEdit({ onConfirm }) {
 
   const eventRemoveHandler = () => {
     dispatch(calendarActions.removeEvent({ id }));
-    onConfirm();
+    confirm();
   };
 
   const colorChangeHandler = (color) => {
@@ -117,19 +117,17 @@ function EventAdvanceEdit({ onConfirm }) {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     try {
-      const endSet = allDay ? endRecur + "T24:00" : endRecur;
-
       dispatch(
         calendarActions.addEvent({
           ...advancedEventData,
-          end: endSet,
+          endRecur: endRecur + "T24:00",
         })
       );
     } catch (error) {
       alert("something went wrong~!", error);
     }
-    alert("정상적으로 일정이 만들어졌습니다. ");
-    onConfirm();
+    alert("일정이 조정되었습니다. ");
+    confirm();
   };
 
   return (
@@ -188,7 +186,7 @@ function EventAdvanceEdit({ onConfirm }) {
             onSwitchEvent={isDisable ? () => {} : allDayChangeHandler}
             toggleValue={allDay}
           />
-          <DayPicker onSelecteDay={selectedDay} />
+          <DayPicker onSelecteDay={selectedDay} selectedDay={daysOfWeek} />
           <ColorSection>
             <label>Color</label>
             <ColorPicker

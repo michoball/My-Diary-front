@@ -18,7 +18,7 @@ const initialLabels = [
     groupId: "1hwhw2",
     color: "#f44336",
     groupTitle: "regular Work",
-    daysOfWeek: ["0"],
+    daysOfWeek: ["0", "1"],
     allDay: true,
   },
 

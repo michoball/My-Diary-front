@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const DayPickerContainer = styled.div`
   width: 100%;
@@ -18,7 +18,8 @@ export const CheckBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  label {
+  .day-label {
     font-weight: bold;
+    cursor: pointer;
   }
 `;

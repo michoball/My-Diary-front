@@ -57,9 +57,9 @@ function EventEdit({ onConfirm }) {
           </EventTogger>
         </EventToggerContainer>
         {isRecurrEvent ? (
-          <EventAdvanceEdit onConfirm={() => onConfirm()} />
+          <EventAdvanceEdit confirm={() => onConfirm()} />
         ) : (
-          <EventBasicEdit onConfirm={() => onConfirm()} />
+          <EventBasicEdit confirm={() => onConfirm()} />
         )}
       </EventEditcontainer>
     </Modal>
