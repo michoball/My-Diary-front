@@ -11,6 +11,15 @@ export const FormInputContainer = styled.div`
     justify-content: flex-end;
     margin-bottom: 20px;
   }
+
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="time"] {
+    font-weight: bold;
+    ::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const Input = styled.input`

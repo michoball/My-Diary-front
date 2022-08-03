@@ -78,14 +78,6 @@ export const InputForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 10px;
-
-  input[type="datetime-local"],
-  input[type="date"] {
-    font-weight: bold;
-    ::-webkit-calendar-picker-indicator {
-      cursor: pointer;
-    }
-  }
 `;
 
 export const ColorSection = styled.div`

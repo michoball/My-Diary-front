@@ -13,6 +13,7 @@ import {
   LabelInputForm,
   AllDayBtn,
   CancelBtn,
+  BtnContainer,
 } from "./LabelAddForm.styles";
 
 import { Check2Circle, X } from "react-bootstrap-icons";
@@ -123,6 +124,7 @@ const LabelAddForm = ({ onConfirm }) => {
               toggleValue={isAdvanced}
             />
           </AllDayBtn>
+
           <ColorSection>
             <label>Color</label>
             <ColorPicker
@@ -130,10 +132,12 @@ const LabelAddForm = ({ onConfirm }) => {
               onColorPick={colorChangeHandler}
             />
           </ColorSection>
-          <AddBtn type="submit">
-            <Check2Circle />
-            Add
-          </AddBtn>
+          <BtnContainer>
+            <AddBtn type="submit">
+              <Check2Circle />
+              Add
+            </AddBtn>
+          </BtnContainer>
         </LabelInputForm>
       </LabelInputcontainer>
     </Modal>

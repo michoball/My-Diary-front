@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
@@ -76,11 +76,11 @@ function EventAdvanceEdit({ confirm }) {
     }
   }, [selectedLabel]);
 
-  const selectedDay = (day) => {
+  const selectedDay = useCallback((day) => {
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });
-  };
+  }, []);
 
   const onChangeHandler = (e) => {
     setAdvancedEventData((prev) => {
@@ -186,7 +186,7 @@ function EventAdvanceEdit({ confirm }) {
             onSwitchEvent={isDisable ? () => {} : allDayChangeHandler}
             toggleValue={allDay}
           />
-          <DayPicker onSelecteDay={selectedDay} selectedDay={daysOfWeek} />
+          <DayPicker onSelecteDay={selectedDay} />
           <ColorSection>
             <label>Color</label>
             <ColorPicker

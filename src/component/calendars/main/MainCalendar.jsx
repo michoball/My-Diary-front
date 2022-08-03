@@ -75,6 +75,7 @@ function MyCalendar() {
       dispatch(
         calendarActions.addEvent({
           id: uuidv4(),
+          groupId: "Ban",
           start: startStr,
           end: endStr,
           color: "#ff9f89",

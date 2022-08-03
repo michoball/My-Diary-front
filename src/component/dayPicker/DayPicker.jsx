@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState, useCallback } from "react";
 import { DayPickerContainer, CheckBoxWrapper } from "./DayPicker.styles";
 import PickerOptions from "./PickerOptions";
 
@@ -12,9 +11,26 @@ const DAYSOFWEEK = [
   { id: 5, day: "금", isChecked: false },
   { id: 6, day: "토", isChecked: false },
 ];
-
 function DayPicker({ onSelecteDay }) {
   const [weeks, setWeeks] = useState(DAYSOFWEEK);
+
+  const [selectDay, setSelectDay] = useState(new Set());
+
+  //
+  const onChangeHandler = useCallback(
+    (e) => {
+      const isDay = e.target ? e.target : e;
+      if (isDay.checked) {
+        selectDay.add(isDay.value);
+        setSelectDay(selectDay);
+      } else if (!isDay.checked && selectDay.has(isDay.value)) {
+        selectDay.delete(isDay.value);
+        setSelectDay(selectDay);
+      }
+      onSelecteDay(selectDay);
+    },
+    [selectDay, onSelecteDay]
+  );
 
   return (
     <DayPickerContainer>
@@ -25,7 +41,8 @@ function DayPicker({ onSelecteDay }) {
             <PickerOptions
               key={week.id}
               week={week}
-              onSelecteDay={onSelecteDay}
+              checkDefalut={week.isChecked}
+              onCheckBoxChange={onChangeHandler}
             />
           );
         })}

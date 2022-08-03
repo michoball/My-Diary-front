@@ -20,6 +20,5 @@ export const CheckBoxContainer = styled.div`
 
   .day-label {
     font-weight: bold;
-    cursor: pointer;
   }
 `;

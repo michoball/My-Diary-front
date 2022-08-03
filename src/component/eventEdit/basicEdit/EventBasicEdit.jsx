@@ -43,7 +43,11 @@ function EventBasicEdit({ confirm }) {
 
   // 편집할 input에 따른 label 태그 바꾸기
   useEffect(() => {
-    if (selectEvent.groupId.length !== 0) {
+    if (selectEvent.groupId === "Ban") {
+      setIsDisable(true);
+    }
+
+    if (selectEvent.groupId && selectEvent.groupId.length !== 0) {
       dispatch(customLabelActions.selectLabel(selectEvent.groupId));
     }
     setEditEvent((prev) => ({
@@ -64,8 +68,17 @@ function EventBasicEdit({ confirm }) {
     }
   }, [selectedLabel]);
 
-  const { id, title, start, end, color, allDay, eventStartTime, eventEndTime } =
-    editEvent;
+  const {
+    id,
+    title,
+    start,
+    end,
+    color,
+    allDay,
+    eventStartTime,
+    eventEndTime,
+    groupId,
+  } = editEvent;
 
   const onChangeHandler = (e) => {
     setEditEvent((prev) => {
@@ -81,7 +94,7 @@ function EventBasicEdit({ confirm }) {
   const editSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (title === "" || start === "" || end === "") {
+    if ((groupId !== "Ban" && title === "") || start === "" || end === "") {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     const startSet = allDay ? start : start + "T" + eventStartTime;
@@ -123,6 +136,7 @@ function EventBasicEdit({ confirm }) {
             name="title"
             value={title}
             onChange={onChangeHandler}
+            disabled={groupId === "Ban" ? true : false}
           />
 
           <FormInput

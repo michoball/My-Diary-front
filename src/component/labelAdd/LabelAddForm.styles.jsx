@@ -6,13 +6,14 @@ export const LabelInputcontainer = styled.div`
   border-radius: 10px;
   border: 3px solid black;
   background-color: white;
-  padding: 10px;
+  padding: 20px;
 `;
 
 export const LabelInputForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 10px;
+  gap: 20px;
 
   .groupTitle {
     width: 100%;
@@ -22,27 +23,24 @@ export const LabelInputForm = styled.form`
 export const AllDayBtn = styled.div`
   display: flex;
   align-items: center;
-
-  .toggle-label {
-    font-weight: bold;
-    width: 50px;
-    margin: 10px 0;
-  }
+  justify-content: space-around;
 `;
 
 export const ColorSection = styled.div`
+  display: flex;
+  flex-direction: column;
+
   label {
     font-weight: bold;
   }
 `;
 
 export const AddBtn = styled.button`
-  width: 100px;
-  height: 50px;
+  width: 200px;
+  height: 40px;
 
-  margin-left: auto;
   background-color: rgba(0, 132, 255, 0.5);
-  border: none;
+  border: 2px solid #bbb;
   border-radius: 10px;
 
   display: flex;
@@ -52,12 +50,20 @@ export const AddBtn = styled.button`
   font-size: 16px;
   color: whitesmoke;
   cursor: pointer;
+
   :hover {
     transform: scale(0.98);
   }
   svg {
     margin-right: 5px;
   }
+`;
+
+export const BtnContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CancelBtn = styled.button`

@@ -29,6 +29,10 @@ export const CategoryAddBtn = styled.button`
   :active {
     transform: scale(0.95);
   }
+
+  svg {
+    font-size: 20px;
+  }
 `;
 
 export const ListWrapper = styled.div`

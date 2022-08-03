@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
@@ -65,11 +65,11 @@ function AdvanceInput() {
     });
   };
 
-  const selectedDay = (day) => {
+  const selectedDay = useCallback((day) => {
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });
-  };
+  }, []);
 
   const onChangeHandler = (e) => {
     setAdvancedEventData((prev) => {

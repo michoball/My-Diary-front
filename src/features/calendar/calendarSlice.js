@@ -27,7 +27,7 @@ const initialEvent = [
     id: "133584fasefa-arnla",
     title: "",
     start: "2022-08-26T00:00",
-    end: "2022-08-28T00:00",
+    end: "2022-08-27T24:00",
     color: "#ff9f89",
     allDay: true,
 
