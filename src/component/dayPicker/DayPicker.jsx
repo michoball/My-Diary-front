@@ -16,7 +16,6 @@ function DayPicker({ onSelecteDay }) {
 
   const [selectDay, setSelectDay] = useState(new Set());
 
-  //
   const onChangeHandler = useCallback(
     (e) => {
       const isDay = e.target ? e.target : e;

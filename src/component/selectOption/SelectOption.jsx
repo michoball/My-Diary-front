@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
 import { selectEditEvent } from "../../features/calendar/calendar.select";
 
@@ -9,18 +9,23 @@ function SelectOption({ label }) {
   const selectEvent = useSelector(selectEditEvent);
 
   useEffect(() => {
+    if (selectEvent) {
+      if (
+        selectedLabel === null &&
+        selectEvent.groupTitle === label.groupTitle
+      ) {
+        const optionSelect = optionRef.current;
+        optionSelect.selected = true;
+      }
+    }
+  }, [selectEvent, selectedLabel, label.groupTitle]);
+
+  useEffect(() => {
     if (selectedLabel && selectedLabel.groupTitle === label.groupTitle) {
       const optionSelect = optionRef.current;
       optionSelect.selected = true;
     }
   }, [selectedLabel, label.groupTitle]);
-
-  useEffect(() => {
-    if (selectEvent && selectEvent.groupTitle === label.groupTitle) {
-      const optionSelect = optionRef.current;
-      optionSelect.selected = true;
-    }
-  }, [selectEvent, label.groupTitle]);
 
   return (
     <option value={label.groupId} ref={optionRef}>

@@ -17,7 +17,7 @@ const SidebarCalendar = () => {
         initialView="dayGridMonth"
         headerToolbar={{
           left: "prev",
-          center: "title",
+          center: "title today",
           right: "next",
         }}
         events={eventLists}

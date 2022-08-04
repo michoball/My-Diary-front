@@ -23,6 +23,7 @@ export const customLabelAction = {
   },
   editLabel: (state, action) => {},
   clearLabel: (state) => {
+    console.log("clear");
     return {
       ...state,
       selectedLabel: null,
@@ -32,6 +33,9 @@ export const customLabelAction = {
     const findLabel = state.labelLists.find(
       (label) => label.groupId === action.payload
     );
+    if (state.selectLabel === findLabel) {
+      return state;
+    }
     return {
       ...state,
       selectedLabel: findLabel,

@@ -17,7 +17,7 @@ const PickerOptions = ({ week, onCheckBoxChange, checkDefalut }) => {
   };
 
   useEffect(() => {
-    if (selectedLabel && selectedLabel.daysOfWeek) {
+    if (!selectEvent && selectedLabel && selectedLabel.daysOfWeek) {
       for (let i = 0; i < selectedLabel.daysOfWeek.length; i++) {
         if (selectedLabel.daysOfWeek[i] === String(week.id)) {
           dayCheckRef.current.checked = true;
@@ -26,7 +26,7 @@ const PickerOptions = ({ week, onCheckBoxChange, checkDefalut }) => {
         }
       }
     }
-  }, [selectedLabel, week, onCheckBoxChange]);
+  }, [selectedLabel, week, onCheckBoxChange, selectEvent]);
 
   useEffect(() => {
     if (selectEvent && selectEvent.daysOfWeek) {

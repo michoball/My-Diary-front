@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
 
 import AdvanceInput from "./advanceInput/AdvanceInput";
 import BasicInput from "./basicInput/BasicInput";
 import Modal from "../modal/Modal";
+import Button from "../../UI/button/button";
+
 import { X } from "react-bootstrap-icons";
 
 import {
-  CancelBtn,
   EventToggerContainer,
   EventCreatorContainer,
   EventTogger,
 } from "./EventInput.styles";
+import { customLabelActions } from "../../features/customLabel/customLabelSlice";
 function EventInput({ onConfirm }) {
   const [isRecurrEvent, setIsRecurrEvent] = useState(false);
   const selectedLabel = useSelector(selectSelectedLabel);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (selectedLabel) {
@@ -27,15 +30,16 @@ function EventInput({ onConfirm }) {
     setIsRecurrEvent(bool);
   };
 
+  const OffModalHandler = () => {
+    dispatch(customLabelActions.clearLabel());
+    onConfirm();
+  };
+
   return (
-    <Modal
-      toggleModal={() => {
-        onConfirm();
-      }}
-    >
-      <CancelBtn type="click" onClick={() => onConfirm()}>
+    <Modal toggleModal={OffModalHandler}>
+      <Button buttonType="cancel" type="click" onClick={OffModalHandler}>
         <X />
-      </CancelBtn>
+      </Button>
       <EventCreatorContainer>
         <EventToggerContainer>
           <EventTogger

@@ -36,7 +36,14 @@ const advanceEvent = {
 };
 
 function EventAdvanceEdit({ confirm }) {
-  const [advancedEventData, setAdvancedEventData] = useState(advanceEvent);
+  const [advancedEventData, setAdvancedEventData] = useState(
+    advanceEvent
+    //   {
+    //   ...advanceEvent,
+    //   ...eventData,
+    //   endRecur: TimeConvertor(eventData.endRecur),
+    // }
+  );
   const [isDisable, setIsDisable] = useState(false);
   const {
     id,
@@ -48,15 +55,20 @@ function EventAdvanceEdit({ confirm }) {
     color,
     allDay,
     daysOfWeek,
+    groupId,
   } = advancedEventData;
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
 
   useEffect(() => {
-    if (selectEvent.groupId.length !== 0) {
-      dispatch(customLabelActions.selectLabel(selectEvent.groupId));
+    if (selectEvent.allDay) {
+      setIsDisable(true);
     }
+    // if (selectEvent.groupId !== "") {
+    //   dispatch(customLabelActions.selectLabel(selectEvent.groupId));
+    // }
+
     setAdvancedEventData((prev) => ({
       ...prev,
       ...selectEvent,
@@ -66,17 +78,29 @@ function EventAdvanceEdit({ confirm }) {
 
   useEffect(() => {
     if (selectedLabel) {
-      setAdvancedEventData((prev) => {
-        return {
-          ...prev,
-          ...selectedLabel,
-        };
-      });
-      setIsDisable(true);
+      if (selectedLabel.groupId === groupId) {
+        return;
+      }
+      if (selectedLabel.daysOfWeek) {
+        setAdvancedEventData((prev) => {
+          return {
+            ...prev,
+            ...selectedLabel,
+          };
+        });
+        console.log("advanceEdit label");
+        setIsDisable(true);
+      } else {
+        dispatch(customLabelActions.clearLabel());
+
+        // dispatch(customLabelActions.selectLabel(groupId));
+        return alert("정기 일정을 일일 일정으로 바꿀 수 없습니다.");
+      }
     }
-  }, [selectedLabel]);
+  }, [selectedLabel, groupId, dispatch]);
 
   const selectedDay = useCallback((day) => {
+    console.log(day);
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });

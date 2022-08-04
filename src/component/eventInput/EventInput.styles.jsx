@@ -96,27 +96,6 @@ export const BtnContainer = styled.div`
   width: 100%;
 `;
 
-export const SubmitBtn = styled.button`
-  width: 200px;
-  height: 40px;
-  background-color: rgba(0, 132, 255, 0.7);
-  border: 2px solid #bbb;
-  border-radius: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: whitesmoke;
-  cursor: pointer;
-  :hover {
-    transform: scale(0.98);
-  }
-  svg {
-    margin-right: 5px;
-  }
-`;
-
 export const CancelBtn = styled.button`
   position: absolute;
   top: -30px;

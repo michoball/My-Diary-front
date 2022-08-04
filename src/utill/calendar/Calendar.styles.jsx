@@ -4,9 +4,6 @@ export const calendarCss = css`
   .fc {
     background-color: white;
 
-    /* td, th {
-  border: 0 none;
-} */
     .fc-button-primary {
       width: 65px;
       margin-right: 10px;
@@ -53,8 +50,8 @@ export const calendarCss = css`
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      width: 50px !important;
-      height: 35px !important;
+      width: 50px;
+      height: 35px;
       background-color: transparent !important;
 
       span {

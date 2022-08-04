@@ -118,27 +118,3 @@ export const ButtonContainer = styled.div`
 
   z-index: 5;
 `;
-
-export const BanButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 40px;
-  width: 50px;
-  margin-right: 10px;
-
-  border-radius: 10px;
-  text-transform: uppercase;
-
-  background-color: rgba(255, 0, 0, 0.7);
-  cursor: pointer;
-
-  :active {
-    transform: scale(0.98);
-  }
-
-  svg {
-    font-size: 20px;
-  }
-`;

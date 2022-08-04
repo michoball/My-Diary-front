@@ -3,7 +3,8 @@ import { calendarAction } from "./calendar.action";
 const initialEvent = [
   //종일 이벤트
   {
-    groupId: "",
+    groupId: "12afaef3",
+    groupTitle: "Job",
     id: "123",
     title: "I am available",
     allDay: true,
@@ -14,9 +15,12 @@ const initialEvent = [
 
   // 시간별 단기 일정
   {
-    groupId: "",
-    id: "afea4",
+    groupTitle: "family event",
+    groupId: "afea4",
+    id: "afea4q4t4g",
     title: "event 2",
+    allDay: false,
+
     start: "2022-08-02T14:00",
     end: "2022-08-02T20:00",
     color: "#2196f3",
@@ -40,7 +44,8 @@ const initialEvent = [
     id: "12",
     title: "Go to market",
     color: "#f44336",
-    groupId: "131afase",
+    groupId: "1hwhw2",
+    groupTitle: "regular Work",
     start: "2022-08-26T00:00",
     end: "2022-08-28T00:00",
     allDay: true,

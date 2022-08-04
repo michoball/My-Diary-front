@@ -1,9 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCalendarEvents,
-  selectEditEvent,
-} from "../../../features/calendar/calendar.select";
+import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import {
   DefaultCalendar,
@@ -11,43 +8,64 @@ import {
 } from "../../../utill/calendar/Calendar.config";
 import { v4 as uuidv4 } from "uuid";
 
-import CreateButton from "../../createButton/CreateButton";
 import EventEdit from "../../eventEdit/EventEdit";
+import EventInput from "../../eventInput/EventInput";
+import Button from "../../../UI/button/button";
 
 import { TimeRecurConvertor } from "../../../utill/timeConvertor";
+import { Backdrop } from "../../modal/Modal";
 
-import { ThreeDots, CalendarX } from "react-bootstrap-icons";
+import { ThreeDots, CalendarX, PlusCircle } from "react-bootstrap-icons";
 import {
   CalendarContainer,
   CalendarView,
   CalendarWrapper,
   ButtonContainer,
-  BanButton,
 } from "./MainCalendar.styles";
-import { Backdrop } from "../../modal/Modal";
+
+const banEvent = {
+  id: "",
+  groupId: "Ban",
+  start: "",
+  end: "",
+  color: "#ff9f89",
+  allDay: true,
+  overlap: false,
+  display: "background",
+};
 
 function MyCalendar() {
   const [isEditFrom, setIsEditFrom] = useState(false);
   const [selectable, setSelectable] = useState(false);
+  const [isInputFrom, setIsInputFrom] = useState(false);
 
   const eventList = useSelector(selectCalendarEvents);
-  // const calendarRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleEventClick = (event) => {
+    if (selectable) {
+      return null;
+    }
     const eventData = event.event;
     dispatch(calendarActions.selectEvent({ id: eventData.id }));
     setIsEditFrom(!isEditFrom);
   };
 
   const eventChangehandler = (e) => {
-    const { id, title, startStr, endStr, allDay, backgroundColor } = e.event;
+    console.log(e.event);
+    const { groupTitle, eventEndTime, eventStartTime } = e.event.extendedProps;
+    const { id, title, startStr, endStr, allDay, backgroundColor, groupId } =
+      e.event;
     const advenceData = eventDataChanger(e.event);
 
     dispatch(
       calendarActions.addEvent({
         id,
         title,
+        groupId,
+        groupTitle,
+        eventEndTime,
+        eventStartTime,
         start: startStr,
         end: endStr,
         allDay: allDay,
@@ -71,19 +89,31 @@ function MyCalendar() {
 
   const handleSelectHandler = (event) => {
     const { startStr, endStr } = event;
-    if (window.confirm("Are you sure ? ")) {
+    if (window.confirm("해당 날짜를 휴일로 지정하시겠습니까? ")) {
       dispatch(
         calendarActions.addEvent({
+          ...banEvent,
           id: uuidv4(),
-          groupId: "Ban",
           start: startStr,
           end: endStr,
-          color: "#ff9f89",
-          allDay: true,
-          overlap: false,
-          display: "background",
         })
       );
+    }
+  };
+
+  const toggleModalTypeHandler = (type) => {
+    switch (type) {
+      case "INPUT":
+        if (selectable) {
+          return null;
+        }
+        return setIsInputFrom(!isInputFrom);
+      case "EDIT":
+        return setIsEditFrom(!isEditFrom);
+      case "BAN":
+        return setSelectable(!selectable);
+      default:
+        break;
     }
   };
 
@@ -91,39 +121,40 @@ function MyCalendar() {
     event.text = <ThreeDots />;
   };
 
-  // const headerContentHandler = (e) => {
-  //   //생성한 event들이 처음 달력에 mount될 때
-  //   // console.log(e);
-  // };
-  // 캘린더 api 다루기
-  // const onChangelistVeiw = (viewstyle) => {
-  //   let calendarApi = calendarRef.current.getApi();
-  //   calendarApi.changeView(viewstyle);
-  // };
-
   return (
     <>
-      {isEditFrom && <EventEdit onConfirm={() => setIsEditFrom(!isEditFrom)} />}
+      {isInputFrom && (
+        <EventInput onConfirm={toggleModalTypeHandler.bind(null, "INPUT")} />
+      )}
+      {isEditFrom && (
+        <EventEdit onConfirm={toggleModalTypeHandler.bind(null, "EDIT")} />
+      )}
       {selectable && (
-        <Backdrop onToggleModal={() => setSelectable(!selectable)} />
+        <Backdrop onToggleModal={toggleModalTypeHandler.bind(null, "BAN")} />
       )}
       <CalendarWrapper zvalue={selectable ? 15 : 0}>
         <CalendarView>
           <CalendarContainer>
             <ButtonContainer>
-              <BanButton
+              <Button
                 type="click"
-                onClick={() => setSelectable(!selectable)}
+                buttonType="ban"
+                onClick={toggleModalTypeHandler.bind(null, "BAN")}
               >
                 <CalendarX />
-              </BanButton>
-              <CreateButton />
+              </Button>
+              <Button
+                type="click"
+                buttonType="create"
+                onClick={toggleModalTypeHandler.bind(null, "INPUT")}
+              >
+                <PlusCircle /> Create
+              </Button>
             </ButtonContainer>
 
             <DefaultCalendar
               initialView={CALENDAR_VIEW_STYLE.calender.initialView}
               headerToolbar={CALENDAR_VIEW_STYLE.calender.headerToolbar}
-              // 요일 칸 클릭
               selectable={selectable}
               select={handleSelectHandler}
               displayEventTime={false}
@@ -134,8 +165,6 @@ function MyCalendar() {
               editable={true}
               navLinks={true}
               moreLinkContent={moreLinkIconHandler}
-              // dayHeaderDidMount={headerContentHandler}
-              // ref={calendarRef}
             />
           </CalendarContainer>
         </CalendarView>

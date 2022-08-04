@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
+import { BaseButton } from "../../../UI/button/button.styles";
 
 import {
   InputForm,
@@ -20,6 +21,7 @@ import {
   BasicInputBg,
 } from "../EventInput.styles";
 import { Check2Circle } from "react-bootstrap-icons";
+import { customLabelActions } from "../../../features/customLabel/customLabelSlice";
 
 const advanceEvent = {
   groupId: "",
@@ -51,12 +53,12 @@ function AdvanceInput() {
 
   useEffect(() => {
     if (selectedLabel) {
-      SelectedLabelHanlder(selectedLabel);
+      selectedLabelHanlder(selectedLabel);
       setIsDisable(true);
     }
   }, [selectedLabel]);
 
-  const SelectedLabelHanlder = (label) => {
+  const selectedLabelHanlder = (label) => {
     setAdvancedEventData((prev) => {
       return {
         ...prev,
@@ -66,6 +68,7 @@ function AdvanceInput() {
   };
 
   const selectedDay = useCallback((day) => {
+    console.log(day);
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });
@@ -126,6 +129,8 @@ function AdvanceInput() {
       alert("something went wrong~!", error);
     }
     defaultSetting();
+    dispatch(customLabelActions.clearLabel());
+    dispatch(calendarActions.clearSelectEvent());
     alert("정상적으로 일정이 만들어졌습니다. ");
   };
 
@@ -197,10 +202,10 @@ function AdvanceInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <SubmitBtn type="submit">
+        <BaseButton buttonType="base" type="submit">
           <Check2Circle />
           submit
-        </SubmitBtn>
+        </BaseButton>
       </BtnContainer>
     </InputForm>
   );

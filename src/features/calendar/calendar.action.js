@@ -34,10 +34,10 @@ export const calendarAction = {
       selectedEvent: findEvent,
     };
   },
-  // clearSelectEvent: (state) => {
-  //   return {
-  //     ...state,
-  //     selectedLabel: null,
-  //   };
-  // },
+  clearSelectEvent: (state) => {
+    return {
+      ...state,
+      selectedLabel: null,
+    };
+  },
 };

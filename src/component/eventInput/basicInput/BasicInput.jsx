@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { calendarActions } from "../../../features/calendar/calendarSlice";
 import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
-import { selectEditEvent } from "../../../features/calendar/calendar.select";
 
 import { v4 as uuidv4 } from "uuid";
 import FormInput from "../../../UI/formInput/FormInput";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
+import { BaseButton } from "../../../UI/button/button.styles";
 
 import { Check2Circle } from "react-bootstrap-icons";
 import {
   InputForm,
-  SubmitBtn,
   ColorSection,
   OptionContainer,
   BtnContainer,
@@ -167,10 +166,10 @@ function BasicInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <SubmitBtn type="submit">
+        <BaseButton buttonType="base" type="submit">
           <Check2Circle />
           submit
-        </SubmitBtn>
+        </BaseButton>
       </BtnContainer>
     </InputForm>
   );

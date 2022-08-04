@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const FormInputContainer = styled.div`
   display: flex;
   margin-bottom: 15px;
-  width: 250px;
+
+  overflow: hidden;
+
   &.title {
     margin-bottom: 25px;
   }
@@ -23,12 +25,14 @@ export const FormInputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  margin-left: 10px;
   padding: 5px 10px;
+
   font-size: 14px;
+
   border: none;
   border-bottom: 3px solid #bbb;
   background-color: transparent;
+
   outline: none;
   color: black;
 
@@ -48,7 +52,9 @@ export const Input = styled.input`
 `;
 
 export const FromInputLabel = styled.label`
+  margin-right: 10px;
   color: black;
   font-weight: bold;
   letter-spacing: 0.7px;
+  white-space: nowrap;
 `;

@@ -21,11 +21,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-/* ::-webkit-scrollbar {
-    display: none;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  } */
+scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    width: 8px;
+
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #f2a7a7;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+   ::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+  }
 
  
 

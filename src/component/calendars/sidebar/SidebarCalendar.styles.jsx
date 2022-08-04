@@ -1,49 +1,51 @@
 import styled from "styled-components";
+import { calendarCss } from "../../../utill/calendar/Calendar.styles";
 
 export const SidebarCalendarContainer = styled.div`
   position: relative;
   height: 100%;
-  .fc-theme-standard .fc-scrollgrid {
-    border: none;
-  }
-  .fc {
-    font-size: 12px;
+
+  ${calendarCss} {
+    .fc-theme-standard .fc-scrollgrid {
+      border: none;
+    }
+    font-size: 10px;
 
     td,
     th {
       border: none;
     }
-
-    .fc-toolbar.fc-header-toolbar {
-      margin-bottom: 5px;
-    }
-
     .fc-toolbar-title {
       font-size: 18px;
+      margin-right: 15px;
     }
+
+    .fc-header-toolbar.fc-toolbar {
+      margin-bottom: 5px;
+      .fc-toolbar-chunk {
+        display: flex !important;
+      }
+    }
+
+    .fc-button-primary:not(:disabled),
+    .fc-button-primary:disabled {
+      margin: 0;
+      width: 50px;
+      font-size: 10px;
+      border: none;
+    }
+
     .fc-prev-button,
     .fc-next-button {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 50px !important;
-      height: 30px !important;
-      background-color: transparent !important;
-      font-size: 20px;
+      height: 30px;
       border: none;
 
       & span {
-        color: #d2d2d2;
+        color: #d2d2d2 !important;
         font-weight: bold;
         &:hover {
           transform: scale(1.2);
         }
-      }
-
-      :active,
-      :focus {
-        box-shadow: none !important;
-        border: none;
       }
     }
     .fc-daygrid-day {
@@ -58,6 +60,10 @@ export const SidebarCalendarContainer = styled.div`
           color: orange;
         }
       }
+      .fc-event-title {
+        font-size: 8px;
+      }
+
       .fc-daygrid-day-events {
         .fc-event-main .fc-event-title {
           padding: 0;

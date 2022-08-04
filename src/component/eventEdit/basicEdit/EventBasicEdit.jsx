@@ -34,40 +34,20 @@ const defaultEvent = {
 };
 
 function EventBasicEdit({ confirm }) {
-  const [editEvent, setEditEvent] = useState(defaultEvent);
+  const [editEvent, setEditEvent] = useState(
+    defaultEvent
+    //   {
+    //   ...defaultEvent,
+    //   ...eventData,
+    //   end: TimeConvertor(eventData.end),
+    //   start: TimeConvertor(eventData.start),
+    // }
+  );
   const [isDisable, setIsDisable] = useState(false);
 
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
-
-  // 편집할 input에 따른 label 태그 바꾸기
-  useEffect(() => {
-    if (selectEvent.groupId === "Ban") {
-      setIsDisable(true);
-    }
-
-    if (selectEvent.groupId && selectEvent.groupId.length !== 0) {
-      dispatch(customLabelActions.selectLabel(selectEvent.groupId));
-    }
-    setEditEvent((prev) => ({
-      ...prev,
-      ...selectEvent,
-      end: TimeConvertor(selectEvent.end),
-      start: TimeConvertor(selectEvent.start),
-    }));
-  }, [selectEvent, dispatch]);
-
-  // label 태그가 바뀜에 따른 editEvent state값 변화
-  useEffect(() => {
-    if (selectedLabel) {
-      setEditEvent((prev) => {
-        return { ...prev, ...selectedLabel };
-      });
-      setIsDisable(true);
-    }
-  }, [selectedLabel]);
-
   const {
     id,
     title,
@@ -79,6 +59,49 @@ function EventBasicEdit({ confirm }) {
     eventEndTime,
     groupId,
   } = editEvent;
+
+  // // 편집할 input에 따른 label 태그 바꾸기
+  useEffect(() => {
+    if (selectEvent.groupId === "Ban") {
+      setIsDisable(true);
+    }
+    if (selectEvent.allDay) {
+      setIsDisable(true);
+    }
+
+    // if (selectEvent.groupId !== "") {
+    //   dispatch(customLabelActions.selectLabel(selectEvent.groupId));
+    // }
+    setEditEvent((prev) => {
+      return {
+        ...prev,
+        ...selectEvent,
+        end: TimeConvertor(selectEvent.end),
+        start: TimeConvertor(selectEvent.start),
+      };
+    });
+  }, [selectEvent, dispatch]);
+
+  // label 태그가 바뀜에 따른 editEvent state값 변화
+  useEffect(() => {
+    if (selectedLabel) {
+      if (selectedLabel.groupId === groupId) {
+        return;
+      }
+      if (!selectedLabel.daysOfWeek) {
+        setEditEvent((prev) => {
+          return { ...prev, ...selectedLabel };
+        });
+        setIsDisable(true);
+        console.log("baseEdit label set");
+      }
+      if (selectedLabel.daysOfWeek) {
+        dispatch(customLabelActions.clearLabel());
+        // dispatch(customLabelActions.selectLabel(groupId));
+        return alert("일일 일정을 정기 일정으로 바꿀 수 없습니다.");
+      }
+    }
+  }, [selectedLabel, groupId, dispatch]);
 
   const onChangeHandler = (e) => {
     setEditEvent((prev) => {
@@ -194,12 +217,13 @@ function EventBasicEdit({ confirm }) {
       </EditInputContainer>
 
       <BtnContainer>
-        <ConfirmBtn type="submit">
+        <ConfirmBtn type="submit" buttonType="base">
           <Check2Circle />
           Confirm
         </ConfirmBtn>
         <ConfirmBtn
           className="delete"
+          buttonType="base"
           type="click"
           onClick={eventRemoveHandler}
         >

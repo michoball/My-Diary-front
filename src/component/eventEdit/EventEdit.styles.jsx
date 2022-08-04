@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FormInputContainer } from "../../UI/formInput/FormInput.styles";
+import { BaseButton } from "../../UI/button/button.styles";
 
 export const EventEditcontainer = styled.div`
   position: relative;
@@ -113,33 +114,9 @@ export const BtnContainer = styled.div`
   width: 100%;
 `;
 
-export const ConfirmBtn = styled.button`
+export const ConfirmBtn = styled(BaseButton)`
   width: 150px;
-  height: 40px;
-  background-color: rgba(0, 132, 255, 0.7);
-  border: 2px solid #bbb;
-  border-radius: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   margin-right: 5px;
-
-  color: whitesmoke;
-  cursor: pointer;
-
-  &.delete {
-    background-color: rgba(245, 12, 4, 0.7);
-  }
-
-  :hover {
-    transform: scale(0.98);
-  }
-
-  svg {
-    margin-right: 5px;
-  }
 `;
 
 export const CancelBtn = styled.button`

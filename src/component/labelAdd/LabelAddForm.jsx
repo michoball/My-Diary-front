@@ -27,11 +27,7 @@ const defaultLabel = {
   allDay: false,
 };
 const abvancedLabel = {
-  daysOfWeek: ["1"],
-  startRecur: "",
-  endRecur: "",
-  startTime: "",
-  endTime: "",
+  daysOfWeek: ["0"],
 };
 
 const LabelAddForm = ({ onConfirm }) => {
