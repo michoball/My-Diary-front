@@ -3,12 +3,12 @@ import {
   CalendarBox,
   ListViewBox,
   SideBarWrapper,
-} from "./SideBar.styles";
+} from "./CalendarSideBar.styles";
 
 import CategoryView from "../categoryView/CategoryView";
 import SidebarCalendar from "../calendars/sidebar/SidebarCalendar";
 
-function SideBar() {
+function CalendarSideBar() {
   return (
     <SideBarWrapper>
       <SidebarContainer>
@@ -23,4 +23,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default CalendarSideBar;

@@ -1,11 +1,11 @@
 import MainCalendar from "../../component/calendars/main/MainCalendar";
-import SideBar from "../../component/sidebar/SideBar";
+import CalendarSideBar from "../../component/calendarSidebar/CalendarSideBar";
 import { CalendarPageContainer } from "./Calendar.page.style";
 
 function Calendar() {
   return (
     <CalendarPageContainer>
-      <SideBar />
+      <CalendarSideBar />
       <MainCalendar />
     </CalendarPageContainer>
   );

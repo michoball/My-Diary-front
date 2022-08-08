@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
-
+import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import {
   NavigationContainer,
@@ -13,7 +13,9 @@ const Navigation = () => {
   return (
     <Fragment>
       <NavigationContainer>
-        <LogoContainer to="/">My Diary</LogoContainer>
+        <LogoContainer to="/">
+          <Mydiary className="logo"></Mydiary>
+        </LogoContainer>
         <NavLinks>
           <NavLink to="/calendar">
             <Calendar3 />

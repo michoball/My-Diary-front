@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import EditorForm from "../editor/EditorForm";
 import { MemoContainer } from "./Memo.styles";
-import { useSelector } from "react-redux";
-import { selectMemoLists } from "../../features/memo/memo.select";
+
+import MemoListView from "../../component/memoListView/MemoListView";
+import { Route, Routes } from "react-router-dom";
+import MemoView from "../../component/memoView/MemoVew";
 
 function Memo() {
-  const memoLists = useSelector(selectMemoLists);
-
   return (
     <MemoContainer>
-      <EditorForm memoData={memoLists[0]} />
+      <Routes>
+        <Route index element={<MemoListView />} />
+        <Route path=":memoId" element={<MemoView />} />
+      </Routes>
     </MemoContainer>
   );
 }

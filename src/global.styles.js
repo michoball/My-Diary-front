@@ -37,6 +37,5 @@ scrollbar-width: thin;
     border-radius: 10px;
   }
 
- 
 
 `;

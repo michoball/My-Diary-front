@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { calendarCss } from "../../../utill/calendar/Calendar.styles";
 
 export const CalendarWrapper = styled.div`
-  width: 1000px;
+  width: 100%;
   padding: 10px;
+
   min-width: 800px;
   max-width: 1200px;
   height: calc(100vh - 80px);
+
   z-index: ${({ zvalue }) => zvalue};
 `;
 
@@ -17,7 +19,7 @@ export const CalendarView = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
-  border: 2px solid #bbb;
+  border: 2px solid rgb(242, 167, 167);
   border-radius: 20px;
 `;
 

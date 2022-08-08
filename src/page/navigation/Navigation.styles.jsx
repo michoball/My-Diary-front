@@ -13,12 +13,21 @@ export const NavigationContainer = styled.div`
 `;
 
 export const LogoContainer = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 30px;
+
   font-weight: bold;
   width: 150px;
   color: #f2727d;
   text-transform: uppercase;
   text-shadow: 2px 2px 0px rgba(242, 167, 167, 0.8);
+
+  svg {
+    font-size: large;
+    fill: #f2727d;
+  }
 `;
 
 export const NavLinks = styled.div`

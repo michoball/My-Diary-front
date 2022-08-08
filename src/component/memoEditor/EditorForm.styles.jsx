@@ -3,29 +3,34 @@ import FormInput from "../../UI/formInput/FormInput";
 
 export const EditorFromContainer = styled.div`
   display: flex;
-  justify-content: center;
-  padding: 0 20px;
+  width: 100%;
+  min-width: 800px;
+  max-width: 1200px;
+
+  padding: 10px;
+
+  height: calc(100vh - 80px);
 `;
 
 export const EditorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   padding: 20px;
-
-  width: auto;
-  min-width: 600px;
-
   margin: 0 auto;
 
   border: 3px solid #bbb;
-  border-radius: 10px;
+  border-radius: 20px;
 
+  height: 100%;
   background-color: white;
 `;
 
 export const BaseHeaderContainer = styled.div`
   width: 100%;
+  margin-bottom: 20px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,11 +46,11 @@ export const BaseHeaderContainer = styled.div`
 export const EditorFormInput = styled(FormInput)`
   align-items: center;
 
-  border: 3px solid #bbb;
+  border: 3px solid #f2727d93;
   border-radius: 10px;
 
-  padding: 5px 10px;
   margin: 0;
+  padding: 5px 10px;
 
   label {
     font-size: 14px;
@@ -53,9 +58,6 @@ export const EditorFormInput = styled(FormInput)`
   }
 
   input {
-    width: 150px;
-    max-width: 400px;
-
     border-bottom: none;
     padding: 5px 10px;
     font-size: 14px;
@@ -64,47 +66,41 @@ export const EditorFormInput = styled(FormInput)`
 
 export const MyEditor = styled.div`
   background-color: white;
-
+  width: 100%;
   border-radius: 10px;
-  padding: 20px 0;
-  display: flex;
+  height: 100%;
 
   .wrapper-class {
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   .editor {
-    background-color: white;
+    background-color: ${({ bgcolors }) => `${bgcolors}`};
     padding: 10px;
 
-    height: calc(55vh - 60px);
-
-    border: 3px solid rgba(242, 114, 125, 1) !important;
+    border: 2px solid #2b2b2b !important;
     border-radius: 10px;
     overflow-y: scroll;
   }
 
   .toolbar-class {
-    border: 3px solid rgba(242, 114, 125, 1) !important;
+    border: 2px solid #2b2b2b !important;
 
     border-radius: 10px;
   }
 `;
 
-// export const HeaderBtnContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 20px;
-// `;
-
 export const PreViewContainer = styled.div`
-  width: auto;
-  min-width: 500px;
-  margin-left: 20px;
+  width: 800px;
+  height: calc(100vh - 100px);
+
   padding: 20px;
 
   border: 3px solid #bbb;
   border-radius: 10px;
 
-  background-color: white;
+  word-wrap: break-word;
+
+  background-color: ${({ bgcolors }) => `${bgcolors}`};
 `;
