@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FormInputContainer } from "../../UI/formInput/FormInput.styles";
+import { FormInputContainer } from "../../../UI/formInput/FormInput.styles";
 import { Link } from "react-router-dom";
 
 export const SideBarWrapper = styled.div`

@@ -1,15 +1,12 @@
 import styled from "styled-components";
-import FormInput from "../../UI/formInput/FormInput";
+import FormInput from "../../../UI/formInput/FormInput";
 
 export const EditorFromContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   width: 100%;
-  min-width: 800px;
-  max-width: 1200px;
 
-  padding: 10px;
-
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
 `;
 
 export const EditorContainer = styled.div`
@@ -18,7 +15,7 @@ export const EditorContainer = styled.div`
   align-items: center;
 
   padding: 20px;
-  margin: 0 auto;
+  min-width: 800px;
 
   border: 3px solid #bbb;
   border-radius: 20px;
@@ -52,6 +49,8 @@ export const EditorFormInput = styled(FormInput)`
   margin: 0;
   padding: 5px 10px;
 
+  max-width: 300px;
+
   label {
     font-size: 14px;
     margin-right: 5px;
@@ -70,6 +69,7 @@ export const MyEditor = styled.div`
   border-radius: 10px;
   height: 100%;
 
+  overflow-y: scroll;
   .wrapper-class {
     display: flex;
     flex-direction: column;
@@ -81,7 +81,6 @@ export const MyEditor = styled.div`
 
     border: 2px solid #2b2b2b !important;
     border-radius: 10px;
-    overflow-y: scroll;
   }
 
   .toolbar-class {
@@ -89,18 +88,4 @@ export const MyEditor = styled.div`
 
     border-radius: 10px;
   }
-`;
-
-export const PreViewContainer = styled.div`
-  width: 800px;
-  height: calc(100vh - 100px);
-
-  padding: 20px;
-
-  border: 3px solid #bbb;
-  border-radius: 10px;
-
-  word-wrap: break-word;
-
-  background-color: ${({ bgcolors }) => `${bgcolors}`};
 `;

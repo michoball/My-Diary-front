@@ -1,18 +1,29 @@
 import React from "react";
-import EditorForm from "../../component/memoEditor/EditorForm";
-import { EditorContainer, MainEditorViewContainer } from "./Editor.page.styles";
-import { useSelector } from "react-redux";
-import { selectMemoLists } from "../../features/memo/memo.select";
-function Editor() {
-  const memoLists = useSelector(selectMemoLists);
-  console.log(memoLists);
+import EditorForm from "../../component/memo/memoEditor/EditorForm";
+import {
+  MainEditorViewContainer,
+  MemoEditorContainer,
+  SideBarViewContainer,
+  SideBarWrapper,
+  SideContentWapper,
+} from "./Editor.page.styles";
 
+import { Route, Routes } from "react-router-dom";
+function Editor() {
   return (
-    <EditorContainer>
+    <MemoEditorContainer>
+      <SideBarViewContainer>
+        <SideBarWrapper>
+          <SideContentWapper></SideContentWapper>
+        </SideBarWrapper>
+      </SideBarViewContainer>
       <MainEditorViewContainer>
-        <EditorForm memoData={memoLists[0]} />
+        <Routes>
+          <Route index element={<EditorForm />} />
+          <Route path="/:editmemoId" element={<EditorForm />} />
+        </Routes>
       </MainEditorViewContainer>
-    </EditorContainer>
+    </MemoEditorContainer>
   );
 }
 

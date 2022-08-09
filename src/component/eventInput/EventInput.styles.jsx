@@ -95,17 +95,3 @@ export const BtnContainer = styled.div`
   align-items: center;
   width: 100%;
 `;
-
-export const CancelBtn = styled.button`
-  position: absolute;
-  top: -30px;
-  right: -10px;
-  border: none;
-  background-color: transparent;
-  color: red;
-  font-size: 30px;
-  font-weight: bold;
-
-  cursor: pointer;
-  z-index: 10;
-`;

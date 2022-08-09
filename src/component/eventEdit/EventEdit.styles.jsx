@@ -118,16 +118,3 @@ export const ConfirmBtn = styled(BaseButton)`
   width: 150px;
   margin-right: 5px;
 `;
-
-export const CancelBtn = styled.button`
-  position: absolute;
-  top: -30px;
-  right: -10px;
-  border: none;
-  background-color: transparent;
-  color: red;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 10;
-`;

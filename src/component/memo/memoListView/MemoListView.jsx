@@ -8,7 +8,7 @@ import {
   MemoViewHeader,
 } from "./MemoListView.styles";
 import { useSelector } from "react-redux";
-import { selectMemoLists } from "../../features/memo/memo.select";
+import { selectMemoLists } from "../../../features/memo/memo.select";
 import MemoCard from "../memoCard/MemoCard";
 import MemoSidebar from "../memoSidebar/MemoSidebar";
 

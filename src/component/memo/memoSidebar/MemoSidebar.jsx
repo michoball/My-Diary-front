@@ -5,13 +5,19 @@ import {
   NavLink,
   SearchButton,
 } from "./MemoSidebar.styles";
-import FormInput from "../../UI/formInput/FormInput";
+import FormInput from "../../../UI/formInput/FormInput";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PlusCircle, Search } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { memoActions } from "../../../features/memo/memoSlice";
 
 function MemoSidar() {
   const [searchWord, setSearchWord] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(memoActions.clearSelectMemo());
+  }, [dispatch]);
 
   const serachHandler = (e) => {
     setSearchWord(e.target.value);
@@ -31,6 +37,7 @@ function MemoSidar() {
           New Memo
         </NavLink>
         {/* color Section 따로 만들어서 color 클릭시 해당 색깔 메모만 보이게 하기 */}
+        {/*  주요 메모 모아보는 기능으로 하면 좋을듯 */}
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <div
             style={{

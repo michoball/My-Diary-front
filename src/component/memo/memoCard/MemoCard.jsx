@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { memoActions } from "../../features/memo/memoSlice";
+import { memoActions } from "../../../features/memo/memoSlice";
+import MemoView from "../memoView/MemoView";
 import { MemoCardContainer, MemoContainer } from "./MemoCard.styles";
 
 function MemoCard({ memoInfo }) {
-  // const [memoToText, setMemoToText] = useState();
+  const [openMemoView, setOpenMemoView] = useState(false);
   const memoRef = useRef("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,14 +23,19 @@ function MemoCard({ memoInfo }) {
 
   const cardClickHandler = () => {
     dispatch(memoActions.selectMemo(memoInfo.id));
-    navigate(`/memo/${memoInfo.id}`);
+    setOpenMemoView(!openMemoView);
   };
 
   return (
-    <MemoCardContainer bgcolor={memoInfo.color} onClick={cardClickHandler}>
-      <header>{memoInfo.title}</header>
-      <MemoContainer ref={memoRef}></MemoContainer>
-    </MemoCardContainer>
+    <>
+      {openMemoView && (
+        <MemoView onConfirm={() => setOpenMemoView(!openMemoView)} />
+      )}
+      <MemoCardContainer bgcolor={memoInfo.color} onClick={cardClickHandler}>
+        <header>{memoInfo.title}</header>
+        <MemoContainer ref={memoRef}></MemoContainer>
+      </MemoCardContainer>
+    </>
   );
 }
 

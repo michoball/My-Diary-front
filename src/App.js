@@ -14,10 +14,8 @@ function App() {
         <Route path="/" element={<Navigation />}>
           <Route path="/" element={<Home />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/memo/*" element={<Memo />} />
-          <Route path="/memo/editor" element={<Editor />}>
-            <Route path="/memo/editor/:memoId" element={<Editor />} />
-          </Route>
+          <Route path="/memo" element={<Memo />} />
+          <Route path="/memo/editor/*" element={<Editor />} />
         </Route>
       </Routes>
     </>
