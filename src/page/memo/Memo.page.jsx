@@ -1,11 +1,11 @@
 import { MemoContainer } from "./Memo.styles";
 
-import MemoListView from "../../component/memo/memoListView/MemoListView";
+import MemoView from "../../component/memo/memoView/MemoView";
 
 function Memo() {
   return (
     <MemoContainer>
-      <MemoListView />
+      <MemoView />
     </MemoContainer>
   );
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
 import { selectEditEvent } from "../../features/calendar/calendar.select";
 
 import Modal from "../modal/Modal";

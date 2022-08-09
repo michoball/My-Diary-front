@@ -28,7 +28,9 @@ const Navigation = () => {
         </NavLinks>
         <div>Log in</div>
       </NavigationContainer>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </Fragment>
   );
 };

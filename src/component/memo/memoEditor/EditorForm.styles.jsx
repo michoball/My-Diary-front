@@ -2,11 +2,13 @@ import styled from "styled-components";
 import FormInput from "../../../UI/formInput/FormInput";
 
 export const EditorFromContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+  min-width: 800px;
+  max-width: 1200px;
 
-  height: calc(100vh - 100px);
+  padding: 10px;
+
+  height: calc(100vh - 80px);
 `;
 
 export const EditorContainer = styled.div`
@@ -17,7 +19,7 @@ export const EditorContainer = styled.div`
   padding: 20px;
   min-width: 800px;
 
-  border: 3px solid #bbb;
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 20px;
 
   height: 100%;
@@ -27,29 +29,26 @@ export const EditorContainer = styled.div`
 export const BaseHeaderContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
-
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  .save {
-    background-color: #f2727d;
-    :hover {
-      background-color: #f23d4c;
-    }
+  padding-right: 20px;
+  &.date {
+    font-weight: bold;
   }
 `;
 
 export const EditorFormInput = styled(FormInput)`
   align-items: center;
 
-  border: 3px solid #f2727d93;
+  border: 3px solid #bbb;
   border-radius: 10px;
 
   margin: 0;
   padding: 5px 10px;
 
-  max-width: 300px;
+  max-width: 500px;
 
   label {
     font-size: 14px;

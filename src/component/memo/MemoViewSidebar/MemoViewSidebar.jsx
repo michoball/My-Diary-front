@@ -4,7 +4,7 @@ import {
   SearchBarContainer,
   NavLink,
   SearchButton,
-} from "./MemoSidebar.styles";
+} from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
 import { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import { PlusCircle, Search } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { memoActions } from "../../../features/memo/memoSlice";
 
-function MemoSidar() {
+function MemoViewSidar() {
   const [searchWord, setSearchWord] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -56,4 +56,4 @@ function MemoSidar() {
   );
 }
 
-export default MemoSidar;
+export default MemoViewSidar;

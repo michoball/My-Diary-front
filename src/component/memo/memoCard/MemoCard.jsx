@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { memoActions } from "../../../features/memo/memoSlice";
-import MemoView from "../memoView/MemoView";
+import MemoView from "../memoPreView/MemoPreView";
 import { MemoCardContainer, MemoContainer } from "./MemoCard.styles";
 
 function MemoCard({ memoInfo }) {
   const [openMemoView, setOpenMemoView] = useState(false);
   const memoRef = useRef("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {

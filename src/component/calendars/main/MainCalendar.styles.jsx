@@ -6,7 +6,7 @@ export const CalendarWrapper = styled.div`
   padding: 10px;
 
   min-width: 800px;
-  max-width: 1200px;
+
   height: calc(100vh - 80px);
 
   z-index: ${({ zvalue }) => zvalue};

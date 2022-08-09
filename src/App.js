@@ -15,7 +15,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/memo" element={<Memo />} />
-          <Route path="/memo/editor/*" element={<Editor />} />
+          <Route path="/memo/editor" element={<Editor />}>
+            <Route path="/memo/editor/:editmemoId" element={<Editor />} />
+          </Route>
         </Route>
       </Routes>
     </>

@@ -22,7 +22,7 @@ export const NavLink = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 
-  font-size: 18px;
+  font-size: 20px;
   padding: 10px;
   margin-bottom: 10px;
 

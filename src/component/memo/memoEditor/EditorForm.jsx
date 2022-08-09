@@ -1,18 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 
-import { Save2 } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMemo } from "../../../features/memo/memo.select";
 import { memoActions } from "../../../features/memo/memoSlice";
 
 import Modal from "../../modal/Modal";
-import Button from "../../../UI/button/button";
 import MemoViewCard from "../../../UI/memoViewCard/MemoViewCard";
 
 import {
@@ -22,7 +20,8 @@ import {
   EditorFormInput,
   EditorFromContainer,
 } from "./EditorForm.styles";
-
+import MemoEditSidebar from "../memoEditorSidebar/MemoEditSidebar";
+import { TimeConvertor } from "../../../utill/timeConvertor";
 const defaultMemoInfo = {
   id: "",
   title: "",
@@ -110,70 +109,65 @@ const EditorForm = () => {
   };
 
   return (
-    <EditorFromContainer>
-      <EditorContainer>
-        <BaseHeaderContainer>
-          <EditorFormInput
-            label="제목"
-            type="text"
-            value={title}
-            name="title"
-            onChange={BaseInfoChangeHandler}
-          />
-          <span>작성일: {date.split("T")[0]}</span>
-          <Button
-            buttonType="create"
-            className="save"
-            type="click"
-            onClick={saveMemoHandler}
-          >
-            <Save2 /> Save
-          </Button>
+    <>
+      <MemoEditSidebar
+        onSave={saveMemoHandler}
+        onPreview={showPreviewHandler}
+      />
+      <EditorFromContainer>
+        <EditorContainer>
+          <BaseHeaderContainer>
+            <EditorFormInput
+              label="제목"
+              type="text"
+              value={title}
+              name="title"
+              onChange={BaseInfoChangeHandler}
+              placeholder="제목을 작성해주세요"
+            />
+            <span className="date">작성일: {date.split("T")[0]}</span>
+          </BaseHeaderContainer>
 
-          <Button buttonType="create" type="click" onClick={showPreviewHandler}>
-            {showPreview ? "hide" : "Preview"}
-          </Button>
-        </BaseHeaderContainer>
-
-        <MyEditor bgcolors={color}>
-          <Editor
-            // 에디터와 툴바 모두에 적용되는 클래스
-            wrapperClassName="wrapper-class"
-            // 에디터 주변에 적용된 클래스
-            editorClassName="editor"
-            // 툴바 주위에 적용된 클래스
-            toolbarClassName="toolbar-class"
-            // 툴바 설정
-            toolbar={{
-              // inDropdown: 해당 항목과 관련된 항목을 드롭다운으로 나타낼것인지
-              list: { inDropdown: true },
-              textAlign: { inDropdown: true },
-              link: { inDropdown: true },
-              history: { inDropdown: false },
-            }}
-            placeholder="내용을 작성해주세요."
-            // 한국어 설정
-            localization={{
-              locale: "ko",
-            }}
-            // 초기값 설정
-            editorState={editorState}
-            // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
-            onEditorStateChange={onEditorStateChange}
-          />
-        </MyEditor>
-      </EditorContainer>
+          <MyEditor bgcolors={color}>
+            <Editor
+              // 에디터와 툴바 모두에 적용되는 클래스
+              wrapperClassName="wrapper-class"
+              // 에디터 주변에 적용된 클래스
+              editorClassName="editor"
+              // 툴바 주위에 적용된 클래스
+              toolbarClassName="toolbar-class"
+              // 툴바 설정
+              toolbar={{
+                // inDropdown: 해당 항목과 관련된 항목을 드롭다운으로 나타낼것인지
+                list: { inDropdown: true },
+                textAlign: { inDropdown: true },
+                link: { inDropdown: true },
+                history: { inDropdown: false },
+              }}
+              placeholder="내용을 작성해주세요."
+              // 한국어 설정
+              localization={{
+                locale: "ko",
+              }}
+              // 초기값 설정
+              editorState={editorState}
+              // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
+              onEditorStateChange={onEditorStateChange}
+            />
+          </MyEditor>
+        </EditorContainer>
+      </EditorFromContainer>
       {showPreview && (
         <Modal toggleModal={showPreviewHandler}>
           <MemoViewCard
             title={title}
-            date={date}
+            date={TimeConvertor(date)}
             color={color}
             dangerouslySetInnerHTML={{ __html: rawTextData }}
           />
         </Modal>
       )}
-    </EditorFromContainer>
+    </>
   );
 };
 export default EditorForm;
