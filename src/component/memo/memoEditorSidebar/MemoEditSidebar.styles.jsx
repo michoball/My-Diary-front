@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {
+  CircleColorPicker,
+  ColorPalletContainer,
+} from "../../colorPicker/ColorPicker.styles";
 
 export const SideBarViewContainer = styled.div`
   padding: 10px 10px 10px 0;
@@ -70,5 +74,34 @@ export const SideBtn = styled.button`
 
   :hover {
     background-color: rgba(210, 210, 210, 0.5);
+  }
+
+  &.delete {
+    :hover {
+      background-color: rgba(244, 67, 54, 0.5);
+    }
+  }
+`;
+
+export const ColorSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  margin-bottom: 10px;
+
+  label {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    margin-right: 10px;
+  }
+  ${ColorPalletContainer} {
+    width: 220px;
+    transform: translateX(10px);
+  }
+  ${CircleColorPicker} {
+    border: 2px solid black;
   }
 `;

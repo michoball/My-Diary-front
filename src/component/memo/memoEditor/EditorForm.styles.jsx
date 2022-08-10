@@ -34,8 +34,42 @@ export const BaseHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 20px;
-  &.date {
+  .date {
     font-weight: bold;
+  }
+`;
+
+export const StarDateContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+export const ToggleMainBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  svg {
+    font-size: 20px;
+    fill: ${({ major }) => (major ? "#ffc107" : "black")};
+  }
+
+  :focus {
+    svg {
+      animation: clicked 0.5s ease;
+    }
+  }
+
+  @keyframes clicked {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 `;
 
@@ -69,22 +103,27 @@ export const MyEditor = styled.div`
   height: 100%;
 
   overflow-y: scroll;
+
   .wrapper-class {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
   .editor {
-    background-color: ${({ bgcolors }) => `${bgcolors}`};
-    padding: 10px;
+    background-color: ${({ bgcolors }) => `${bgcolors}cc`};
+    padding: 10px 20px;
 
     border: 2px solid #2b2b2b !important;
     border-radius: 10px;
+
+    .public-DraftEditorPlaceholder-inner {
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: bold;
+    }
   }
 
   .toolbar-class {
     border: 2px solid #2b2b2b !important;
-
     border-radius: 10px;
   }
 `;

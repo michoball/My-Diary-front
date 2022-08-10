@@ -10,7 +10,7 @@ export const MemoListViewContainer = styled.div`
   height: 100%;
 
   background-color: white;
-  border: 2px solid rgb(242, 167, 167);
+  border: 2px solid #f2a7a7;
   border-radius: 20px;
 `;
 
@@ -34,7 +34,6 @@ export const SideBarViewContainer = styled.div`
 
 export const MemoViewHeader = styled.header`
   padding: 10px;
-  font-size: 20px;
   font-weight: bold;
   border-bottom: 2px solid #bbb;
   margin-bottom: 10px;

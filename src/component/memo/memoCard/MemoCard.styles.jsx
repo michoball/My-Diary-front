@@ -9,7 +9,7 @@ export const MemoCardContainer = styled.div`
   width: 230px;
   height: 200px;
 
-  background-color: ${({ bgcolor }) => `${bgcolor}80`};
+  background-color: ${({ bgcolor }) => `${bgcolor}cc`};
 
   cursor: pointer;
 
@@ -43,16 +43,26 @@ export const MemoCardContainer = styled.div`
     border-bottom: 1px solid black;
     border-left: 1px solid black;
   }
-
-  header {
-    padding: 0 0 5px 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #2d2d2d;
-    font-weight: 700;
-  }
 `;
 
 export const MemoContainer = styled.div`
   word-break: break-word;
   overflow: hidden;
+`;
+
+export const MemoCardHeader = styled.header`
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0 5px 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #2d2d2d;
+  font-weight: 700;
+
+  svg {
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+    fill: ${({ major }) => (major ? "#ffc107" : "transparent")};
+  }
 `;

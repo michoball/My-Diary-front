@@ -3,30 +3,35 @@ import {
   SideContentWapper,
   SearchBarContainer,
   NavLink,
+  MajorMemoContainer,
   SearchButton,
+  MemoContainer,
 } from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
 import { useEffect, useState } from "react";
-import { PlusCircle, Search } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
+import { PlusCircle, Search, Star } from "react-bootstrap-icons";
+import { useDispatch, useSelector } from "react-redux";
 import { memoActions } from "../../../features/memo/memoSlice";
+import { selectMajorMemos } from "../../../features/memo/memo.select";
+import MajorMemo from "../MajorMemoCard/MajorMemoCard";
 
-function MemoViewSidar() {
-  const [searchWord, setSearchWord] = useState("");
+function MemoViewSidar({ onSearch, searchWord }) {
+  const majorMemo = useSelector(selectMajorMemos);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(memoActions.clearSelectMemo());
   }, [dispatch]);
 
-  const serachHandler = (e) => {
-    setSearchWord(e.target.value);
-  };
-
   return (
     <SideBarWrapper>
       <SearchBarContainer>
-        <FormInput label="검색" value={searchWord} onChange={serachHandler} />
+        <FormInput
+          label="검색"
+          value={searchWord}
+          onChange={(e) => onSearch(e)}
+        />
         <SearchButton>
           <Search />
         </SearchButton>
@@ -38,19 +43,17 @@ function MemoViewSidar() {
         </NavLink>
         {/* color Section 따로 만들어서 color 클릭시 해당 색깔 메모만 보이게 하기 */}
         {/*  주요 메모 모아보는 기능으로 하면 좋을듯 */}
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
-          <div
-            style={{
-              display: "block",
-              width: "20px",
-              height: "20px",
-              backgroundColor: "olive",
-              borderRadius: "50%",
-            }}
-          ></div>
-          <span>주요 메모</span>
-          <span>갯수: 6</span>
-        </div>
+        <MajorMemoContainer>
+          <span>
+            <Star />
+            주요 메모
+          </span>
+          <MemoContainer>
+            {majorMemo.map((memo) => {
+              return <MajorMemo key={memo.id} memo={memo} />;
+            })}
+          </MemoContainer>
+        </MajorMemoContainer>
       </SideContentWapper>
     </SideBarWrapper>
   );

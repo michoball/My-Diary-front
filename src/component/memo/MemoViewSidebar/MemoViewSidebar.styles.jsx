@@ -24,7 +24,6 @@ export const NavLink = styled(Link)`
 
   font-size: 20px;
   padding: 10px;
-  margin-bottom: 10px;
 
   border-radius: 10px;
 
@@ -78,5 +77,41 @@ export const SearchButton = styled.button`
   svg {
     font-size: 18px;
     cursor: pointer;
+  }
+`;
+
+export const MajorMemoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+  span {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  svg {
+    margin-right: 10px;
+  }
+`;
+
+export const MemoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+  margin-top: 10px;
+
+  height: 40vh;
+
+  border: 2px solid #2b2b2b;
+  border-radius: 10px;
+  padding: 10px;
+
+  background-color: #d2d2d2;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
   }
 `;

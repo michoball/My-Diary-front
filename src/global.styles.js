@@ -24,7 +24,6 @@ code {
 scrollbar-width: thin;
   ::-webkit-scrollbar {
     width: 8px;
-
   }
   ::-webkit-scrollbar-thumb {
     background-color: #f2a7a7;

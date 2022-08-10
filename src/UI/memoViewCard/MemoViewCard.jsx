@@ -1,4 +1,5 @@
 import React from "react";
+import { StarFill } from "react-bootstrap-icons";
 import {
   MemoViewContainer,
   MemoContainer,
@@ -6,12 +7,16 @@ import {
 } from "./MemoViewCard.styles";
 
 const MemoViewCard = React.forwardRef(
-  ({ title, date, color, children, ...otherProps }, ref) => {
+  ({ title, date, color, major, children, ...otherProps }, ref) => {
     return (
       <MemoViewContainer>
-        <MemoHeader>
-          <h1>{title}</h1>
-          <span className="date">{date}</span>
+        <MemoHeader major={major}>
+          <h1>
+            {title}
+            <StarFill />
+          </h1>
+
+          <span className="date">작성일: {date}</span>
         </MemoHeader>
         <MemoContainer bgcolors={color} ref={ref} {...otherProps} />
         {children}

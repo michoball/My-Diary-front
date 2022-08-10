@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { StarFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { memoActions } from "../../../features/memo/memoSlice";
-import MemoView from "../memoPreView/MemoPreView";
-import { MemoCardContainer, MemoContainer } from "./MemoCard.styles";
+import MemoPreView from "../memoPreView/MemoPreView";
+import {
+  MemoCardContainer,
+  MemoContainer,
+  MemoCardHeader,
+} from "./MemoCard.styles";
 
 function MemoCard({ memoInfo }) {
   const [openMemoView, setOpenMemoView] = useState(false);
@@ -27,10 +32,13 @@ function MemoCard({ memoInfo }) {
   return (
     <>
       {openMemoView && (
-        <MemoView onConfirm={() => setOpenMemoView(!openMemoView)} />
+        <MemoPreView onConfirm={() => setOpenMemoView(!openMemoView)} />
       )}
       <MemoCardContainer bgcolor={memoInfo.color} onClick={cardClickHandler}>
-        <header>{memoInfo.title}</header>
+        <MemoCardHeader major={memoInfo.major}>
+          <span>{memoInfo.title}</span>
+          <StarFill />
+        </MemoCardHeader>
         <MemoContainer ref={memoRef}></MemoContainer>
       </MemoCardContainer>
     </>

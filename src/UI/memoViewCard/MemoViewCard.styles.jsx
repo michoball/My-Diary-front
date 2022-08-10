@@ -47,4 +47,16 @@ export const MemoHeader = styled.header`
     right: 0;
     bottom: 0;
   }
+  h1 {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-break: break-word;
+  }
+  svg {
+    display: ${({ major }) => (major ? "block" : "none")};
+    margin-left: 10px;
+    fill: #ffc107;
+  }
 `;
