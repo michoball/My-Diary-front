@@ -24,6 +24,7 @@ export const CircleColorPicker = styled(CirclePicker)`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   padding: 10px 0 0 10px;
 
   background-color: white;

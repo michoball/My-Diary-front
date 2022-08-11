@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { FormInputContainer } from "../../../UI/formInput/FormInput.styles";
 import { Link } from "react-router-dom";
+import {
+  CircleColorPicker,
+  ColorPalletContainer,
+} from "../../colorPicker/ColorPicker.styles";
 
 export const SideBarWrapper = styled.div`
   height: 100%;
@@ -102,7 +106,7 @@ export const MemoContainer = styled.div`
   gap: 10px;
   margin-top: 10px;
 
-  height: 40vh;
+  height: 30vh;
 
   border: 2px solid #2b2b2b;
   border-radius: 10px;
@@ -113,5 +117,61 @@ export const MemoContainer = styled.div`
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+export const ColorSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
+  margin-bottom: 10px;
+
+  label {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  svg {
+    margin-right: 10px;
+  }
+  ${ColorPalletContainer} {
+    width: 90%;
+    height: 100%;
+    transform: translateX(10px);
+  }
+  ${CircleColorPicker} {
+    border: 2px solid black;
+  }
+`;
+
+export const SideBtnWapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  svg {
+    margin-right: 10px;
+  }
+`;
+
+export const SideBtn = styled.button`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s ease-in;
+
+  cursor: pointer;
+  background-color: transparent;
+
+  :hover {
+    background-color: rgba(210, 210, 210, 0.5);
   }
 `;

@@ -1,8 +1,10 @@
+const findEvent = (events, id) => {
+  return events.find((event) => event.id === id);
+};
+
 export const calendarAction = {
   addEvent: (state, action) => {
-    const exitingEvent = state.eventList.find(
-      (event) => event.id === action.payload.id
-    );
+    const exitingEvent = findEvent(state.eventList, action.payload.id);
     if (exitingEvent) {
       return {
         ...state,
@@ -25,13 +27,10 @@ export const calendarAction = {
     };
   },
   selectEvent: (state, action) => {
-    console.log(action.payload);
-    const findEvent = state.eventList.find(
-      (event) => event.id === action.payload.id
-    );
+    const exitingEvent = findEvent(state.eventList, action.payload.id);
     return {
       ...state,
-      selectedEvent: findEvent,
+      selectedEvent: exitingEvent,
     };
   },
   clearSelectEvent: (state) => {

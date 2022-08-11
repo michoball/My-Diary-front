@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import {
@@ -26,7 +26,7 @@ const Navigation = () => {
             Memo
           </NavLink>
         </NavLinks>
-        <div>Log in</div>
+        <Link to="/login">Log in</Link>
       </NavigationContainer>
       <main>
         <Outlet />

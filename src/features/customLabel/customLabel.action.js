@@ -1,19 +1,23 @@
+const findLabel = (labels, id) => {
+  return labels.find((label) => label.groupId === id);
+};
+
 export const customLabelAction = {
   addLabel: (state, action) => {
-    const findLabel = state.labelLists.find(
-      (label) => label.groupId === action.payload.groupTitle
+    const existingLabel = findLabel(
+      state.labelLists,
+      action.payload.groupTitle
     );
-    if (findLabel) {
+    if (existingLabel) {
       alert("You already have the same group name. Please use another name");
       return;
     }
     state.labelLists = state.labelLists.concat({ ...action.payload });
   },
   removeLabel: (state, action) => {
-    const findLabel = state.labelLists.find(
-      (label) => label.groupId === action.payload
-    );
-    if (!findLabel) {
+    const existingLabel = findLabel(state.labelLists, action.payload);
+
+    if (!existingLabel) {
       alert("There is no such a group name.");
       return;
     }
@@ -21,7 +25,6 @@ export const customLabelAction = {
       (label) => label.groupId !== action.payload
     );
   },
-  editLabel: (state, action) => {},
   clearLabel: (state) => {
     console.log("clear");
     return {
@@ -30,15 +33,14 @@ export const customLabelAction = {
     };
   },
   selectLabel: (state, action) => {
-    const findLabel = state.labelLists.find(
-      (label) => label.groupId === action.payload
-    );
-    if (state.selectLabel === findLabel) {
+    const existingLabel = findLabel(state.labelLists, action.payload);
+
+    if (state.selectLabel === existingLabel) {
       return state;
     }
     return {
       ...state,
-      selectedLabel: findLabel,
+      selectedLabel: existingLabel,
     };
   },
 };

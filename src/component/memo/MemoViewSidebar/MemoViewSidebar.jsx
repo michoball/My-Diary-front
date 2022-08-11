@@ -6,20 +6,35 @@ import {
   MajorMemoContainer,
   SearchButton,
   MemoContainer,
+  ColorSection,
+  SideBtnWapper,
+  SideBtn,
 } from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
 import { useEffect, useState } from "react";
-import { PlusCircle, Search, Star } from "react-bootstrap-icons";
+import {
+  PlusCircle,
+  Search,
+  Star,
+  Palette,
+  Collection,
+} from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { memoActions } from "../../../features/memo/memoSlice";
-import { selectMajorMemos } from "../../../features/memo/memo.select";
+
+import {
+  selectColorValue,
+  selectMajorMemos,
+} from "../../../features/memo/memo.select";
 import MajorMemo from "../MajorMemoCard/MajorMemoCard";
+import ColorPicker from "../../colorPicker/ColorPicker";
 
-function MemoViewSidar({ onSearch, searchWord }) {
+function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
   const majorMemo = useSelector(selectMajorMemos);
-
+  const memoColorList = useSelector(selectColorValue);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(memoActions.clearSelectMemo());
   }, [dispatch]);
@@ -41,8 +56,23 @@ function MemoViewSidar({ onSearch, searchWord }) {
           <PlusCircle />
           New Memo
         </NavLink>
-        {/* color Section 따로 만들어서 color 클릭시 해당 색깔 메모만 보이게 하기 */}
-        {/*  주요 메모 모아보는 기능으로 하면 좋을듯 */}
+        <SideBtnWapper>
+          <SideBtn onClick={() => onMemoView()}>
+            <Collection /> 전체 메모
+          </SideBtn>
+        </SideBtnWapper>
+        <ColorSection>
+          <label>
+            <Palette />
+            Color
+          </label>
+          <ColorPicker
+            onColorPick={(color) => onSelectColor(color)}
+            newColorTable={memoColorList && memoColorList}
+            disable={memoColorList ? false : true}
+          />
+        </ColorSection>
+
         <MajorMemoContainer>
           <span>
             <Star />

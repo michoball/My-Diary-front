@@ -8,21 +8,21 @@ import {
   MemoViewHeader,
 } from "./MemoView.styles";
 import { useSelector } from "react-redux";
-import { selectMemoLists } from "../../../features/memo/memo.select";
+import { selectRecentOrderMemoLists } from "../../../features/memo/memo.select";
 import MemoCard from "../memoCard/MemoCard";
 import MemoViewSidebar from "../MemoViewSidebar/MemoViewSidebar";
 
 function MemoView() {
-  const memoLists = useSelector(selectMemoLists);
+  const memoLists = useSelector(selectRecentOrderMemoLists);
   const [searchWord, setSearchWord] = useState("");
   const [memoCards, setMemoCards] = useState(memoLists);
 
   const serachHandler = (e) => {
     setSearchWord(e.target.value);
   };
+
   useEffect(() => {
     const searchTerm = setTimeout(() => {
-      console.log("go");
       setMemoCards(memoLists.filter((memo) => memo.title.includes(searchWord)));
     }, 1000);
 
@@ -31,13 +31,21 @@ function MemoView() {
     };
   }, [searchWord, memoLists]);
 
+  const selectColorHandler = (color) => {
+    setMemoCards(memoLists.filter((memo) => memo.color === color));
+  };
+
+  const memoViewResetHandler = () => {
+    setMemoCards(memoLists);
+  };
   return (
     <>
       <SideBarViewContainer>
         <MemoViewSidebar
-          setMemoCards={setMemoCards}
+          onMemoView={memoViewResetHandler}
           searchWord={searchWord}
           onSearch={serachHandler}
+          onSelectColor={selectColorHandler}
         />
       </SideBarViewContainer>
       <MainViewContainer>

@@ -1,9 +1,11 @@
+const findMemo = (lists, id) => {
+  return lists.find((list) => list.id === id);
+};
+
 export const memoAction = {
   addMemo: (state, action) => {
-    const findMemo = state.memoLists.find(
-      (memo) => memo.id === action.payload.id
-    );
-    if (findMemo) {
+    const findedMemo = findMemo(state.memoLists, action.payload.id);
+    if (findedMemo) {
       return {
         ...state,
         memoLists: state.memoLists.map((memo) =>
@@ -17,8 +19,8 @@ export const memoAction = {
     };
   },
   removeMemo: (state, action) => {
-    const findMemo = state.memoLists.find((memo) => memo.id === action.payload);
-    if (findMemo) {
+    const findedMemo = findMemo(state.memoLists, action.payload);
+    if (findedMemo) {
       return {
         ...state,
         memoLists: state.memoLists.filter((memo) => memo.id !== action.payload),
@@ -26,10 +28,10 @@ export const memoAction = {
     }
   },
   selectMemo: (state, action) => {
-    const findMemo = state.memoLists.find((memo) => memo.id === action.payload);
+    const findedMemo = findMemo(state.memoLists, action.payload);
     return {
       ...state,
-      selectedMemo: findMemo,
+      selectedMemo: findedMemo,
     };
   },
   clearSelectMemo: (state) => {

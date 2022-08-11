@@ -14,11 +14,25 @@ export const COLOR_TYPE_TABLE = [
   "#9c27b0",
 ];
 
-function ColorPicker({ onColorPick, colorSelected, disable }) {
+function ColorPicker({
+  onColorPick,
+  colorSelected = "",
+  disable,
+  newColorTable = null,
+}) {
+  const [colorTable, setColorTable] = useState(COLOR_TYPE_TABLE);
   const [pickedColor, setPickedColor] = useState(colorSelected);
   useEffect(() => {
-    setPickedColor(colorSelected);
+    if (colorSelected) {
+      setPickedColor(colorSelected);
+    }
   }, [colorSelected]);
+
+  useEffect(() => {
+    if (newColorTable) {
+      setColorTable(newColorTable);
+    }
+  }, [newColorTable]);
 
   const colorPickHandler = (color) => {
     onColorPick(color.hex);
@@ -32,7 +46,7 @@ function ColorPicker({ onColorPick, colorSelected, disable }) {
       </span>
       <CircleColorPicker
         color={pickedColor}
-        colors={COLOR_TYPE_TABLE}
+        colors={colorTable}
         circleSize={26}
         circleSpacing={10}
         width="100%"

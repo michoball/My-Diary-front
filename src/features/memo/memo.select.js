@@ -9,6 +9,14 @@ export const selectMemoLists = createSelector(
   }
 );
 
+export const selectRecentOrderMemoLists = createSelector(
+  [selectMemoLists],
+  (memoListsSlice) => {
+    const copyList = [...memoListsSlice];
+    return copyList.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+);
+
 export const selectMemo = createSelector(
   [selectMemoListsReducer],
   (selectMemoListsSlice) => {
@@ -23,12 +31,15 @@ export const selectMajorMemos = createSelector(
   }
 );
 
-// export const selectRecentMemoLists = createSelector(
-//   [selectMemoLists],
-//   (memoListsSlice) => {
-//     const copyList = [...memoListsSlice];
-//     return copyList
-//       .sort((a, b) => new Date(b.date) - new Date(a.date))
-//       .slice(0, 5);
-//   }
-// );
+export const selectColorValue = createSelector(
+  [selectMemoLists],
+  (memoListSlice) => {
+    let memosColorSlice = new Set();
+    for (let i = 0; i < memoListSlice.length; i++) {
+      if (!memosColorSlice.has(memoListSlice[i].color)) {
+        memosColorSlice.add(memoListSlice[i].color);
+      }
+    }
+    return [...memosColorSlice];
+  }
+);
