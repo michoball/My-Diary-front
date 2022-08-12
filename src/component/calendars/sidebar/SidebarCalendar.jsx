@@ -27,7 +27,6 @@ const SidebarCalendar = () => {
         }}
         dayMaxEvents={true}
         businessHours={false}
-        // eventDidMount={eventTextHandler}
         moreLinkContent={moreLinkIconHandler}
         displayEventTime={false}
       />

@@ -10,7 +10,7 @@ export const MemoListViewContainer = styled.div`
   height: 100%;
 
   background-color: white;
-  border: 2px solid #f2a7a7;
+  border: 3px solid #f2a7a7;
   border-radius: 20px;
 `;
 
@@ -39,11 +39,11 @@ export const MemoViewHeader = styled.header`
   margin-bottom: 10px;
 `;
 
-export const MemosWrapper = styled.div`
+export const MemosContainer = styled.div`
   width: 100%;
   padding: 10px;
 
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -57,13 +57,12 @@ export const MemosWrapper = styled.div`
     border: 1px solid transparent;
   }
   ::-webkit-scrollbar-track {
-    /* padding: 20px 0; */
   }
 `;
 
-export const MemosContainer = styled.div`
+export const MemosWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 20px;
-  row-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+  row-gap: 10px;
 `;

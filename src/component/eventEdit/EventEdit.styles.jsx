@@ -9,7 +9,7 @@ export const EventEditcontainer = styled.div`
   flex-direction: column;
   border: 3px solid black;
   background-color: white;
-  padding: 10px;
+  padding: 20px;
 `;
 
 export const EventToggerContainer = styled.div`
@@ -57,8 +57,8 @@ export const EventTogger = styled.button`
 
 export const EditInputContainer = styled.div`
   display: flex;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
 `;
 
 export const BasicInputBg = styled.div`

@@ -53,13 +53,13 @@ function MemoView() {
           <MemoViewHeader>
             <h1>Memo Lists</h1>
           </MemoViewHeader>
-          <MemosWrapper>
-            <MemosContainer>
+          <MemosContainer>
+            <MemosWrapper>
               {memoCards.map((memoList) => {
                 return <MemoCard key={memoList.id} memoInfo={memoList} />;
               })}
-            </MemosContainer>
-          </MemosWrapper>
+            </MemosWrapper>
+          </MemosContainer>
         </MemoListViewContainer>
       </MainViewContainer>
     </>

@@ -19,6 +19,7 @@ import {
   EventInputContainer,
   BasicInputBg,
 } from "../EventInput.styles";
+import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
   groupId: "",
@@ -166,7 +167,7 @@ function BasicInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <BaseButton buttonType="base" type="submit">
+        <BaseButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
           <Check2Circle />
           submit
         </BaseButton>

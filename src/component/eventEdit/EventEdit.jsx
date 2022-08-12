@@ -4,7 +4,7 @@ import { selectEditEvent } from "../../features/calendar/calendar.select";
 
 import Modal from "../modal/Modal";
 import { X } from "react-bootstrap-icons";
-import Button from "../../UI/button/button";
+import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
 
 import {
   EventToggerContainer,
@@ -40,7 +40,11 @@ function EventEdit({ onConfirm }) {
 
   return (
     <Modal toggleModal={OffModalHandler}>
-      <Button buttonType="cancel" type="click" onClick={OffModalHandler}>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.cancel}
+        type="click"
+        onClick={OffModalHandler}
+      >
         <X />
       </Button>
       <EventEditcontainer>

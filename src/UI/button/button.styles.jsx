@@ -5,7 +5,7 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0, 132, 255, 0.7);
+  background-color: #2196f3;
   width: 200px;
   height: 40px;
   border-radius: 10px;

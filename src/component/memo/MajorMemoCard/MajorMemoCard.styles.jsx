@@ -5,13 +5,13 @@ export const MajorMemoCardContainer = styled.div`
   flex-direction: column;
 
   border-radius: 5px;
-  background-color: ${({ bgcolor }) => `${bgcolor}cc`};
+  background-color: ${({ bgcolor }) => `${bgcolor}e5`};
   padding: 10px;
 
   cursor: pointer;
 
   :hover {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   }
   :active {
     transform: translateY(1px);

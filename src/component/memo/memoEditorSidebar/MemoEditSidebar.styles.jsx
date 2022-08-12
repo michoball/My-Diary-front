@@ -14,7 +14,7 @@ export const SideBarWrapper = styled.div`
   width: 300px;
   height: 100%;
   padding: 10px 20px;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 10px;
   background-color: white;
 `;

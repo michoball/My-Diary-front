@@ -11,7 +11,7 @@ export const MemoViewContainer = styled.div`
   height: 80vh;
 
   background-color: white;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 20px;
 `;
 

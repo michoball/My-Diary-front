@@ -18,7 +18,7 @@ export const SidebarContainer = styled.div`
 export const SideContentWapper = styled.div`
   padding: 5px 5px;
   width: 100%;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 10px;
   background-color: white;
   color: black;

@@ -20,6 +20,7 @@ import {
 } from "../EventEdit.styles";
 import { Trash3Fill, Check2Circle } from "react-bootstrap-icons";
 import { TimeConvertor } from "../../../utill/timeConvertor";
+import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
   id: "",
@@ -34,15 +35,7 @@ const defaultEvent = {
 };
 
 function EventBasicEdit({ confirm }) {
-  const [editEvent, setEditEvent] = useState(
-    defaultEvent
-    //   {
-    //   ...defaultEvent,
-    //   ...eventData,
-    //   end: TimeConvertor(eventData.end),
-    //   start: TimeConvertor(eventData.start),
-    // }
-  );
+  const [editEvent, setEditEvent] = useState(defaultEvent);
   const [isDisable, setIsDisable] = useState(false);
 
   const dispatch = useDispatch();
@@ -69,9 +62,6 @@ function EventBasicEdit({ confirm }) {
       setIsDisable(true);
     }
 
-    // if (selectEvent.groupId !== "") {
-    //   dispatch(customLabelActions.selectLabel(selectEvent.groupId));
-    // }
     setEditEvent((prev) => {
       return {
         ...prev,
@@ -97,7 +87,6 @@ function EventBasicEdit({ confirm }) {
       }
       if (selectedLabel.daysOfWeek) {
         dispatch(customLabelActions.clearLabel());
-        // dispatch(customLabelActions.selectLabel(groupId));
         return alert("일일 일정을 정기 일정으로 바꿀 수 없습니다.");
       }
     }
@@ -217,13 +206,13 @@ function EventBasicEdit({ confirm }) {
       </EditInputContainer>
 
       <BtnContainer>
-        <ConfirmBtn type="submit" buttonType="base">
+        <ConfirmBtn type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
           <Check2Circle />
           Confirm
         </ConfirmBtn>
         <ConfirmBtn
           className="delete"
-          buttonType="base"
+          buttonType={BUTTON_TYPE_CLASSES.base}
           type="click"
           onClick={eventRemoveHandler}
         >

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
 import { selectEditEvent } from "../../features/calendar/calendar.select";
 

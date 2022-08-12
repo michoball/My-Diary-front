@@ -36,14 +36,7 @@ const advanceEvent = {
 };
 
 function EventAdvanceEdit({ confirm }) {
-  const [advancedEventData, setAdvancedEventData] = useState(
-    advanceEvent
-    //   {
-    //   ...advanceEvent,
-    //   ...eventData,
-    //   endRecur: TimeConvertor(eventData.endRecur),
-    // }
-  );
+  const [advancedEventData, setAdvancedEventData] = useState(advanceEvent);
   const [isDisable, setIsDisable] = useState(false);
   const {
     id,
@@ -65,9 +58,6 @@ function EventAdvanceEdit({ confirm }) {
     if (selectEvent.allDay) {
       setIsDisable(true);
     }
-    // if (selectEvent.groupId !== "") {
-    //   dispatch(customLabelActions.selectLabel(selectEvent.groupId));
-    // }
 
     setAdvancedEventData((prev) => ({
       ...prev,
@@ -92,8 +82,6 @@ function EventAdvanceEdit({ confirm }) {
         setIsDisable(true);
       } else {
         dispatch(customLabelActions.clearLabel());
-
-        // dispatch(customLabelActions.selectLabel(groupId));
         return alert("정기 일정을 일일 일정으로 바꿀 수 없습니다.");
       }
     }

@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import EventEdit from "../../eventEdit/EventEdit";
 import EventInput from "../../eventInput/EventInput";
-import Button from "../../../UI/button/button";
+import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 import { TimeRecurConvertor } from "../../../utill/timeConvertor";
 import { Backdrop } from "../../modal/Modal";
@@ -138,14 +138,14 @@ function MyCalendar() {
             <ButtonContainer>
               <Button
                 type="click"
-                buttonType="ban"
+                buttonType={BUTTON_TYPE_CLASSES.ban}
                 onClick={toggleModalTypeHandler.bind(null, "BAN")}
               >
                 <CalendarX />
               </Button>
               <Button
                 type="click"
-                buttonType="create"
+                buttonType={BUTTON_TYPE_CLASSES.create}
                 onClick={toggleModalTypeHandler.bind(null, "INPUT")}
               >
                 <PlusCircle /> Create

@@ -30,6 +30,7 @@ export const CircleColorPicker = styled(CirclePicker)`
   background-color: white;
   border: 2px solid #bbb;
   border-radius: 10px;
+
   span div :focus {
     transform: scale(1);
     width: 20px;

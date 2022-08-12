@@ -16,17 +16,13 @@ export const LogoContainer = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-
-  font-weight: bold;
-  width: 150px;
-  color: #f2727d;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0px rgba(242, 167, 167, 0.8);
 
   svg {
-    font-size: large;
+    width: 180px;
     fill: #f2727d;
+    transform: rotate3d(-1, 1, 0, 10deg);
+
+    box-shadow: -8px -3px 5px rgba(0, 0, 0, 0.5);
   }
 `;
 

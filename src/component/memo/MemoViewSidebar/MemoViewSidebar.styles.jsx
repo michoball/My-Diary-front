@@ -16,7 +16,7 @@ export const SideContentWapper = styled.div`
   color: black;
 
   padding: 10px;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 10px;
   background-color: white;
 `;
@@ -46,7 +46,7 @@ export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   height: 50px;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid rgb(242, 167, 167);
   border-radius: 10px;
   background-color: white;
 
@@ -89,6 +89,7 @@ export const MajorMemoContainer = styled.div`
   flex-direction: column;
 
   padding: 10px;
+
   span {
     display: flex;
     align-items: center;

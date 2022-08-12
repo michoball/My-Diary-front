@@ -22,6 +22,7 @@ import {
 } from "../EventInput.styles";
 import { Check2Circle } from "react-bootstrap-icons";
 import { customLabelActions } from "../../../features/customLabel/customLabelSlice";
+import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const advanceEvent = {
   groupId: "",
@@ -202,7 +203,7 @@ function AdvanceInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <BaseButton buttonType="base" type="submit">
+        <BaseButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
           <Check2Circle />
           submit
         </BaseButton>

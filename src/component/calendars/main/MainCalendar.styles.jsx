@@ -19,7 +19,7 @@ export const CalendarView = styled.div`
   width: 100%;
   height: 100%;
   background-color: white;
-  border: 2px solid rgb(242, 167, 167);
+  border: 3px solid #f2a7a7;
   border-radius: 20px;
 `;
 

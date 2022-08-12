@@ -64,7 +64,7 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
         <ColorSection>
           <label>
             <Palette />
-            Color
+            Color Filter
           </label>
           <ColorPicker
             onColorPick={(color) => onSelectColor(color)}
