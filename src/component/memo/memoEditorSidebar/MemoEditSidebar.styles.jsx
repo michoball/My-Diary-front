@@ -4,6 +4,7 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
+import { rotation, border } from "../../../global.styles";
 
 export const SideBarViewContainer = styled.div`
   padding: 10px 10px 10px 0;
@@ -14,9 +15,10 @@ export const SideBarWrapper = styled.div`
   width: 300px;
   height: 100%;
   padding: 10px 20px;
-  border: 3px solid rgb(242, 167, 167);
-  border-radius: 10px;
   background-color: white;
+
+  ${border}
+  ${rotation}
 `;
 
 export const NavLink = styled(Link)`
@@ -60,7 +62,6 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
 
   font-size: 20px;
   padding: 10px;
@@ -68,6 +69,7 @@ export const SideBtn = styled.button`
 
   border-radius: 10px;
   border: none;
+
   transition: all 0.2s ease-in;
   cursor: pointer;
   background-color: transparent;
@@ -75,7 +77,6 @@ export const SideBtn = styled.button`
   :hover {
     background-color: rgba(210, 210, 210, 0.5);
   }
-
   &.delete {
     :hover {
       background-color: rgba(244, 67, 54, 0.5);
@@ -92,7 +93,6 @@ export const ColorSection = styled.div`
   label {
     font-size: 20px;
     display: flex;
-    align-items: center;
   }
   svg {
     margin-right: 10px;

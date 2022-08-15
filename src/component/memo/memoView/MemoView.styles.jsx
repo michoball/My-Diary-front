@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { rotation, border } from "../../../global.styles";
 
 export const MemoListViewContainer = styled.div`
   display: flex;
@@ -10,8 +11,8 @@ export const MemoListViewContainer = styled.div`
   height: 100%;
 
   background-color: white;
-  border: 3px solid #f2a7a7;
-  border-radius: 20px;
+  ${border}
+  ${rotation}
 `;
 
 export const MainViewContainer = styled.div`

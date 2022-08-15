@@ -9,11 +9,9 @@ import { v4 as uuidv4 } from "uuid";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
-import { BaseButton } from "../../../UI/button/button.styles";
-
 import {
   InputForm,
-  SubmitBtn,
+  EventButton,
   ColorSection,
   OptionContainer,
   BtnContainer,
@@ -203,10 +201,10 @@ function AdvanceInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <BaseButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
+        <EventButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
           <Check2Circle />
           submit
-        </BaseButton>
+        </EventButton>
       </BtnContainer>
     </InputForm>
   );

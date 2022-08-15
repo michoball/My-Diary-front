@@ -15,15 +15,6 @@ export const CALENDAR_VIEW_STYLE = {
       right: "",
     },
   },
-
-  list: {
-    initialView: "listMonth",
-    headerToolbar: {
-      left: "title",
-      center: "prev,next today",
-      right: "listMonth,listWeek,listDay",
-    },
-  },
 };
 
 const CUSTOM_VIEW_STYLE = {

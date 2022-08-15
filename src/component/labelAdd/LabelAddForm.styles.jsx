@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BaseButton } from "../../UI/button/button.styles";
 
 export const LabelInputcontainer = styled.div`
   display: flex;
@@ -35,27 +36,12 @@ export const ColorSection = styled.div`
   }
 `;
 
-export const AddBtn = styled.button`
-  width: 200px;
-  height: 40px;
-
-  background-color: rgba(0, 132, 255, 0.5);
-  border: 2px solid #bbb;
-  border-radius: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+export const AddBtn = styled(BaseButton)`
   font-size: 16px;
-  color: whitesmoke;
-  cursor: pointer;
+  background-color: #ffc107;
 
   :hover {
     transform: scale(0.98);
-  }
-  svg {
-    margin-right: 5px;
   }
 `;
 

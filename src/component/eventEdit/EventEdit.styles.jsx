@@ -116,5 +116,6 @@ export const BtnContainer = styled.div`
 
 export const ConfirmBtn = styled(BaseButton)`
   width: 150px;
+  font-size: 18px;
   margin-right: 5px;
 `;

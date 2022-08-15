@@ -10,8 +10,11 @@ export const MajorMemoCardContainer = styled.div`
 
   cursor: pointer;
 
+  transition: all 0.3s ease-in-out;
+
   :hover {
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: -2px -2px 3px rgba(0, 0, 0, 0.7);
+    transform: translateY(-1px);
   }
   :active {
     transform: translateY(1px);

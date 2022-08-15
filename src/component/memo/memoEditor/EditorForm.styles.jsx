@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import FormInput from "../../../UI/formInput/FormInput";
+import { rotation, border } from "../../../global.styles";
 
 export const EditorFromContainer = styled.div`
   width: 100%;
@@ -19,9 +20,8 @@ export const EditorContainer = styled.div`
   padding: 20px;
   min-width: 800px;
 
-  border: 3px solid rgb(242, 167, 167);
-  border-radius: 20px;
-
+  ${border}
+  ${rotation}
   height: 100%;
   background-color: white;
 `;
@@ -34,6 +34,7 @@ export const BaseHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-right: 20px;
+
   .date {
     font-weight: bold;
   }
@@ -41,6 +42,7 @@ export const BaseHeaderContainer = styled.div`
 
 export const StarDateContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
 `;
 

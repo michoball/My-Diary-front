@@ -8,7 +8,6 @@ import FormInput from "../../../UI/formInput/FormInput";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
-import { BaseButton } from "../../../UI/button/button.styles";
 
 import { Check2Circle } from "react-bootstrap-icons";
 import {
@@ -18,6 +17,7 @@ import {
   BtnContainer,
   EventInputContainer,
   BasicInputBg,
+  EventButton,
 } from "../EventInput.styles";
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
@@ -167,10 +167,10 @@ function BasicInput() {
         </OptionContainer>
       </EventInputContainer>
       <BtnContainer>
-        <BaseButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
+        <EventButton buttonType={BUTTON_TYPE_CLASSES.base} type="submit">
           <Check2Circle />
           submit
-        </BaseButton>
+        </EventButton>
       </BtnContainer>
     </InputForm>
   );

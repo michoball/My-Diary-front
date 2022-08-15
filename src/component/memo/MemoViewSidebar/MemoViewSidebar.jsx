@@ -58,7 +58,8 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
         </NavLink>
         <SideBtnWapper>
           <SideBtn onClick={() => onMemoView()}>
-            <Collection /> 전체 메모
+            <Collection />
+            <span>전체 메모</span>
           </SideBtn>
         </SideBtnWapper>
         <ColorSection>

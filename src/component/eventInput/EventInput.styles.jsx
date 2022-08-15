@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BaseButton } from "../../UI/button/button.styles";
 
 export const EventCreatorContainer = styled.div`
   position: relative;
@@ -95,4 +96,8 @@ export const BtnContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+`;
+
+export const EventButton = styled(BaseButton)`
+  font-size: 18px;
 `;

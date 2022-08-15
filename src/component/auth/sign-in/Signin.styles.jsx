@@ -8,7 +8,8 @@ export const SignInHeader = styled.header`
   align-items: center;
   padding-bottom: 10px;
   border-bottom: 2px solid #d2d2d2;
-  margin-bottom: 20px;
+
+  height: 20%;
 
   h2 {
     display: flex;
@@ -52,17 +53,18 @@ export const ButtonsContainer = styled.div`
 export const LogInForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  gap: 10px;
-  height: 60%;
+  /* justify-content: space-between; */
+  padding: 20px 0;
+  gap: 20px;
+  height: 80%;
+  min-height: 180px;
 
   overflow-y: scroll;
   ${FormInputContainer} {
-    padding: 0 20px;
     margin-bottom: 5px;
 
     input {
+      padding: 3px 10px;
       width: 100%;
       border: 2px solid #ffc107;
       border-left: none;
@@ -74,8 +76,8 @@ export const LogInForm = styled.form`
       color: white;
 
       background-color: #ffc107;
-      padding: 5px 10px;
-      width: 100px;
+      padding: 5px 5px 5px 10px;
+      width: 130px;
       margin-right: 0;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;

@@ -11,26 +11,26 @@ export const MemoViewContainer = styled.div`
   height: 80vh;
 
   background-color: white;
-  border: 3px solid rgb(242, 167, 167);
-  border-radius: 20px;
+
+  border-radius: 10px;
+  border: 2px solid #f2727d;
 `;
 
 export const MemoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
+  width: 90%;
   min-width: 650px;
   max-width: 1000px;
 
   height: 100%;
   padding: 10px 20px;
+  margin: 10px 0;
 
-  border-radius: 10px;
-
+  background-color: ${({ bgcolors }) => `${bgcolors}cc`};
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   overflow-y: scroll;
-
-  background-color: ${({ bgcolors }) => `${bgcolors}`};
 `;
 
 export const MemoHeader = styled.header`
@@ -39,13 +39,17 @@ export const MemoHeader = styled.header`
   align-items: center;
   position: relative;
 
+  padding-bottom: 10px;
   width: 700px;
 
   margin-bottom: 10px;
+
+  border-bottom: 3px solid #2d2d2d;
+
   .date {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 5px;
   }
   h1 {
     width: 500px;

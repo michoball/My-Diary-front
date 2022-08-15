@@ -11,7 +11,7 @@ export const MemoCardContainer = styled.div`
   border-radius: 20px;
 
   background-color: ${({ bgcolor }) => `${bgcolor}99`};
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4);
 
   cursor: pointer;
 
@@ -20,7 +20,7 @@ export const MemoCardContainer = styled.div`
   :hover {
     background-color: ${({ bgcolor }) => `${bgcolor}cc`};
     transform: translate(-1px, -2px);
-    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4), 1px 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4), -1px -3px 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s ease-in;
   }
   :active {

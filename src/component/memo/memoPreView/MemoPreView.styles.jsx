@@ -10,10 +10,11 @@ export const BtnContainer = styled.div`
   width: 100%;
 
   button {
+    font-size: 20px;
     background-color: #9c27b0;
     border: none;
     svg {
-      font-size: 18px;
+      font-size: 20px;
       margin-right: 10px;
     }
   }

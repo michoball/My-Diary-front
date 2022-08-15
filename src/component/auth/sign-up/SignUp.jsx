@@ -3,7 +3,12 @@ import FormInput from "../../../UI/formInput/FormInput";
 import Button from "../../../UI/button/button";
 
 import { useDispatch } from "react-redux";
-import { SignUpContainer, LogInForm, ButtonContainer } from "./SignUp.styles";
+import {
+  SignUpContainer,
+  LogInForm,
+  ButtonContainer,
+  HeaderContainer,
+} from "./SignUp.styles";
 import { DoorOpen } from "react-bootstrap-icons";
 const defaultFormFields = {
   displayName: "",
@@ -44,9 +49,11 @@ const SignUpForm = () => {
 
   return (
     <SignUpContainer>
-      <h1>
-        <DoorOpen /> 회원가입
-      </h1>
+      <HeaderContainer>
+        <h1>
+          <DoorOpen /> 회원가입
+        </h1>
+      </HeaderContainer>
       <LogInForm onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"

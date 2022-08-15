@@ -60,13 +60,10 @@ export const SidebarCalendarContainer = styled.div`
           color: orange;
         }
       }
-      .fc-event-title {
-        font-size: 8px;
-      }
-
-      .fc-daygrid-day-events {
-        .fc-event-main .fc-event-title {
-          padding: 0;
+      .fc-daygrid-day-events,
+      .fc-daygrid-day-event.fc-daygrid-dot-event {
+        .fc-event-title {
+          font-size: 10px;
         }
       }
     }

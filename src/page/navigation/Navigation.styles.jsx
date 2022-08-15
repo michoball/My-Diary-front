@@ -5,11 +5,19 @@ export const NavigationContainer = styled.div`
   top: 0;
   height: 60px;
   width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 15px 30px;
   border-bottom: 3px solid #bbb;
+  background-color: white;
+
+  .login {
+    font-size: 18px;
+    font-weight: 600;
+  }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -18,11 +26,13 @@ export const LogoContainer = styled(Link)`
   justify-content: center;
 
   svg {
+    padding: 3px;
+    border: 2px solid #f2727d;
+    border-radius: 10px;
     width: 180px;
     fill: #f2727d;
     transform: rotate3d(-1, 1, 0, 10deg);
-
-    box-shadow: -8px -3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -40,7 +50,7 @@ export const NavLink = styled(Link)`
   justify-content: center;
   align-items: center;
 
-  font-size: 18px;
+  font-size: 20px;
   padding: 10px 15px;
   cursor: pointer;
 

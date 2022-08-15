@@ -5,6 +5,7 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
+import { rotation, border } from "../../../global.styles";
 
 export const SideBarWrapper = styled.div`
   height: 100%;
@@ -14,11 +15,11 @@ export const SideContentWapper = styled.div`
   height: calc(100% - 60px);
 
   color: black;
+  background-color: white;
 
   padding: 10px;
-  border: 3px solid rgb(242, 167, 167);
-  border-radius: 10px;
-  background-color: white;
+  ${border}
+  ${rotation}
 `;
 
 export const NavLink = styled(Link)`
@@ -46,9 +47,10 @@ export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   height: 50px;
-  border: 3px solid rgb(242, 167, 167);
-  border-radius: 10px;
   background-color: white;
+
+  ${border}
+  ${rotation}
 
   padding: 5px;
   margin-bottom: 10px;
@@ -92,7 +94,6 @@ export const MajorMemoContainer = styled.div`
 
   span {
     display: flex;
-    align-items: center;
     font-size: 20px;
   }
   svg {
@@ -159,9 +160,9 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
 
   font-size: 20px;
+
   padding: 10px;
   margin-bottom: 10px;
 

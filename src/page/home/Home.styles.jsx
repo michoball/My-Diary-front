@@ -1,16 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { calendarCss } from "../../utill/calendar/Calendar.styles";
 import { MemoCardContainer } from "../../component/memo/memoCard/MemoCard.styles";
 import { Link } from "react-router-dom";
-
-const rotation = css`
-  transform: rotate3d(-1, 1, 0, 10deg);
-  box-shadow: -10px -8px 10px rgba(0, 0, 0, 0.5);
-`;
-const border = css`
-  border: 3px solid #f2a7a7;
-  border-radius: 10px;
-`;
+import { rotation, border } from "../../global.styles";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -25,7 +17,7 @@ export const HomeContainer = styled.div`
     justify-content: space-around;
     width: 100%;
     height: calc(100vh - 123px);
-    min-height: 500px;
+    min-height: 550px;
     padding: 20px;
     background-color: #d2d2d2;
     gap: 20px;
@@ -40,25 +32,29 @@ export const HomeNavContainer = styled.div`
   width: 100%;
   height: 120px;
   background-color: white;
-  padding: 20px 0;
-  color: #f2727d;
-  text-transform: uppercase;
+
   border-bottom: 3px solid #bbb;
 
   svg {
     width: 450px;
     fill: #f2727d;
-    ${rotation}
+    padding: 5px;
+    border: 2px solid #f2727d;
+    border-radius: 10px;
+
+    ${rotation} {
+      box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.5);
+    }
   }
 `;
 
 export const HomeCalendar = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  height: calc(90vh - 120px);
-  width: 800px;
+  width: 50%;
   min-width: 500px;
 
   margin-top: 20px;
@@ -66,6 +62,7 @@ export const HomeCalendar = styled.div`
 
   ${border}
   ${rotation}
+
   background-color: rgb(255, 255, 255);
 `;
 
@@ -76,7 +73,7 @@ export const CalendarWrapper = styled.div`
   width: 100%;
   border-radius: 10px;
 
-  ${calendarCss}
+  ${calendarCss};
 `;
 
 export const RightSideContainer = styled.div`
@@ -84,10 +81,11 @@ export const RightSideContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
+
   margin-top: 20px;
-  width: 650px;
-  min-width: 400px;
-  height: calc(90vh - 120px);
+  width: 50%;
+  min-width: 500px;
 `;
 
 export const MemosContianer = styled.div`
@@ -97,12 +95,14 @@ export const MemosContianer = styled.div`
   ${border}
 
   padding: 10px 20px;
-  height: 52%;
+  height: 55%;
+  min-height: 250px;
   width: 100%;
   ${rotation}
 
   h2 {
     margin-bottom: 10px;
+    height: 10%;
   }
 `;
 
@@ -115,6 +115,12 @@ export const MemosWrapper = styled.div`
   ${MemoCardContainer} {
     height: 170px !important;
     margin: 0 10px;
+    box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4);
+
+    :hover {
+      box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4),
+        -3px -1px 5px rgba(0, 0, 0, 0.5);
+    }
   }
 
   header {
@@ -126,16 +132,17 @@ export const MemosWrapper = styled.div`
 export const NavNLoginContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  min-height: 45%;
   width: 100%;
+  height: 45%;
+
+  gap: 10px;
 `;
 
 export const NavContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  width: 30%;
+  width: 40%;
   padding: 10px;
 
   background-color: white;
@@ -144,7 +151,7 @@ export const NavContainer = styled.div`
   h2 {
     padding: 0 0 10px 10px;
     border-bottom: 2px solid #d2d2d2;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -155,14 +162,16 @@ export const NavLink = styled(Link)`
 
   font-size: 20px;
   padding: 10px;
-  margin-bottom: 20px;
   border-radius: 10px;
+  margin-bottom: 10px;
 
-  transition: all 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
   cursor: pointer;
 
   :hover {
     background-color: rgba(210, 210, 210, 0.5);
+    box-shadow: -4px -2px 8px rgba(0, 0, 0, 0.5);
+    transform: translateY(-1px);
   }
 
   svg {
@@ -171,7 +180,7 @@ export const NavLink = styled(Link)`
 `;
 
 export const LoginContainer = styled.div`
-  width: 65%;
+  width: 60%;
   height: 100%;
   padding: 10px 20px;
 

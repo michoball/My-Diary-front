@@ -28,13 +28,11 @@ function Home() {
   const memoLists = useSelector(selectRecentOrderMemoLists);
   const [memoCards, setMemoCards] = useState(HOME_DEFAULT_MEMO);
 
-  // useEffect(() => {
-  //   if (memoLists) {
-  //     setMemoCards(memoLists.slice(0,7));
-  //   }
-  // }, []);
-
-  console.log(new Date().getUTCMonth().toLocaleString());
+  useEffect(() => {
+    if (memoLists) {
+      setMemoCards(memoLists.slice(0, 7));
+    }
+  }, []);
 
   return (
     <HomeContainer>
@@ -77,7 +75,7 @@ function Home() {
           </MemosContianer>
           <NavNLoginContainer>
             <NavContainer>
-              <h2>Go</h2>
+              <h2>Start~!</h2>
               <NavLink to="/calendar">
                 <Calendar3 />
                 Calendar

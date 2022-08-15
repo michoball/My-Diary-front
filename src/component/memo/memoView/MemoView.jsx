@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { selectRecentOrderMemoLists } from "../../../features/memo/memo.select";
 import MemoCard from "../memoCard/MemoCard";
 import MemoViewSidebar from "../MemoViewSidebar/MemoViewSidebar";
+import Loading from "../../../UI/loading/Loading";
 
 function MemoView() {
   const memoLists = useSelector(selectRecentOrderMemoLists);
@@ -24,7 +25,7 @@ function MemoView() {
   useEffect(() => {
     const searchTerm = setTimeout(() => {
       setMemoCards(memoLists.filter((memo) => memo.title.includes(searchWord)));
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(searchTerm);

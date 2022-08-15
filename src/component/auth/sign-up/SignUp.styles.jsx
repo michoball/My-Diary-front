@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FormInputContainer } from "../../../UI/formInput/FormInput.styles";
+import { rotation, border } from "../../../global.styles";
 
 export const SignUpContainer = styled.div`
   display: flex;
@@ -9,14 +10,30 @@ export const SignUpContainer = styled.div`
   height: 80vh;
 
   background-color: white;
-  border: 3px solid #f2a7a7;
-  border-radius: 20px;
+  ${border}
+  ${rotation}
 
   padding: 20px;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
 
   h1 {
-    text-align: center;
-    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    padding: 5px 20px;
+
+    color: #2d2d2d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    ${border} {
+      border-radius: 20px;
+    }
   }
   svg {
     margin-right: 10px;
@@ -57,13 +74,15 @@ export const LogInForm = styled.form`
       border-bottom-right-radius: 10px;
     }
     label {
-      text-align: center;
+      display: flex;
+      align-items: center;
+
       height: 40px;
       color: white;
       margin-right: 0;
       background-color: #ffc107;
-      padding: 5px 10px;
-      width: 250px;
+      padding: 0 10px;
+      width: 260px;
 
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;

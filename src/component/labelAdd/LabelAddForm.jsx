@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import FormInput from "../../UI/formInput/FormInput";
 
@@ -12,11 +12,11 @@ import {
   AddBtn,
   LabelInputForm,
   AllDayBtn,
-  CancelBtn,
   BtnContainer,
 } from "./LabelAddForm.styles";
 
 import { Check2Circle, X } from "react-bootstrap-icons";
+import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
 
 import Modal from "../modal/Modal";
 import { customLabelActions } from "../../features/customLabel/customLabelSlice";
@@ -92,9 +92,13 @@ const LabelAddForm = ({ onConfirm }) => {
         onConfirm();
       }}
     >
-      <CancelBtn type="click" onClick={() => onConfirm()}>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.cancel}
+        type="click"
+        onClick={() => onConfirm()}
+      >
         <X />
-      </CancelBtn>
+      </Button>
       <LabelInputcontainer>
         <LabelInputForm onSubmit={submitHanbler}>
           <FormInput
@@ -129,7 +133,7 @@ const LabelAddForm = ({ onConfirm }) => {
             />
           </ColorSection>
           <BtnContainer>
-            <AddBtn type="submit">
+            <AddBtn type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
               <Check2Circle />
               Add
             </AddBtn>

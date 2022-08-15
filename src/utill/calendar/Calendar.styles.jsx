@@ -5,11 +5,13 @@ export const calendarCss = css`
     background-color: white;
 
     .fc-button-primary {
-      width: 65px;
+      min-width: 65px;
+      padding: 5px 10px;
       margin-right: 10px;
     }
+
     .fc-button-primary:not(:disabled) {
-      border: none;
+      /* border: none; */
       background-color: #f2a7a7;
       &.fc-button-active {
         background-color: #f23d4c;
@@ -46,10 +48,10 @@ export const calendarCss = css`
 
     .fc-prev-button,
     .fc-next-button {
-      margin: 1px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
+      margin: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 50px;
       height: 35px;
       background-color: transparent !important;

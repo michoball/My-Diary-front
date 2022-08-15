@@ -158,7 +158,6 @@ function MyCalendar() {
               selectable={selectable}
               select={handleSelectHandler}
               displayEventTime={false}
-              allDaySlot={false}
               eventClick={handleEventClick}
               events={eventList}
               eventChange={eventChangehandler}

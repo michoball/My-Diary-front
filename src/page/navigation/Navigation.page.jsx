@@ -8,6 +8,7 @@ import {
   NavLinks,
   LogoContainer,
 } from "./Navigation.styles";
+import Loading from "../../UI/loading/Loading";
 
 const Navigation = () => {
   return (
@@ -26,7 +27,9 @@ const Navigation = () => {
             Memo
           </NavLink>
         </NavLinks>
-        <Link to="/login">Log in</Link>
+        <Link to="/login" className="login">
+          Log in
+        </Link>
       </NavigationContainer>
       <main>
         <Outlet />

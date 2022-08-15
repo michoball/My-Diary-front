@@ -21,7 +21,6 @@ const initialMemos = [
   },
   {
     id: "24te4t4",
-
     title: "3th",
     date: "2022-07-05T15:43:00",
     color: "#4caf50",
@@ -103,6 +102,7 @@ const initialMemos = [
 
 const initialState = {
   memoLists: initialMemos,
+  sortedList: null,
   selectedMemo: null,
   loading: false,
   error: null,
