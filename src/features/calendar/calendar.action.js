@@ -38,7 +38,7 @@ export const calendarAction = {
   clearSelectEvent: (state) => {
     return {
       ...state,
-      selectedLabel: null,
+      selectedEvent: null,
     };
   },
 };

@@ -15,6 +15,7 @@ import {
   EventTogger,
 } from "./EventInput.styles";
 import { customLabelActions } from "../../features/customLabel/customLabelSlice";
+
 function EventInput({ onConfirm }) {
   const [isRecurrEvent, setIsRecurrEvent] = useState(false);
   const selectedLabel = useSelector(selectSelectedLabel);

@@ -26,7 +26,6 @@ export const customLabelAction = {
     );
   },
   clearLabel: (state) => {
-    console.log("clear");
     return {
       ...state,
       selectedLabel: null,
