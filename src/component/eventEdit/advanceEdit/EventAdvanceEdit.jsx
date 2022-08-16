@@ -20,7 +20,7 @@ import {
   BasicInputBg,
 } from "../EventEdit.styles";
 import { Trash3Fill, Check2Circle } from "react-bootstrap-icons";
-import { TimeConvertor } from "../../../utill/timeConvertor";
+import { DayConvertor } from "../../../utill/timeConvertor";
 
 const advanceEvent = {
   id: "",
@@ -62,7 +62,7 @@ function EventAdvanceEdit({ confirm }) {
     setAdvancedEventData((prev) => ({
       ...prev,
       ...selectEvent,
-      endRecur: TimeConvertor(selectEvent.endRecur),
+      endRecur: DayConvertor(selectEvent.endRecur),
     }));
   }, [selectEvent, dispatch]);
 

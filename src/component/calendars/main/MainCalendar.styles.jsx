@@ -7,7 +7,7 @@ export const CalendarWrapper = styled.div`
 
   padding: 10px;
 
-  min-width: 980px;
+  min-width: 800px;
   min-height: 600px;
 
   z-index: ${({ zvalue }) => zvalue};
@@ -40,12 +40,15 @@ export const CalendarContainer = styled.div`
       overflow: hidden;
     }
     .fc-toolbar.fc-header-toolbar {
-      display: flex;
-      justify-content: space-around !important;
+      position: relative;
       margin-bottom: 10px;
       .fc-toolbar-chunk {
         display: flex;
+
         &:first-child {
+          position: absolute;
+          top: 0;
+          left: 0;
           align-items: center;
           width: 40%;
           min-width: 400px;
@@ -55,7 +58,9 @@ export const CalendarContainer = styled.div`
           }
         }
         &:nth-child(2) {
-          flex: 0.4;
+          position: absolute;
+          top: 0;
+          left: 35%;
           margin: 0 20px;
           gap: 10px;
         }
@@ -86,7 +91,7 @@ export const CalendarContainer = styled.div`
 
   .fc-daygrid-day {
     &.fc-day {
-      cursor: pointer;
+      /* cursor: pointer; */
       :hover {
         background-color: rgba(187, 187, 187, 0.4);
       }
@@ -118,7 +123,7 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  top: 5px;
+  top: 0;
   right: 0;
 
   z-index: 5;

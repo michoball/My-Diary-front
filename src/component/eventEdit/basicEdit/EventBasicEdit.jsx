@@ -19,7 +19,7 @@ import {
   EditInputContainer,
 } from "../EventEdit.styles";
 import { Trash3Fill, Check2Circle } from "react-bootstrap-icons";
-import { TimeConvertor } from "../../../utill/timeConvertor";
+import { DayConvertor, TimeConvertor } from "../../../utill/timeConvertor";
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
@@ -66,8 +66,12 @@ function EventBasicEdit({ confirm }) {
       return {
         ...prev,
         ...selectEvent,
-        end: TimeConvertor(selectEvent.end),
-        start: TimeConvertor(selectEvent.start),
+        end: DayConvertor(selectEvent.end),
+        eventEndTime: selectEvent.allDay ? "" : TimeConvertor(selectEvent.end),
+        start: DayConvertor(selectEvent.start),
+        eventStartTime: selectEvent.allDay
+          ? ""
+          : TimeConvertor(selectEvent.start),
       };
     });
   }, [selectEvent, dispatch]);

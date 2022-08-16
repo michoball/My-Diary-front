@@ -6,6 +6,7 @@ import { GlobalStyle } from "./global.styles";
 import Memo from "./page/memo/Memo.page";
 import Editor from "./page/editor/Editor.page";
 import Authentication from "./page/authentication/Authentication";
+
 function App() {
   return (
     <>

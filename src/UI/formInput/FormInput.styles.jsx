@@ -5,7 +5,7 @@ export const FormInputContainer = styled.div`
   align-items: center;
   margin-bottom: 15px;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 
   &.title {
     margin-bottom: 25px;
@@ -26,9 +26,7 @@ export const FormInputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 5px 10px;
-
-  font-size: 14px;
+  padding: 0 10px;
 
   border: none;
   border-bottom: 3px solid #bbb;
@@ -47,7 +45,7 @@ export const Input = styled.input`
   :-webkit-autofill:hover,
   :-webkit-autofill:focus,
   :-webkit-autofill:active {
-    transition: background-color 5000s;
+    /* transition: background-color 5000s; */
     -webkit-text-fill-color: black !important;
   }
 `;

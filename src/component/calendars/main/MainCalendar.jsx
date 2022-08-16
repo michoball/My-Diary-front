@@ -8,12 +8,11 @@ import {
 } from "../../../utill/calendar/Calendar.config";
 import { v4 as uuidv4 } from "uuid";
 
+import { Backdrop } from "../../modal/Modal";
 import EventEdit from "../../eventEdit/EventEdit";
 import EventInput from "../../eventInput/EventInput";
 import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
-
-import { TimeRecurConvertor } from "../../../utill/timeConvertor";
-import { Backdrop } from "../../modal/Modal";
+import { EndDayConvertor } from "../../../utill/timeConvertor";
 
 import { ThreeDots, CalendarX, PlusCircle } from "react-bootstrap-icons";
 import {
@@ -52,39 +51,21 @@ function MyCalendar() {
   };
 
   const eventChangehandler = (e) => {
-    console.log(e.event);
-    const { groupTitle, eventEndTime, eventStartTime } = e.event.extendedProps;
-    const { id, title, startStr, endStr, allDay, backgroundColor, groupId } =
-      e.event;
-    const advenceData = eventDataChanger(e.event);
+    console.log(e);
+    const { id, startStr, endStr, allDay } = e.event;
+    const advenceData = e.event._def.recurringDef && {
+      daysOfWeek: [new Date(startStr).getDay().toString()],
+    };
 
     dispatch(
       calendarActions.addEvent({
         id,
-        title,
-        groupId,
-        groupTitle,
-        eventEndTime,
-        eventStartTime,
         start: startStr,
-        end: endStr,
+        end: EndDayConvertor(endStr),
         allDay: allDay,
-        color: backgroundColor,
         ...advenceData,
       })
     );
-  };
-
-  const eventDataChanger = (data) => {
-    const recurringData = data._def.recurringDef?.typeData;
-
-    return recurringData
-      ? {
-          daysOfWeek: [new Date(data.startStr).getDay().toString()],
-          endRecur: TimeRecurConvertor(recurringData?.endRecur),
-          startRecur: TimeRecurConvertor(recurringData?.startRecur),
-        }
-      : null;
   };
 
   const handleSelectHandler = (event) => {
@@ -163,6 +144,7 @@ function MyCalendar() {
               eventChange={eventChangehandler}
               editable={true}
               navLinks={true}
+              dayMaxEvents={true}
               moreLinkContent={moreLinkIconHandler}
             />
           </CalendarContainer>

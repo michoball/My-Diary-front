@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
 import Button from "../../../UI/button/button";
+import { ReactComponent as Mydiary } from "../../../assets/Logo.svg";
 
 import { useDispatch } from "react-redux";
 import {
@@ -9,7 +10,7 @@ import {
   ButtonContainer,
   HeaderContainer,
 } from "./SignUp.styles";
-import { DoorOpen } from "react-bootstrap-icons";
+import { DoorOpen, PersonFill } from "react-bootstrap-icons";
 const defaultFormFields = {
   displayName: "",
   email: "",
@@ -50,9 +51,10 @@ const SignUpForm = () => {
   return (
     <SignUpContainer>
       <HeaderContainer>
-        <h1>
-          <DoorOpen /> 회원가입
-        </h1>
+        <Mydiary className="Logo" />
+        <h3>
+          <PersonFill /> 회원가입
+        </h3>
       </HeaderContainer>
       <LogInForm onSubmit={handleSubmit}>
         <FormInput

@@ -54,6 +54,7 @@ function Home() {
                 year: "numeric",
                 month: "long",
               }}
+              editable={true}
               dayMaxEvents={true}
             />
           </CalendarWrapper>
@@ -75,7 +76,7 @@ function Home() {
           </MemosContianer>
           <NavNLoginContainer>
             <NavContainer>
-              <h2>Start~!</h2>
+              <h2>Navigation</h2>
               <NavLink to="/calendar">
                 <Calendar3 />
                 Calendar

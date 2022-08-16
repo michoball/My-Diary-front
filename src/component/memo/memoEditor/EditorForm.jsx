@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectMemo } from "../../../features/memo/memo.select";
 import { memoActions } from "../../../features/memo/memoSlice";
 import { v4 as uuidv4 } from "uuid";
-import { TimeConvertor } from "../../../utill/timeConvertor";
+import { DayConvertor } from "../../../utill/timeConvertor";
 
 import Modal from "../../modal/Modal";
 import MemoViewCard from "../../../UI/memoViewCard/MemoViewCard";
@@ -184,7 +184,7 @@ const EditorForm = () => {
         <Modal toggleModal={showPreviewHandler}>
           <MemoViewCard
             title={title}
-            date={TimeConvertor(date)}
+            date={DayConvertor(date)}
             color={color}
             major={major}
             dangerouslySetInnerHTML={{ __html: memo }}

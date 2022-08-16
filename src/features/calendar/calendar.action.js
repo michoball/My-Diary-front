@@ -9,7 +9,9 @@ export const calendarAction = {
       return {
         ...state,
         eventList: state.eventList.map((event) =>
-          event.id === action.payload.id ? { event, ...action.payload } : event
+          event.id === action.payload.id
+            ? { ...event, ...action.payload }
+            : event
         ),
       };
     }

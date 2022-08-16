@@ -53,27 +53,32 @@ export const ButtonsContainer = styled.div`
 export const LogInForm = styled.form`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+
   padding: 20px 0;
-  gap: 20px;
+  gap: 15px;
   height: 80%;
   min-height: 180px;
 
   overflow-y: scroll;
   ${FormInputContainer} {
     margin-bottom: 5px;
-
+    height: 40px;
+    font-size: 16px;
     input {
-      padding: 3px 10px;
+      padding: 0 10px;
       width: 100%;
+      height: 100%;
       border: 2px solid #ffc107;
       border-left: none;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
+      :focus {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
     }
     label {
-      font-size: 14px;
       color: white;
+      height: 100%;
 
       background-color: #ffc107;
       padding: 5px 5px 5px 10px;

@@ -18,25 +18,32 @@ export const SignUpContainer = styled.div`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
-  h1 {
+  h3 {
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    font-size: 40px;
-    padding: 5px 20px;
-
+    padding-top: 20px;
     color: #2d2d2d;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
 
-    ${border} {
-      border-radius: 20px;
+    svg {
+      width: 25px;
+      height: 25px;
+      margin-right: 10px;
     }
   }
-  svg {
-    margin-right: 10px;
+
+  .Logo {
+    padding: 3px;
+    border: 2px solid #f2727d;
+    border-radius: 10px;
+    width: 220px;
+    fill: #f2727d;
+    transform: rotate3d(-1, 1, 0, 10deg);
+    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -82,7 +89,7 @@ export const LogInForm = styled.form`
       margin-right: 0;
       background-color: #ffc107;
       padding: 0 10px;
-      width: 260px;
+      width: 300px;
 
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;

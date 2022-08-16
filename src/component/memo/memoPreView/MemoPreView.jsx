@@ -8,7 +8,7 @@ import { PencilSquare, Trash3, X } from "react-bootstrap-icons";
 import Modal from "../../modal/Modal";
 import Button from "../../../UI/button/button";
 import MemoViewCard from "../../../UI/memoViewCard/MemoViewCard";
-import { TimeConvertor } from "../../../utill/timeConvertor";
+import { DayConvertor } from "../../../utill/timeConvertor";
 
 function MemoPreView({ onConfirm }) {
   const MemoViewRef = useRef();
@@ -47,7 +47,7 @@ function MemoPreView({ onConfirm }) {
         <MemoViewCard
           title={selectedMemo?.title}
           major={selectedMemo?.major}
-          date={TimeConvertor(selectedMemo?.date)}
+          date={DayConvertor(selectedMemo?.date)}
           color={selectedMemo?.color}
           ref={MemoViewRef}
         >

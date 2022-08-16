@@ -6,7 +6,7 @@ export const SideBarWrapper = styled.div`
   width: 30%;
 
   min-height: 600px;
-  min-width: 400px;
+  min-width: 350px;
 `;
 
 export const SidebarContainer = styled.div`

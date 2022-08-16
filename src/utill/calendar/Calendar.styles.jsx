@@ -11,7 +11,7 @@ export const calendarCss = css`
     }
 
     .fc-button-primary:not(:disabled) {
-      /* border: none; */
+      border: none;
       background-color: #f2a7a7;
       &.fc-button-active {
         background-color: #f23d4c;

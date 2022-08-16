@@ -4,8 +4,15 @@ import { useSelector } from "react-redux";
 import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
 
 import { SidebarCalendarContainer } from "./SidebarCalendar.styles";
+import { useState } from "react";
+import { useEffect } from "react";
 const SidebarCalendar = () => {
   const eventLists = useSelector(selectCalendarEvents);
+  const [eventList, setEventList] = useState(eventLists);
+
+  useEffect(() => {
+    setEventList(eventLists);
+  }, [eventLists]);
 
   const moreLinkIconHandler = (event) => {
     event.text = <ThreeDots />;
@@ -20,13 +27,13 @@ const SidebarCalendar = () => {
           center: "title today",
           right: "next",
         }}
-        events={eventLists}
+        events={eventList}
         titleFormat={{
           year: "numeric",
           month: "short",
         }}
-        dayMaxEvents={true}
         businessHours={false}
+        dayMaxEvents={true}
         moreLinkContent={moreLinkIconHandler}
         displayEventTime={false}
       />
