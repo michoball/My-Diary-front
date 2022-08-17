@@ -18,13 +18,13 @@ const CategoryList = ({ lists }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();
   const openInputFormHandler = () => {
-    dispatch(customLabelActions.selectLabel(lists.groupId));
+    dispatch(customLabelActions.selectLabel(lists.labelId));
     setIsOpenModal(!isOpenModal);
   };
 
   const deleteLabelHandler = () => {
     if (window.confirm("Are you sure? ")) {
-      dispatch(customLabelActions.removeLabel(lists.groupId));
+      dispatch(customLabelActions.removeLabel(lists.labelId));
       setIsOpenModal(!isOpenModal);
     }
   };

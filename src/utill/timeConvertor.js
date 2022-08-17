@@ -9,7 +9,11 @@ export const TimeConvertor = (time) => {
 };
 
 export const EndDayConvertor = (end) => {
-  const endDayConvert =
-    end.slice(0, 7) + "-" + (new Date(end).getDate() - 1).toString() + "T24:00";
+  const endDayConvert = end
+    ? end.slice(0, 7) +
+      "-" +
+      (new Date(end).getDate() - 1).toString() +
+      "T24:00"
+    : null;
   return endDayConvert;
 };

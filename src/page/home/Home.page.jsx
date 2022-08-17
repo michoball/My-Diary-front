@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DefaultCalendar } from "../../utill/calendar/Calendar.config";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCalendarEvents } from "../../features/calendar/calendar.select";
 import { selectRecentOrderMemoLists } from "../../features/memo/memo.select";
 import MemoCard from "../../component/memo/memoCard/MemoCard";
@@ -22,10 +22,14 @@ import {
   LoginContainer,
 } from "./Home.styles";
 import SignInForm from "../../component/auth/sign-in/SignIn";
+import { selectUserReducer } from "../../features/user/user.select";
+import { logout, reset } from "../../features/user/userSlice";
 
 function Home() {
+  const dispatch = useDispatch();
   const eventList = useSelector(selectCalendarEvents);
   const memoLists = useSelector(selectRecentOrderMemoLists);
+  const { user } = useSelector(selectUserReducer);
   const [memoCards, setMemoCards] = useState(HOME_DEFAULT_MEMO);
 
   useEffect(() => {
@@ -33,6 +37,11 @@ function Home() {
       setMemoCards(memoLists.slice(0, 7));
     }
   }, []);
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    dispatch(reset());
+  };
 
   return (
     <HomeContainer>
@@ -87,7 +96,14 @@ function Home() {
               </NavLink>
             </NavContainer>
             <LoginContainer>
-              <SignInForm />
+              {user ? (
+                <div>
+                  <h2>{`Hello~ ${user.displayName}`}</h2>
+                  <button onClick={logoutHandler}>Log out</button>
+                </div>
+              ) : (
+                <SignInForm />
+              )}
             </LoginContainer>
           </NavNLoginContainer>
         </RightSideContainer>

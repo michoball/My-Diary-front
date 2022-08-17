@@ -61,7 +61,7 @@ function MyCalendar() {
       calendarActions.addEvent({
         id,
         start: startStr,
-        end: EndDayConvertor(endStr),
+        end: allDay ? EndDayConvertor(endStr) : endStr,
         allDay: allDay,
         ...advenceData,
       })

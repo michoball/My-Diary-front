@@ -22,7 +22,7 @@ import {
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
-  groupId: "",
+  labelId: "",
   title: "",
   start: "",
   end: "",
@@ -73,7 +73,16 @@ function BasicInput() {
   };
 
   const defaultSetting = () => {
-    setBasicEventData(defaultEvent);
+    setBasicEventData((prev) => {
+      return {
+        ...prev,
+        title: "",
+        start: "",
+        end: "",
+        eventStartTime: "",
+        eventEndTime: "",
+      };
+    });
   };
 
   const submitHanbler = (e) => {
@@ -82,8 +91,12 @@ function BasicInput() {
     if (title === "" || start === "" || end === "") {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
-    const startSet = allDay ? start : start + "T" + eventStartTime;
-    const endSet = allDay ? end + "T24:00" : end + "T" + eventEndTime;
+    const startSet = allDay
+      ? start
+      : start + "T" + (eventStartTime ? eventStartTime : "00:00");
+    const endSet = allDay
+      ? end + "T24:00"
+      : end + "T" + (eventEndTime ? eventEndTime : "00:00");
     try {
       dispatch(
         calendarActions.addEvent({

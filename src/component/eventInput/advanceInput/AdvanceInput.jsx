@@ -23,11 +23,11 @@ import { customLabelActions } from "../../../features/customLabel/customLabelSli
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const advanceEvent = {
-  groupId: "",
-  title: "",
+  labelId: "",
   color: "#f44336",
   allDay: false,
   daysOfWeek: [],
+  title: "",
   startRecur: "",
   endRecur: "",
   startTime: "",
@@ -92,7 +92,16 @@ function AdvanceInput() {
   };
 
   const defaultSetting = () => {
-    setAdvancedEventData(advanceEvent);
+    setAdvancedEventData((prev) => {
+      return {
+        ...prev,
+        title: "",
+        startRecur: "",
+        endRecur: "",
+        startTime: "",
+        endTime: "",
+      };
+    });
   };
 
   const submitHanbler = (e) => {
@@ -104,32 +113,19 @@ function AdvanceInput() {
       endRecur === "" ||
       daysOfWeek.length === 0
     ) {
-      console.log(
-        "title : ",
-        title,
-        "sRecur: ",
-        startRecur,
-        "eRecur :",
-        endRecur,
-        "dayofweek : ",
-        daysOfWeek
-      );
       return alert("일정에 필요한 정보가 부족합니다.");
     }
-    try {
-      dispatch(
-        calendarActions.addEvent({
-          ...advancedEventData,
-          id: uuidv4(),
-          endRecur: endRecur + "T24:00",
-        })
-      );
-    } catch (error) {
-      alert("something went wrong~!", error);
-    }
+    dispatch(
+      calendarActions.addEvent({
+        ...advancedEventData,
+        id: uuidv4(),
+        endRecur: endRecur + "T24:00",
+      })
+    );
+
     defaultSetting();
-    dispatch(customLabelActions.clearLabel());
-    dispatch(calendarActions.clearSelectEvent());
+    // dispatch(customLabelActions.clearLabel());
+    // dispatch(calendarActions.clearSelectEvent());
     alert("정상적으로 일정이 만들어졌습니다. ");
   };
 

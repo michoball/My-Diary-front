@@ -35,7 +35,7 @@ const CategoryView = () => {
         <ListWrapper>
           <ListContainer>
             {labelLists.map((lists) => {
-              return <CategoryList key={lists.groupId} lists={lists} />;
+              return <CategoryList key={lists.labelId} lists={lists} />;
             })}
           </ListContainer>
         </ListWrapper>

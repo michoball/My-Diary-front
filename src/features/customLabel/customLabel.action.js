@@ -1,5 +1,5 @@
 const findLabel = (labels, id) => {
-  return labels.find((label) => label.groupId === id);
+  return labels.find((label) => label.labelId === id);
 };
 
 export const customLabelAction = {
@@ -22,7 +22,7 @@ export const customLabelAction = {
       return;
     }
     state.labelLists = state.labelLists.filter(
-      (label) => label.groupId !== action.payload
+      (label) => label.labelId !== action.payload
     );
   },
   clearLabel: (state) => {

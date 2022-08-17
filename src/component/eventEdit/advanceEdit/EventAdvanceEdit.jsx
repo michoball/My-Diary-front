@@ -24,7 +24,7 @@ import { DayConvertor } from "../../../utill/timeConvertor";
 
 const advanceEvent = {
   id: "",
-  groupId: "",
+  labelId: "",
   title: "",
   color: "#f44336",
   allDay: false,
@@ -48,7 +48,7 @@ function EventAdvanceEdit({ confirm }) {
     color,
     allDay,
     daysOfWeek,
-    groupId,
+    labelId,
   } = advancedEventData;
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
@@ -68,7 +68,7 @@ function EventAdvanceEdit({ confirm }) {
 
   useEffect(() => {
     if (selectedLabel) {
-      if (selectedLabel.groupId === groupId) {
+      if (selectedLabel.labelId === labelId) {
         return;
       }
       if (selectedLabel.daysOfWeek) {
@@ -85,7 +85,7 @@ function EventAdvanceEdit({ confirm }) {
         return alert("정기 일정을 일일 일정으로 바꿀 수 없습니다.");
       }
     }
-  }, [selectedLabel, groupId, dispatch]);
+  }, [selectedLabel, labelId, dispatch]);
 
   const selectedDay = useCallback((day) => {
     console.log(day);

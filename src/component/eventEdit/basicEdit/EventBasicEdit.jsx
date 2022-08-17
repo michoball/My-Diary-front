@@ -24,7 +24,7 @@ import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
   id: "",
-  groupId: "",
+  labelId: "",
   title: "",
   start: "",
   end: "",
@@ -50,12 +50,12 @@ function EventBasicEdit({ confirm }) {
     allDay,
     eventStartTime,
     eventEndTime,
-    groupId,
+    labelId,
   } = editEvent;
 
   // // 편집할 input에 따른 label 태그 바꾸기
   useEffect(() => {
-    if (selectEvent.groupId === "Ban") {
+    if (selectEvent.labelId === "Ban") {
       setIsDisable(true);
     }
     if (selectEvent.allDay) {
@@ -79,7 +79,7 @@ function EventBasicEdit({ confirm }) {
   // label 태그가 바뀜에 따른 editEvent state값 변화
   useEffect(() => {
     if (selectedLabel) {
-      if (selectedLabel.groupId === groupId) {
+      if (selectedLabel.labelId === labelId) {
         return;
       }
       if (!selectedLabel.daysOfWeek) {
@@ -94,7 +94,7 @@ function EventBasicEdit({ confirm }) {
         return alert("일일 일정을 정기 일정으로 바꿀 수 없습니다.");
       }
     }
-  }, [selectedLabel, groupId, dispatch]);
+  }, [selectedLabel, labelId, dispatch]);
 
   const onChangeHandler = (e) => {
     setEditEvent((prev) => {
@@ -110,7 +110,7 @@ function EventBasicEdit({ confirm }) {
   const editSubmitHandler = (e) => {
     e.preventDefault();
 
-    if ((groupId !== "Ban" && title === "") || start === "" || end === "") {
+    if ((labelId !== "Ban" && title === "") || start === "" || end === "") {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     const startSet = allDay ? start : start + "T" + eventStartTime;
@@ -152,7 +152,7 @@ function EventBasicEdit({ confirm }) {
             name="title"
             value={title}
             onChange={onChangeHandler}
-            disabled={groupId === "Ban" ? true : false}
+            disabled={labelId === "Ban" ? true : false}
           />
 
           <FormInput

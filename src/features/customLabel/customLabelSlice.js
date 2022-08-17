@@ -3,19 +3,19 @@ import { customLabelAction } from "./customLabel.action";
 
 const initialLabels = [
   {
-    groupId: "1215gq4raf",
+    labelId: "1215gq4raf",
     groupTitle: "Defalut",
     allDay: false,
     color: "#ffeb3b",
   },
   {
-    groupId: "12afaef3",
+    labelId: "12afaef3",
     groupTitle: "Job",
     allDay: true,
     color: "#4caf50",
   },
   {
-    groupId: "1hwhw2",
+    labelId: "1hwhw2",
     color: "#f44336",
     groupTitle: "regular Work",
     daysOfWeek: ["0"],
@@ -24,7 +24,8 @@ const initialLabels = [
 
   {
     groupTitle: "family event",
-    groupId: "afea4",
+    labelId: "afea4",
+    daysOfWeek: null,
     color: "#2196f3",
     allDay: false,
   },

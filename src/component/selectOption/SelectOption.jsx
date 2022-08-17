@@ -28,7 +28,7 @@ function SelectOption({ label }) {
   }, [selectedLabel, label.groupTitle]);
 
   return (
-    <option value={label.groupId} ref={optionRef}>
+    <option value={label.labelId} ref={optionRef}>
       {label.groupTitle}
     </option>
   );

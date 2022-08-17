@@ -19,7 +19,7 @@ function SelectButton() {
       <select onChange={labelChangeHandler}>
         <option value="">--label option--</option>
         {listOfLabels.map((label) => {
-          return <SelectOption key={label.groupId} label={label} />;
+          return <SelectOption key={label.labelId} label={label} />;
         })}
       </select>
     </SelectContainer>
