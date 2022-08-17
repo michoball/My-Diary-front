@@ -24,7 +24,7 @@ import {
 
 const banEvent = {
   id: "",
-  groupId: "Ban",
+  labelId: "Ban",
   start: "",
   end: "",
   color: "#ff9f89",

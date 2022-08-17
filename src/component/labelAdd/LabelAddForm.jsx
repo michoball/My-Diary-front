@@ -22,7 +22,7 @@ import Modal from "../modal/Modal";
 import { customLabelActions } from "../../features/customLabel/customLabelSlice";
 
 const defaultLabel = {
-  groupTitle: "",
+  labelTitle: "",
   color: "#f44336",
   allDay: false,
 };
@@ -35,7 +35,7 @@ const LabelAddForm = ({ onConfirm }) => {
   const [isAdvanced, setIsAdvanced] = useState(false);
   const dispatch = useDispatch();
 
-  const { groupTitle, color, allDay } = newLabel;
+  const { labelTitle, color, allDay } = newLabel;
 
   const inputChangeHandler = (e) => {
     setNewLabel((prev) => {
@@ -65,7 +65,7 @@ const LabelAddForm = ({ onConfirm }) => {
   const submitHanbler = (e) => {
     e.preventDefault();
 
-    if (groupTitle === "") {
+    if (labelTitle === "") {
       return alert("그룹명을 입력하시오");
     }
 
@@ -75,7 +75,7 @@ const LabelAddForm = ({ onConfirm }) => {
         : newLabel;
 
       dispatch(
-        customLabelActions.addLabel({ groupId: uuidv4(), ...finalLabel })
+        customLabelActions.addLabel({ labelId: uuidv4(), ...finalLabel })
       );
     } catch (error) {
       alert("Can not make that Label", error);
@@ -104,9 +104,9 @@ const LabelAddForm = ({ onConfirm }) => {
           <FormInput
             label="그룹명"
             type="text"
-            name="groupTitle"
-            value={groupTitle}
-            className="groupTitle"
+            name="labelTitle"
+            value={labelTitle}
+            className="labelTitle"
             onChange={inputChangeHandler}
           />
 

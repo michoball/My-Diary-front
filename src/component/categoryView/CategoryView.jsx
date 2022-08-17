@@ -27,7 +27,7 @@ const CategoryView = () => {
       )}
       <CategoryViewContainer>
         <TitleContainer>
-          <h2>Categories</h2>
+          <h2>Msy labels</h2>
           <CategoryAddBtn onClick={AddLabelHandler}>
             <PlusCircle />
           </CategoryAddBtn>

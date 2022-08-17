@@ -12,24 +12,24 @@ function SelectOption({ label }) {
     if (selectEvent) {
       if (
         selectedLabel === null &&
-        selectEvent.groupTitle === label.groupTitle
+        selectEvent.labelTitle === label.labelTitle
       ) {
         const optionSelect = optionRef.current;
         optionSelect.selected = true;
       }
     }
-  }, [selectEvent, selectedLabel, label.groupTitle]);
+  }, [selectEvent, selectedLabel, label.labelTitle]);
 
   useEffect(() => {
-    if (selectedLabel && selectedLabel.groupTitle === label.groupTitle) {
+    if (selectedLabel && selectedLabel.labelTitle === label.labelTitle) {
       const optionSelect = optionRef.current;
       optionSelect.selected = true;
     }
-  }, [selectedLabel, label.groupTitle]);
+  }, [selectedLabel, label.labelTitle]);
 
   return (
     <option value={label.labelId} ref={optionRef}>
-      {label.groupTitle}
+      {label.labelTitle}
     </option>
   );
 }

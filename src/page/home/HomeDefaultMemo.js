@@ -68,8 +68,8 @@ const yearMonthMaker = () => {
 
 export const HOME_DEFAULT_EVENT = [
   {
-    groupId: "12afaef3",
-    groupTitle: "Job",
+    labelId: "12afaef3",
+    labelTitle: "Job",
     id: "123",
     title: "Meet my frends",
     allDay: true,
@@ -79,8 +79,8 @@ export const HOME_DEFAULT_EVENT = [
   },
 
   {
-    groupTitle: "family event",
-    groupId: "afea4",
+    labelTitle: "family event",
+    labelId: "afea4",
     id: "afea4q4t4g",
     title: "Throw party",
     allDay: false,
@@ -90,7 +90,7 @@ export const HOME_DEFAULT_EVENT = [
   },
 
   {
-    groupId: "",
+    labelId: "",
     id: "133584fasefa-arnla",
     title: "",
     start: yearMonthMaker() + "-26T00:00",
@@ -105,8 +105,8 @@ export const HOME_DEFAULT_EVENT = [
     id: "12",
     title: "Basketball club",
     color: "#f44336",
-    groupId: "1hwhw2",
-    groupTitle: "regular Work",
+    labelId: "1hwhw2",
+    labelTitle: "regular Work",
     allDay: true,
 
     // 정기 만의 부분
@@ -117,7 +117,7 @@ export const HOME_DEFAULT_EVENT = [
   {
     id: "12abbag64",
     title: "Meeting",
-    groupId: "blueEvents",
+    labelId: "blueEvents",
     color: "#ff9f89",
 
     daysOfWeek: ["4"],

@@ -23,7 +23,7 @@ const CategoryList = ({ lists }) => {
   };
 
   const deleteLabelHandler = () => {
-    if (window.confirm("Are you sure? ")) {
+    if (window.confirm("정말 제거하시겠습니까? ")) {
       dispatch(customLabelActions.removeLabel(lists.labelId));
       setIsOpenModal(!isOpenModal);
     }
@@ -39,7 +39,7 @@ const CategoryList = ({ lists }) => {
           <ListColor>
             <BookmarkCheckFill color={lists.color} />
           </ListColor>
-          <span>{lists.groupTitle}</span>
+          <span>{lists.labelTitle}</span>
 
           <ListInfoContainer>
             <span>{lists.allDay && "종일"}</span>

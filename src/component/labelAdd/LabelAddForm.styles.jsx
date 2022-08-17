@@ -16,7 +16,7 @@ export const LabelInputForm = styled.form`
   padding: 10px;
   gap: 20px;
 
-  .groupTitle {
+  .labelTitle {
     width: 100%;
   }
 `;

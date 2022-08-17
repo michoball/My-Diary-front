@@ -6,7 +6,7 @@ export const customLabelAction = {
   addLabel: (state, action) => {
     const existingLabel = findLabel(
       state.labelLists,
-      action.payload.groupTitle
+      action.payload.labelTitle
     );
     if (existingLabel) {
       alert("You already have the same group name. Please use another name");

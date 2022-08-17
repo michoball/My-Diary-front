@@ -4,26 +4,26 @@ import { customLabelAction } from "./customLabel.action";
 const initialLabels = [
   {
     labelId: "1215gq4raf",
-    groupTitle: "Defalut",
+    labelTitle: "Defalut",
     allDay: false,
     color: "#ffeb3b",
   },
   {
     labelId: "12afaef3",
-    groupTitle: "Job",
+    labelTitle: "Job",
     allDay: true,
     color: "#4caf50",
   },
   {
     labelId: "1hwhw2",
     color: "#f44336",
-    groupTitle: "regular Work",
+    labelTitle: "regular Work",
     daysOfWeek: ["0"],
     allDay: true,
   },
 
   {
-    groupTitle: "family event",
+    labelTitle: "family event",
     labelId: "afea4",
     daysOfWeek: null,
     color: "#2196f3",
