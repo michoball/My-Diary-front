@@ -12,7 +12,7 @@ import {
 } from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   PlusCircle,
   Search,
@@ -21,7 +21,7 @@ import {
   Collection,
 } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
-import { memoActions } from "../../../features/memo/memoSlice";
+import { clearSelectMemo } from "../../../features/memo/memoSlice";
 
 import {
   selectColorValue,
@@ -36,7 +36,8 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(memoActions.clearSelectMemo());
+    dispatch(clearSelectMemo());
+    console.log(majorMemo, memoColorList);
   }, [dispatch]);
 
   return (
@@ -81,7 +82,7 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
           </span>
           <MemoContainer>
             {majorMemo.map((memo) => {
-              return <MajorMemo key={memo.id} memo={memo} />;
+              return <MajorMemo key={memo._id} memo={memo} />;
             })}
           </MemoContainer>
         </MajorMemoContainer>

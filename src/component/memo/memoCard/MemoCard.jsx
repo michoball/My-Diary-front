@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { memoActions } from "../../../features/memo/memoSlice";
+import { setSelectMemo } from "../../../features/memo/memoSlice";
 import MemoSmallCard from "../../../UI/memoSmallCard/MemoSmallCard";
 import MemoPreView from "../memoPreView/MemoPreView";
 import { MemoCardContainer } from "./MemoCard.styles";
@@ -21,7 +21,7 @@ function MemoCard({ memoInfo, disabled }) {
   }, [memoInfo]);
 
   const cardClickHandler = () => {
-    dispatch(memoActions.selectMemo(memoInfo.id));
+    dispatch(setSelectMemo(memoInfo._id));
     setOpenMemoView(!openMemoView);
   };
 

@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectMemo } from "../../../features/memo/memo.select";
 import { BtnContainer } from "./MemoPreView.styles";
 import { useNavigate } from "react-router-dom";
-import { memoActions } from "../../../features/memo/memoSlice";
+import { clearSelectMemo } from "../../../features/memo/memoSlice";
+import { deleteMemo } from "../../../features/memo/memo.thunk";
 import { PencilSquare, Trash3, X } from "react-bootstrap-icons";
 import Modal from "../../modal/Modal";
 import Button from "../../../UI/button/button";
@@ -24,18 +25,18 @@ function MemoPreView({ onConfirm }) {
 
   const deleteHandler = () => {
     if (window.confirm("메모를 지우시겠습니까?")) {
-      dispatch(memoActions.removeMemo(selectedMemo.id));
+      dispatch(deleteMemo(selectedMemo._id));
       onConfirm();
     }
   };
 
   const OffModalHandler = () => {
-    dispatch(memoActions.clearSelectMemo());
+    dispatch(clearSelectMemo());
     onConfirm();
   };
 
   const goToEditorHandler = () => {
-    navigate(`/memo/editor/${selectedMemo.id}`);
+    navigate(`/memo/editor/${selectedMemo._id}`);
   };
 
   return (
@@ -47,7 +48,7 @@ function MemoPreView({ onConfirm }) {
         <MemoViewCard
           title={selectedMemo?.title}
           major={selectedMemo?.major}
-          date={DayConvertor(selectedMemo?.date)}
+          date={DayConvertor(selectedMemo?.updatedAt)}
           color={selectedMemo?.color}
           ref={MemoViewRef}
         >

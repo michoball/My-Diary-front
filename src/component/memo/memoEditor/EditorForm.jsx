@@ -8,8 +8,7 @@ import htmlToDraft from "html-to-draftjs";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMemo } from "../../../features/memo/memo.select";
-import { memoActions } from "../../../features/memo/memoSlice";
-import { v4 as uuidv4 } from "uuid";
+import { setSelectMemo } from "../../../features/memo/memoSlice";
 import { DayConvertor } from "../../../utill/timeConvertor";
 
 import Modal from "../../modal/Modal";
@@ -28,7 +27,7 @@ import MemoEditSidebar from "../memoEditorSidebar/MemoEditSidebar";
 import { Star, StarFill } from "react-bootstrap-icons";
 
 const defaultMemoInfo = {
-  id: "",
+  _id: "",
   title: "",
   date: new Date().toISOString(),
   color: "#ffeb3b",
@@ -51,8 +50,9 @@ const EditorForm = () => {
 
   useEffect(() => {
     if (params.editmemoId) {
-      dispatch(memoActions.selectMemo(params.editmemoId));
+      dispatch(setSelectMemo(params.editmemoId));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 처음 시작할 때 메모있으면 editor와 preview에 내용 넣기
@@ -81,10 +81,6 @@ const EditorForm = () => {
         // });
         //---------------------------------------------------------------------------//
       }
-    } else {
-      setMemoInfo((prev) => {
-        return { ...prev, id: uuidv4() };
-      });
     }
   }, [selectedMemo]);
 

@@ -22,27 +22,44 @@ import {
   LoginContainer,
 } from "./Home.styles";
 import SignInForm from "../../component/auth/sign-in/SignIn";
-import { selectUserReducer } from "../../features/user/user.select";
-import { logout, reset } from "../../features/user/userSlice";
+import { selectUser } from "../../features/user/user.select";
+import { reset } from "../../features/user/userSlice";
+import { logout } from "../../features/user/user.thunk";
+import { getMemos } from "../../features/memo/memo.thunk";
+import { memoReset } from "../../features/memo/memoSlice";
 
 function Home() {
   const dispatch = useDispatch();
   const eventList = useSelector(selectCalendarEvents);
   const memoLists = useSelector(selectRecentOrderMemoLists);
-  const { user } = useSelector(selectUserReducer);
-  const [memoCards, setMemoCards] = useState(HOME_DEFAULT_MEMO);
+  const user = useSelector(selectUser);
+  const [memoCards, setMemoCards] = useState([]);
 
   useEffect(() => {
-    if (memoLists) {
-      setMemoCards(memoLists.slice(0, 7));
+    if (user) {
+      dispatch(getMemos());
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  useEffect(() => {
+    if (memoLists.length !== 0) {
+      console.log(memoLists.length);
+      changeMemoList(memoLists);
+    } else {
+      changeMemoList(HOME_DEFAULT_MEMO);
+    }
+  }, [memoLists]);
 
   const logoutHandler = () => {
     dispatch(logout());
     dispatch(reset());
+    dispatch(memoReset());
   };
 
+  const changeMemoList = (list) => {
+    setMemoCards(list.length > 7 ? list.slice(0, 7) : list);
+  };
   return (
     <HomeContainer>
       <HomeNavContainer>
@@ -75,7 +92,7 @@ function Home() {
               {memoCards.map((memoList) => {
                 return (
                   <MemoCard
-                    key={memoList.id}
+                    key={memoList._id}
                     memoInfo={memoList}
                     disabled={true}
                   />

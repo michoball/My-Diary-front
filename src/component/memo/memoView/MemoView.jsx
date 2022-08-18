@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MemoListViewContainer,
   MainViewContainer,
@@ -7,16 +7,27 @@ import {
   MemosWrapper,
   MemoViewHeader,
 } from "./MemoView.styles";
-import { useSelector } from "react-redux";
-import { selectRecentOrderMemoLists } from "../../../features/memo/memo.select";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectMemoLoading,
+  selectRecentOrderMemoLists,
+} from "../../../features/memo/memo.select";
 import MemoCard from "../memoCard/MemoCard";
 import MemoViewSidebar from "../MemoViewSidebar/MemoViewSidebar";
 import Loading from "../../../UI/loading/Loading";
+import { getMemos } from "../../../features/memo/memo.thunk";
 
 function MemoView() {
-  const memoLists = useSelector(selectRecentOrderMemoLists);
+  const dispatch = useDispatch();
+  const orderedMemoLists = useSelector(selectRecentOrderMemoLists);
+  const memoIsLoading = useSelector(selectMemoLoading);
   const [searchWord, setSearchWord] = useState("");
-  const [memoCards, setMemoCards] = useState(memoLists);
+  const [memoCards, setMemoCards] = useState(orderedMemoLists);
+
+  useEffect(() => {
+    dispatch(getMemos());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const serachHandler = (e) => {
     setSearchWord(e.target.value);
@@ -24,20 +35,22 @@ function MemoView() {
 
   useEffect(() => {
     const searchTerm = setTimeout(() => {
-      setMemoCards(memoLists.filter((memo) => memo.title.includes(searchWord)));
+      setMemoCards(
+        orderedMemoLists.filter((memo) => memo.title.includes(searchWord))
+      );
     }, 500);
 
     return () => {
       clearTimeout(searchTerm);
     };
-  }, [searchWord, memoLists]);
+  }, [searchWord, orderedMemoLists]);
 
   const selectColorHandler = (color) => {
-    setMemoCards(memoLists.filter((memo) => memo.color === color));
+    setMemoCards(orderedMemoLists.filter((memo) => memo.color === color));
   };
 
   const memoViewResetHandler = () => {
-    setMemoCards(memoLists);
+    setMemoCards(orderedMemoLists);
   };
   return (
     <>
@@ -55,11 +68,15 @@ function MemoView() {
             <h1>Memo Lists</h1>
           </MemoViewHeader>
           <MemosContainer>
-            <MemosWrapper>
-              {memoCards.map((memoList) => {
-                return <MemoCard key={memoList.id} memoInfo={memoList} />;
-              })}
-            </MemosWrapper>
+            {memoIsLoading ? (
+              <Loading />
+            ) : (
+              <MemosWrapper>
+                {memoCards.map((memoList) => {
+                  return <MemoCard key={memoList._id} memoInfo={memoList} />;
+                })}
+              </MemosWrapper>
+            )}
           </MemosContainer>
         </MemoListViewContainer>
       </MainViewContainer>

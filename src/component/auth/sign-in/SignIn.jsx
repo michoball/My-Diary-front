@@ -4,7 +4,8 @@ import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login, reset } from "../../../features/user/userSlice";
+import { login } from "../../../features/user/user.thunk";
+import { reset } from "../../../features/user/userSlice";
 import { selectUserReducer } from "../../../features/user/user.select";
 import {
   ButtonsContainer,

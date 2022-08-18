@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
 import Button from "../../../UI/button/button";
 import { ReactComponent as Mydiary } from "../../../assets/Logo.svg";
-import { register, reset } from "../../../features/user/userSlice";
+import { reset } from "../../../features/user/userSlice";
+import { register } from "../../../features/user/user.thunk";
 import { selectUserReducer } from "../../../features/user/user.select";
 
 import { useDispatch, useSelector } from "react-redux";

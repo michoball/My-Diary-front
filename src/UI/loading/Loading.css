@@ -18,7 +18,7 @@
   left: -9999px;
   width: 10px;
   height: 10px;
-  border-radius: 5px;
+  border-radius: 50%;
   background-color: #f2727d;
   color: #f2727d;
   box-shadow: 9999px 0 0 -5px #f2727d;
@@ -34,7 +34,7 @@
   top: 0;
   width: 10px;
   height: 10px;
-  border-radius: 5px;
+  border-radius: 50%;
   background-color: #f2727d;
   color: #f2727d;
 }

@@ -15,21 +15,20 @@ import {
   Palette,
   Trash3,
 } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-import { memoActions } from "../../../features/memo/memoSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteMemo } from "../../../features/memo/memo.thunk";
+import { addMemo } from "../../../features/memo/memo.action";
 import { useNavigate } from "react-router-dom";
+import { selectMemoLists } from "../../../features/memo/memo.select";
 
 function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
+  const memoLists = useSelector(selectMemoLists);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const saveMemoHandler = () => {
     try {
-      dispatch(
-        memoActions.addMemo({
-          ...memoInfo,
-          date: new Date().toISOString(),
-        })
-      );
+      dispatch(addMemo(memoLists, memoInfo));
       alert("메모가 저장되었습니다!");
       navigate("/memo");
     } catch (error) {
@@ -45,7 +44,7 @@ function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
   const removeMemoHandler = () => {
     try {
       if (window.confirm("메모를 지우시겠습니까?")) {
-        dispatch(memoActions.removeMemo(memoInfo.id));
+        dispatch(deleteMemo(memoInfo._id));
         navigate("/memo");
       }
     } catch (error) {

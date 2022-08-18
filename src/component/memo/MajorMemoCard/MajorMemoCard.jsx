@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { memoActions } from "../../../features/memo/memoSlice";
+import { setSelectMemo } from "../../../features/memo/memoSlice";
 
 import MemoPreView from "../memoPreView/MemoPreView";
 import {
@@ -20,7 +20,7 @@ function MajorMemo({ memo }) {
   }, [memo]);
 
   const cardClickHandler = () => {
-    dispatch(memoActions.selectMemo(memo.id));
+    dispatch(setSelectMemo(memo.id));
     setOpenMemoView(!openMemoView);
   };
 

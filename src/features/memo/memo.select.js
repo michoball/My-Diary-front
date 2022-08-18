@@ -8,6 +8,12 @@ export const selectMemoLists = createSelector(
     return selectMemoListsSlice.memoLists;
   }
 );
+export const selectMemoLoading = createSelector(
+  [selectMemoListsReducer],
+  (selectMemoListsSlice) => {
+    return selectMemoListsSlice.isLoading;
+  }
+);
 
 export const selectRecentOrderMemoLists = createSelector(
   [selectMemoLists],
