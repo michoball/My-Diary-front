@@ -3,8 +3,8 @@ export const HOME_DEFAULT_MEMO = [
     _id: "Afa124te4t4",
     title: "You can",
     date: "2022-08-05T01:00:00",
-    color: "#f44336",
-    memo: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit pariatur eius ipsum debitis. Asperiores qu_idem obcaecati ullam suscipit vitae! Illo sint tenetur eveniet rem adipisci veritatis optio mollitia. Nemo quam repellat blanditiis distinctio, dicta placeat expedita possimus eaque perferendis unde temporibus dolorum corrupti delectus voluptate, deserunt repellendus, beatae repudiandae! Nihil?,</p>`,
+    color: "#ffeb3b",
+    memo: `<p>Make your own account and please enjoy my Diary App ~^^</p>`,
     major: true,
   },
   {
@@ -53,8 +53,8 @@ export const HOME_DEFAULT_MEMO = [
     _id: "Afhh9ik4t4",
     title: "first~!!",
     date: "2022-04-05T22:20:00",
-    color: "#ffeb3b",
-    memo: `<p>Make your own account and please enjoy my Diary App ~^^</p>`,
+    color: "#f44336",
+    memo: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit pariatur eius ipsum debitis. Asperiores qu_idem obcaecati ullam suscipit vitae! Illo sint tenetur eveniet rem adipisci veritatis optio mollitia. Nemo quam repellat blanditiis distinctio, dicta placeat expedita possimus eaque perferendis unde temporibus dolorum corrupti delectus voluptate, deserunt repellendus, beatae repudiandae! Nihil?,</p>`,
     major: true,
   },
 ];

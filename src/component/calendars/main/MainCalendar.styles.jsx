@@ -17,6 +17,7 @@ export const CalendarView = styled.div`
   position: relative;
   padding: 20px 10px;
   display: flex;
+
   width: 100%;
   height: 100%;
   background-color: white;
@@ -73,7 +74,8 @@ export const CalendarContainer = styled.div`
   }
 
   table .fc-col-header .fc-col-header-cell {
-    height: 50px;
+    padding: 10px 0;
+    height: 35px;
     color: #ff3d3d;
     .fc-col-header-cell-cushion {
       color: #ff3d3d;
@@ -91,7 +93,6 @@ export const CalendarContainer = styled.div`
 
   .fc-daygrid-day {
     &.fc-day {
-      /* cursor: pointer; */
       :hover {
         background-color: rgba(187, 187, 187, 0.4);
       }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import FormInput from "../../UI/formInput/FormInput";
 
@@ -19,7 +19,9 @@ import { Check2Circle, X } from "react-bootstrap-icons";
 import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
 
 import Modal from "../modal/Modal";
-import { customLabelActions } from "../../features/customLabel/customLabelSlice";
+import { addLabel } from "../../features/label/label.action";
+import { selectLabelLists } from "../../features/label/label.select";
+import { getLabels } from "../../features/label/label.thunk";
 
 const defaultLabel = {
   labelTitle: "",
@@ -31,6 +33,7 @@ const abvancedLabel = {
 };
 
 const LabelAddForm = ({ onConfirm }) => {
+  const labelLists = useSelector(selectLabelLists);
   const [newLabel, setNewLabel] = useState(defaultLabel);
   const [isAdvanced, setIsAdvanced] = useState(false);
   const dispatch = useDispatch();
@@ -68,18 +71,13 @@ const LabelAddForm = ({ onConfirm }) => {
     if (labelTitle === "") {
       return alert("그룹명을 입력하시오");
     }
+    const finalLabel = isAdvanced
+      ? { ...newLabel, ...abvancedLabel }
+      : newLabel;
 
-    try {
-      const finalLabel = isAdvanced
-        ? { ...newLabel, ...abvancedLabel }
-        : newLabel;
-
-      dispatch(
-        customLabelActions.addLabel({ labelId: uuidv4(), ...finalLabel })
-      );
-    } catch (error) {
-      alert("Can not make that Label", error);
-    }
+    dispatch(addLabel(labelLists, finalLabel)).then(() =>
+      dispatch(getLabels())
+    );
 
     onConfirm();
     defaultSetting();

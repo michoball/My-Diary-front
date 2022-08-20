@@ -33,11 +33,9 @@ const SignInForm = () => {
     if (isError) {
       alert(`Something wrong ~  ${message}`);
     }
-
     //Redirect when logged in
     if (isSuccess) {
       alert(`login success ~ `);
-
       // navigate("/");
     }
     dispatch(reset());

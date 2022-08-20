@@ -15,6 +15,7 @@ import {
 import MemoCard from "../memoCard/MemoCard";
 import MemoViewSidebar from "../MemoViewSidebar/MemoViewSidebar";
 import Loading from "../../../UI/loading/Loading";
+
 import { getMemos } from "../../../features/memo/memo.thunk";
 
 function MemoView() {

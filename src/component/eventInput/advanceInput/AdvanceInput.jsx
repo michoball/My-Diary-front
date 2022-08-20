@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calendarActions } from "../../../features/calendar/calendarSlice";
-import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
+import { addEvent } from "../../../features/calendar/calendar.action";
+import { selectSelectedLabel } from "../../../features/label/label.select";
 
 import FormInput from "../../../UI/formInput/FormInput";
 import DayPicker from "../../dayPicker/DayPicker";
-import { v4 as uuidv4 } from "uuid";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
@@ -19,14 +18,14 @@ import {
   BasicInputBg,
 } from "../EventInput.styles";
 import { Check2Circle } from "react-bootstrap-icons";
-import { customLabelActions } from "../../../features/customLabel/customLabelSlice";
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
+import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
 
 const advanceEvent = {
-  labelId: "",
+  labelTitle: "",
   color: "#f44336",
   allDay: false,
-  daysOfWeek: [],
+  daysOfWeek: null,
   title: "",
   startRecur: "",
   endRecur: "",
@@ -49,6 +48,7 @@ function AdvanceInput() {
   } = advancedEventData;
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
+  const calendarEvent = useSelector(selectCalendarEvents);
 
   useEffect(() => {
     if (selectedLabel) {
@@ -61,13 +61,16 @@ function AdvanceInput() {
     setAdvancedEventData((prev) => {
       return {
         ...prev,
-        ...label,
+        labelTitle: label.labelTitle,
+        allDay: label.allDay,
+        labelId: label._id,
+        color: label.color,
+        daysOfWeek: label.daysOfWeek,
       };
     });
   };
 
   const selectedDay = useCallback((day) => {
-    console.log(day);
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });
@@ -116,16 +119,13 @@ function AdvanceInput() {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     dispatch(
-      calendarActions.addEvent({
+      addEvent(calendarEvent, {
         ...advancedEventData,
-        id: uuidv4(),
         endRecur: endRecur + "T24:00",
       })
     );
 
     defaultSetting();
-    // dispatch(customLabelActions.clearLabel());
-    // dispatch(calendarActions.clearSelectEvent());
     alert("정상적으로 일정이 만들어졌습니다. ");
   };
 

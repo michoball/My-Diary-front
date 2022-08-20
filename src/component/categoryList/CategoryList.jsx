@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { BookmarkCheckFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
-import { customLabelActions } from "../../features/customLabel/customLabelSlice";
+import { selectLabel } from "../../features/label/labelSlice";
+import { deleteLabel, getLabels } from "../../features/label/label.thunk";
 import EventInput from "../eventInput/EventInput";
 import {
   ListContainer,
@@ -18,14 +19,13 @@ const CategoryList = ({ lists }) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const dispatch = useDispatch();
   const openInputFormHandler = () => {
-    dispatch(customLabelActions.selectLabel(lists.labelId));
+    dispatch(selectLabel(lists._id));
     setIsOpenModal(!isOpenModal);
   };
 
   const deleteLabelHandler = () => {
     if (window.confirm("정말 제거하시겠습니까? ")) {
-      dispatch(customLabelActions.removeLabel(lists.labelId));
-      setIsOpenModal(!isOpenModal);
+      dispatch(deleteLabel(lists._id)).then(() => dispatch(getLabels()));
     }
   };
 

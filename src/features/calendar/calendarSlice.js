@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { calendarAction } from "./calendar.action";
+import {
+  createCalendar,
+  deleteCalendar,
+  updateCalendar,
+  getCalendars,
+} from "./calendar.thunk";
+
 const initialEvent = [
   //종일 이벤트
   {
@@ -58,31 +64,111 @@ const initialEvent = [
   {
     id: "12abbag64",
     title: "oaaa",
-    labelId: "blueEvents",
+    labelTitle: "blueEvents",
     color: "#ff9f89",
 
     daysOfWeek: ["4"],
-    startTime: "10:45:00",
-    endTime: "12:45:00",
+    startTime: "10:45",
+    endTime: "12:45",
     startRecur: "2022-08-01",
     endRecur: "2022-08-25T24:00",
   },
 ];
 
 const initialState = {
-  eventList: initialEvent,
+  eventList: [],
   selectedEvent: null,
-  loading: false,
-  error: null,
+  isLoading: false,
+  isError: false,
+  isSuccess: false,
+  message: "",
 };
 
 export const calendarSlice = createSlice({
   name: "calendar",
   initialState,
-  reducers: calendarAction,
-  extraReducers: (builder) => {},
+  reducers: {
+    selectEvent: (state, action) => {
+      const exitingEvent = state.eventList.find(
+        (event) => event._id === action.payload
+      );
+      return {
+        ...state,
+        selectedEvent: exitingEvent,
+      };
+    },
+    clearSelectEvent: (state) => {
+      return {
+        ...state,
+        selectedEvent: null,
+      };
+    },
+    calendarReset: (state) => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createCalendar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createCalendar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.eventList = state.eventList.concat(action.payload);
+      })
+      .addCase(createCalendar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCalendars.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCalendars.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.eventList = action.payload;
+      })
+      .addCase(getCalendars.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteCalendar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteCalendar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.eventList = state.eventList.filter(
+          (calendar) => calendar._id !== action.payload
+        );
+      })
+      .addCase(deleteCalendar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateCalendar.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateCalendar.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.eventList = state.eventList.map((calendar) =>
+          calendar._id === action.payload._id
+            ? { ...calendar, ...action.payload }
+            : calendar
+        );
+      })
+      .addCase(updateCalendar.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      });
+  },
 });
 
-export const calendarActions = calendarSlice.actions;
+export const { selectEvent, clearSelectEvent, calendarReset } =
+  calendarSlice.actions;
 
 export default calendarSlice.reducer;

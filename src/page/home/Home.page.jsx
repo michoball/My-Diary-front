@@ -27,6 +27,8 @@ import { reset } from "../../features/user/userSlice";
 import { logout } from "../../features/user/user.thunk";
 import { getMemos } from "../../features/memo/memo.thunk";
 import { memoReset } from "../../features/memo/memoSlice";
+import { calendarReset } from "../../features/calendar/calendarSlice";
+import { getCalendars } from "../../features/calendar/calendar.thunk";
 
 function Home() {
   const dispatch = useDispatch();
@@ -38,6 +40,7 @@ function Home() {
   useEffect(() => {
     if (user) {
       dispatch(getMemos());
+      dispatch(getCalendars());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
@@ -52,9 +55,11 @@ function Home() {
   }, [memoLists]);
 
   const logoutHandler = () => {
-    dispatch(logout());
-    dispatch(reset());
-    dispatch(memoReset());
+    dispatch(logout()).then(() => {
+      dispatch(reset());
+      dispatch(memoReset());
+      dispatch(calendarReset());
+    });
   };
 
   const changeMemoList = (list) => {
@@ -75,7 +80,7 @@ function Home() {
                 center: "title",
                 right: "next",
               }}
-              events={eventList ? eventList : HOME_DEFAULT_EVENT}
+              events={eventList.length !== 0 ? eventList : HOME_DEFAULT_EVENT}
               titleFormat={{
                 year: "numeric",
                 month: "long",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
+import { selectSelectedLabel } from "../../features/label/label.select";
 
 import AdvanceInput from "./advanceInput/AdvanceInput";
 import BasicInput from "./basicInput/BasicInput";
@@ -14,7 +14,7 @@ import {
   EventCreatorContainer,
   EventTogger,
 } from "./EventInput.styles";
-import { customLabelActions } from "../../features/customLabel/customLabelSlice";
+import { clearSelectLabel } from "../../features/label/labelSlice";
 
 function EventInput({ onConfirm }) {
   const [isRecurrEvent, setIsRecurrEvent] = useState(false);
@@ -32,7 +32,7 @@ function EventInput({ onConfirm }) {
   };
 
   const OffModalHandler = () => {
-    dispatch(customLabelActions.clearLabel());
+    dispatch(clearSelectLabel());
     onConfirm();
   };
 

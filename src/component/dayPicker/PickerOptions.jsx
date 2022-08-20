@@ -2,7 +2,7 @@ import { CheckBoxContainer } from "./DayPicker.styles";
 import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectEditEvent } from "../../features/calendar/calendar.select";
-import { selectSelectedLabel } from "../../features/customLabel/customLabel.select";
+import { selectSelectedLabel } from "../../features/label/label.select";
 
 const PickerOptions = ({ week, onCheckBoxChange, checkDefalut }) => {
   const [checked, setChecked] = useState(checkDefalut);

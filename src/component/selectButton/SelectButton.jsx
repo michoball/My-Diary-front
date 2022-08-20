@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCustomLabelLists } from "../../features/customLabel/customLabel.select";
-import { customLabelActions } from "../../features/customLabel/customLabelSlice";
+import { selectLabelLists } from "../../features/label/label.select";
+import { selectLabel } from "../../features/label/labelSlice";
 import { SelectContainer } from "./SelectButton.styles";
 import SelectOption from "../selectOption/SelectOption";
 
 function SelectButton() {
-  const listOfLabels = useSelector(selectCustomLabelLists);
+  const listOfLabels = useSelector(selectLabelLists);
   const dispatch = useDispatch();
 
   const labelChangeHandler = (e) => {
     const selectLabelId = e.target.value;
-    dispatch(customLabelActions.selectLabel(selectLabelId));
+    dispatch(selectLabel(selectLabelId));
   };
 
   return (
@@ -19,7 +19,7 @@ function SelectButton() {
       <select onChange={labelChangeHandler}>
         <option value="">--label option--</option>
         {listOfLabels.map((label) => {
-          return <SelectOption key={label.labelId} label={label} />;
+          return <SelectOption key={label._id} label={label} />;
         })}
       </select>
     </SelectContainer>

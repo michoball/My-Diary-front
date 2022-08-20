@@ -20,7 +20,7 @@ function MajorMemo({ memo }) {
   }, [memo]);
 
   const cardClickHandler = () => {
-    dispatch(setSelectMemo(memo.id));
+    dispatch(setSelectMemo(memo._id));
     setOpenMemoView(!openMemoView);
   };
 

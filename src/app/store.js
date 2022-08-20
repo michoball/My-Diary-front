@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import calendarReducer from "../features/calendar/calendarSlice";
-import customLabelReducer from "../features/customLabel/customLabelSlice";
+import labelReducer from "../features/label/labelSlice";
 import memoReducer from "../features/memo/memoSlice";
 import userReducer from "../features/user/userSlice";
 
 export const store = configureStore({
   reducer: {
     calendar: calendarReducer,
-    customLabel: customLabelReducer,
+    label: labelReducer,
     memo: memoReducer,
     user: userReducer,
   },

@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
-import { calendarActions } from "../../../features/calendar/calendarSlice";
+import {
+  selectCalendarEvents,
+  selectCalendarisLoading,
+} from "../../../features/calendar/calendar.select";
+import { selectEvent } from "../../../features/calendar/calendarSlice";
+import { addEvent } from "../../../features/calendar/calendar.action";
+import { getCalendars } from "../../../features/calendar/calendar.thunk";
 import {
   DefaultCalendar,
   CALENDAR_VIEW_STYLE,
 } from "../../../utill/calendar/Calendar.config";
-import { v4 as uuidv4 } from "uuid";
 
 import { Backdrop } from "../../modal/Modal";
 import EventEdit from "../../eventEdit/EventEdit";
@@ -14,6 +18,7 @@ import EventInput from "../../eventInput/EventInput";
 import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 import { EndDayConvertor } from "../../../utill/timeConvertor";
 
+import Loading from "../../../UI/loading/Loading";
 import { ThreeDots, CalendarX, PlusCircle } from "react-bootstrap-icons";
 import {
   CalendarContainer,
@@ -23,8 +28,7 @@ import {
 } from "./MainCalendar.styles";
 
 const banEvent = {
-  id: "",
-  labelId: "Ban",
+  title: "휴일",
   start: "",
   end: "",
   color: "#ff9f89",
@@ -39,27 +43,34 @@ function MyCalendar() {
   const [isInputFrom, setIsInputFrom] = useState(false);
 
   const eventList = useSelector(selectCalendarEvents);
+  const calendarIsLoading = useSelector(selectCalendarisLoading);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCalendars());
+  }, [dispatch]);
 
   const handleEventClick = (event) => {
     if (selectable) {
       return null;
     }
     const eventData = event.event;
-    dispatch(calendarActions.selectEvent({ id: eventData.id }));
+    console.log(event.event);
+    dispatch(selectEvent(eventData.extendedProps._id));
     setIsEditFrom(!isEditFrom);
   };
 
-  const eventChangehandler = (e) => {
-    console.log(e);
-    const { id, startStr, endStr, allDay } = e.event;
-    const advenceData = e.event._def.recurringDef && {
+  const eventChangehandler = (event) => {
+    console.log(event);
+    const eventData = event.event;
+    const { startStr, endStr, allDay } = eventData;
+    const advenceData = eventData._def.recurringDef && {
       daysOfWeek: [new Date(startStr).getDay().toString()],
     };
 
     dispatch(
-      calendarActions.addEvent({
-        id,
+      addEvent(eventList, {
+        _id: eventData.extendedProps._id,
         start: startStr,
         end: allDay ? EndDayConvertor(endStr) : endStr,
         allDay: allDay,
@@ -72,9 +83,8 @@ function MyCalendar() {
     const { startStr, endStr } = event;
     if (window.confirm("해당 날짜를 휴일로 지정하시겠습니까? ")) {
       dispatch(
-        calendarActions.addEvent({
+        addEvent(eventList, {
           ...banEvent,
-          id: uuidv4(),
           start: startStr,
           end: endStr,
         })
@@ -116,37 +126,42 @@ function MyCalendar() {
       <CalendarWrapper zvalue={selectable ? 15 : 0}>
         <CalendarView>
           <CalendarContainer>
-            <ButtonContainer>
-              <Button
-                type="click"
-                buttonType={BUTTON_TYPE_CLASSES.ban}
-                onClick={toggleModalTypeHandler.bind(null, "BAN")}
-              >
-                <CalendarX />
-              </Button>
-              <Button
-                type="click"
-                buttonType={BUTTON_TYPE_CLASSES.create}
-                onClick={toggleModalTypeHandler.bind(null, "INPUT")}
-              >
-                <PlusCircle /> Create
-              </Button>
-            </ButtonContainer>
-
-            <DefaultCalendar
-              initialView={CALENDAR_VIEW_STYLE.calender.initialView}
-              headerToolbar={CALENDAR_VIEW_STYLE.calender.headerToolbar}
-              selectable={selectable}
-              select={handleSelectHandler}
-              displayEventTime={false}
-              eventClick={handleEventClick}
-              events={eventList}
-              eventChange={eventChangehandler}
-              editable={true}
-              navLinks={true}
-              dayMaxEvents={true}
-              moreLinkContent={moreLinkIconHandler}
-            />
+            {calendarIsLoading ? (
+              <Loading />
+            ) : (
+              <>
+                <ButtonContainer>
+                  <Button
+                    type="click"
+                    buttonType={BUTTON_TYPE_CLASSES.ban}
+                    onClick={toggleModalTypeHandler.bind(null, "BAN")}
+                  >
+                    <CalendarX /> 휴일
+                  </Button>
+                  <Button
+                    type="click"
+                    buttonType={BUTTON_TYPE_CLASSES.create}
+                    onClick={toggleModalTypeHandler.bind(null, "INPUT")}
+                  >
+                    <PlusCircle /> 생성
+                  </Button>
+                </ButtonContainer>
+                <DefaultCalendar
+                  initialView={CALENDAR_VIEW_STYLE.calender.initialView}
+                  headerToolbar={CALENDAR_VIEW_STYLE.calender.headerToolbar}
+                  selectable={selectable}
+                  select={handleSelectHandler}
+                  displayEventTime={false}
+                  eventClick={handleEventClick}
+                  events={eventList}
+                  eventChange={eventChangehandler}
+                  editable={true}
+                  navLinks={true}
+                  dayMaxEvents={true}
+                  moreLinkContent={moreLinkIconHandler}
+                />
+              </>
+            )}
           </CalendarContainer>
         </CalendarView>
       </CalendarWrapper>

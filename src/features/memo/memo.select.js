@@ -10,8 +10,8 @@ export const selectMemoLists = createSelector(
 );
 export const selectMemoLoading = createSelector(
   [selectMemoListsReducer],
-  (selectMemoListsSlice) => {
-    return selectMemoListsSlice.isLoading;
+  (selectMemoIsLoadingSlice) => {
+    return selectMemoIsLoadingSlice.isLoading;
   }
 );
 

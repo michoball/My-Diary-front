@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectEditEvent } from "../../features/calendar/calendar.select";
+import {
+  selectCalendarisLoading,
+  selectEditEvent,
+} from "../../features/calendar/calendar.select";
+import { clearSelectLabel } from "../../features/label/labelSlice";
+import { clearSelectEvent } from "../../features/calendar/calendarSlice";
 
 import Modal from "../modal/Modal";
 import { X } from "react-bootstrap-icons";
 import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
+import Loading from "../../UI/loading/Loading";
 
 import {
   EventToggerContainer,
@@ -14,18 +20,18 @@ import {
 import EventAdvanceEdit from "./advanceEdit/EventAdvanceEdit";
 
 import EventBasicEdit from "./basicEdit/EventBasicEdit";
-import { customLabelActions } from "../../features/customLabel/customLabelSlice";
-import { calendarActions } from "../../features/calendar/calendarSlice";
 
 function EventEdit({ onConfirm }) {
   const [isRecurrEvent, setIsRecurrEvent] = useState(false);
   const dispatch = useDispatch();
   const selectEvent = useSelector(selectEditEvent);
+  const calendarIsLoading = useSelector(selectCalendarisLoading);
 
   useEffect(() => {
     if (selectEvent) {
       setIsRecurrEvent(selectEvent.daysOfWeek ? true : false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggerClickHanndler = (bool) => {
@@ -33,8 +39,8 @@ function EventEdit({ onConfirm }) {
   };
 
   const OffModalHandler = () => {
-    dispatch(calendarActions.clearSelectEvent());
-    dispatch(customLabelActions.clearLabel());
+    dispatch(clearSelectEvent());
+    dispatch(clearSelectLabel());
     onConfirm();
   };
 
@@ -64,10 +70,16 @@ function EventEdit({ onConfirm }) {
             정기
           </EventTogger>
         </EventToggerContainer>
-        {isRecurrEvent ? (
-          <EventAdvanceEdit confirm={OffModalHandler} />
+        {calendarIsLoading ? (
+          <Loading />
         ) : (
-          <EventBasicEdit confirm={OffModalHandler} />
+          <>
+            {isRecurrEvent ? (
+              <EventAdvanceEdit confirm={OffModalHandler} />
+            ) : (
+              <EventBasicEdit confirm={OffModalHandler} />
+            )}
+          </>
         )}
       </EventEditcontainer>
     </Modal>

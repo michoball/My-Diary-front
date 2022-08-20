@@ -69,6 +69,7 @@ const initialState = {
   selectedMemo: null,
   isLoading: false,
   isError: false,
+  isSuccess: false,
   message: "",
 };
 
@@ -127,7 +128,7 @@ export const MemoSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.memoLists = state.memoLists.filter(
-          (memo) => memo.id !== action.payload
+          (memo) => memo._id !== action.payload
         );
       })
       .addCase(deleteMemo.rejected, (state, action) => {

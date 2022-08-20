@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calendarActions } from "../../../features/calendar/calendarSlice";
-import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
-import { selectEditEvent } from "../../../features/calendar/calendar.select";
-import { customLabelActions } from "../../../features/customLabel/customLabelSlice";
+
+import { addEvent } from "../../../features/calendar/calendar.action";
+import { deleteCalendar } from "../../../features/calendar/calendar.thunk";
+import { selectSelectedLabel } from "../../../features/label/label.select";
+import {
+  selectEditEvent,
+  selectCalendarEvents,
+} from "../../../features/calendar/calendar.select";
+import { clearSelectLabel } from "../../../features/label/labelSlice";
 import FormInput from "../../../UI/formInput/FormInput";
 import DayPicker from "../../dayPicker/DayPicker";
 import ColorPicker from "../../colorPicker/ColorPicker";
@@ -23,8 +28,8 @@ import { Trash3Fill, Check2Circle } from "react-bootstrap-icons";
 import { DayConvertor } from "../../../utill/timeConvertor";
 
 const advanceEvent = {
-  id: "",
-  labelId: "",
+  _id: "",
+  labelTitle: "",
   title: "",
   color: "#f44336",
   allDay: false,
@@ -39,7 +44,7 @@ function EventAdvanceEdit({ confirm }) {
   const [advancedEventData, setAdvancedEventData] = useState(advanceEvent);
   const [isDisable, setIsDisable] = useState(false);
   const {
-    id,
+    _id,
     startRecur,
     endRecur,
     title,
@@ -48,11 +53,12 @@ function EventAdvanceEdit({ confirm }) {
     color,
     allDay,
     daysOfWeek,
-    labelId,
+    labelTitle,
   } = advancedEventData;
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
+  const calendarEventList = useSelector(selectCalendarEvents);
 
   useEffect(() => {
     if (selectEvent.allDay) {
@@ -68,7 +74,7 @@ function EventAdvanceEdit({ confirm }) {
 
   useEffect(() => {
     if (selectedLabel) {
-      if (selectedLabel.labelId === labelId) {
+      if (selectedLabel.labelTitle === labelTitle) {
         return;
       }
       if (selectedLabel.daysOfWeek) {
@@ -81,14 +87,13 @@ function EventAdvanceEdit({ confirm }) {
         console.log("advanceEdit label");
         setIsDisable(true);
       } else {
-        dispatch(customLabelActions.clearLabel());
+        dispatch(clearSelectLabel());
         return alert("정기 일정을 일일 일정으로 바꿀 수 없습니다.");
       }
     }
-  }, [selectedLabel, labelId, dispatch]);
+  }, [selectedLabel, labelTitle, dispatch]);
 
   const selectedDay = useCallback((day) => {
-    console.log(day);
     setAdvancedEventData((prev) => {
       return { ...prev, daysOfWeek: [...day] };
     });
@@ -101,7 +106,7 @@ function EventAdvanceEdit({ confirm }) {
   };
 
   const eventRemoveHandler = () => {
-    dispatch(calendarActions.removeEvent({ id }));
+    dispatch(deleteCalendar(_id));
     confirm();
   };
 
@@ -130,13 +135,13 @@ function EventAdvanceEdit({ confirm }) {
     }
     try {
       dispatch(
-        calendarActions.addEvent({
+        addEvent(calendarEventList, {
           ...advancedEventData,
           endRecur: endRecur + "T24:00",
         })
       );
     } catch (error) {
-      alert("something went wrong~!", error);
+      alert("add Event went wrong~!", error);
     }
     alert("일정이 조정되었습니다. ");
     confirm();

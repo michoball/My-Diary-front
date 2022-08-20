@@ -7,14 +7,27 @@ import {
 } from "./CategoryView.styles";
 import { PlusCircle } from "react-bootstrap-icons";
 import CategoryList from "../categoryList/CategoryList";
-import { useSelector } from "react-redux";
-import { selectCustomLabelLists } from "../../features/customLabel/customLabel.select";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { useEffect, useState } from "react";
 import LabelAddForm from "../labelAdd/LabelAddForm";
+import {
+  selectlabelIsLoading,
+  selectLabelLists,
+} from "../../features/label/label.select";
+import { getLabels } from "../../features/label/label.thunk";
+
+import Loading from "../../UI/loading/Loading";
 
 const CategoryView = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const labelLists = useSelector(selectCustomLabelLists);
+  const labelLists = useSelector(selectLabelLists);
+  const labelIsLoading = useSelector(selectlabelIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLabels());
+  }, [dispatch]);
 
   const AddLabelHandler = () => {
     setIsModalOpen(!isModalOpen);
@@ -27,17 +40,21 @@ const CategoryView = () => {
       )}
       <CategoryViewContainer>
         <TitleContainer>
-          <h2>Msy labels</h2>
+          <h2>My labels</h2>
           <CategoryAddBtn onClick={AddLabelHandler}>
             <PlusCircle />
           </CategoryAddBtn>
         </TitleContainer>
         <ListWrapper>
-          <ListContainer>
-            {labelLists.map((lists) => {
-              return <CategoryList key={lists.labelId} lists={lists} />;
-            })}
-          </ListContainer>
+          {labelIsLoading ? (
+            <Loading />
+          ) : (
+            <ListContainer>
+              {labelLists?.map((lists) => {
+                return <CategoryList key={lists._id} lists={lists} />;
+              })}
+            </ListContainer>
+          )}
         </ListWrapper>
       </CategoryViewContainer>
     </>

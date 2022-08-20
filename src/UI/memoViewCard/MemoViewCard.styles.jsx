@@ -29,7 +29,7 @@ export const MemoContainer = styled.div`
   margin: 10px 0;
 
   background-color: ${({ bgcolors }) => `${bgcolors}cc`};
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.7);
   overflow-y: scroll;
 `;
 

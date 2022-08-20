@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calendarActions } from "../../../features/calendar/calendarSlice";
+import { deleteCalendar } from "../../../features/calendar/calendar.thunk";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
 import SelectButton from "../../selectButton/SelectButton";
 import FormInput from "../../../UI/formInput/FormInput";
-import { selectEditEvent } from "../../../features/calendar/calendar.select";
-
-import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
-import { customLabelActions } from "../../../features/customLabel/customLabelSlice";
+import {
+  selectCalendarEvents,
+  selectEditEvent,
+} from "../../../features/calendar/calendar.select";
+import { addEvent } from "../../../features/calendar/calendar.action";
+import { selectSelectedLabel } from "../../../features/label/label.select";
+import { clearSelectLabel } from "../../../features/label/labelSlice";
 import {
   EventEditForm,
   ConfirmBtn,
@@ -23,8 +26,8 @@ import { DayConvertor, TimeConvertor } from "../../../utill/timeConvertor";
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 const defaultEvent = {
-  id: "",
-  labelId: "",
+  _id: "",
+  labelTitle: "",
   title: "",
   start: "",
   end: "",
@@ -41,8 +44,9 @@ function EventBasicEdit({ confirm }) {
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
+  const calendarEventList = useSelector(selectCalendarEvents);
   const {
-    id,
+    _id,
     title,
     start,
     end,
@@ -50,12 +54,12 @@ function EventBasicEdit({ confirm }) {
     allDay,
     eventStartTime,
     eventEndTime,
-    labelId,
+    labelTitle,
   } = editEvent;
 
   // // 편집할 input에 따른 label 태그 바꾸기
   useEffect(() => {
-    if (selectEvent.labelId === "Ban") {
+    if (selectEvent.labelTitle === "Ban") {
       setIsDisable(true);
     }
     if (selectEvent.allDay) {
@@ -79,7 +83,7 @@ function EventBasicEdit({ confirm }) {
   // label 태그가 바뀜에 따른 editEvent state값 변화
   useEffect(() => {
     if (selectedLabel) {
-      if (selectedLabel.labelId === labelId) {
+      if (selectedLabel.labelTitle === labelTitle) {
         return;
       }
       if (!selectedLabel.daysOfWeek) {
@@ -90,11 +94,11 @@ function EventBasicEdit({ confirm }) {
         console.log("baseEdit label set");
       }
       if (selectedLabel.daysOfWeek) {
-        dispatch(customLabelActions.clearLabel());
+        dispatch(clearSelectLabel());
         return alert("일일 일정을 정기 일정으로 바꿀 수 없습니다.");
       }
     }
-  }, [selectedLabel, labelId, dispatch]);
+  }, [selectedLabel, labelTitle, dispatch]);
 
   const onChangeHandler = (e) => {
     setEditEvent((prev) => {
@@ -103,21 +107,21 @@ function EventBasicEdit({ confirm }) {
   };
 
   const eventRemoveHandler = () => {
-    dispatch(calendarActions.removeEvent({ id }));
+    dispatch(deleteCalendar(_id));
     confirm();
   };
 
   const editSubmitHandler = (e) => {
     e.preventDefault();
 
-    if ((labelId !== "Ban" && title === "") || start === "" || end === "") {
+    if ((labelTitle !== "Ban" && title === "") || start === "" || end === "") {
       return alert("일정에 필요한 정보가 부족합니다.");
     }
     const startSet = allDay ? start : start + "T" + eventStartTime;
     const endSet = allDay ? end + "T24:00" : end + "T" + eventEndTime;
     try {
       dispatch(
-        calendarActions.addEvent({
+        addEvent(calendarEventList, {
           ...editEvent,
           end: endSet,
           start: startSet,
@@ -152,7 +156,7 @@ function EventBasicEdit({ confirm }) {
             name="title"
             value={title}
             onChange={onChangeHandler}
-            disabled={labelId === "Ban" ? true : false}
+            disabled={labelTitle === "Ban" ? true : false}
           />
 
           <FormInput

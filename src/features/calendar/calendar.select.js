@@ -15,3 +15,10 @@ export const selectEditEvent = createSelector(
     return event.selectedEvent;
   }
 );
+
+export const selectCalendarisLoading = createSelector(
+  [selectCalendarReducer],
+  (calendarIsLoadingSlice) => {
+    return calendarIsLoadingSlice.isLoading;
+  }
+);

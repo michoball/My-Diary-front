@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { calendarActions } from "../../../features/calendar/calendarSlice";
-import { selectSelectedLabel } from "../../../features/customLabel/customLabel.select";
+import { addEvent } from "../../../features/calendar/calendar.action";
+import { selectSelectedLabel } from "../../../features/label/label.select";
 
-import { v4 as uuidv4 } from "uuid";
 import FormInput from "../../../UI/formInput/FormInput";
 import ColorPicker from "../../colorPicker/ColorPicker";
 import ToggleSwitch from "../../../UI/toggleSwitch/ToggleSwitch";
@@ -20,9 +19,10 @@ import {
   EventButton,
 } from "../EventInput.styles";
 import { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
+import { selectCalendarEvents } from "../../../features/calendar/calendar.select";
 
 const defaultEvent = {
-  labelId: "",
+  labelTitle: "",
   title: "",
   start: "",
   end: "",
@@ -38,7 +38,7 @@ function BasicInput() {
 
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
-
+  const eventList = useSelector(selectCalendarEvents);
   const { title, start, end, color, allDay, eventStartTime, eventEndTime } =
     basicEventData;
 
@@ -47,7 +47,10 @@ function BasicInput() {
       setBasicEventData((prev) => {
         return {
           ...prev,
-          ...selectedLabel,
+          labelTitle: selectedLabel.labelTitle,
+          allDay: selectedLabel.allDay,
+          labelId: selectedLabel._id,
+          color: selectedLabel.color,
         };
       });
       setIsDisable(true);
@@ -99,9 +102,8 @@ function BasicInput() {
       : end + "T" + (eventEndTime ? eventEndTime : "00:00");
     try {
       dispatch(
-        calendarActions.addEvent({
+        addEvent(eventList, {
           ...basicEventData,
-          id: uuidv4(),
           end: endSet,
           start: startSet,
         })

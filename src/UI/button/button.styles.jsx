@@ -29,15 +29,18 @@ export const BaseButton = styled.button`
 `;
 
 export const CreateButton = styled(BaseButton)`
-  width: 90px;
+  width: 80px;
   background-color: blanchedalmond;
   color: black;
   border: 2px solid black;
+  svg {
+    font-size: 20px;
+  }
 `;
 
 export const BanButton = styled(BaseButton)`
   background-color: rgba(255, 0, 0, 0.7);
-  width: 50px;
+  width: 80px;
 
   color: black;
   border: 2px solid black;
@@ -46,7 +49,6 @@ export const BanButton = styled(BaseButton)`
 
   svg {
     font-size: 20px;
-    margin: 0;
   }
 `;
 
