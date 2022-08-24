@@ -6,7 +6,7 @@ import { selectRecentOrderMemoLists } from "../../features/memo/memo.select";
 import MemoCard from "../../component/memo/memoCard/MemoCard";
 import { HOME_DEFAULT_MEMO, HOME_DEFAULT_EVENT } from "./HomeDefaultMemo";
 
-import { Calendar3, Journals } from "react-bootstrap-icons";
+import { Calendar3, Journals, Person } from "react-bootstrap-icons";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import {
   HomeCalendar,
@@ -22,19 +22,23 @@ import {
   LoginContainer,
 } from "./Home.styles";
 import SignInForm from "../../component/auth/sign-in/SignIn";
-import { selectUser } from "../../features/user/user.select";
+import {
+  selectUser,
+  selectUserIsLoading,
+} from "../../features/user/user.select";
 import { userReset } from "../../features/user/userSlice";
-import { logout } from "../../features/user/user.thunk";
 import { getMemos } from "../../features/memo/memo.thunk";
-import { memoReset } from "../../features/memo/memoSlice";
-import { calendarReset } from "../../features/calendar/calendarSlice";
 import { getCalendars } from "../../features/calendar/calendar.thunk";
+
+import UserProfile from "../../component/profile/UserProfile";
+import Loading from "../../UI/loading/Loading";
 
 function Home() {
   const dispatch = useDispatch();
   const eventList = useSelector(selectCalendarEvents);
   const memoLists = useSelector(selectRecentOrderMemoLists);
   const user = useSelector(selectUser);
+  const userIsLoading = useSelector(selectUserIsLoading);
   const [memoCards, setMemoCards] = useState([]);
 
   useEffect(() => {
@@ -52,14 +56,6 @@ function Home() {
       changeMemoList(HOME_DEFAULT_MEMO);
     }
   }, [memoLists]);
-
-  const logoutHandler = () => {
-    dispatch(logout()).then(() => {
-      dispatch(userReset());
-      dispatch(memoReset());
-      dispatch(calendarReset());
-    });
-  };
 
   const changeMemoList = (list) => {
     setMemoCards(list.length > 7 ? list.slice(0, 7) : list);
@@ -118,13 +114,10 @@ function Home() {
               </NavLink>
             </NavContainer>
             <LoginContainer>
-              {user ? (
-                <div>
-                  <h2>{`Hello~ ${user.displayName}`}</h2>
-                  <button onClick={logoutHandler}>Log out</button>
-                </div>
+              {userIsLoading ? (
+                <Loading />
               ) : (
-                <SignInForm />
+                <>{user ? <UserProfile user={user} /> : <SignInForm />}</>
               )}
             </LoginContainer>
           </NavNLoginContainer>

@@ -16,19 +16,11 @@ import MemoCard from "../memoCard/MemoCard";
 import MemoViewSidebar from "../MemoViewSidebar/MemoViewSidebar";
 import Loading from "../../../UI/loading/Loading";
 
-import { getMemos } from "../../../features/memo/memo.thunk";
-
 function MemoView() {
-  const dispatch = useDispatch();
   const orderedMemoLists = useSelector(selectRecentOrderMemoLists);
   const memoIsLoading = useSelector(selectMemoLoading);
   const [searchWord, setSearchWord] = useState("");
   const [memoCards, setMemoCards] = useState(orderedMemoLists);
-
-  useEffect(() => {
-    dispatch(getMemos());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const serachHandler = (e) => {
     setSearchWord(e.target.value);

@@ -141,6 +141,7 @@ export const NavNLoginContainer = styled.div`
 export const NavContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   width: 40%;
   padding: 10px;
@@ -149,7 +150,9 @@ export const NavContainer = styled.div`
   ${border}
   ${rotation}
   h2 {
-    padding: 0 0 10px 10px;
+    width: 100%;
+    text-align: center;
+    padding: 0 0 10px;
     border-bottom: 2px solid #d2d2d2;
     margin-bottom: 20px;
   }
@@ -160,6 +163,7 @@ export const NavLink = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 
+  width: 100%;
   font-size: 20px;
   padding: 10px;
   border-radius: 10px;
@@ -181,10 +185,13 @@ export const NavLink = styled(Link)`
 
 export const LoginContainer = styled.div`
   width: 60%;
-  height: 100%;
   padding: 10px 20px;
 
   background-color: white;
   ${border}
   ${rotation}
+
+  .loading-container {
+    height: 30vh;
+  }
 `;

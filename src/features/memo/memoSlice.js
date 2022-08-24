@@ -148,16 +148,6 @@ export const MemoSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       });
-    // // 밑의 extraReducers 를 등록하지 않으면 close 버튼을 누르고 /tickets 페이지로 넘어간 후 다시 reload를 해야 status가 바뀐다
-    // // 이런 번거러움 없이 바로  status 가 반영되게 하기 위해서 하는 extralReducers임
-    // .addCase(updateMemo.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-    //   state.tickets.map((ticket) =>
-    //     ticket._id === action.payload._id
-    //       ? (ticket.status = "closed")
-    //       : ticket
-    //   );
-    // });
   },
 });
 
