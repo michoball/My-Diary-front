@@ -4,14 +4,15 @@ import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../features/user/user.thunk";
-import { reset } from "../../../features/user/userSlice";
-import { selectUserReducer } from "../../../features/user/user.select";
+import { oauthLogin, login } from "../../../features/user/user.thunk";
+import { userReset } from "../../../features/user/userSlice";
+import { selectUserIsLoading } from "../../../features/user/user.select";
 import {
   ButtonsContainer,
   LogInForm,
   SignInHeader,
   NavLink,
+  OauthContainer,
 } from "./Signin.styles";
 import { BoxArrowInRight } from "react-bootstrap-icons";
 import Loading from "../../../UI/loading/Loading";
@@ -26,20 +27,8 @@ const SignInForm = () => {
   const [formfield, setFormfield] = useState(defaultFormFields);
   const navigate = useNavigate();
   const { email, password } = formfield;
-  const { user, isError, isLoading, isSuccess, message } =
-    useSelector(selectUserReducer);
+  const userIsLoading = useSelector(selectUserIsLoading);
 
-  useEffect(() => {
-    if (isError) {
-      alert(`Something wrong ~  ${message}`);
-    }
-    //Redirect when logged in
-    if (isSuccess) {
-      alert(`login success ~ `);
-      // navigate("/");
-    }
-    dispatch(reset());
-  }, [isError, isSuccess, user, message, navigate, dispatch]);
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -67,8 +56,24 @@ const SignInForm = () => {
     dispatch(login(userData));
     resetFormField();
   };
-  const logGoogleUser = async () => {
-    navigate("/");
+
+  const oAuthLoginHandler = async (service) => {
+    let timer = null;
+
+    const newWindow = window.open(
+      `http://localhost:5000/api/users/${service}`,
+      "_blank",
+      "width=500, height=600"
+    );
+
+    if (newWindow) {
+      timer = setInterval(() => {
+        if (newWindow.closed) {
+          dispatch(oauthLogin());
+          if (timer) clearInterval(timer);
+        }
+      }, 500);
+    }
   };
 
   return (
@@ -79,7 +84,7 @@ const SignInForm = () => {
         </h2>
         <NavLink to="/login">회원가입</NavLink>
       </SignInHeader>
-      {isLoading ? (
+      {userIsLoading ? (
         <Loading />
       ) : (
         <LogInForm onSubmit={handleSubmit}>
@@ -103,15 +108,23 @@ const SignInForm = () => {
           />
 
           <ButtonsContainer>
-            <Button type="submit">Sign In</Button>
-            <Button
-              type="button"
-              buttonType={BUTTON_TYPE_CLASSES.base}
-              className="google"
-              onClick={logGoogleUser}
-            >
-              Google Sign In
+            <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
+              Sign In
             </Button>
+            <OauthContainer>
+              <div
+                className="google"
+                onClick={oAuthLoginHandler.bind(null, "google")}
+              />
+              <div
+                className="kakao"
+                onClick={oAuthLoginHandler.bind(null, "kakao")}
+              />
+              <div
+                className="naver"
+                onClick={oAuthLoginHandler.bind(null, "naver")}
+              />
+            </OauthContainer>
           </ButtonsContainer>
         </LogInForm>
       )}

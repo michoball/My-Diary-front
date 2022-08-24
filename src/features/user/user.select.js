@@ -8,3 +8,10 @@ export const selectUser = createSelector(
     return selectUserSlice.user;
   }
 );
+
+export const selectUserIsLoading = createSelector(
+  [selectUserReducer],
+  (selectUserIsLoadingSlice) => {
+    return selectUserIsLoadingSlice.isLoading;
+  }
+);

@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import userThunk from "./user.api";
+import userApi from "./user.api";
 
 // Register new user
 export const register = createAsyncThunk(
   "user/register",
   async (user, thunkAPI) => {
     try {
-      return await userThunk.register(user);
+      return await userApi.register(user);
     } catch (error) {
       const message =
         (error.response &&
@@ -23,7 +23,7 @@ export const register = createAsyncThunk(
 //Login user
 export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
   try {
-    return await userThunk.login(user);
+    return await userApi.login(user);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
@@ -34,7 +34,27 @@ export const login = createAsyncThunk("user/login", async (user, thunkAPI) => {
   }
 });
 
+// google login user
+export const oauthLogin = createAsyncThunk(
+  "user/oauthLogin",
+  async (_, thunkAPI) => {
+    try {
+      return await userApi.oauthLogin();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 //Logout user
-export const logout = createAsyncThunk("user/logout", async () => {
-  await userThunk.logout();
+export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
+  // const accessToken = thunkAPI.getState().user.user.accessToken;
+  await userApi.logout();
 });

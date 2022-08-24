@@ -23,7 +23,7 @@ import {
 } from "./Home.styles";
 import SignInForm from "../../component/auth/sign-in/SignIn";
 import { selectUser } from "../../features/user/user.select";
-import { reset } from "../../features/user/userSlice";
+import { userReset } from "../../features/user/userSlice";
 import { logout } from "../../features/user/user.thunk";
 import { getMemos } from "../../features/memo/memo.thunk";
 import { memoReset } from "../../features/memo/memoSlice";
@@ -38,16 +38,15 @@ function Home() {
   const [memoCards, setMemoCards] = useState([]);
 
   useEffect(() => {
-    if (user) {
+    if (user?._id) {
       dispatch(getMemos());
       dispatch(getCalendars());
+      dispatch(userReset());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, dispatch]);
 
   useEffect(() => {
     if (memoLists.length !== 0) {
-      console.log(memoLists.length);
       changeMemoList(memoLists);
     } else {
       changeMemoList(HOME_DEFAULT_MEMO);
@@ -56,7 +55,7 @@ function Home() {
 
   const logoutHandler = () => {
     dispatch(logout()).then(() => {
-      dispatch(reset());
+      dispatch(userReset());
       dispatch(memoReset());
       dispatch(calendarReset());
     });
@@ -65,6 +64,7 @@ function Home() {
   const changeMemoList = (list) => {
     setMemoCards(list.length > 7 ? list.slice(0, 7) : list);
   };
+
   return (
     <HomeContainer>
       <HomeNavContainer>

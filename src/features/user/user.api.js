@@ -12,7 +12,14 @@ const register = async (userData) => {
   return response.data;
 };
 
-const logout = () => localStorage.removeItem("user");
+const logout = async () => {
+  const res = await axios.post(API_URL + "/logout", {
+    withCredentials: true,
+  });
+  if (res.status === 200) {
+    localStorage.removeItem("user");
+  }
+};
 
 const login = async (userData) => {
   const response = await axios.post(API_URL + "/login", userData);
@@ -23,10 +30,22 @@ const login = async (userData) => {
   return response.data;
 };
 
-const userThunk = {
+const oauthLogin = async () => {
+  const res = await axios.get(API_URL + "/oauth/success", {
+    withCredentials: true,
+  });
+  console.log(res);
+  if (res.status === 200) {
+    localStorage.setItem("user", JSON.stringify(res.data));
+  }
+  return res.data;
+};
+
+const userApi = {
   register,
   logout,
   login,
+  oauthLogin,
 };
 
-export default userThunk;
+export default userApi;

@@ -6,12 +6,14 @@ import { GlobalStyle } from "./global.styles";
 import Memo from "./page/memo/Memo.page";
 import Editor from "./page/editor/Editor.page";
 import Authentication from "./page/authentication/Authentication";
+import OauthLogin from "./component/auth/oauthLogin/OauthLogin";
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Routes>
+        <Route path="/oauth/success" element={<OauthLogin />} />
         <Route path="/" element={<Home />} />
 
         <Route path="/" element={<Navigation />}>

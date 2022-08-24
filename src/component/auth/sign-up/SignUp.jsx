@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
 import Button from "../../../UI/button/button";
 import { ReactComponent as Mydiary } from "../../../assets/Logo.svg";
-import { reset } from "../../../features/user/userSlice";
+import { userReset } from "../../../features/user/userSlice";
 import { register } from "../../../features/user/user.thunk";
-import { selectUserReducer } from "../../../features/user/user.select";
+import {
+  selectUser,
+  selectUserIsLoading,
+  selectUserReducer,
+} from "../../../features/user/user.select";
 
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -29,22 +33,23 @@ const SignUpForm = () => {
   const [formfield, setFormfield] = useState(defaultFormFields);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isError, isLoading, isSuccess, message } =
-    useSelector(selectUserReducer);
+  const { isError, message } = useSelector(selectUserReducer, shallowEqual);
+  const user = useSelector(selectUser);
+  const singInIsLoading = useSelector(selectUserIsLoading);
   const { displayName, email, password, confirmPassword } = formfield;
 
   useEffect(() => {
     if (isError) {
-      alert(`Something wrong ~  ${message}`);
+      alert(`Something wrong in sign up ~  ${message}`);
     }
 
     //Redirect when logged in
-    if (isSuccess || user) {
+    if (user._id) {
       navigate("/");
       alert(`user already logged in user : ${user.displayName}`);
     }
-    dispatch(reset());
-  }, [isError, isSuccess, user, message, navigate, dispatch]);
+    dispatch(userReset());
+  }, [isError, user, message, navigate, dispatch]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,7 +91,7 @@ const SignUpForm = () => {
           <PersonFill /> 회원가입
         </h3>
       </HeaderContainer>
-      {isLoading ? (
+      {singInIsLoading ? (
         <Loading />
       ) : (
         <LogInForm onSubmit={handleSubmit}>

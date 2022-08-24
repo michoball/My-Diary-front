@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, login, logout } from "./user.thunk";
+import { register, login, logout, oauthLogin } from "./user.thunk";
 
 //Get user from localstorage
 const user = JSON.parse(localStorage.getItem("user"));
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    reset: (state) => {
+    userReset: (state) => {
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
@@ -55,9 +55,23 @@ export const userSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+      })
+      .addCase(oauthLogin.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(oauthLogin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(oauthLogin.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
       });
   },
 });
 
-export const { reset } = userSlice.actions;
+export const { userReset } = userSlice.actions;
 export default userSlice.reducer;
