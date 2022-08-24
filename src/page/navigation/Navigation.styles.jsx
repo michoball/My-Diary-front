@@ -5,6 +5,7 @@ export const NavigationContainer = styled.div`
   top: 0;
   height: 60px;
   width: 100%;
+  min-width: 1200px;
 
   display: flex;
   justify-content: space-between;
@@ -13,11 +14,6 @@ export const NavigationContainer = styled.div`
   padding: 15px 30px;
   border-bottom: 3px solid #bbb;
   background-color: white;
-
-  .login {
-    font-size: 18px;
-    font-weight: 600;
-  }
 `;
 
 export const LogoContainer = styled(Link)`
@@ -57,4 +53,43 @@ export const NavLink = styled(Link)`
   svg {
     margin-right: 10px;
   }
+`;
+
+export const UserProfileContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  padding: 5px 10px;
+
+  border: 2px solid #bbb;
+  border-radius: 10px;
+
+  background-color: #d2d2d2;
+
+  p {
+    margin-right: auto;
+    margin-left: 10px;
+  }
+
+  .logout {
+    background-color: blanchedalmond;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 5px 8px;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease-in, transform 0.3s ease-in;
+    :hover {
+      background-color: #f2727d;
+      transform: scale(0.98);
+    }
+  }
+`;
+
+export const UserProfile = styled.img`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 `;
