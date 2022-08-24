@@ -11,6 +11,7 @@ import {
   DeleteBtn,
   ButtonContainer,
   ListInfoContainer,
+  ListWrapper,
 } from "./CategoryList.styles";
 
 import { Trash } from "react-bootstrap-icons";
@@ -35,22 +36,24 @@ const CategoryList = ({ lists }) => {
         <EventInput onConfirm={() => setIsOpenModal(!isOpenModal)} />
       )}
       <ListContainer>
-        <ListItemContainer onClick={openInputFormHandler}>
-          <ListColor>
-            <BookmarkCheckFill color={lists.color} />
-          </ListColor>
-          <span>{lists.labelTitle}</span>
+        <ListWrapper>
+          <ListItemContainer onClick={openInputFormHandler}>
+            <ListColor>
+              <BookmarkCheckFill color={lists.color} />
+            </ListColor>
+            <span>{lists.labelTitle}</span>
 
-          <ListInfoContainer>
-            <span>{lists.allDay && "종일"}</span>
-            <span>{lists.daysOfWeek && "정기"}</span>
-          </ListInfoContainer>
-        </ListItemContainer>
-        <ButtonContainer>
-          <DeleteBtn>
-            <Trash onClick={deleteLabelHandler} />
-          </DeleteBtn>
-        </ButtonContainer>
+            <ListInfoContainer>
+              <span>{lists.allDay && "종일"}</span>
+              <span>{lists.daysOfWeek && "정기"}</span>
+            </ListInfoContainer>
+          </ListItemContainer>
+          <ButtonContainer>
+            <DeleteBtn>
+              <Trash onClick={deleteLabelHandler} />
+            </DeleteBtn>
+          </ButtonContainer>
+        </ListWrapper>
       </ListContainer>
     </>
   );

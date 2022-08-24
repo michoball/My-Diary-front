@@ -36,7 +36,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 
   :hover {
-    background-color: rgba(210, 210, 210, 0.5);
+    background-color: #e1e1e1;
   }
   svg {
     margin-right: 10px;
@@ -78,7 +78,7 @@ export const SearchButton = styled.button`
 
   transition: all 0.2s ease-in;
   :hover {
-    background-color: rgba(210, 210, 210, 0.5);
+    background-color: #e1e1e1;
   }
   svg {
     font-size: 18px;
@@ -174,6 +174,6 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: rgba(210, 210, 210, 0.5);
+    background-color: #e1e1e1;
   }
 `;

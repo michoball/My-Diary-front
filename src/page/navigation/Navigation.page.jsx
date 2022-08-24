@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import {
@@ -16,6 +16,7 @@ import { logout } from "../../features/user/user.thunk";
 import { userReset } from "../../features/user/userSlice";
 import { memoReset } from "../../features/memo/memoSlice";
 import { calendarReset } from "../../features/calendar/calendarSlice";
+import { defaultProfile } from "../../assets/defaultProfile";
 
 const Navigation = () => {
   const currentUser = useSelector(selectUser);
@@ -47,7 +48,10 @@ const Navigation = () => {
           </NavLink>
         </NavLinks>
         <UserProfileContainer>
-          <UserProfile src={currentUser.avatar} alt="userAvatar" />
+          <UserProfile
+            src={currentUser.avatar ? currentUser.avatar : defaultProfile}
+            alt="userAvatar"
+          />
           <p>{currentUser.displayName}</p>
           <button onClick={logoutHandler} className="logout">
             Log out

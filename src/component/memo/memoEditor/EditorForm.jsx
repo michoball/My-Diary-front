@@ -71,15 +71,6 @@ const EditorForm = () => {
         // editor 에 넣기
         const editorState = EditorState.createWithContent(contentState);
         setEditorState(editorState);
-
-        //---------------------------------------------------------------------------//
-        // 미리보기에 넣기 --  시작시 미리보기가 함께떠서 useEffect로 같이 넣었는데
-        // 미리보기를 따로 클릭으로 뺏으니 여기는 불필요할듯 하다
-        // let markUp = convertToRaw(editorState.getCurrentContent());
-        // setMemoInfo((prev) => {
-        //   return { ...prev, memo: draftToHtml(markUp) };
-        // });
-        //---------------------------------------------------------------------------//
       }
     }
   }, [selectedMemo]);

@@ -42,6 +42,10 @@ export const ListWrapper = styled.div`
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .loading-container {
+    height: 30vh;
+  }
 `;
 
 export const ListContainer = styled.ul`

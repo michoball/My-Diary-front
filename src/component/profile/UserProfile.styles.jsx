@@ -9,6 +9,7 @@ export const ProfileContainer = styled.div`
 
   width: 100%;
   height: 100%;
+  padding-bottom: 5px;
 `;
 
 export const ProfileHeader = styled.header`
@@ -30,11 +31,12 @@ export const UserInfoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: 80%;
 
   padding: 10px 0 0 0;
-  gap: 10px;
+
   p {
-    padding-top: 5px;
+    padding: 5px 0;
   }
 `;
 export const UserAvatarContainer = styled.div`
@@ -44,8 +46,9 @@ export const UserAvatarContainer = styled.div`
 `;
 
 export const UserAvatar = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
+  border: 2px solid #bbb;
   border-radius: 50%;
 `;
 

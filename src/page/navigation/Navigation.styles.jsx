@@ -89,7 +89,8 @@ export const UserProfileContainer = styled.div`
 `;
 
 export const UserProfile = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
   border-radius: 50%;
 `;

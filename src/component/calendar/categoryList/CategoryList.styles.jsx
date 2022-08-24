@@ -1,27 +1,34 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 5px 0;
-  padding: 5px 2.5px;
+  padding-bottom: 5px;
 
-  border-bottom: 1px solid #f2f2f2;
-  cursor: pointer;
-
-  :hover {
-    background-color: #f2f2f2;
-  }
+  border-bottom: 1px solid #d1d1d1;
 
   :last-child {
     border-bottom: none;
   }
 `;
 
+export const ListWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-in;
+  :hover {
+    background-color: #e1e1e1;
+  }
+`;
+
 export const ListItemContainer = styled.div`
   display: flex;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   width: 100%;
 `;
@@ -45,7 +52,7 @@ export const ListColor = styled.div`
 
   svg {
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 20px;
     color: ${({ color }) => `${color}`};
   }
 `;
@@ -64,7 +71,7 @@ export const DeleteBtn = styled.button`
     transform: scale(0.98);
   }
   svg {
-    font-size: 14px;
+    font-size: 16px;
     color: red;
   }
 `;

@@ -75,7 +75,7 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: rgba(210, 210, 210, 0.5);
+    background-color: #e1e1e1;
   }
   &.delete {
     :hover {

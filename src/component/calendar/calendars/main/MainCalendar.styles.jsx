@@ -94,7 +94,7 @@ export const CalendarContainer = styled.div`
   .fc-daygrid-day {
     &.fc-day {
       :hover {
-        background-color: rgba(187, 187, 187, 0.4);
+        background-color: #d1d1d1;
       }
     }
     .fc-daygrid-day-bottom {
