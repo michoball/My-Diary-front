@@ -49,7 +49,7 @@ const SignUpForm = () => {
       alert(`user already logged in user : ${user.displayName}`);
     }
     dispatch(userReset());
-  }, [isError, user, message, navigate, dispatch]);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -79,7 +79,7 @@ const SignUpForm = () => {
       password,
     };
 
-    dispatch(register(userData));
+    dispatch(register(userData)).then(() => navigate("/"));
     resetFormField();
   };
 

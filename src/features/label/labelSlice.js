@@ -8,28 +8,28 @@ import {
 
 const initialLabels = [
   {
-    labelId: "1215gq4raf",
-    labelTitle: "Defalut",
+    _id: "1215gq4raf",
+    labelTitle: "기본일정",
     allDay: false,
     color: "#ffeb3b",
   },
   {
-    labelId: "12afaef3",
-    labelTitle: "Job",
+    _id: "12afaef3",
+    labelTitle: "회사",
     allDay: true,
     color: "#4caf50",
   },
   {
-    labelId: "1hwhw2",
+    _id: "1hwhw2",
     color: "#f44336",
-    labelTitle: "regular Work",
+    labelTitle: "집안 일",
     daysOfWeek: ["0"],
     allDay: true,
   },
 
   {
-    labelTitle: "family event",
-    labelId: "afea4",
+    labelTitle: "가족 행사",
+    _id: "afea4",
     daysOfWeek: undefined,
     color: "#2196f3",
     allDay: false,
@@ -60,7 +60,7 @@ export const labelSlice = createSlice({
       const existingLabel = state.labelLists.find(
         (label) => label._id === action.payload
       );
-      console.log(existingLabel._id);
+      console.log(existingLabel);
       return {
         ...state,
         selectedLabel: existingLabel,

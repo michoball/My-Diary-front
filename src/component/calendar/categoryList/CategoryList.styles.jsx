@@ -31,6 +31,7 @@ export const ListItemContainer = styled.div`
   font-size: 18px;
   font-weight: bold;
   width: 100%;
+  letter-spacing: 1px;
 `;
 
 export const ListInfoContainer = styled.div`
@@ -51,7 +52,7 @@ export const ListColor = styled.div`
   align-items: center;
 
   svg {
-    margin-right: 5px;
+    margin-right: 10px;
     font-size: 20px;
     color: ${({ color }) => `${color}`};
   }

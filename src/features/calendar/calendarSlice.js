@@ -12,7 +12,7 @@ const initialEvent = [
     labelId: "12afaef3",
     labelTitle: "Job",
     id: "123",
-    title: "I am available",
+    title: "가족여행",
     allDay: true,
     start: "2022-08-05T00:00:00",
     end: "2022-08-06T24:00:00",
@@ -24,19 +24,32 @@ const initialEvent = [
     labelTitle: "family event",
     labelId: "afea4",
     id: "afea4q4t4g",
-    title: "event 2",
+    title: "가족모임",
     allDay: false,
 
-    start: "2022-08-02T14:00",
-    end: "2022-08-02T20:00",
+    start: "2022-08-16T14:00",
+    end: "2022-08-16T20:00",
     color: "#2196f3",
   },
   //배경 이벤트
   {
     labelId: "",
     id: "133584fasefa-arnla",
-    title: "",
+    title: "휴일",
     start: "2022-08-26T00:00",
+    end: "2022-08-26T24:00",
+    color: "#ff9f89",
+    allDay: true,
+
+    // 배경 만의 부분
+    overlap: false,
+    display: "background",
+  },
+  {
+    labelId: "",
+    id: "133584fasefa-arnla",
+    title: "휴일",
+    start: "2022-08-27T00:00",
     end: "2022-08-27T24:00",
     color: "#ff9f89",
     allDay: true,
@@ -48,7 +61,7 @@ const initialEvent = [
   // 정기 일정 포맷 object
   {
     id: "12",
-    title: "Go to market",
+    title: "장 보기",
     color: "#f44336",
     labelId: "1hwhw2",
     labelTitle: "regular Work",
@@ -63,7 +76,7 @@ const initialEvent = [
   },
   {
     id: "12abbag64",
-    title: "oaaa",
+    title: "코테 준비",
     labelTitle: "blueEvents",
     color: "#ff9f89",
 

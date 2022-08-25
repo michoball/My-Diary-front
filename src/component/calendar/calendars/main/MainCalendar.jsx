@@ -58,13 +58,12 @@ function MyCalendar() {
       return null;
     }
     const eventData = event.event;
-    console.log(event.event);
+
     dispatch(selectEvent(eventData.extendedProps._id));
     setIsEditFrom(!isEditFrom);
   };
 
   const eventChangehandler = (event) => {
-    console.log(event);
     const eventData = event.event;
     const { startStr, endStr, allDay } = eventData;
     const advenceData = eventData._def.recurringDef && {

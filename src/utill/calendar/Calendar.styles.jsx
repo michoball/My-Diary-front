@@ -75,6 +75,7 @@ export const calendarCss = css`
 
       &.fc-daygrid-block-event {
         border: 1px solid black !important;
+        text-align: center;
       }
     }
   }

@@ -93,8 +93,8 @@ export const EditorFormInput = styled(FormInput)`
 
   input {
     border-bottom: none;
-    padding: 5px 10px;
-    font-size: 14px;
+    padding: 3px 10px;
+    font-size: 18px;
   }
 `;
 

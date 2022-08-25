@@ -116,6 +116,11 @@ export const CalendarContainer = styled.div`
         }
       }
     }
+
+    .fc-timegrid-event .fc-event-main {
+      text-align: center;
+      padding-top: 10px;
+    }
   }
 `;
 

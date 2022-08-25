@@ -10,6 +10,7 @@ function SelectButton() {
 
   const labelChangeHandler = (e) => {
     const selectLabelId = e.target.value;
+    console.log(selectLabelId);
     dispatch(selectLabel(selectLabelId));
   };
 
