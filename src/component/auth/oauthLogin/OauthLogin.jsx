@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { oauthLogin } from "../../../features/user/user.thunk";
 
 function OauthLogin() {
-  const dispatch = useDispatch();
-
   useEffect(() => {
     setTimeout(() => {
       window.close();
