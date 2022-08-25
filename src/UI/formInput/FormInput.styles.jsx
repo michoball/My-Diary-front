@@ -5,8 +5,6 @@ export const FormInputContainer = styled.div`
   align-items: center;
   margin-bottom: 15px;
 
-  /* overflow: hidden; */
-
   &.title {
     margin-bottom: 25px;
   }
@@ -45,7 +43,6 @@ export const Input = styled.input`
   :-webkit-autofill:hover,
   :-webkit-autofill:focus,
   :-webkit-autofill:active {
-    /* transition: background-color 5000s; */
     -webkit-text-fill-color: black !important;
   }
 `;

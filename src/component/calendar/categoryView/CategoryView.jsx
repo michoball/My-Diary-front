@@ -25,9 +25,9 @@ const CategoryView = () => {
   const labelIsLoading = useSelector(selectlabelIsLoading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getLabels());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getLabels());
+  // }, [dispatch]);
 
   const AddLabelHandler = () => {
     setIsModalOpen(!isModalOpen);

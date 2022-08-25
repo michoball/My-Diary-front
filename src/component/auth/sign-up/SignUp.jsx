@@ -44,7 +44,7 @@ const SignUpForm = () => {
     }
 
     //Redirect when logged in
-    if (user._id) {
+    if (user?._id) {
       navigate("/");
       alert(`user already logged in user : ${user.displayName}`);
     }

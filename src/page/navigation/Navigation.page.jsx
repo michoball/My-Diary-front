@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import {
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../features/user/user.select";
 import { logout } from "../../features/user/user.thunk";
 import { userReset } from "../../features/user/userSlice";
+import { labelReset } from "../../features/label/labelSlice";
 import { memoReset } from "../../features/memo/memoSlice";
 import { calendarReset } from "../../features/calendar/calendarSlice";
 import { defaultProfile } from "../../assets/defaultProfile";
@@ -28,6 +29,7 @@ const Navigation = () => {
       dispatch(userReset());
       dispatch(memoReset());
       dispatch(calendarReset());
+      dispatch(labelReset());
     });
     navigate("/");
   };
@@ -47,16 +49,20 @@ const Navigation = () => {
             Memo
           </NavLink>
         </NavLinks>
-        <UserProfileContainer>
-          <UserProfile
-            src={currentUser.avatar ? currentUser.avatar : defaultProfile}
-            alt="userAvatar"
-          />
-          <p>{currentUser.displayName}</p>
-          <button onClick={logoutHandler} className="logout">
-            Log out
-          </button>
-        </UserProfileContainer>
+        {currentUser ? (
+          <UserProfileContainer>
+            <UserProfile
+              src={currentUser.avatar ? currentUser.avatar : defaultProfile}
+              alt="userAvatar"
+            />
+            <p>{currentUser.displayName}</p>
+            <button onClick={logoutHandler} className="logout">
+              Log out
+            </button>
+          </UserProfileContainer>
+        ) : (
+          <Link to="/login">Log in</Link>
+        )}
       </NavigationContainer>
       <main>
         <Outlet />

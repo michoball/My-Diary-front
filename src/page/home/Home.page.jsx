@@ -6,7 +6,7 @@ import { selectRecentOrderMemoLists } from "../../features/memo/memo.select";
 import MemoCard from "../../component/memo/memoCard/MemoCard";
 import { HOME_DEFAULT_MEMO, HOME_DEFAULT_EVENT } from "./HomeDefaultMemo";
 
-import { Calendar3, Journals, Person } from "react-bootstrap-icons";
+import { Calendar3, Journals } from "react-bootstrap-icons";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import {
   HomeCalendar,
@@ -42,12 +42,12 @@ function Home() {
   const [memoCards, setMemoCards] = useState([]);
 
   useEffect(() => {
-    if (user?._id) {
+    if (user?._id && eventList.length === 0 && memoLists.length === 0) {
       dispatch(getMemos());
       dispatch(getCalendars());
       dispatch(userReset());
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, eventList, memoLists]);
 
   useEffect(() => {
     if (memoLists.length !== 0) {

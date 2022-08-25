@@ -4,6 +4,7 @@ import MainCalendar from "../../component/calendar/calendars/main/MainCalendar";
 import CalendarSideBar from "../../component/calendar/calendarSidebar/CalendarSideBar";
 import { selectCalendarEvents } from "../../features/calendar/calendar.select";
 import { getCalendars } from "../../features/calendar/calendar.thunk";
+import { getLabels } from "../../features/label/label.thunk";
 import { CalendarPageContainer } from "./Calendar.page.style";
 
 function Calendar() {
@@ -11,6 +12,7 @@ function Calendar() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCalendars());
+    dispatch(getLabels());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

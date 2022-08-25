@@ -49,15 +49,7 @@ export const labelSlice = createSlice({
   name: "label",
   initialState,
   reducers: {
-    labelReset: (state) => {
-      return {
-        ...state,
-        isLoading: false,
-        isError: false,
-        isSuccess: false,
-        message: "",
-      };
-    },
+    labelReset: (state) => initialState,
     clearSelectLabel: (state) => {
       return {
         ...state,
