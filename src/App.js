@@ -8,6 +8,7 @@ import Editor from "./page/editor/Editor.page";
 import Authentication from "./page/authentication/Authentication";
 import OauthLogin from "./component/auth/oauthLogin/OauthLogin";
 import PrivateRoute from "./component/privateRoute/PriivateRoute";
+import LandingPage from "./page/landing/LandingPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/oauth/success" element={<OauthLogin />} />
+        <Route path="/landing" element={<LandingPage />} />
         <Route path="/" element={<Home />} />
 
         <Route path="/" element={<Navigation />}>

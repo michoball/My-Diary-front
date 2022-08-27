@@ -7,7 +7,7 @@ const MemoSmallCard = React.forwardRef(
   ({ color, major, title, ...otherProps }, memoRef) => {
     return (
       <>
-        <MemoCardHeader major={major}>
+        <MemoCardHeader major={major} {...otherProps}>
           <span>{title}</span>
           <StarFill />
         </MemoCardHeader>

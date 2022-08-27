@@ -1,51 +1,45 @@
 import styled from "styled-components";
-import { rotation, border } from "../../../global.styles";
+import { border } from "../../../global.styles";
 
 export const MemoListViewContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 0 20px 20px 20px;
+  padding: 20px;
 
   width: 100%;
   height: 100%;
 
   background-color: white;
   ${border}
-  ${rotation}
 `;
 
 export const MainViewContainer = styled.div`
   width: 100%;
   min-width: 800px;
-  max-width: 1200px;
 
   padding: 10px;
-
-  height: calc(100vh - 80px);
 `;
 
 export const SideBarViewContainer = styled.div`
   padding: 10px 10px 10px 0;
   width: 100%;
-  height: calc(100vh - 80px);
+
   min-width: 250px;
-  max-width: 300px;
+  max-width: 400px;
 `;
 
 export const MemoViewHeader = styled.header`
   padding: 10px;
   font-weight: bold;
-  border-bottom: 2px solid #bbb;
-  margin-bottom: 10px;
+  color: #f2727d;
 `;
 
 export const MemosContainer = styled.div`
   width: 100%;
   padding: 10px;
 
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: scroll;
 
   ::-webkit-scrollbar {
     width: 6px;
@@ -63,7 +57,7 @@ export const MemosContainer = styled.div`
 
 export const MemosWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   row-gap: 10px;
 `;

@@ -37,7 +37,6 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
 
   useEffect(() => {
     dispatch(clearSelectMemo());
-    console.log(majorMemo, memoColorList);
   }, [dispatch]);
 
   return (
@@ -60,7 +59,7 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
         <SideBtnWapper>
           <SideBtn onClick={() => onMemoView()}>
             <Collection />
-            <span>전체 메모</span>
+            전체 메모
           </SideBtn>
         </SideBtnWapper>
         <ColorSection>

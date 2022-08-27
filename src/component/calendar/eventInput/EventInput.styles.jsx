@@ -5,7 +5,7 @@ export const EventCreatorContainer = styled.div`
   position: relative;
   border-radius: 10px;
   border-top-right-radius: 0;
-  border: 3px solid black;
+
   background-color: white;
   padding: 10px;
 `;
@@ -15,7 +15,7 @@ export const EventToggerContainer = styled.div`
   flex-direction: column;
   position: absolute;
   top: 5px;
-  right: -32px;
+  right: -30px;
   overflow: hidden;
 `;
 
@@ -25,7 +25,7 @@ export const EventTogger = styled.button`
   height: 50px;
   width: 30px;
 
-  border: 1px solid black;
+  border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   font-weight: bold;
@@ -34,13 +34,13 @@ export const EventTogger = styled.button`
   cursor: pointer;
 
   &.active {
-    background-color: #f2727d;
+    background-color: #f23d4c;
     border-top-right-radius: 15px;
   }
 
   :hover {
     border-top-right-radius: 15px;
-    background-color: #f23d4c;
+    background-color: #f2727d;
   }
   :active {
     transform: translateX(-2px);
@@ -55,7 +55,7 @@ export const EventTogger = styled.button`
 
 export const EventInputContainer = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 20px;
   margin-bottom: 20px;
 `;
 
@@ -69,10 +69,9 @@ export const OptionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  padding: 10px;
+  padding: 20px;
 
-  background-color: blanchedalmond;
-  border: 2px solid #bbb;
+  background-color: #f2a7a7;
   border-radius: 10px;
 `;
 

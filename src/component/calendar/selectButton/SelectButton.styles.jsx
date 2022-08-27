@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SelectContainer = styled.div`
   display: flex;
+  align-items: center;
   width: 100%;
 
   label {
@@ -10,9 +11,8 @@ export const SelectContainer = styled.div`
   }
 
   select {
-    border: 2px solid black;
     border-radius: 10px;
-    padding: 1px;
+    padding: 5px;
     width: 120px;
     text-align: center;
   }

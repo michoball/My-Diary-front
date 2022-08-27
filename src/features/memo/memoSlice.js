@@ -128,7 +128,7 @@ export const MemoSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.memoLists = state.memoLists.filter(
-          (memo) => memo._id !== action.payload
+          (memo) => memo._id !== action.payload.id
         );
       })
       .addCase(deleteMemo.rejected, (state, action) => {

@@ -13,7 +13,7 @@ export const ColorPalletContainer = styled.div`
     font-size: 10px;
     color: red;
     display: none;
-    padding-bottom: 5px;
+    padding: 10px 0;
     &.disable {
       display: block;
     }
@@ -25,10 +25,10 @@ export const CircleColorPicker = styled(CirclePicker)`
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 10px 0 0 10px;
+  padding: 15px 0 0 15px;
 
   background-color: white;
-  border: 2px solid #bbb;
+
   border-radius: 10px;
 
   span div :focus {

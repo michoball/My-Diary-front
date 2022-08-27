@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const CalendarPageContainer = styled.div`
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 90px);
   display: flex;
-  background-color: #d2d2d2;
+  background-color: #f3e9e7;
   padding: 10px 20px;
 `;

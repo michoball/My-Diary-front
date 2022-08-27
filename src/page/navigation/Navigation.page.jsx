@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import {
@@ -61,7 +61,9 @@ const Navigation = () => {
             </button>
           </UserProfileContainer>
         ) : (
-          <Link to="/login">Log in</Link>
+          <NavLink to="/login" className="login">
+            Log in
+          </NavLink>
         )}
       </NavigationContainer>
       <main>

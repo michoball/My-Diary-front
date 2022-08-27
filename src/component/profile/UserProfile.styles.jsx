@@ -17,12 +17,11 @@ export const ProfileHeader = styled.header`
   justify-content: center;
   align-items: center;
   width: 100%;
-
-  padding-bottom: 10px;
-  border-bottom: 2px solid #d2d2d2;
+  color: #f2727d;
+  margin: 10px 0 20px;
 
   svg {
-    font-size: 25px;
+    font-size: 30px;
     margin-right: 5px;
   }
 `;
@@ -30,25 +29,23 @@ export const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 80%;
-
-  padding: 10px 0 0 0;
-
   p {
-    padding: 5px 0;
+    margin-bottom: 5px;
   }
 `;
 export const UserAvatarContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 5px;
 `;
 
 export const UserAvatar = styled.img`
-  width: 65px;
-  height: 65px;
-  border: 2px solid #bbb;
+  width: 70px;
+  height: 70px;
+
   border-radius: 50%;
 `;
 

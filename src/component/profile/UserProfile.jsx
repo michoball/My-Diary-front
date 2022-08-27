@@ -29,7 +29,7 @@ function UserProfile({ user }) {
   return (
     <ProfileContainer>
       <ProfileHeader>
-        <Person /> <h2>user</h2>
+        <Person /> <h1>user</h1>
       </ProfileHeader>
 
       <UserInfoContainer>
@@ -39,7 +39,7 @@ function UserProfile({ user }) {
             alt="userAvatar"
           />
         </UserAvatarContainer>
-        <p>{user.displayName}'s Diary</p>
+        <p>{user.displayName} Diary</p>
 
         <LogoutButton
           buttonType={BUTTON_TYPE_CLASSES.base}

@@ -11,7 +11,8 @@ export const BtnContainer = styled.div`
 
   button {
     font-size: 20px;
-    background-color: #9c27b0;
+    height: 50px;
+    background-color: #9c27b0cc;
     border: none;
     svg {
       font-size: 20px;

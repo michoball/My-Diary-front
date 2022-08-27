@@ -3,17 +3,20 @@ import styled from "styled-components";
 export const MajorMemoCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-
+  color: #623933;
   border-radius: 5px;
-  background-color: ${({ bgcolor }) => `${bgcolor}e5`};
+  background-color: ${({ bgcolor }) => `${bgcolor}b3`};
   padding: 10px;
 
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;
-
+  h5 {
+    padding: 0 0 5px 5px;
+    border-bottom: 1px solid #f3e9e7;
+  }
   :hover {
-    box-shadow: -2px -2px 3px rgba(0, 0, 0, 0.7);
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
     transform: translateY(-1px);
   }
   :active {
@@ -22,10 +25,10 @@ export const MajorMemoCardContainer = styled.div`
 `;
 
 export const MemoContentContainer = styled.div`
-  border-top: 1px solid black;
   padding-top: 5px;
 
   p {
+    color: black;
     font-size: 12px;
   }
 `;

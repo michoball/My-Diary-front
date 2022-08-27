@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
 import Button from "../../../UI/button/button";
-import { ReactComponent as Mydiary } from "../../../assets/Logo.svg";
 import { userReset } from "../../../features/user/userSlice";
 import { register } from "../../../features/user/user.thunk";
 import {
@@ -49,7 +48,7 @@ const SignUpForm = () => {
       alert(`user already logged in user : ${user.displayName}`);
     }
     dispatch(userReset());
-  }, []);
+  }, [isError, user, message, dispatch, navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,8 +66,8 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      throw new Error("비밀번호가 일치하지 않습니다.");
+    if (password.length === 0 || password !== confirmPassword) {
+      throw new Error("비밀번호가 없거나 일치하지 않습니다.");
     }
     if (!email.trim().includes("@")) {
       throw new Error("이메일을 정확히 입력하시오");
@@ -86,10 +85,7 @@ const SignUpForm = () => {
   return (
     <SignUpContainer>
       <HeaderContainer>
-        <Mydiary className="Logo" />
-        <h3>
-          <PersonFill /> 회원가입
-        </h3>
+        <PersonFill /> <h1>회원가입</h1>
       </HeaderContainer>
       {singInIsLoading ? (
         <Loading />

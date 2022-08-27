@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 export const ListContainer = styled.li`
   margin: 5px 0;
-  padding-bottom: 5px;
-
-  border-bottom: 1px solid #d1d1d1;
 
   :last-child {
     border-bottom: none;
@@ -15,14 +12,14 @@ export const ListWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
-
+  padding: 10px 8px;
+  color: #623933;
   border-radius: 10px;
   cursor: pointer;
 
   transition: background-color 0.2s ease-in;
   :hover {
-    background-color: #e1e1e1;
+    background-color: #f3e9e7;
   }
 `;
 

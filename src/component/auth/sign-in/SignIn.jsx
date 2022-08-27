@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
 import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { oauthLogin, login } from "../../../features/user/user.thunk";
-import { userReset } from "../../../features/user/userSlice";
 import { selectUserIsLoading } from "../../../features/user/user.select";
 import {
   ButtonsContainer,
@@ -54,6 +53,7 @@ const SignInForm = () => {
     };
 
     dispatch(login(userData));
+    navigate("/");
     resetFormField();
   };
 
@@ -79,9 +79,9 @@ const SignInForm = () => {
   return (
     <>
       <SignInHeader>
-        <h2>
+        <h1>
           <BoxArrowInRight /> Log In
-        </h2>
+        </h1>
         <NavLink to="/login">회원가입</NavLink>
       </SignInHeader>
       {userIsLoading ? (

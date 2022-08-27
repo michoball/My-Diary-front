@@ -13,8 +13,8 @@ function MemoCard({ memoInfo, disabled }) {
   useEffect(() => {
     if (memoInfo.memo) {
       memoRef.current.innerHTML = `${
-        memoInfo.memo.length > 80
-          ? memoInfo.memo.slice(0, 80) + ` ...`
+        memoInfo.memo.length > 100
+          ? memoInfo.memo.slice(0, 100) + ` ...`
           : memoInfo.memo
       }`;
     }

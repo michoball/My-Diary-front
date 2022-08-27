@@ -6,26 +6,24 @@ export const MemoViewContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 10px 50px 20px 50px;
+  padding: 10px 50px 20px;
   width: 100%;
-  height: 80vh;
+  height: 75vh;
 
   background-color: white;
 
   border-radius: 10px;
-  border: 2px solid #f2727d;
 `;
 
 export const MemoContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 
   width: 90%;
-  min-width: 650px;
-  max-width: 1000px;
-
+  color: black;
   height: 100%;
-  padding: 10px 20px;
+  padding: 20px;
   margin: 10px 0;
 
   background-color: ${({ bgcolors }) => `${bgcolors}cc`};
@@ -39,17 +37,17 @@ export const MemoHeader = styled.header`
   align-items: center;
   position: relative;
 
-  padding-bottom: 10px;
+  padding: 20px 0;
   width: 700px;
 
   margin-bottom: 10px;
 
-  border-bottom: 3px solid #2d2d2d;
+  border-bottom: 2px solid #2d2d2d;
 
   .date {
     position: absolute;
     right: 0;
-    bottom: 5px;
+    bottom: 10px;
   }
   h1 {
     width: 500px;
@@ -61,6 +59,6 @@ export const MemoHeader = styled.header`
   svg {
     display: ${({ major }) => (major ? "block" : "none")};
     margin-left: 10px;
-    fill: #ffc107;
+    fill: #ff8a05;
   }
 `;

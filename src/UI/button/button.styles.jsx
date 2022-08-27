@@ -5,14 +5,15 @@ export const BaseButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  background-color: #2196f3;
+  background-color: rgba(33, 150, 243, 0.7);
   width: 200px;
   height: 40px;
   border-radius: 10px;
-  border: 2px solid #bbb;
+  border: none;
 
   font-weight: bold;
   color: whitesmoke;
+  letter-spacing: 1px;
 
   cursor: pointer;
 
@@ -21,7 +22,7 @@ export const BaseButton = styled.button`
   }
 
   svg {
-    margin-right: 5px;
+    margin-right: 10px;
   }
   :active {
     transform: scale(0.98);
@@ -29,22 +30,19 @@ export const BaseButton = styled.button`
 `;
 
 export const CreateButton = styled(BaseButton)`
-  width: 80px;
+  width: 100px;
   background-color: blanchedalmond;
-  color: black;
-  border: 2px solid black;
+  color: #623933;
   svg {
     font-size: 20px;
   }
 `;
 
 export const BanButton = styled(BaseButton)`
-  background-color: rgba(255, 0, 0, 0.7);
-  width: 80px;
-
-  color: black;
-  border: 2px solid black;
-
+  background-color: #f23d4c;
+  border-radius: 10px;
+  width: 100px;
+  color: #623933;
   margin-right: 10px;
 
   svg {

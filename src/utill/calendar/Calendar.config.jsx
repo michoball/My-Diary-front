@@ -48,7 +48,7 @@ export const DefaultCalendar = React.forwardRef((props, ref) => {
         }}
         timeZone="UTC"
         height="100%"
-        businessHours={true}
+        // businessHours={true}
         windowResizeDelay={300}
         views={CUSTOM_VIEW_STYLE}
         ref={ref}

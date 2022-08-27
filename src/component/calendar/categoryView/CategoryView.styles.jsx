@@ -12,9 +12,8 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
-  padding: 5px 0;
-  border-bottom: 1px solid #d2d2d2;
+  color: #f2727d;
+  padding: 5px;
 `;
 
 export const CategoryAddBtn = styled.button`

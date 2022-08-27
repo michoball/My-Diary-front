@@ -10,6 +10,17 @@ export const calendarCss = css`
       margin-right: 10px;
     }
 
+    .fc-daygrid {
+      border-radius: 10px;
+    }
+    .fc-col-header-cell.fc-day.fc-day-sun {
+      color: #f23d4c !important;
+    }
+    .fc-toolbar.fc-header-toolbar .fc-toolbar-title {
+      font-size: 30px;
+      color: #f2727d;
+    }
+
     .fc-button-primary:not(:disabled) {
       border: none;
       background-color: #f2a7a7;
@@ -74,7 +85,6 @@ export const calendarCss = css`
       font-size: 12px;
 
       &.fc-daygrid-block-event {
-        border: 1px solid black !important;
         text-align: center;
       }
     }

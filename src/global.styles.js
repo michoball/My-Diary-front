@@ -5,7 +5,6 @@ export const rotation = css`
   box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5);
 `;
 export const border = css`
-  border: 3px solid #f2a7a7;
   border-radius: 10px;
 `;
 
@@ -31,7 +30,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #d2d2d2;
+  background-color: #f3e9e7;
+  color: #623933;
 
 }
 button{
@@ -40,7 +40,7 @@ button{
 }
 a{
   text-decoration: none;
-  color: black;
+  color: #623933;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

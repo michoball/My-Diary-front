@@ -15,7 +15,7 @@ function MajorMemo({ memo }) {
 
   useEffect(() => {
     if (memo.memo) {
-      memoRef.current.innerHTML = `${memo.memo.slice(0, 10) + `  ...`}`;
+      memoRef.current.innerHTML = `${memo.memo.slice(0, 30) + `  ...`}`;
     }
   }, [memo]);
 

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MemoContainer = styled.div`
   display: flex;
-  background-color: #d2d2d2;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 0 20px;
+  height: calc(100vh - 110px);
 `;

@@ -3,13 +3,13 @@ import { ColorPalletContainer, CircleColorPicker } from "./ColorPicker.styles";
 import { useState, useEffect } from "react";
 export const COLOR_TYPE_TABLE = [
   "#f44336",
-  "#ffeb3b",
   "#ff9f89",
+  "#ffeb3b",
   "#ffc107",
-  "#cddc39",
   "#4caf50",
+  "#b6e8eb",
   "#2196f3",
-  "#607d8b",
+  "#89988e",
   "#795548",
   "#9c27b0",
 ];

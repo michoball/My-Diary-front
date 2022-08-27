@@ -16,35 +16,27 @@ export const HomeContainer = styled.div`
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: calc(100vh - 123px);
+    height: calc(100vh - 90px);
     min-height: 550px;
-    padding: 20px;
-    background-color: #d2d2d2;
-    gap: 20px;
+    padding: 0 30px 30px;
+    background-color: #f3e9e7;
+    gap: 30px;
   }
 `;
 
 export const HomeNavContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   width: 100%;
-  height: 120px;
-  background-color: white;
-
-  border-bottom: 3px solid #bbb;
+  height: 90px;
+  background-color: #f3e9e7;
 
   svg {
-    width: 450px;
+    margin-left: 30px;
+    width: 300px;
     fill: #f2727d;
-    padding: 5px;
-    border: 2px solid #f2727d;
-    border-radius: 10px;
-
-    ${rotation} {
-      box-shadow: -5px -5px 15px rgba(0, 0, 0, 0.5);
-    }
   }
 `;
 
@@ -56,14 +48,12 @@ export const HomeCalendar = styled.div`
 
   width: 50%;
   min-width: 500px;
-
-  margin-top: 20px;
-  padding: 10px;
+  padding: 20px;
 
   ${border}
-  ${rotation}
+  /* ${rotation} */
 
-  background-color: rgb(255, 255, 255);
+  background-color: white;
 `;
 
 export const CalendarWrapper = styled.div`
@@ -74,6 +64,31 @@ export const CalendarWrapper = styled.div`
   border-radius: 10px;
 
   ${calendarCss};
+  td,
+  th {
+    border: none;
+  }
+  th {
+    border-right: none;
+  }
+  .fc-theme-standard .fc-scrollgrid {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  table .fc-col-header .fc-col-header-cell {
+    padding: 10px 0;
+    height: 35px;
+    .fc-col-header-cell-cushion {
+      font-size: 20px;
+      color: #623933;
+    }
+    &.fc-day.fc-day-sun {
+      .fc-col-header-cell-cushion {
+        color: #f23d4c;
+      }
+    }
+  }
 `;
 
 export const RightSideContainer = styled.div`
@@ -81,9 +96,8 @@ export const RightSideContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 20px;
 
-  margin-top: 20px;
   width: 50%;
   min-width: 500px;
 `;
@@ -98,10 +112,10 @@ export const MemosContianer = styled.div`
   height: 55%;
   min-height: 250px;
   width: 100%;
-  ${rotation}
 
-  h2 {
-    margin-bottom: 10px;
+  h1 {
+    color: #f2727d;
+    margin-top: 10px;
     height: 10%;
   }
 `;
@@ -113,14 +127,8 @@ export const MemosWrapper = styled.div`
   height: 90%;
 
   ${MemoCardContainer} {
-    height: 170px !important;
+    height: 80%;
     margin: 0 10px;
-    box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4);
-
-    :hover {
-      box-shadow: -2px -2px 0 rgba(0, 0, 0, 0.4),
-        -3px -1px 5px rgba(0, 0, 0, 0.5);
-    }
   }
 
   header {
@@ -135,7 +143,7 @@ export const NavNLoginContainer = styled.div`
   width: 100%;
   height: 45%;
 
-  gap: 10px;
+  gap: 20px;
 `;
 
 export const NavContainer = styled.div`
@@ -144,16 +152,17 @@ export const NavContainer = styled.div`
   align-items: center;
 
   width: 40%;
-  padding: 10px;
-
+  padding: 10px 20px;
+  color: #f2727d;
   background-color: white;
   ${border}
-  ${rotation}
-  h2 {
+
+  h1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    padding: 0 0 10px;
-    border-bottom: 2px solid #d2d2d2;
+    margin-top: 10px;
     margin-bottom: 20px;
   }
 `;
@@ -163,19 +172,18 @@ export const NavLink = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 
+  color: #623933;
   width: 100%;
-  font-size: 20px;
+  font-size: 25px;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
 
-  transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
   cursor: pointer;
 
   :hover {
-    background-color: rgba(210, 210, 210, 0.5);
-    box-shadow: -4px -2px 8px rgba(0, 0, 0, 0.5);
-    transform: translateY(-1px);
+    background-color: #f3e9e7;
   }
 
   svg {
@@ -189,7 +197,7 @@ export const LoginContainer = styled.div`
 
   background-color: white;
   ${border}
-  ${rotation}
+  /* ${rotation} */
 
   .loading-container {
     height: 30vh;

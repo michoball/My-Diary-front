@@ -6,8 +6,7 @@ export const EventEditcontainer = styled.div`
   position: relative;
   border-radius: 10px;
   border-top-right-radius: 0;
-  flex-direction: column;
-  border: 3px solid black;
+
   background-color: white;
   padding: 20px;
 `;
@@ -17,7 +16,7 @@ export const EventToggerContainer = styled.div`
   flex-direction: column;
   position: absolute;
   top: 5px;
-  right: -32px;
+  right: -30px;
   overflow: hidden;
 `;
 
@@ -27,7 +26,7 @@ export const EventTogger = styled.button`
   height: 50px;
   width: 30px;
 
-  border: 1px solid black;
+  border: none;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   font-weight: bold;
@@ -36,13 +35,13 @@ export const EventTogger = styled.button`
   cursor: pointer;
 
   &.active {
-    background-color: #f2727d;
+    background-color: #f23d4c;
     border-top-right-radius: 15px;
   }
 
   :hover {
     border-top-right-radius: 15px;
-    background-color: #f23d4c;
+    background-color: #f2727d;
   }
   :active {
     transform: translateX(-2px);
@@ -71,10 +70,10 @@ export const OptionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  padding: 10px;
+  padding: 20px;
 
   background-color: blanchedalmond;
-  border: 2px solid #bbb;
+
   border-radius: 10px;
 `;
 
@@ -86,14 +85,6 @@ export const EventEditForm = styled.form`
 
   ${FormInputContainer} {
     margin-bottom: 20px;
-  }
-
-  input[type="datetime-local"],
-  input[type="date"] {
-    font-weight: bold;
-    ::-webkit-calendar-picker-indicator {
-      cursor: pointer;
-    }
   }
 `;
 
@@ -110,12 +101,11 @@ export const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  gap: 20px;
   width: 100%;
 `;
 
 export const ConfirmBtn = styled(BaseButton)`
   width: 150px;
   font-size: 18px;
-  margin-right: 5px;
 `;

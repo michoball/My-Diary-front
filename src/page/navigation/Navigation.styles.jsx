@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const NavigationContainer = styled.div`
   top: 0;
-  height: 60px;
+  height: 90px;
   width: 100%;
   min-width: 1200px;
 
@@ -11,9 +11,9 @@ export const NavigationContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 15px 30px;
-  border-bottom: 3px solid #bbb;
-  background-color: white;
+  padding: 0 30px;
+
+  background-color: #f3e9e7;
 `;
 
 export const LogoContainer = styled(Link)`
@@ -22,13 +22,8 @@ export const LogoContainer = styled(Link)`
   justify-content: center;
 
   svg {
-    padding: 3px;
-    border: 2px solid #f2727d;
-    border-radius: 10px;
-    width: 180px;
+    width: 300px;
     fill: #f2727d;
-    transform: rotate3d(-1, 1, 0, 10deg);
-    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -46,12 +41,19 @@ export const NavLink = styled(Link)`
   justify-content: center;
   align-items: center;
 
+  border-radius: 10px;
+  color: #623933;
   font-size: 20px;
   padding: 10px 15px;
   cursor: pointer;
 
+  transition: background-color 0.2s ease-in;
   svg {
     margin-right: 10px;
+  }
+  :hover {
+    border-radius: 10px;
+    background-color: #6239332f;
   }
 `;
 
@@ -59,38 +61,39 @@ export const UserProfileContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 320px;
-  padding: 5px 10px;
+  min-width: 300px;
 
-  border: 2px solid #bbb;
-  border-radius: 10px;
-
-  background-color: #d2d2d2;
+  color: #623933;
 
   p {
+    font-weight: bold;
     margin-right: auto;
     margin-left: 10px;
   }
 
   .logout {
-    background-color: blanchedalmond;
-    font-size: 16px;
+    margin-left: 10px;
+    width: 120px;
+    height: 40px;
+
+    border: none;
+    color: white;
+    background-color: #f2a7a7;
     border-radius: 10px;
     padding: 5px 8px;
 
     cursor: pointer;
 
-    transition: background-color 0.3s ease-in, transform 0.3s ease-in;
+    transition: background-color 0.2s ease-in;
     :hover {
-      background-color: #f2727d;
-      transform: scale(0.98);
+      background-color: #f23d4c;
     }
   }
 `;
 
 export const UserProfile = styled.img`
-  width: 35px;
-  height: 35px;
-  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+
   border-radius: 50%;
 `;

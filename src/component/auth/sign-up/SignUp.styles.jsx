@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FormInputContainer } from "../../../UI/formInput/FormInput.styles";
-import { rotation, border } from "../../../global.styles";
+import { border } from "../../../global.styles";
 
 export const SignUpContainer = styled.div`
   display: flex;
@@ -11,48 +11,43 @@ export const SignUpContainer = styled.div`
 
   background-color: white;
   ${border}
-  ${rotation}
 
   padding: 20px;
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 
-  h3 {
+  h1 {
+    padding: 10px 0 0 0;
+    font-size: 60px;
     display: flex;
     align-items: center;
-    padding-top: 20px;
-    color: #2d2d2d;
-    font-size: 20px;
 
-    svg {
-      width: 25px;
-      height: 25px;
-      margin-right: 10px;
-    }
+    color: #f2727d;
   }
-
-  .Logo {
-    padding: 3px;
-    border: 2px solid #f2727d;
-    border-radius: 10px;
-    width: 220px;
+  svg {
     fill: #f2727d;
-    transform: rotate3d(-1, 1, 0, 10deg);
-    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.5);
+    width: 70px;
+    height: 70px;
+  }
+  .Logo {
+    width: 300px;
+    fill: #f2727d;
   }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-
+  width: 100%;
   button {
-    width: 250px;
+    font-size: 20px;
+    width: 60%;
+    height: 60px;
     border: none;
     background-color: #2196f3;
   }
@@ -62,19 +57,20 @@ export const LogInForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 0 0;
   height: 80%;
 
   ${FormInputContainer} {
     padding: 0 20px;
-
+    width: 90%;
+    height: 60px;
     input {
       width: 100%;
-      height: 40px;
-
+      height: 100%;
+      font-weight: bold;
       border: 2px solid #ffc107;
       border-left: none;
       border-top-right-radius: 10px;
@@ -84,7 +80,7 @@ export const LogInForm = styled.form`
       display: flex;
       align-items: center;
 
-      height: 40px;
+      height: 100%;
       color: white;
       margin-right: 0;
       background-color: #ffc107;

@@ -24,14 +24,15 @@ export const FormInputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  padding: 0 10px;
-
+  padding: 10px 10px;
+  font-size: 16px;
   border: none;
-  border-bottom: 3px solid #bbb;
+  border-bottom: 2px solid #bbb;
   background-color: transparent;
+  letter-spacing: 1px;
 
   outline: none;
-  color: black;
+  color: #623933;
 
   :disabled {
     border-radius: 10px;
@@ -49,7 +50,7 @@ export const Input = styled.input`
 
 export const FromInputLabel = styled.label`
   margin-right: 10px;
-  color: black;
+  color: #623933;
   font-weight: bold;
   letter-spacing: 0.7px;
   white-space: nowrap;

@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import FormInput from "../../../UI/formInput/FormInput";
-import { rotation, border } from "../../../global.styles";
+import { border } from "../../../global.styles";
 
 export const EditorFromContainer = styled.div`
   width: 100%;
   min-width: 800px;
-  max-width: 1200px;
 
-  padding: 10px;
-
-  height: calc(100vh - 80px);
+  padding: 10px 0 30px 10px;
 `;
 
 export const EditorContainer = styled.div`
@@ -21,7 +18,7 @@ export const EditorContainer = styled.div`
   min-width: 800px;
 
   ${border}
-  ${rotation}
+
   height: 100%;
   background-color: white;
 `;
@@ -29,11 +26,10 @@ export const EditorContainer = styled.div`
 export const BaseHeaderContainer = styled.div`
   width: 100%;
   margin-bottom: 20px;
-  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
+  padding: 10px 15px 10px 0;
 
   .date {
     font-weight: bold;
@@ -52,8 +48,8 @@ export const ToggleMainBtn = styled.button`
   cursor: pointer;
 
   svg {
-    font-size: 20px;
-    fill: ${({ major }) => (major ? "#ffc107" : "black")};
+    font-size: 25px;
+    fill: ${({ major }) => (major ? "#FF8A05" : "black")};
   }
 
   :focus {
@@ -78,7 +74,7 @@ export const ToggleMainBtn = styled.button`
 export const EditorFormInput = styled(FormInput)`
   align-items: center;
 
-  border: 3px solid #bbb;
+  border: 2px solid #623933;
   border-radius: 10px;
 
   margin: 0;
@@ -87,7 +83,7 @@ export const EditorFormInput = styled(FormInput)`
   max-width: 500px;
 
   label {
-    font-size: 14px;
+    font-size: 18px;
     margin-right: 5px;
   }
 
@@ -114,8 +110,8 @@ export const MyEditor = styled.div`
   .editor {
     background-color: ${({ bgcolors }) => `${bgcolors}cc`};
     padding: 10px 20px;
-
-    border: 2px solid #2b2b2b !important;
+    height: calc(100% - 40px);
+    border: 2px solid #623933 !important;
     border-radius: 10px;
 
     .public-DraftEditorPlaceholder-inner {
@@ -125,7 +121,8 @@ export const MyEditor = styled.div`
   }
 
   .toolbar-class {
-    border: 2px solid #2b2b2b !important;
+    border: 2px solid #623933 !important;
     border-radius: 10px;
+    margin-bottom: 20px;
   }
 `;

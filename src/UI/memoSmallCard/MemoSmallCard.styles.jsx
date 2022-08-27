@@ -5,24 +5,27 @@ export const MemoContainer = styled.div`
   word-break: break-word;
   overflow: hidden;
   font-size: 14px;
+
+  color: black;
 `;
 
 export const MemoCardHeader = styled.header`
-  position: relative;
   display: flex;
   align-items: center;
 
-  padding: 0 0 10px 15px;
-  margin-bottom: 10px;
+  padding: 0 0 10px 5px;
+  margin: 0 10px 10px 10px;
 
   font-weight: bold;
   font-size: 20px;
 
-  color: #2d2d2d;
+  color: #623933;
+
+  border-bottom: 1px solid #623933;
   svg {
     position: absolute;
-    right: 40px;
-    bottom: 12px;
-    fill: ${({ major }) => (major ? "#ffc107" : "transparent")};
+    right: 5%;
+    top: 5%;
+    fill: ${({ major }) => (major ? "#FF8A05" : "transparent")};
   }
 `;

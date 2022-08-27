@@ -42,12 +42,12 @@ function Home() {
   const [memoCards, setMemoCards] = useState([]);
 
   useEffect(() => {
-    if (user?._id && eventList.length === 0 && memoLists.length === 0) {
+    if (user?._id) {
       dispatch(getMemos());
       dispatch(getCalendars());
       dispatch(userReset());
     }
-  }, [user, dispatch, eventList, memoLists]);
+  }, [user, dispatch]);
 
   useEffect(() => {
     if (memoLists.length !== 0) {
@@ -88,7 +88,7 @@ function Home() {
         </HomeCalendar>
         <RightSideContainer>
           <MemosContianer>
-            <h2>Memo</h2>
+            <h1>Memo</h1>
             <MemosWrapper>
               {memoCards.map((memoList) => {
                 return (
@@ -103,7 +103,7 @@ function Home() {
           </MemosContianer>
           <NavNLoginContainer>
             <NavContainer>
-              <h2>Navigation</h2>
+              <h1>Navigation</h1>
               <NavLink to="/calendar">
                 <Calendar3 />
                 Calendar

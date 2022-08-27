@@ -6,7 +6,7 @@ import {
 } from "../../../../features/calendar/calendar.select";
 import { selectEvent } from "../../../../features/calendar/calendarSlice";
 import { addEvent } from "../../../../features/calendar/calendar.action";
-import { getCalendars } from "../../../../features/calendar/calendar.thunk";
+
 import {
   DefaultCalendar,
   CALENDAR_VIEW_STYLE,

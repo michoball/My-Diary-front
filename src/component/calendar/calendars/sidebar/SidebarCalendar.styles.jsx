@@ -16,8 +16,9 @@ export const SidebarCalendarContainer = styled.div`
       border: none;
     }
     .fc-toolbar-title {
-      font-size: 18px;
+      font-size: 20px !important;
       margin-right: 15px;
+      color: #f2727d;
     }
 
     .fc-header-toolbar.fc-toolbar {

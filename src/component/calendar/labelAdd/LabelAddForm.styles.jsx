@@ -5,8 +5,7 @@ export const LabelInputcontainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  border: 3px solid black;
-  background-color: white;
+  background-color: #f3e9e7;
   padding: 20px;
 `;
 
@@ -38,7 +37,7 @@ export const ColorSection = styled.div`
 
 export const AddBtn = styled(BaseButton)`
   font-size: 16px;
-  background-color: #ffc107;
+  background-color: #ffc107cc;
 
   :hover {
     transform: scale(0.98);

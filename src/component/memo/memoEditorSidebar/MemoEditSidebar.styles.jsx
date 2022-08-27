@@ -4,21 +4,25 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
-import { rotation, border } from "../../../global.styles";
+import { border } from "../../../global.styles";
 
 export const SideBarViewContainer = styled.div`
-  padding: 10px 10px 10px 0;
-  height: calc(100vh - 80px);
+  width: 100%;
+
+  min-width: 250px;
+  max-width: 400px;
+  padding: 10px 10px 20px 0;
+  height: calc(100vh - 100px);
 `;
 
 export const SideBarWrapper = styled.div`
-  width: 300px;
+  width: 100%;
+
   height: 100%;
-  padding: 10px 20px;
+  padding: 20px;
   background-color: white;
 
   ${border}
-  ${rotation}
 `;
 
 export const NavLink = styled(Link)`
@@ -51,9 +55,9 @@ export const SideBtnWapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-top: 2px solid #bbb;
+  border-top: 2px solid #f3e9e7;
 
-  padding-top: 10px;
+  padding-top: 20px;
   svg {
     margin-right: 10px;
   }
@@ -62,10 +66,9 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-
+  color: #623933;
   font-size: 20px;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
 
   border-radius: 10px;
   border: none;
@@ -75,7 +78,7 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: #e1e1e1;
+    background-color: #f3e9e7;
   }
   &.delete {
     :hover {
@@ -87,8 +90,8 @@ export const SideBtn = styled.button`
 export const ColorSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  margin-bottom: 10px;
+  padding-left: 20px;
+  margin: 20px 0;
 
   label {
     font-size: 20px;
@@ -98,7 +101,8 @@ export const ColorSection = styled.div`
     margin-right: 10px;
   }
   ${ColorPalletContainer} {
-    width: 220px;
+    margin-left: 5%;
+    width: 70%;
     transform: translateX(10px);
   }
   ${CircleColorPicker} {

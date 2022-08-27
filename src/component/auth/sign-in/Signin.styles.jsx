@@ -6,12 +6,10 @@ export const SignInHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #d2d2d2;
 
-  height: 20%;
-
-  h2 {
+  margin: 10px 0 20px;
+  h1 {
+    color: #f2727d;
     display: flex;
     align-items: center;
 
@@ -23,7 +21,7 @@ export const SignInHeader = styled.header`
 
 export const NavLink = styled(Link)`
   margin-right: 10px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: #ff3d3d;
   transform: translateY(10px);
@@ -82,8 +80,8 @@ export const OauthContainer = styled.div`
 export const LogInForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 10px 0;
+  justify-content: space-around;
+  padding-bottom: 10px;
   height: 80%;
   min-height: 180px;
 
@@ -91,7 +89,7 @@ export const LogInForm = styled.form`
 
   ${FormInputContainer} {
     margin-bottom: 5px;
-    height: 40px;
+    height: 50px;
 
     input {
       font-size: 18px;

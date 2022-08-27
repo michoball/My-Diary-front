@@ -5,21 +5,22 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
-import { rotation, border } from "../../../global.styles";
+import { border } from "../../../global.styles";
 
 export const SideBarWrapper = styled.div`
   height: 100%;
 `;
 
 export const SideContentWapper = styled.div`
-  height: calc(100% - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: calc(100% - 80px);
 
-  color: black;
   background-color: white;
 
   padding: 10px;
   ${border}
-  ${rotation}
 `;
 
 export const NavLink = styled(Link)`
@@ -28,7 +29,7 @@ export const NavLink = styled(Link)`
   align-items: center;
 
   font-size: 20px;
-  padding: 10px;
+  padding: 20px;
 
   border-radius: 10px;
 
@@ -36,7 +37,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 
   :hover {
-    background-color: #e1e1e1;
+    background-color: #f3e9e7;
   }
   svg {
     margin-right: 10px;
@@ -46,23 +47,27 @@ export const NavLink = styled(Link)`
 export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 60px;
   background-color: white;
 
   ${border}
-  ${rotation}
 
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
 
   ${FormInputContainer} {
+    width: 80%;
     align-items: center;
 
     margin-bottom: unset;
     margin: 5px 10px;
 
     input {
-      padding: 0 10px;
+      padding: 5px 10px;
+      width: 100%;
+    }
+    label {
+      font-size: 18px;
     }
   }
 `;
@@ -76,9 +81,9 @@ export const SearchButton = styled.button`
   border: none;
   background-color: transparent;
 
-  transition: all 0.2s ease-in;
+  transition: transform 0.2s ease-in;
   :hover {
-    background-color: #e1e1e1;
+    transform: scale(1.1);
   }
   svg {
     font-size: 18px;
@@ -90,7 +95,7 @@ export const MajorMemoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 10px;
+  padding: 20px;
 
   span {
     display: flex;
@@ -105,16 +110,15 @@ export const MemoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  gap: 10px;
-  margin-top: 10px;
+  gap: 15px;
+  margin-top: 15px;
 
   height: 30vh;
 
-  border: 2px solid #2b2b2b;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px;
 
-  background-color: #d2d2d2;
+  background-color: #f3e9e7;
 
   overflow-y: scroll;
   ::-webkit-scrollbar {
@@ -126,8 +130,8 @@ export const ColorSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 10px;
-  margin-bottom: 10px;
+  padding: 0 20px;
+  margin-bottom: 20px;
 
   label {
     font-size: 20px;
@@ -144,7 +148,7 @@ export const ColorSection = styled.div`
     transform: translateX(10px);
   }
   ${CircleColorPicker} {
-    border: 2px solid black;
+    background-color: #f3e9e7;
   }
 `;
 
@@ -160,10 +164,10 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-
+  color: #623933;
   font-size: 20px;
 
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 10px;
 
   border-radius: 10px;
@@ -174,6 +178,6 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: #e1e1e1;
+    background-color: #f3e9e7;
   }
 `;

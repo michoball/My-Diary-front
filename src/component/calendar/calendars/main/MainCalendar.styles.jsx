@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { calendarCss } from "../../../../utill/calendar/Calendar.styles";
-import { rotation, border } from "../../../../global.styles";
+import { border } from "../../../../global.styles";
 
 export const CalendarWrapper = styled.div`
   width: 70%;
 
-  padding: 10px;
+  padding-bottom: 20px;
 
-  min-width: 800px;
+  min-width: 900px;
   min-height: 600px;
 
   z-index: ${({ zvalue }) => zvalue};
@@ -15,14 +15,13 @@ export const CalendarWrapper = styled.div`
 
 export const CalendarView = styled.div`
   position: relative;
-  padding: 20px 10px;
+  padding: 20px;
   display: flex;
 
   width: 100%;
   height: 100%;
   background-color: white;
 
-  ${rotation}
   ${border}
 `;
 
@@ -32,13 +31,20 @@ export const CalendarContainer = styled.div`
 
   ${calendarCss} {
     th {
-      border: 2px solid #ff3d3d;
-      border-right: none;
+      border-color: #6239337f;
+      border-radius: 10px;
+      border-bottom-right-radius: unset;
+      border-bottom-left-radius: unset;
+      overflow: hidden;
+    }
+    td {
+      border-radius: 10px;
+      border-color: #6239337f;
+      border-top-right-radius: unset;
     }
     .fc-theme-standard .fc-scrollgrid {
-      border: 2px solid #ff3d3d;
-      border-radius: 20px;
-      overflow: hidden;
+      border-radius: 10px;
+      border-color: #6239337f;
     }
     .fc-toolbar.fc-header-toolbar {
       position: relative;
@@ -56,12 +62,13 @@ export const CalendarContainer = styled.div`
           .fc-toolbar-title {
             margin: 0 10px;
             font-size: 25px;
+            color: #f2727d;
           }
         }
         &:nth-child(2) {
           position: absolute;
           top: 0;
-          left: 35%;
+          left: 40%;
           margin: 0 20px;
           gap: 10px;
         }
@@ -75,10 +82,14 @@ export const CalendarContainer = styled.div`
 
   table .fc-col-header .fc-col-header-cell {
     padding: 10px 0;
-    height: 35px;
-    color: #ff3d3d;
+    height: 30px;
     .fc-col-header-cell-cushion {
-      color: #ff3d3d;
+      color: #623933;
+    }
+    &.fc-day.fc-day-sun {
+      .fc-col-header-cell-cushion {
+        color: #f23d4c;
+      }
     }
   }
   .fc-daygrid {
