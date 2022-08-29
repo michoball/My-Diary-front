@@ -100,11 +100,17 @@ export const ColorSection = styled.div`
     margin-right: 10px;
   }
   ${ColorPalletContainer} {
+    width: 250px;
     margin-left: 5%;
-    width: 70%;
+    margin-top: 10px;
     transform: translateX(10px);
   }
   ${CircleColorPicker} {
-    border: 2px solid black;
+    background-color: #f3e9e7;
+    span {
+      width: 40px;
+      height: 40px;
+      transition: box-shadow 200ms ease !important;
+    }
   }
 `;

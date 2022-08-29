@@ -6,7 +6,7 @@ export const SignInHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  height: 20%;
   padding: 10px 0 20px;
   h1 {
     color: #f2727d;
@@ -32,6 +32,7 @@ export const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20%;
 
   button {
     font-size: 18px;
@@ -51,6 +52,7 @@ export const OauthContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 50%;
+  height: 100%;
 
   .google {
     width: 30px;
@@ -83,13 +85,13 @@ export const LogInForm = styled.form`
   justify-content: space-around;
   padding-bottom: 10px;
 
-  height: 70%;
+  height: 80%;
 
   overflow-y: scroll;
 
   ${FormInputContainer} {
     margin-bottom: 5px;
-    height: 25%;
+    height: 20%;
 
     input {
       font-size: 18px;
@@ -113,7 +115,7 @@ export const LogInForm = styled.form`
 
       background-color: #ffc107;
       padding: 5px 5px 5px 10px;
-      width: 130px;
+      width: 140px;
       margin-right: 0;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;

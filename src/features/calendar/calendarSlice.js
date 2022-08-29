@@ -61,7 +61,7 @@ const initialEvent = [
   // 정기 일정 포맷 object
   {
     id: "12",
-    title: "장 보기",
+    title: "농구 모임",
     color: "#f44336",
     labelId: "1hwhw2",
     labelTitle: "regular Work",
@@ -89,7 +89,7 @@ const initialEvent = [
 ];
 
 const initialState = {
-  eventList: [],
+  eventList: initialEvent,
   selectedEvent: null,
   isLoading: false,
   isError: false,
@@ -139,7 +139,7 @@ export const calendarSlice = createSlice({
       .addCase(getCalendars.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.eventList = action.payload;
+        state.eventList = state.eventList.concat(action.payload);
       })
       .addCase(getCalendars.rejected, (state, action) => {
         state.isLoading = false;

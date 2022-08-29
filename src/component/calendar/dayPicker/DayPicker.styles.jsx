@@ -12,6 +12,7 @@ export const CheckBoxWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 10px;
 `;
 
 export const CheckBoxContainer = styled.div`

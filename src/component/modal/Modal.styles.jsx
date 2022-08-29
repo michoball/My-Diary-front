@@ -17,7 +17,7 @@ export const ModalWrapperStyle = styled.div`
   transform: translate(-50%, -50%);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  border-top-right-radius: 0;
+  border-top-left-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;

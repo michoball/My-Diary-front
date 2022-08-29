@@ -39,7 +39,7 @@ export const CircleColorPicker = styled(CirclePicker)`
       ${({ color }) => color} 0px 0px 5px !important;
     transition: box-shadow 200ms ease !important;
   }
-  span div {
+  span {
     transition: box-shadow 200ms ease !important;
   }
 `;

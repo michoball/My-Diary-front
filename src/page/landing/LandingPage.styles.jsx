@@ -15,24 +15,26 @@ export const LandNavBarContainer = styled.div`
   justify-content: space-between;
 
   width: 100%;
-  height: 80px;
+  height: 150px;
 
-  padding: 10px 20px;
+  padding: 10px 7.5%;
   z-index: 100;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
   background-color: #f3e9e7;
+
   &.active {
     top: 10px;
-    left: 1%;
-    width: 98%;
+    left: 2%;
+    width: 96%;
+    height: 90px;
     border-radius: 50px;
-    border: 3px solid #f2a7a7;
-    background-color: whitesmoke;
+    border: 1px solid #f2a7a7;
+    background-color: white;
+    padding: 10px 5%;
   }
 
   svg {
-    margin-left: 20px;
-    width: 250px;
+    width: 300px;
     fill: #f2727d;
   }
 `;
@@ -40,18 +42,23 @@ export const LandNavBarContainer = styled.div`
 export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   color: #bbb;
 
   a {
+    font-size: 20px;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 5px 10px;
     transition: background-color 0.2s ease-in;
 
     :hover {
       background-color: rgba(98, 57, 51, 0.3);
     }
     &.start {
+      button {
+        font-size: 20px;
+      }
+
       :hover {
         background-color: unset;
       }
@@ -69,13 +76,18 @@ export const MainAppDisplayContainer = styled.main`
 export const SectionContainer = styled.section`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 90%;
+  justify-content: space-between;
+  width: 85%;
   padding: 100px 0;
-  gap: 30px;
 
+  &.section-main {
+    width: 100%;
+    padding: 50px 100px 100px;
+    background-color: whitesmoke;
+  }
   &.section-label {
     justify-content: center;
+    gap: 5%;
     width: 100%;
     background-color: whitesmoke;
     padding-bottom: 50px;
@@ -94,7 +106,7 @@ export const LabelDisplay = styled.div`
 `;
 
 export const ImgContainer = styled.div`
-  width: 700px;
+  width: 46%;
   height: 450px;
   background-position: center;
   background-size: cover;
@@ -103,7 +115,7 @@ export const ImgContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
 
-  box-shadow: 0 0 30px rgba(98, 57, 51, 0.7);
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
   img {
     width: 100%;
     height: 100%;
@@ -135,7 +147,9 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 46%;
+  text-align: center;
+
   h3 {
     font-size: 60px;
   }
@@ -157,11 +171,11 @@ export const ContentContainer = styled.div`
   }
   &.label-content {
     padding: 20px;
-    width: 95%;
+    width: 100%;
     p {
-      text-align: center;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 18px;
+      line-height: 25px;
     }
   }
   &.memo-content {

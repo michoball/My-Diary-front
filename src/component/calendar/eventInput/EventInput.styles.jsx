@@ -4,7 +4,7 @@ import { BaseButton } from "../../../UI/button/button.styles";
 export const EventCreatorContainer = styled.div`
   position: relative;
   border-radius: 10px;
-  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 
   background-color: white;
   padding: 10px;
@@ -12,22 +12,22 @@ export const EventCreatorContainer = styled.div`
 
 export const EventToggerContainer = styled.div`
   display: flex;
-  flex-direction: column;
+
   position: absolute;
-  top: 5px;
-  right: -30px;
+  top: -30px;
+  left: 5px;
   overflow: hidden;
 `;
 
 export const EventTogger = styled.button`
   position: relative;
   background-color: white;
-  height: 50px;
-  width: 30px;
+  height: 30px;
+  width: 60px;
 
   border: none;
   border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
   font-weight: bold;
 
   transition: all 0.3s ease;
@@ -40,7 +40,7 @@ export const EventTogger = styled.button`
 
   :hover {
     border-top-right-radius: 15px;
-    background-color: #f2727d;
+    background-color: blanchedalmond;
   }
   :active {
     transform: translateX(-2px);

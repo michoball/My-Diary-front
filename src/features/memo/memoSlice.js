@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createMemos, deleteMemo, getMemos, updateMemo } from "./memo.thunk";
-
+import { HOME_DEFAULT_MEMO } from "../../page/home/HomeDefaultMemo";
 const initialMemos = [
   {
     _id: "Afa124te4t4",
@@ -65,7 +65,7 @@ const initialMemos = [
 ];
 
 const initialState = {
-  memoLists: [],
+  memoLists: HOME_DEFAULT_MEMO,
   selectedMemo: null,
   isLoading: false,
   isError: false,
@@ -114,7 +114,7 @@ export const MemoSlice = createSlice({
       .addCase(getMemos.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.memoLists = action.payload;
+        state.memoLists = state.memoLists.concat(action.payload);
       })
       .addCase(getMemos.rejected, (state, action) => {
         state.isLoading = false;

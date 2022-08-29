@@ -52,10 +52,16 @@ const Navigation = () => {
         {currentUser ? (
           <UserProfileContainer>
             <UserProfile
-              src={currentUser.avatar ? currentUser.avatar : defaultProfile}
+              src={
+                currentUser.avatar
+                  ? currentUser.avatar
+                  : "https://randomuser.me/api/portraits/men/45.jpg"
+              }
               alt="userAvatar"
             />
-            <p>{currentUser.displayName}</p>
+            <p>John</p>
+
+            {/* <p>{currentUser.displayName}</p> */}
             <button onClick={logoutHandler} className="logout">
               Log out
             </button>

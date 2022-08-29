@@ -37,7 +37,7 @@ const initialLabels = [
 ];
 
 const initialState = {
-  labelLists: [],
+  labelLists: initialLabels,
   selectedLabel: null,
   isLoading: false,
   isError: false,
@@ -87,7 +87,7 @@ export const labelSlice = createSlice({
       .addCase(getLabels.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.labelLists = action.payload;
+        state.labelLists = state.labelLists.concat(action.payload);
       })
       .addCase(getLabels.rejected, (state, action) => {
         state.isLoading = false;
