@@ -7,7 +7,7 @@ export const MemoCardContainer = styled.div`
 
   padding: 15px;
   width: 100%;
-  min-width: 250px;
+  min-width: 280px;
   height: 250px;
   border-radius: 20px;
 
@@ -20,7 +20,7 @@ export const MemoCardContainer = styled.div`
   :hover {
     background-color: ${({ bgcolor }) => `${bgcolor}b3`};
     transform: translate(-1px, -2px);
-    box-shadow: 3px 2px 0 rgba(0, 0, 0, 0.4), 3px 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 5px rgba(98, 57, 51, 0.5);
     transition: transform 0.2s ease-in;
   }
   :active {

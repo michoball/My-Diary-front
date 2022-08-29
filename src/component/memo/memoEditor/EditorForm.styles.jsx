@@ -99,7 +99,7 @@ export const MyEditor = styled.div`
   width: 100%;
   border-radius: 10px;
   height: 100%;
-
+  color: black;
   overflow-y: scroll;
 
   .wrapper-class {
@@ -108,7 +108,7 @@ export const MyEditor = styled.div`
     height: 100%;
   }
   .editor {
-    background-color: ${({ bgcolors }) => `${bgcolors}cc`};
+    background-color: ${({ bgcolors }) => `${bgcolors}b2`};
     padding: 10px 20px;
     height: calc(100% - 40px);
     border: 2px solid #623933 !important;

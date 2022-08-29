@@ -5,6 +5,6 @@ export const AuthenticationContainer = styled.div`
   justify-content: center;
 
   width: 100%;
-  height: calc(100vh - 80px);
-  padding: 40px 0 20px 0;
+  height: calc(100vh - 90px);
+  padding-bottom: 30px;
 `;

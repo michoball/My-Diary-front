@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { rotation, border } from "../../global.styles";
 
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
+  width: 100%;
+  min-width: 900px;
 `;
 
 export const LandNavBarContainer = styled.div`
@@ -17,32 +16,24 @@ export const LandNavBarContainer = styled.div`
 
   width: 100%;
   height: 80px;
-  background-color: white;
 
   padding: 10px 20px;
   z-index: 100;
   transition: all 0.3s ease-in;
-
+  background-color: #f3e9e7;
   &.active {
     top: 10px;
     left: 1%;
     width: 98%;
     border-radius: 50px;
     border: 3px solid #f2a7a7;
+    background-color: whitesmoke;
   }
 
   svg {
-    background-color: white;
     margin-left: 20px;
-    width: 220px;
+    width: 250px;
     fill: #f2727d;
-    padding: 5px;
-    border: 2px solid #f2727d;
-    border-radius: 10px;
-
-    /* ${rotation} {
-      box-shadow: -3px -3px 10px rgba(0, 0, 0, 0.5);
-    } */
   }
 `;
 
@@ -51,6 +42,21 @@ export const LinkContainer = styled.div`
   align-items: center;
   gap: 30px;
   color: #bbb;
+
+  a {
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: background-color 0.2s ease-in;
+
+    :hover {
+      background-color: rgba(98, 57, 51, 0.3);
+    }
+    &.start {
+      :hover {
+        background-color: unset;
+      }
+    }
+  }
 `;
 
 export const MainAppDisplayContainer = styled.main`
@@ -58,8 +64,6 @@ export const MainAppDisplayContainer = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 50px;
-  background-color: white;
 `;
 
 export const SectionContainer = styled.section`
@@ -67,62 +71,71 @@ export const SectionContainer = styled.section`
   align-items: center;
   justify-content: space-around;
   width: 90%;
-  padding: 70px 0 70px 0;
+  padding: 100px 0;
+  gap: 30px;
 
-  &.section-calendar {
+  &.section-label {
+    justify-content: center;
+    width: 100%;
+    background-color: whitesmoke;
     padding-bottom: 50px;
   }
 `;
+export const LabelDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 350px;
+  min-width: 250px;
+  height: 350px;
+
+  border-radius: 10px;
+`;
 
 export const ImgContainer = styled.div`
-  position: relative;
-  width: 60%;
-  height: 420px;
-  border: 3px solid #bbb;
-  border-radius: 20px;
-  padding: 10px;
-  background-color: white;
+  width: 700px;
+  height: 450px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: top;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 0 30px rgba(98, 57, 51, 0.7);
+  img {
+    width: 100%;
+    height: 100%;
+  }
 
   &.calendar-display {
     /* width: 600px; */
     /* height: 380px; */
   }
-
   &.label-display {
-    display: flex;
-    /* width: 650px; */
-    /* height: 350px; */
+    padding: 10px;
+    width: 100%;
+    height: 250px;
+    box-shadow: none;
+    background-color: rgba(98, 57, 51, 0.3);
+
     img {
-      width: 50%;
+      border-radius: 10px;
     }
   }
-
   &.memo-display {
     /* width: 680px; */
     /* height: 400px; */
   }
-  ::before {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    left: 5%;
-    width: 90%;
-    height: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-
-    filter: blur(10px);
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-  }
 `;
 
 export const ContentContainer = styled.div`
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
   h3 {
     font-size: 60px;
   }
@@ -143,14 +156,12 @@ export const ContentContainer = styled.div`
     }
   }
   &.label-content {
-    h3 {
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
+    padding: 20px;
+    width: 95%;
     p {
-      margin-left: 20px;
+      text-align: center;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
   &.memo-content {
@@ -168,7 +179,7 @@ export const ContentContainer = styled.div`
 
 export const Partition = styled.div`
   width: 100%;
-  height: 3px;
+  height: 1px;
   border-radius: 10px;
-  background-color: #f2a7a7;
+  background-color: #f2a7a7b3;
 `;

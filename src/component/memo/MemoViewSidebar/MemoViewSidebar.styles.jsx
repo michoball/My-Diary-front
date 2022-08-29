@@ -96,6 +96,7 @@ export const MajorMemoContainer = styled.div`
   flex-direction: column;
 
   padding: 20px;
+  height: 50%;
 
   span {
     display: flex;
@@ -113,7 +114,7 @@ export const MemoContainer = styled.div`
   gap: 15px;
   margin-top: 15px;
 
-  height: 30vh;
+  height: 100%;
 
   border-radius: 10px;
   padding: 15px;

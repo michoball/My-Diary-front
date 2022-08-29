@@ -30,7 +30,7 @@ export const NavLink = styled(Link)`
   justify-content: center;
   align-items: center;
 
-  background-color: #9c27b0;
+  background-color: #9c27b0b2;
   color: white;
 
   font-size: 20px;
@@ -38,12 +38,11 @@ export const NavLink = styled(Link)`
   margin-bottom: 20px;
   border-radius: 10px;
 
-  transition: all 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
   cursor: pointer;
 
   :hover {
     background-color: #9c27b0;
-    transform: scale(0.98);
   }
   svg {
     margin-right: 10px;

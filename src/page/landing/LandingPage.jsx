@@ -7,12 +7,15 @@ import {
   ImgContainer,
   ContentContainer,
   LinkContainer,
+  LabelDisplay,
 } from "./LandingPage.styles";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import calendarMain from "../../assets/jpg/calendarMain.jpg";
 import sampleimg from "../../assets/jpg/sample.jpg";
 import memoMain from "../../assets/jpg/memoMain.jpg";
 import labelMain from "../../assets/jpg/labelMain.jpg";
+import macImg from "../../assets/jpg/macPage.jpg";
+
 import labelCreate from "../../assets/jpg/labelCreate.jpg";
 import { Link } from "react-router-dom";
 import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
@@ -26,7 +29,7 @@ function LandingPage() {
   console.log("isScroll", isScrolling);
 
   const startNav = () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     if (window.scrollY > 500) {
       setIsScrolling(true);
     } else {
@@ -63,7 +66,7 @@ function LandingPage() {
         <LinkContainer>
           <Link to="/">체험하기</Link>
           <Link to="/login">회원가입</Link>
-          <Link to="/">
+          <Link to="/" className="start">
             <Button buttonType={BUTTON_TYPE_CLASSES.base}>시작하기</Button>
           </Link>
         </LinkContainer>
@@ -71,7 +74,12 @@ function LandingPage() {
 
       <MainAppDisplayContainer>
         <SectionContainer className="section-main">
-          <ImgContainer className="main">
+          <ImgContainer
+            className="main"
+            style={{
+              backgroundImage: `url(${macImg})`,
+            }}
+          >
             <img src={sampleimg} alt="main-display" />
           </ImgContainer>
           <ContentContainer>
@@ -97,21 +105,41 @@ function LandingPage() {
         </SectionContainer>
 
         <SectionContainer className="section-label" ref={scrollRef}>
-          <ImgContainer className="label-display">
-            <img src={labelMain} alt="label-display" />
-            <img src={labelCreate} alt="label-display" />
-          </ImgContainer>
-          <ContentContainer className="label-content">
-            <h3>라벨링</h3>{" "}
-            <p>
-              기능으로 간편하게 <br />
-              일정을 등록하세요.
-            </p>
-          </ContentContainer>
+          <LabelDisplay>
+            <ImgContainer className="label-display">
+              <img src={labelMain} alt="label-display" />
+            </ImgContainer>
+            <ContentContainer className="label-content">
+              <p>
+                간편하게 정기 일정과 일일 일정을
+                <br /> 등록할 수 있습니다.
+              </p>
+            </ContentContainer>
+          </LabelDisplay>
+          <LabelDisplay>
+            <ImgContainer className="label-display">
+              <img src={labelMain} alt="label-display" />
+            </ImgContainer>
+            <ContentContainer className="label-content">
+              <p>
+                라벨링 기능으로 일정을 미리 만들어 <br /> 간편하게 이용해보세요
+              </p>
+            </ContentContainer>
+          </LabelDisplay>
+          <LabelDisplay>
+            <ImgContainer className="label-display">
+              <img src={labelCreate} alt="label-display" />
+            </ImgContainer>
+            <ContentContainer className="label-content">
+              <p>휴일 선택 버튼으로 휴일도 지정 가능합니다.</p>
+            </ContentContainer>
+          </LabelDisplay>
         </SectionContainer>
-        <Partition />
 
         <SectionContainer className="section-memo">
+          <ImgContainer className="memo-display">
+            <img src={memoMain} alt="memo-display" />
+          </ImgContainer>
           <ContentContainer className="memo-content">
             <h3>메모</h3>
             <p>
@@ -120,9 +148,6 @@ function LandingPage() {
               중요표시와 색깔을 남기세요.
             </p>
           </ContentContainer>
-          <ImgContainer className="memo-display">
-            <img src={memoMain} alt="memo-display" />
-          </ImgContainer>
         </SectionContainer>
         <Partition />
         <SectionContainer className="section-memo">

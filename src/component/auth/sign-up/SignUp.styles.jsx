@@ -6,8 +6,9 @@ export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 800px;
-  height: 80vh;
+  width: 70%;
+  min-width: 700px;
+  height: 100%;
 
   background-color: white;
   ${border}
@@ -23,7 +24,7 @@ export const HeaderContainer = styled.div`
 
   h1 {
     padding: 10px 0 0 0;
-    font-size: 60px;
+    font-size: 50px;
     display: flex;
     align-items: center;
 
@@ -31,8 +32,8 @@ export const HeaderContainer = styled.div`
   }
   svg {
     fill: #f2727d;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
   .Logo {
     width: 300px;
@@ -46,8 +47,9 @@ export const ButtonContainer = styled.div`
   width: 100%;
   button {
     font-size: 20px;
-    width: 60%;
-    height: 60px;
+    width: 50%;
+    max-width: 500px;
+    height: 55px;
     border: none;
     background-color: #2196f3;
   }
@@ -60,13 +62,14 @@ export const LogInForm = styled.form`
   justify-content: space-around;
 
   width: 100%;
-  padding: 20px 0 0;
+  padding: 10px 0 0;
   height: 80%;
 
   ${FormInputContainer} {
     padding: 0 20px;
-    width: 90%;
-    height: 60px;
+    width: 75%;
+    max-width: 600px;
+    height: 45px;
     input {
       width: 100%;
       height: 100%;

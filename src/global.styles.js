@@ -1,9 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
 
-export const rotation = css`
-  transform: rotate3d(-1, 1, 0, 5deg);
-  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.5);
-`;
 export const border = css`
   border-radius: 10px;
 `;

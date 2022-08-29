@@ -7,7 +7,7 @@ import {
   MemosWrapper,
   MemoViewHeader,
 } from "./MemoView.styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectMemoLoading,
   selectRecentOrderMemoLists,

@@ -7,7 +7,7 @@ export const SignInHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  margin: 10px 0 20px;
+  padding: 10px 0 20px;
   h1 {
     color: #f2727d;
     display: flex;
@@ -36,7 +36,7 @@ export const ButtonsContainer = styled.div`
   button {
     font-size: 18px;
     width: 50%;
-    height: 40px;
+    height: 100%;
     border: none;
     cursor: pointer;
 
@@ -82,14 +82,14 @@ export const LogInForm = styled.form`
   flex-direction: column;
   justify-content: space-around;
   padding-bottom: 10px;
-  height: 80%;
-  min-height: 180px;
+
+  height: 70%;
 
   overflow-y: scroll;
 
   ${FormInputContainer} {
     margin-bottom: 5px;
-    height: 50px;
+    height: 25%;
 
     input {
       font-size: 18px;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { calendarCss } from "../../utill/calendar/Calendar.styles";
 import { MemoCardContainer } from "../../component/memo/memoCard/MemoCard.styles";
 import { Link } from "react-router-dom";
-import { rotation, border } from "../../global.styles";
+import { border } from "../../global.styles";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -51,7 +51,6 @@ export const HomeCalendar = styled.div`
   padding: 20px;
 
   ${border}
-  /* ${rotation} */
 
   background-color: white;
 `;
@@ -197,7 +196,6 @@ export const LoginContainer = styled.div`
 
   background-color: white;
   ${border}
-  /* ${rotation} */
 
   .loading-container {
     height: 30vh;
