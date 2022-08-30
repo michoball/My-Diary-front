@@ -8,32 +8,32 @@ export const PageContainer = styled.div`
 `;
 
 export const LandNavBarContainer = styled.div`
-  position: sticky;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   width: 100%;
-  height: 150px;
+  height: 100px;
 
   padding: 10px 7.5%;
   z-index: 100;
-  transition: all 0.2s ease-in;
+  transition: position 0.2s ease-in;
   background-color: #f3e9e7;
 
   &.active {
+    position: sticky;
     top: 10px;
     left: 2%;
     width: 96%;
-    height: 90px;
+    height: 80px;
     border-radius: 50px;
     border: 1px solid #f2a7a7;
     background-color: white;
     padding: 10px 5%;
   }
 
-  svg {
+  svg.logo {
     width: 300px;
     fill: #f2727d;
   }
@@ -106,7 +106,7 @@ export const LabelDisplay = styled.div`
 `;
 
 export const ImgContainer = styled.div`
-  width: 46%;
+  width: 48%;
   height: 450px;
   background-position: center;
   background-size: cover;
@@ -122,8 +122,6 @@ export const ImgContainer = styled.div`
   }
 
   &.calendar-display {
-    /* width: 600px; */
-    /* height: 380px; */
   }
   &.label-display {
     padding: 10px;
@@ -131,7 +129,7 @@ export const ImgContainer = styled.div`
     height: 250px;
     box-shadow: none;
     background-color: rgba(98, 57, 51, 0.3);
-
+    overflow: unset;
     img {
       border-radius: 10px;
     }
@@ -156,6 +154,11 @@ export const ContentContainer = styled.div`
   p {
     font-weight: bold;
     font-size: 30px;
+  }
+
+  svg.main {
+    width: 400px;
+    fill: #f2727d;
   }
 
   &.calendar-content {

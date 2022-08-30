@@ -28,9 +28,12 @@ function MemoView() {
 
   useEffect(() => {
     const searchTerm = setTimeout(() => {
-      setMemoCards(
-        orderedMemoLists.filter((memo) => memo.title.includes(searchWord))
+      const titleTerm = orderedMemoLists.filter((memo) =>
+        memo.title.includes(searchWord)
       );
+      if (titleTerm) {
+        setMemoCards(titleTerm);
+      }
     }, 500);
 
     return () => {

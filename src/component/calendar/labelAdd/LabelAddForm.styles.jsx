@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BaseButton } from "../../../UI/button/button.styles";
+import { ColorPalletContainer } from "../../colorPicker/ColorPicker.styles";
 
 export const LabelInputcontainer = styled.div`
   display: flex;
@@ -32,6 +33,10 @@ export const ColorSection = styled.div`
 
   label {
     font-weight: bold;
+  }
+  ${ColorPalletContainer} {
+    margin-left: 20px;
+    width: 220px;
   }
 `;
 

@@ -9,7 +9,7 @@ import { border } from "../../../global.styles";
 export const SideBarViewContainer = styled.div`
   width: 100%;
 
-  min-width: 250px;
+  min-width: 350px;
   max-width: 400px;
   padding: 10px 10px 20px 0;
   height: calc(100vh - 100px);
@@ -100,8 +100,8 @@ export const ColorSection = styled.div`
     margin-right: 10px;
   }
   ${ColorPalletContainer} {
-    width: 250px;
-    margin-left: 5%;
+    width: 82%;
+    margin-left: 3%;
     margin-top: 10px;
     transform: translateX(10px);
   }

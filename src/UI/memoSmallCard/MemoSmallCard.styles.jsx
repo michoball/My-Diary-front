@@ -24,8 +24,8 @@ export const MemoCardHeader = styled.header`
   border-bottom: 1px solid #623933;
   svg {
     position: absolute;
-    right: 5%;
-    top: 5%;
+    right: 10%;
+    top: 7%;
     fill: ${({ major }) => (major ? "#FF8A05" : "transparent")};
   }
 `;

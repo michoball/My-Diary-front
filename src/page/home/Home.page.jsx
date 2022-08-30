@@ -95,7 +95,7 @@ function Home() {
                   <MemoCard
                     key={memoList._id}
                     memoInfo={memoList}
-                    disabled={true}
+                    home={true}
                   />
                 );
               })}

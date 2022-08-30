@@ -36,8 +36,8 @@ const initialEvent = [
     labelId: "",
     id: "133584fasefa-arnla",
     title: "휴일",
-    start: "2022-08-26T00:00",
-    end: "2022-08-26T24:00",
+    start: "2022-08-02T00:00",
+    end: "2022-08-02T24:00",
     color: "#ff9f89",
     allDay: true,
 
@@ -49,8 +49,8 @@ const initialEvent = [
     labelId: "",
     id: "133584fasefa-arnla",
     title: "휴일",
-    start: "2022-08-27T00:00",
-    end: "2022-08-27T24:00",
+    start: "2022-08-01T00:00",
+    end: "2022-08-01T24:00",
     color: "#ff9f89",
     allDay: true,
 

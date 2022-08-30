@@ -11,32 +11,50 @@ import {
 } from "./LandingPage.styles";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import calendarPage from "../../assets/jpg/calendarPage.jpg";
-import memoMain from "../../assets/jpg/memoMain.jpg";
-import labelTool from "../../assets/jpg/labelTool.jpg";
+import calendarDnD from "../../assets/jpg/calendarDnD.jpg";
+import calendarDaliy from "../../assets/jpg/calendarDaliy.jpg";
+import calendarRecurr from "../../assets/jpg/calendarRecurr.jpg";
+import memoPage from "../../assets/jpg/memoPage.jpg";
+import memoColor from "../../assets/jpg/memoColor.jpg";
+import memoSearch from "../../assets/jpg/memoSearch.jpg";
+import calendarWeek from "../../assets/jpg/calendarWeek.jpg";
+import labelAdd from "../../assets/jpg/labelAdd.jpg";
 import homeImg from "../../assets/jpg/mainPage.jpg";
-import halidayImg from "../../assets/jpg/holiday.jpg";
-import labelView from "../../assets/jpg/labelView.jpg";
+import halidayImg from "../../assets/jpg/holidayImg.jpg";
+import memoEditPage from "../../assets/jpg/memoEditPage.jpg";
 import { Link } from "react-router-dom";
 import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
-import { useRef } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import Slider from "../../UI/slider/Slider";
+
+const calendarSwiperImg = [
+  calendarPage,
+  calendarWeek,
+  calendarDaliy,
+  calendarRecurr,
+];
+
+const memoSwiperImg = [memoPage, memoColor, memoSearch, memoEditPage];
 
 function LandingPage() {
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollRef = useRef();
-  console.log("isScroll", isScrolling);
-
   const startNav = () => {
-    // console.log(window.scrollY);
     if (window.scrollY > 468) {
       setIsScrolling(true);
-    } else {
+    } else if (window.scrollY < 460) {
       setIsScrolling(false);
     }
   };
-
-  window.addEventListener("scroll", startNav);
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", startNav);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", startNav);
+    };
+  }, []);
 
   // useEffect(() => {
   //   const observer = new IntersectionObserver(
@@ -61,7 +79,7 @@ function LandingPage() {
   return (
     <PageContainer>
       <LandNavBarContainer className={isScrolling ? "active" : ""}>
-        <Mydiary className="logo"></Mydiary>
+        <Mydiary className="logo" />
         <LinkContainer>
           <Link to="/">체험하기</Link>
           <Link to="/login">회원가입</Link>
@@ -76,7 +94,7 @@ function LandingPage() {
           <ImgContainer className="main">
             <img src={homeImg} alt="main-display" />
           </ImgContainer>
-          <ContentContainer>
+          <ContentContainer className="main-content">
             <h3>
               나만의
               <br /> 다이어리를 <br /> 만들어 보세요
@@ -84,7 +102,6 @@ function LandingPage() {
           </ContentContainer>
         </SectionContainer>
 
-        <Partition />
         <SectionContainer className="section-calendar">
           <ContentContainer className="calendar-content">
             <h3>캘린더</h3>
@@ -94,25 +111,25 @@ function LandingPage() {
             </p>
           </ContentContainer>
           <ImgContainer className="calendar-display">
-            <img src={calendarPage} alt="calendar-display" />
+            <Slider imgSorce={calendarSwiperImg} />
           </ImgContainer>
         </SectionContainer>
 
         <SectionContainer className="section-label" ref={scrollRef}>
           <LabelDisplay>
             <ImgContainer className="label-display">
-              <img src={labelTool} alt="label-display" />
+              <img src={calendarDnD} alt="label-display" />
             </ImgContainer>
             <ContentContainer className="label-content">
               <p>
-                간편하게 정기 일정과 일일 일정을
-                <br /> 등록할 수 있습니다.
+                만든 일정을 드래그 또는 클릭하여
+                <br /> 일정을 변경하세요.
               </p>
             </ContentContainer>
           </LabelDisplay>
           <LabelDisplay>
             <ImgContainer className="label-display">
-              <img src={labelView} alt="label-display" />
+              <img src={labelAdd} alt="label-display" />
             </ImgContainer>
             <ContentContainer className="label-content">
               <p>
@@ -125,14 +142,17 @@ function LandingPage() {
               <img src={halidayImg} alt="label-display" />
             </ImgContainer>
             <ContentContainer className="label-content">
-              <p>휴일 선택 버튼으로 휴일도 지정 가능합니다.</p>
+              <p>
+                휴일지정 버튼으로
+                <br /> 휴일도 만들 수 있습니다.
+              </p>
             </ContentContainer>
           </LabelDisplay>
         </SectionContainer>
 
         <SectionContainer className="section-memo">
           <ImgContainer className="memo-display">
-            <img src={memoMain} alt="memo-display" />
+            <Slider imgSorce={memoSwiperImg} />
           </ImgContainer>
           <ContentContainer className="memo-content">
             <h3>메모</h3>
@@ -154,7 +174,7 @@ function LandingPage() {
             </p>
           </ContentContainer>
           <ImgContainer className="memo-display">
-            <img src={memoMain} alt="memo-display" />
+            <img src={memoPage} alt="memo-display" />
           </ImgContainer>
         </SectionContainer>
         <Partition />
@@ -168,7 +188,7 @@ function LandingPage() {
             </p>
           </ContentContainer>
           <ImgContainer className="memo-display">
-            <img src={memoMain} alt="memo-display" />
+            <img src={memoPage} alt="memo-display" />
           </ImgContainer>
         </SectionContainer>
       </MainAppDisplayContainer>

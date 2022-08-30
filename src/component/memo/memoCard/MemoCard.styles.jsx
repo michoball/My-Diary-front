@@ -7,8 +7,8 @@ export const MemoCardContainer = styled.div`
 
   padding: 15px;
   width: 100%;
-  min-width: 280px;
-  height: 250px;
+  min-width: 250px;
+  height: 230px;
   border-radius: 20px;
 
   background-color: ${({ bgcolor }) => `${bgcolor}7f`};
