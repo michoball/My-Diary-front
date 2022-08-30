@@ -83,14 +83,24 @@ export const SectionContainer = styled.section`
   &.section-main {
     width: 100%;
     padding: 50px 100px 100px;
-    background-color: whitesmoke;
+    background-color: white;
   }
   &.section-label {
     justify-content: center;
     gap: 5%;
     width: 100%;
-    background-color: whitesmoke;
+    background-color: white;
+
     padding-bottom: 50px;
+  }
+  &.section-memo {
+    width: 100%;
+    padding: 100px 7.5%;
+  }
+  &.section-memoInfo {
+    width: 100%;
+    flex-direction: column;
+    background-color: whitesmoke;
   }
 `;
 export const LabelDisplay = styled.div`
@@ -105,13 +115,40 @@ export const LabelDisplay = styled.div`
   border-radius: 10px;
 `;
 
+export const MemoDisplay = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 70%;
+  min-width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  :last-child {
+    margin-bottom: 0;
+  }
+  overflow: hidden;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 233, 231, 0.4) 50%,
+    rgba(243, 233, 231, 0.6) 100%
+  );
+  :nth-child(2) {
+    background: linear-gradient(
+      90deg,
+      rgba(243, 233, 231, 0.6) 0%,
+      rgba(243, 233, 231, 0.4) 50%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+`;
+
 export const ImgContainer = styled.div`
-  width: 48%;
+  width: 50%;
   height: 450px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-y: top;
   border-radius: 10px;
   overflow: hidden;
 
@@ -134,9 +171,35 @@ export const ImgContainer = styled.div`
       border-radius: 10px;
     }
   }
-  &.memo-display {
-    /* width: 680px; */
-    /* height: 400px; */
+  &.memoInfo-display {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 54%;
+    height: 100%;
+    box-shadow: unset;
+
+    :nth-child(2) {
+      justify-content: flex-end;
+    }
+
+    img {
+      width: 85%;
+      height: 90%;
+      border-radius: 10px;
+    }
+    .memo1 {
+      width: 50%;
+      height: 90%;
+      position: absolute;
+    }
+    .memo2 {
+      width: 50%;
+      height: 90%;
+      position: absolute;
+      left: 50%;
+    }
   }
 `;
 
@@ -168,7 +231,6 @@ export const ContentContainer = styled.div`
     }
     p {
       margin-left: 20px;
-      font-weight: bold;
       font-size: 30px;
     }
   }
@@ -176,7 +238,6 @@ export const ContentContainer = styled.div`
     padding: 20px;
     width: 100%;
     p {
-      font-weight: bold;
       font-size: 18px;
       line-height: 25px;
     }
@@ -186,17 +247,24 @@ export const ContentContainer = styled.div`
       font-size: 60px;
       margin-bottom: 10px;
     }
+  }
+  &.memoInfo-content {
+    height: 100%;
+
     p {
-      margin-left: 20px;
-      font-weight: bold;
-      font-size: 20px;
+      font-size: 18px;
+      line-height: 25px;
     }
   }
 `;
 
 export const Partition = styled.div`
-  width: 100%;
-  height: 1px;
+  width: 85%;
+  height: 5px;
   border-radius: 10px;
-  background-color: #f2a7a7b3;
+  background-color: white;
+
+  &.memo {
+    background-color: #f3e9e7;
+  }
 `;

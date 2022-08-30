@@ -16,9 +16,8 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/oauth/success" element={<OauthLogin />} />
-        <Route path="/landing" element={<LandingPage />} />
-        <Route path="/" element={<Home />} />
-
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<Navigation />}>
           <Route path="/login" element={<Authentication />} />
           <Route path="/" element={<PrivateRoute />}>

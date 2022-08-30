@@ -53,7 +53,7 @@ const SignInForm = () => {
     };
 
     dispatch(login(userData));
-    navigate("/");
+    navigate("/home");
     resetFormField();
   };
 

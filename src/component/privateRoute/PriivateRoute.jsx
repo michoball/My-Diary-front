@@ -5,7 +5,7 @@ const PrivateRoute = () => {
 
   if (!currentUser) {
     alert("Log in First");
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
   return <Outlet />;
 };
