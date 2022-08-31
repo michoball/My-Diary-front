@@ -3,12 +3,12 @@ import {
   LandNavBarContainer,
   MainAppDisplayContainer,
   SectionContainer,
-  Partition,
   ImgContainer,
   ContentContainer,
   LinkContainer,
   LabelDisplay,
   MemoDisplay,
+  FooterContainer,
 } from "./LandingPage.styles";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";
 import calendarPage from "../../assets/jpg/calendarPage.jpg";
@@ -24,6 +24,7 @@ import memoEditPreview from "../../assets/jpg/memoEditPreview.jpg";
 import calendarWeek from "../../assets/jpg/calendarWeek.jpg";
 import labelAdd from "../../assets/jpg/labelAdd.jpg";
 import homeImg from "../../assets/jpg/mainPage.jpg";
+import mainLogin from "../../assets/jpg/mainLogin.jpg";
 import halidayImg from "../../assets/jpg/holidayImg.jpg";
 import memoEditPage from "../../assets/jpg/memoEditPage.jpg";
 import memoPreview from "../../assets/jpg/memoPreview.jpg";
@@ -31,6 +32,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Button, { BUTTON_TYPE_CLASSES } from "../../UI/button/button";
 import { useRef, useState, useEffect } from "react";
 import Slider from "../../UI/slider/Slider";
+import { useDispatch } from "react-redux";
+import { login } from "../../features/user/user.thunk";
 
 const calendarSwiperImg = [
   calendarPage,
@@ -41,8 +44,11 @@ const calendarSwiperImg = [
 
 const memoSwiperImg = [memoPage, memoEditPage, memoPreview, memoEditing];
 
+const demoModeUser = { email: "testEmail@gmail.com", password: "asdfasdf" };
+
 function LandingPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollRef = useRef();
   const startNav = () => {
@@ -70,32 +76,19 @@ function LandingPage() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       const entry = entries[0];
-  //       console.log("intersect ", entry.isIntersecting);
-  //       if (entry.isIntersecting) {
-  //         console.log("true");
-  //         setIsScrolling(!isScrolling);
-  //       }
-  //       // console.log(isScrolling);
-  //     },
-  //     { threshold: 0.5 }
-  //   );
-  //   if (scrollRef.current) {
-  //     observer.observe(scrollRef.current);
-  //   }
-
-  //   // return () => observer.disconnect();
-  // }, []);
+  const demoModeHandler = () => {
+    dispatch(login(demoModeUser));
+    navigate("/home");
+  };
 
   return (
     <PageContainer>
       <LandNavBarContainer className={isScrolling ? "active" : ""}>
         <Mydiary className="logo" />
         <LinkContainer>
-          <Link to="/home">체험하기</Link>
+          <button className="demo" onClick={demoModeHandler}>
+            체험하기
+          </button>
           <Link to="/login">회원가입</Link>
           <Link to="/home" className="start">
             <Button buttonType={BUTTON_TYPE_CLASSES.base}>시작하기</Button>
@@ -130,7 +123,7 @@ function LandingPage() {
             <Slider imgSorce={calendarSwiperImg} />
           </ImgContainer>
         </SectionContainer>
-        <Partition />
+
         {/* -----------------  calendar info section -------------------- */}
 
         <SectionContainer className="section-label" ref={scrollRef}>
@@ -184,7 +177,6 @@ function LandingPage() {
           </ContentContainer>
         </SectionContainer>
 
-        <Partition className="memo" />
         {/* -----------------  memo info section -------------------- */}
 
         <SectionContainer className="section-memoInfo">
@@ -218,20 +210,19 @@ function LandingPage() {
           </MemoDisplay>
         </SectionContainer>
 
-        <SectionContainer className="section-memo">
-          <ContentContainer className="memo-content">
-            <h3>메모</h3>
-            <p>
-              모드에서 <br />
-              메모를 작성하고 <br />
-              중요표시와 색깔을 남기세요.
-            </p>
+        <SectionContainer className="section-end">
+          <ContentContainer className="end-content">
+            <h3>지금 바로 시작하세요</h3>
+            <Link to="/home" className="start">
+              <Button buttonType={BUTTON_TYPE_CLASSES.base}>시작하기</Button>
+            </Link>
           </ContentContainer>
-          <ImgContainer className="memo-display">
-            <img src={memoPage} alt="memo-display" />
-          </ImgContainer>
         </SectionContainer>
       </MainAppDisplayContainer>
+      <FooterContainer>
+        <Mydiary className="logo" />
+        <p>Copyright &copy; 2022 All rights reserved</p>
+      </FooterContainer>
     </PageContainer>
   );
 }

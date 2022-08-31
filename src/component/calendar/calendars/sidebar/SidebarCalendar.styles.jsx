@@ -55,18 +55,19 @@ export const SidebarCalendarContainer = styled.div`
       }
       .fc-daygrid-day-bottom {
         text-align: center;
-
+        font-size: 8px;
+        padding: 0;
         .fc-daygrid-more-link {
-          font-size: 16px;
+          font-size: 10px;
           color: orange;
         }
       }
-      .fc-daygrid-day-events,
-      .fc-daygrid-day-event.fc-daygrid-dot-event {
-        .fc-event-title {
-          font-size: 10px;
-        }
+      .fc-daygrid-block-event,
+      .fc-daygrid-dot-event {
       }
+    }
+    .fc-event-title {
+      padding: 0;
     }
   }
 `;

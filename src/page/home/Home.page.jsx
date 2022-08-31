@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { DefaultCalendar } from "../../utill/calendar/Calendar.config";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { selectCalendarEvents } from "../../features/calendar/calendar.select";
 import { selectRecentOrderMemoLists } from "../../features/memo/memo.select";
 import MemoCard from "../../component/memo/memoCard/MemoCard";
@@ -64,7 +65,9 @@ function Home() {
   return (
     <HomeContainer>
       <HomeNavContainer>
-        <Mydiary className="logo"></Mydiary>
+        <Link to="/">
+          <Mydiary className="logo"></Mydiary>
+        </Link>
       </HomeNavContainer>
       <main>
         <HomeCalendar>

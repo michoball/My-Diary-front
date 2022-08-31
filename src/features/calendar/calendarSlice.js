@@ -89,7 +89,7 @@ const initialEvent = [
 ];
 
 const initialState = {
-  eventList: initialEvent,
+  eventList: [],
   selectedEvent: null,
   isLoading: false,
   isError: false,
@@ -139,7 +139,7 @@ export const calendarSlice = createSlice({
       .addCase(getCalendars.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.eventList = state.eventList.concat(action.payload);
+        state.eventList = action.payload;
       })
       .addCase(getCalendars.rejected, (state, action) => {
         state.isLoading = false;

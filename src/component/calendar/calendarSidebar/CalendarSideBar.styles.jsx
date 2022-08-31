@@ -5,7 +5,7 @@ export const SideBarWrapper = styled.div`
   padding: 0 20px 20px 0;
   width: 30%;
 
-  min-height: 600px;
+  min-height: 400px;
   min-width: 350px;
 `;
 
@@ -26,11 +26,11 @@ export const SideContentWapper = styled.div`
 `;
 
 export const ListViewBox = styled(SideContentWapper)`
-  height: 45%;
+  height: 40%;
   margin-top: 10px;
 `;
 
 export const CalendarBox = styled(SideContentWapper)`
-  height: 55%;
+  height: 60%;
   margin-bottom: 10px;
 `;

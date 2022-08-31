@@ -82,7 +82,7 @@ export const calendarCss = css`
       background-color: rgb(0, 0, 0, 20%) !important;
     }
     .fc-daygrid-event {
-      font-size: 12px;
+      font-size: 10px;
 
       &.fc-daygrid-block-event {
         text-align: center;

@@ -8,6 +8,7 @@ export const PageContainer = styled.div`
 `;
 
 export const LandNavBarContainer = styled.div`
+  position: sticky;
   top: 0;
   display: flex;
   align-items: center;
@@ -18,11 +19,10 @@ export const LandNavBarContainer = styled.div`
 
   padding: 10px 7.5%;
   z-index: 100;
-  transition: position 0.2s ease-in;
+  transition: all 0.2s ease-in;
   background-color: #f3e9e7;
 
   &.active {
-    position: sticky;
     top: 10px;
     left: 2%;
     width: 96%;
@@ -43,7 +43,21 @@ export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #bbb;
+
+  .demo {
+    background-color: transparent;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: background-color 0.2s ease-in;
+    cursor: pointer;
+    color: inherit;
+
+    :hover {
+      background-color: rgba(98, 57, 51, 0.3);
+    }
+  }
 
   a {
     font-size: 20px;
@@ -58,7 +72,6 @@ export const LinkContainer = styled.div`
       button {
         font-size: 20px;
       }
-
       :hover {
         background-color: unset;
       }
@@ -100,7 +113,10 @@ export const SectionContainer = styled.section`
   &.section-memoInfo {
     width: 100%;
     flex-direction: column;
-    background-color: whitesmoke;
+    background-color: white;
+  }
+  &.section-end {
+    height: 400px;
   }
 `;
 export const LabelDisplay = styled.div`
@@ -119,16 +135,16 @@ export const MemoDisplay = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  padding: 10px 20px;
   width: 70%;
   min-width: 400px;
   height: 250px;
   border-radius: 10px;
   margin-bottom: 40px;
+
   :last-child {
     margin-bottom: 0;
   }
-  overflow: hidden;
 
   background: linear-gradient(
     90deg,
@@ -151,6 +167,7 @@ export const ImgContainer = styled.div`
   height: 450px;
   border-radius: 10px;
   overflow: hidden;
+  background-color: rgba(98, 57, 51, 0.3);
 
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
   img {
@@ -165,7 +182,6 @@ export const ImgContainer = styled.div`
     width: 100%;
     height: 250px;
     box-shadow: none;
-    background-color: rgba(98, 57, 51, 0.3);
     overflow: unset;
     img {
       border-radius: 10px;
@@ -175,7 +191,8 @@ export const ImgContainer = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    background-color: unset;
+    overflow: hidden;
     width: 54%;
     height: 100%;
     box-shadow: unset;
@@ -186,19 +203,16 @@ export const ImgContainer = styled.div`
 
     img {
       width: 85%;
-      height: 90%;
+      height: 100%;
       border-radius: 10px;
-    }
-    .memo1 {
-      width: 50%;
-      height: 90%;
-      position: absolute;
-    }
-    .memo2 {
-      width: 50%;
-      height: 90%;
-      position: absolute;
-      left: 50%;
+      &.memo1 {
+        width: 100%;
+        position: absolute;
+      }
+      &.memo2 {
+        position: absolute;
+        left: 50%;
+      }
     }
   }
 `;
@@ -213,25 +227,16 @@ export const ContentContainer = styled.div`
 
   h3 {
     font-size: 60px;
+    margin-bottom: 10px;
   }
   p {
     font-weight: bold;
     font-size: 30px;
   }
 
-  svg.main {
-    width: 400px;
-    fill: #f2727d;
-  }
-
   &.calendar-content {
-    h3 {
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
     p {
       margin-left: 20px;
-      font-size: 30px;
     }
   }
   &.label-content {
@@ -242,29 +247,33 @@ export const ContentContainer = styled.div`
       line-height: 25px;
     }
   }
-  &.memo-content {
-    h3 {
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
-  }
   &.memoInfo-content {
     height: 100%;
-
     p {
       font-size: 18px;
       line-height: 25px;
     }
   }
+  &.end-content {
+    width: 100%;
+    h3 {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
-export const Partition = styled.div`
-  width: 85%;
-  height: 5px;
-  border-radius: 10px;
-  background-color: white;
+export const FooterContainer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  &.memo {
-    background-color: #f3e9e7;
+  background-color: rgba(98, 57, 51, 0.3);
+  width: 100%;
+  height: 250px;
+  svg.logo {
+    width: 250px;
+    fill: #f2727d;
+    margin-bottom: 20px;
   }
 `;

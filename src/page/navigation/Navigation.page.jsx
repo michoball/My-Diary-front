@@ -25,13 +25,14 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    dispatch(logout()).then(() => {
-      dispatch(userReset());
-      dispatch(memoReset());
-      dispatch(calendarReset());
-      dispatch(labelReset());
-    });
-    navigate("/");
+    dispatch(logout())
+      .then(() => {
+        dispatch(userReset());
+        dispatch(memoReset());
+        dispatch(calendarReset());
+        dispatch(labelReset());
+      })
+      .then(() => navigate("/home"));
   };
   return (
     <Fragment>
@@ -52,16 +53,11 @@ const Navigation = () => {
         {currentUser ? (
           <UserProfileContainer>
             <UserProfile
-              src={
-                currentUser.avatar
-                  ? currentUser.avatar
-                  : "https://randomuser.me/api/portraits/men/45.jpg"
-              }
+              src={currentUser.avatar ? currentUser.avatar : defaultProfile}
               alt="userAvatar"
             />
-            <p>John</p>
 
-            {/* <p>{currentUser.displayName}</p> */}
+            <p>{currentUser.displayName}</p>
             <button onClick={logoutHandler} className="logout">
               Log out
             </button>
