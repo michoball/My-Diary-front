@@ -7,6 +7,7 @@ import SelectButton from "../../selectButton/SelectButton";
 import FormInput from "../../../../UI/formInput/FormInput";
 import {
   selectCalendarEvents,
+  selectCalendarReducer,
   selectEditEvent,
 } from "../../../../features/calendar/calendar.select";
 import { addEvent } from "../../../../features/calendar/calendar.action";
@@ -44,6 +45,7 @@ function EventBasicEdit({ confirm }) {
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
+  const { isError, message } = useSelector(selectCalendarReducer);
   const calendarEventList = useSelector(selectCalendarEvents);
   const {
     _id,
@@ -56,8 +58,14 @@ function EventBasicEdit({ confirm }) {
     eventEndTime,
     labelTitle,
   } = editEvent;
+  // 에러 핸들링
+  useEffect(() => {
+    if (isError) {
+      alert(`Error ocurred in event editing ${message}`);
+    }
+  }, [isError, message]);
 
-  // // 편집할 input에 따른 label 태그 바꾸기
+  // 편집할 input에 따른 label 태그 바꾸기
   useEffect(() => {
     if (selectEvent.labelTitle === "Ban") {
       setIsDisable(true);
@@ -119,17 +127,13 @@ function EventBasicEdit({ confirm }) {
     }
     const startSet = allDay ? start : start + "T" + eventStartTime;
     const endSet = allDay ? end + "T24:00" : end + "T" + eventEndTime;
-    try {
-      dispatch(
-        addEvent(calendarEventList, {
-          ...editEvent,
-          end: endSet,
-          start: startSet,
-        })
-      );
-    } catch (error) {
-      alert("something went wrong~!", error);
-    }
+    dispatch(
+      addEvent(calendarEventList, {
+        ...editEvent,
+        end: endSet,
+        start: startSet,
+      })
+    );
 
     alert("일정이 조정되었습니다. ");
     confirm();

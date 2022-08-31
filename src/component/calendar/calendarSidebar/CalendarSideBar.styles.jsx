@@ -33,7 +33,7 @@ export const SidebarContainer = styled.div`
 `;
 
 export const SideContentWapper = styled.div`
-  padding: 10px;
+  padding: 10px 10px 0;
   width: 100%;
 
   ${border}
@@ -49,9 +49,12 @@ export const ListViewBox = styled(SideContentWapper)`
   margin-top: 10px;
   @media screen and (max-width: 1023px) {
     width: 45%;
+    height: 100%;
+    margin-top: 0;
   }
   @media screen and (max-width: 767px) {
     width: 40%;
+    min-width: 250px;
     height: 100%;
     margin-top: 0;
   }
@@ -62,9 +65,12 @@ export const CalendarBox = styled(SideContentWapper)`
   margin-bottom: 10px;
   @media screen and (max-width: 1023px) {
     width: 55%;
+    height: 100%;
+    margin-bottom: 0;
   }
   @media screen and (max-width: 767px) {
     width: 60%;
+    min-width: 330px;
     height: 100%;
     margin-bottom: 0;
   }

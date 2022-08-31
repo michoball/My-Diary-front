@@ -7,6 +7,7 @@ import { selectSelectedLabel } from "../../../../features/label/label.select";
 import {
   selectEditEvent,
   selectCalendarEvents,
+  selectCalendarReducer,
 } from "../../../../features/calendar/calendar.select";
 import { clearSelectLabel } from "../../../../features/label/labelSlice";
 import FormInput from "../../../../UI/formInput/FormInput";
@@ -59,6 +60,14 @@ function EventAdvanceEdit({ confirm }) {
   const selectedLabel = useSelector(selectSelectedLabel);
   const selectEvent = useSelector(selectEditEvent);
   const calendarEventList = useSelector(selectCalendarEvents);
+  const { isError, message } = useSelector(selectCalendarReducer);
+
+  // 에러 핸들링
+  useEffect(() => {
+    if (isError) {
+      alert(`Error ocurred in event editing ${message}`);
+    }
+  }, [isError, message]);
 
   useEffect(() => {
     if (selectEvent.allDay) {

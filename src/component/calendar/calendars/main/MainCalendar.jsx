@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCalendarEvents,
   selectCalendarisLoading,
+  selectCalendarReducer,
 } from "../../../../features/calendar/calendar.select";
 import { selectEvent } from "../../../../features/calendar/calendarSlice";
 import { addEvent } from "../../../../features/calendar/calendar.action";
@@ -45,7 +46,15 @@ function MyCalendar() {
 
   const eventLists = useSelector(selectCalendarEvents);
   const calendarIsLoading = useSelector(selectCalendarisLoading);
+  const { isError, message } = useSelector(selectCalendarReducer);
   const dispatch = useDispatch();
+
+  // 에러 핸들링
+  useEffect(() => {
+    if (isError) {
+      alert(`Error ocurred in event editing ${message}`);
+    }
+  }, [isError, message]);
 
   useEffect(() => {
     if (eventLists.length !== 0) {

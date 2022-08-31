@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const selectCalendarReducer = (state) => state.calendar;
+export const selectCalendarReducer = (state) => state.calendar;
 
 export const selectCalendarEvents = createSelector(
   [selectCalendarReducer],

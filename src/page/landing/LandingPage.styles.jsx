@@ -4,7 +4,7 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 900px;
+  min-width: 500px;
 `;
 
 export const LandNavBarContainer = styled.div`
@@ -37,13 +37,18 @@ export const LandNavBarContainer = styled.div`
     width: 300px;
     fill: #f2727d;
   }
+  @media screen and (max-width: 1023px) {
+    svg.logo {
+      width: 250px;
+    }
+  }
 `;
 
 export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-
+  font-size: 20px;
   .demo {
     background-color: transparent;
     font-size: 20px;
@@ -72,8 +77,41 @@ export const LinkContainer = styled.div`
       button {
         font-size: 20px;
       }
+
       :hover {
         background-color: unset;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    font-size: 18px;
+    .demo {
+      font-size: 18px;
+    }
+
+    a {
+      font-size: 18px;
+      &.start {
+        button {
+          width: 150px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .demo {
+      display: none;
+    }
+    a {
+      display: none;
+      &.start {
+        display: block;
+        button {
+          width: 100px;
+          font-size: 16px;
+        }
       }
     }
   }
@@ -98,12 +136,12 @@ export const SectionContainer = styled.section`
     padding: 50px 100px 100px;
     background-color: white;
   }
+
   &.section-label {
     justify-content: center;
     gap: 5%;
     width: 100%;
     background-color: white;
-
     padding-bottom: 50px;
   }
   &.section-memo {
@@ -117,6 +155,23 @@ export const SectionContainer = styled.section`
   }
   &.section-end {
     height: 400px;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 1023px) {
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 0;
+    &.section-main,
+    &.section-calendar {
+      flex-direction: column-reverse;
+    }
+
+    &.section-label {
+      justify-content: center;
+      flex-direction: row;
+      gap: 2%;
+    }
   }
 `;
 export const LabelDisplay = styled.div`
@@ -129,6 +184,12 @@ export const LabelDisplay = styled.div`
   height: 350px;
 
   border-radius: 10px;
+  @media screen and (max-width: 1023px) {
+    width: 250px;
+    min-width: 150px;
+    height: 250px;
+    min-height: 150px;
+  }
 `;
 
 export const MemoDisplay = styled.div`
@@ -160,6 +221,12 @@ export const MemoDisplay = styled.div`
       rgba(255, 255, 255, 1) 100%
     );
   }
+
+  @media screen and (max-width: 1023px) {
+    height: 200px;
+
+    margin-bottom: 20px;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -168,14 +235,11 @@ export const ImgContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   background-color: rgba(98, 57, 51, 0.3);
-
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
+
   img {
     width: 100%;
     height: 100%;
-  }
-
-  &.calendar-display {
   }
   &.label-display {
     padding: 10px;
@@ -215,6 +279,14 @@ export const ImgContainer = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 1023px) {
+    width: 90%;
+    &.label-display {
+      width: 95%;
+      height: 200px;
+    }
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -234,11 +306,6 @@ export const ContentContainer = styled.div`
     font-size: 30px;
   }
 
-  &.calendar-content {
-    p {
-      margin-left: 20px;
-    }
-  }
   &.label-content {
     padding: 20px;
     width: 100%;
@@ -258,6 +325,42 @@ export const ContentContainer = styled.div`
     width: 100%;
     h3 {
       margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    flex-direction: row;
+    width: 100%;
+    text-align: start;
+    h3 {
+      font-size: 50px;
+      text-align: center;
+    }
+    p {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    &.calendar-content,
+    &.memo-content {
+      p {
+        margin-left: 20px;
+      }
+    }
+
+    &.label-content {
+      padding: 10px;
+      text-align: center;
+      p {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    &.memoInfo-content {
+      text-align: center;
+    }
+    &.end-content {
+      flex-direction: column;
+      text-align: center;
     }
   }
 `;

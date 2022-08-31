@@ -19,7 +19,10 @@ import {
 } from "../EventInput.styles";
 import { Check2Circle } from "react-bootstrap-icons";
 import { BUTTON_TYPE_CLASSES } from "../../../../UI/button/button";
-import { selectCalendarEvents } from "../../../../features/calendar/calendar.select";
+import {
+  selectCalendarEvents,
+  selectCalendarReducer,
+} from "../../../../features/calendar/calendar.select";
 
 const advanceEvent = {
   labelTitle: "",
@@ -49,6 +52,14 @@ function AdvanceInput() {
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const calendarEvent = useSelector(selectCalendarEvents);
+  const { isError, message } = useSelector(selectCalendarReducer);
+
+  // 에러 핸들링
+  useEffect(() => {
+    if (isError) {
+      alert(`Error ocurred in event editing ${message}`);
+    }
+  }, [isError, message]);
 
   useEffect(() => {
     if (selectedLabel) {

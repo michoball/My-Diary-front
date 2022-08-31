@@ -20,7 +20,7 @@ export const CalendarWrapper = styled.div`
     margin-top: 50px;
     width: 100%;
     height: 500px;
-    min-width: 500px;
+    min-width: 600px;
   }
 `;
 

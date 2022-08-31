@@ -19,7 +19,10 @@ import {
   EventButton,
 } from "../EventInput.styles";
 import { BUTTON_TYPE_CLASSES } from "../../../../UI/button/button";
-import { selectCalendarEvents } from "../../../../features/calendar/calendar.select";
+import {
+  selectCalendarEvents,
+  selectCalendarReducer,
+} from "../../../../features/calendar/calendar.select";
 
 const defaultEvent = {
   labelTitle: "",
@@ -39,8 +42,16 @@ function BasicInput() {
   const dispatch = useDispatch();
   const selectedLabel = useSelector(selectSelectedLabel);
   const eventList = useSelector(selectCalendarEvents);
+  const { isError, message } = useSelector(selectCalendarReducer);
   const { title, start, end, color, allDay, eventStartTime, eventEndTime } =
     basicEventData;
+
+  // 에러 핸들링
+  useEffect(() => {
+    if (isError) {
+      alert(`Error ocurred in event editing ${message}`);
+    }
+  }, [isError, message]);
 
   useEffect(() => {
     if (selectedLabel) {
