@@ -9,6 +9,9 @@ import { border } from "../../../global.styles";
 
 export const SideBarWrapper = styled.div`
   height: 100%;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+  }
 `;
 
 export const SideContentWapper = styled.div`
@@ -42,6 +45,10 @@ export const NavLink = styled(Link)`
   svg {
     margin-right: 10px;
   }
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
 `;
 
 export const SearchBarContainer = styled.div`
@@ -68,6 +75,23 @@ export const SearchBarContainer = styled.div`
     }
     label {
       font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    ${FormInputContainer} {
+      width: 100%;
+      align-items: center;
+
+      margin-bottom: unset;
+      margin: 5px 10px;
+
+      input {
+        padding: 5px 10px;
+        width: 100%;
+      }
+      label {
+        font-size: 18px;
+      }
     }
   }
 `;
@@ -98,12 +122,17 @@ export const MajorMemoContainer = styled.div`
   padding: 20px;
   height: 50%;
 
-  span {
+  label {
     display: flex;
     font-size: 20px;
   }
   svg {
     margin-right: 10px;
+  }
+  @media screen and (max-width: 767px) {
+    label {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -151,6 +180,12 @@ export const ColorSection = styled.div`
   ${CircleColorPicker} {
     background-color: #f3e9e7;
   }
+  @media screen and (max-width: 767px) {
+    margin-bottom: 10px;
+    label {
+      font-size: 18px;
+    }
+  }
 `;
 
 export const SideBtnWapper = styled.div`
@@ -180,5 +215,9 @@ export const SideBtn = styled.button`
 
   :hover {
     background-color: #f3e9e7;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+    padding: 10px 20px;
   }
 `;

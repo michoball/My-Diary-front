@@ -75,10 +75,10 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
         </ColorSection>
 
         <MajorMemoContainer>
-          <span>
+          <label>
             <Star />
             주요 메모
-          </span>
+          </label>
           <MemoContainer>
             {majorMemo.map((memo) => {
               return <MajorMemo key={memo._id} memo={memo} />;

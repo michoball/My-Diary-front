@@ -11,6 +11,17 @@ export const CalendarWrapper = styled.div`
   min-height: 400px;
 
   z-index: ${({ zvalue }) => zvalue};
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+    height: 600px;
+    padding-bottom: 30px;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 50px;
+    width: 100%;
+    height: 500px;
+    min-width: 500px;
+  }
 `;
 
 export const CalendarView = styled.div`
@@ -76,6 +87,30 @@ export const CalendarContainer = styled.div`
           min-width: 200px;
           height: 50px;
         }
+        @media screen and (max-width: 767px) {
+          &:first-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            align-items: center;
+            width: 60%;
+            min-width: 200px;
+            .fc-toolbar-title {
+              font-size: 20px;
+            }
+          }
+          &:nth-child(2) {
+            top: 0;
+            left: unset;
+            right: 0;
+            margin: 0;
+            gap: 10px;
+          }
+          &:last-child {
+            min-width: 200px;
+            height: 40px;
+          }
+        }
       }
     }
   }
@@ -83,6 +118,10 @@ export const CalendarContainer = styled.div`
   table .fc-col-header .fc-col-header-cell {
     padding: 10px 0;
     height: 30px;
+    @media screen and (max-width: 767px) {
+      padding: 5px 0;
+      height: 20px;
+    }
     .fc-col-header-cell-cushion {
       color: #623933;
     }
@@ -144,4 +183,8 @@ export const ButtonContainer = styled.div`
   right: 0;
 
   z-index: 5;
+  @media screen and (max-width: 767px) {
+    top: -80px;
+    right: 0;
+  }
 `;

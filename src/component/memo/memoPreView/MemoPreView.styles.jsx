@@ -19,4 +19,15 @@ export const BtnContainer = styled.div`
       margin-right: 10px;
     }
   }
+  @media screen and (max-width: 767px) {
+    button {
+      font-size: 18px;
+      height: 40px;
+
+      svg {
+        font-size: 18px;
+        margin-right: 10px;
+      }
+    }
+  }
 `;

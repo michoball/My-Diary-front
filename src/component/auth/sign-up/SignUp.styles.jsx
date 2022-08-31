@@ -6,7 +6,7 @@ export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 70%;
+  width: 60%;
   min-width: 700px;
   height: 100%;
 
@@ -14,6 +14,11 @@ export const SignUpContainer = styled.div`
   ${border}
 
   padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    min-width: 500px;
+    padding: 20px 10px;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -35,9 +40,15 @@ export const HeaderContainer = styled.div`
     width: 60px;
     height: 60px;
   }
-  .Logo {
-    width: 300px;
-    fill: #f2727d;
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 40px;
+    }
+    svg {
+      width: 50px;
+      height: 50px;
+    }
   }
 `;
 
@@ -53,6 +64,15 @@ export const ButtonContainer = styled.div`
     border: none;
     background-color: #2196f3;
   }
+
+  @media screen and (max-width: 768px) {
+    button {
+      font-size: 18px;
+      width: 50%;
+      max-width: 450px;
+      height: 45px;
+    }
+  }
 `;
 
 export const LogInForm = styled.form`
@@ -67,7 +87,7 @@ export const LogInForm = styled.form`
 
   ${FormInputContainer} {
     padding: 0 20px;
-    width: 75%;
+    width: 80%;
     max-width: 600px;
     height: 45px;
     input {
@@ -116,6 +136,16 @@ export const LogInForm = styled.form`
       }
       label {
         background-color: #f44336;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      padding: 0 10px;
+      width: 100%;
+      max-width: 450px;
+      height: 40px;
+      label {
+        font-size: 14px;
+        width: 250px;
       }
     }
   }

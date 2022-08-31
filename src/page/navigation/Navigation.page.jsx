@@ -37,17 +37,17 @@ const Navigation = () => {
   return (
     <Fragment>
       <NavigationContainer>
-        <LogoContainer to="/">
+        <LogoContainer to="/home">
           <Mydiary className="logo"></Mydiary>
         </LogoContainer>
         <NavLinks>
           <NavLink to="/calendar">
             <Calendar3 />
-            Calendar
+            <p>Calendar</p>
           </NavLink>
           <NavLink to="/memo">
             <Journals />
-            Memo
+            <p>Memo</p>
           </NavLink>
         </NavLinks>
         {currentUser ? (

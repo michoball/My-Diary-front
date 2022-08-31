@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MajorMemoCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: #623933;
+  color: black;
   border-radius: 5px;
   background-color: ${({ bgcolor }) => `${bgcolor}b3`};
   padding: 10px;
@@ -25,10 +25,10 @@ export const MajorMemoCardContainer = styled.div`
 `;
 
 export const MemoContentContainer = styled.div`
+  display: flex;
   padding-top: 5px;
 
   p {
-    color: black;
     font-size: 12px;
   }
 `;

@@ -29,6 +29,9 @@ export const ListItemContainer = styled.div`
   font-weight: bold;
   width: 100%;
   letter-spacing: 1px;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 
 export const ListInfoContainer = styled.div`
@@ -38,7 +41,6 @@ export const ListInfoContainer = styled.div`
   transform: translateY(30%);
   margin-left: 10px;
   font-size: 10px;
-
   span {
     margin-right: 5px;
   }

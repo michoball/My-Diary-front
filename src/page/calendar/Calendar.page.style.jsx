@@ -6,4 +6,9 @@ export const CalendarPageContainer = styled.div`
   display: flex;
   background-color: #f3e9e7;
   padding: 10px 20px;
+
+  @media screen and (max-width: 1023px) {
+    flex-direction: column-reverse;
+    height: unset;
+  }
 `;

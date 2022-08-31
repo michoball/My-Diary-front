@@ -21,6 +21,18 @@ export const HomeContainer = styled.div`
     padding: 0 30px 30px;
     background-color: #f3e9e7;
     gap: 30px;
+
+    @media screen and (max-width: 1023px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      height: unset;
+    }
+    @media screen and (max-width: 767px) {
+      h1 {
+        font-size: 25px;
+      }
+    }
   }
 `;
 
@@ -53,6 +65,10 @@ export const HomeCalendar = styled.div`
   ${border}
 
   background-color: white;
+  @media screen and (max-width: 1023px) {
+    width: 90%;
+    height: 500px;
+  }
 `;
 
 export const CalendarWrapper = styled.div`
@@ -99,6 +115,12 @@ export const RightSideContainer = styled.div`
 
   width: 50%;
   min-width: 500px;
+
+  @media screen and (max-width: 1023px) {
+    flex-direction: column-reverse;
+    width: 90%;
+    gap: 30px;
+  }
 `;
 
 export const MemosContianer = styled.div`
@@ -116,6 +138,10 @@ export const MemosContianer = styled.div`
     color: #f2727d;
     margin-top: 10px;
     height: 10%;
+  }
+
+  @media screen and (max-width: 1023px) {
+    height: 300px;
   }
 `;
 
@@ -143,6 +169,12 @@ export const NavNLoginContainer = styled.div`
   height: 45%;
 
   gap: 20px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    width: 100%;
+    gap: 30px;
+  }
 `;
 
 export const NavContainer = styled.div`
@@ -163,6 +195,16 @@ export const NavContainer = styled.div`
     width: 100%;
     margin-top: 10px;
     margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    flex-direction: row;
+    h1 {
+      justify-content: center;
+      margin-bottom: 10px;
+      margin-right: 10px;
+    }
   }
 `;
 
@@ -188,6 +230,12 @@ export const NavLink = styled(Link)`
   svg {
     margin-right: 10px;
   }
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 0;
+  }
 `;
 
 export const LoginContainer = styled.div`
@@ -199,5 +247,10 @@ export const LoginContainer = styled.div`
 
   .loading-container {
     height: 30vh;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    height: 220px;
   }
 `;

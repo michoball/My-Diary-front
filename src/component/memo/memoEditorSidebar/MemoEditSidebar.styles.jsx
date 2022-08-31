@@ -9,10 +9,14 @@ import { border } from "../../../global.styles";
 export const SideBarViewContainer = styled.div`
   width: 100%;
 
-  min-width: 350px;
-  max-width: 400px;
+  min-width: 300px;
+  max-width: 350px;
   padding: 10px 10px 20px 0;
   height: calc(100vh - 100px);
+  @media screen and (max-width: 1023px) {
+    height: unset;
+    max-width: unset;
+  }
 `;
 
 export const SideBarWrapper = styled.div`
@@ -84,6 +88,10 @@ export const SideBtn = styled.button`
       background-color: rgba(244, 67, 54, 0.5);
     }
   }
+  @media screen and (max-width: 1023px) {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
 `;
 
 export const ColorSection = styled.div`
@@ -100,17 +108,28 @@ export const ColorSection = styled.div`
     margin-right: 10px;
   }
   ${ColorPalletContainer} {
-    width: 82%;
-    margin-left: 3%;
+    width: 220px;
     margin-top: 10px;
     transform: translateX(10px);
   }
   ${CircleColorPicker} {
     background-color: #f3e9e7;
     span {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       transition: box-shadow 200ms ease !important;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    label {
+      font-size: 18px;
+    }
+
+    margin: 10px 0;
+    ${ColorPalletContainer} {
+      height: 80px;
+      width: 85%;
+      margin-top: 10px;
     }
   }
 `;

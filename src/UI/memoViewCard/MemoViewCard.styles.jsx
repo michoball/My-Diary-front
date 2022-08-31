@@ -13,6 +13,9 @@ export const MemoViewContainer = styled.div`
   background-color: white;
 
   border-radius: 10px;
+  @media screen and (max-width: 767px) {
+    padding: 10px 20px;
+  }
 `;
 
 export const MemoContainer = styled.div`
@@ -29,6 +32,10 @@ export const MemoContainer = styled.div`
   background-color: ${({ bgcolors }) => `${bgcolors}cc`};
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.7);
   overflow-y: scroll;
+
+  @media screen and (max-width: 767px) {
+    width: 85%;
+  }
 `;
 
 export const MemoHeader = styled.header`
@@ -60,5 +67,15 @@ export const MemoHeader = styled.header`
     display: ${({ major }) => (major ? "block" : "none")};
     margin-left: 10px;
     fill: #ff8a05;
+  }
+  @media screen and (max-width: 767px) {
+    width: 600px;
+    h1 {
+      font-size: 25px;
+      width: 300px;
+    }
+    .date {
+      font-size: 12px;
+    }
   }
 `;

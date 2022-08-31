@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { border } from "../../../global.styles";
 
+export const MainViewContainer = styled.div`
+  width: 100%;
+
+  padding: 10px;
+`;
+
 export const MemoListViewContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,19 +20,19 @@ export const MemoListViewContainer = styled.div`
   ${border}
 `;
 
-export const MainViewContainer = styled.div`
-  width: 100%;
-  min-width: 800px;
-
-  padding: 10px;
-`;
-
 export const SideBarViewContainer = styled.div`
   padding: 10px 10px 10px 0;
   width: 100%;
 
   min-width: 250px;
   max-width: 400px;
+  @media screen and (max-width: 1023px) {
+    max-width: 300px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    max-width: unset;
+  }
 `;
 
 export const MemoViewHeader = styled.header`
@@ -52,8 +58,6 @@ export const MemosContainer = styled.div`
     background-clip: padding-box;
     border: 1px solid transparent;
   }
-  ::-webkit-scrollbar-track {
-  }
 `;
 
 export const MemosWrapper = styled.div`
@@ -61,4 +65,9 @@ export const MemosWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   row-gap: 10px;
+  @media screen and (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+  }
 `;

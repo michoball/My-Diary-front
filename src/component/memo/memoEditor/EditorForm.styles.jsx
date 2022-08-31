@@ -4,8 +4,7 @@ import { border } from "../../../global.styles";
 
 export const EditorFromContainer = styled.div`
   width: 100%;
-  min-width: 800px;
-
+  min-width: 600px;
   padding: 10px 0 30px 10px;
 `;
 
@@ -15,7 +14,6 @@ export const EditorContainer = styled.div`
   align-items: center;
 
   padding: 20px;
-  min-width: 800px;
 
   ${border}
 
@@ -117,6 +115,14 @@ export const MyEditor = styled.div`
     .public-DraftEditorPlaceholder-inner {
       color: rgba(0, 0, 0, 0.7);
       font-weight: bold;
+    }
+    @media screen and (max-width: 1023px) {
+      height: 400px;
+      .DraftEditor-editorContainer,
+      .DraftEditor-root,
+      .public-DraftEditor-content {
+        height: calc(100% - 40px);
+      }
     }
   }
 

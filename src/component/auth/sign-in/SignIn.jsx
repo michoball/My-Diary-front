@@ -5,7 +5,10 @@ import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { oauthLogin, login } from "../../../features/user/user.thunk";
-import { selectUserIsLoading } from "../../../features/user/user.select";
+import {
+  selectUserIsLoading,
+  selectUserReducer,
+} from "../../../features/user/user.select";
 import {
   ButtonsContainer,
   LogInForm,
@@ -15,6 +18,7 @@ import {
 } from "./Signin.styles";
 import { BoxArrowInRight } from "react-bootstrap-icons";
 import Loading from "../../../UI/loading/Loading";
+import { useEffect } from "react";
 
 const defaultFormFields = {
   email: "",
@@ -27,7 +31,13 @@ const SignInForm = () => {
   const navigate = useNavigate();
   const { email, password } = formfield;
   const userIsLoading = useSelector(selectUserIsLoading);
+  const { isError, message } = useSelector(selectUserReducer);
 
+  useEffect(() => {
+    if (isError) {
+      alert(`Login Failed ${message} `);
+    }
+  }, [isError, message]);
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -51,8 +61,12 @@ const SignInForm = () => {
       email,
       password,
     };
+    try {
+      dispatch(login(userData));
+    } catch (error) {
+      alert("로그인에 실패했습니다.", error);
+    }
 
-    dispatch(login(userData));
     navigate("/home");
     resetFormField();
   };

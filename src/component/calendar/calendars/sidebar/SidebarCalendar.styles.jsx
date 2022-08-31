@@ -17,14 +17,21 @@ export const SidebarCalendarContainer = styled.div`
     }
     .fc-toolbar-title {
       font-size: 20px !important;
-      margin-right: 15px;
+      margin-right: 20px;
       color: #f2727d;
+      @media screen and (max-width: 1023px) {
+        font-size: 16px !important;
+      }
     }
 
     .fc-header-toolbar.fc-toolbar {
       margin-bottom: 5px;
+      @media screen and (max-width: 1023px) {
+        margin-bottom: 10px;
+      }
       .fc-toolbar-chunk {
         display: flex !important;
+        align-items: center;
       }
     }
 
@@ -34,6 +41,9 @@ export const SidebarCalendarContainer = styled.div`
       width: 50px;
       font-size: 10px;
       border: none;
+      @media screen and (max-width: 1023px) {
+        height: 23px;
+      }
     }
 
     .fc-prev-button,

@@ -6,7 +6,18 @@ export const SideBarWrapper = styled.div`
   width: 30%;
 
   min-height: 400px;
-  min-width: 350px;
+  min-width: 400px;
+  @media screen and (max-width: 1023px) {
+    min-height: 350px;
+
+    height: 400px;
+  }
+  @media screen and (max-width: 1023px) {
+    width: 100%;
+    padding: 0 0 20px 0;
+    min-height: 300px;
+    height: 350px;
+  }
 `;
 
 export const SidebarContainer = styled.div`
@@ -14,6 +25,11 @@ export const SidebarContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  @media screen and (max-width: 1023px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
 `;
 
 export const SideContentWapper = styled.div`
@@ -23,14 +39,33 @@ export const SideContentWapper = styled.div`
   ${border}
   background-color: white;
   color: black;
+  @media screen and (max-width: 767px) {
+    padding: 10px 10px 0;
+  }
 `;
 
 export const ListViewBox = styled(SideContentWapper)`
   height: 40%;
   margin-top: 10px;
+  @media screen and (max-width: 1023px) {
+    width: 45%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 40%;
+    height: 100%;
+    margin-top: 0;
+  }
 `;
 
 export const CalendarBox = styled(SideContentWapper)`
   height: 60%;
   margin-bottom: 10px;
+  @media screen and (max-width: 1023px) {
+    width: 55%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 60%;
+    height: 100%;
+    margin-bottom: 0;
+  }
 `;
