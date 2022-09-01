@@ -63,7 +63,7 @@ const Navigation = () => {
             </button>
           </UserProfileContainer>
         ) : (
-          <NavLink to="/login" className="login">
+          <NavLink to="/home" className="login">
             Log in
           </NavLink>
         )}

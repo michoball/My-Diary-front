@@ -5,7 +5,6 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
-import { border } from "../../../global.styles";
 
 export const SideBarWrapper = styled.div`
   height: 100%;
@@ -20,10 +19,10 @@ export const SideContentWapper = styled.div`
   justify-content: flex-start;
   height: calc(100% - 80px);
 
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
 
   padding: 10px;
-  ${border}
+  border-radius: 10px;
 `;
 
 export const NavLink = styled(Link)`
@@ -40,7 +39,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 
   :hover {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.button.bg};
   }
   svg {
     margin-right: 10px;
@@ -55,9 +54,9 @@ export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
 
-  ${border}
+  border-radius: 10px;
 
   padding: 20px;
   margin-bottom: 20px;
@@ -80,18 +79,6 @@ export const SearchBarContainer = styled.div`
   @media screen and (max-width: 767px) {
     ${FormInputContainer} {
       width: 100%;
-      align-items: center;
-
-      margin-bottom: unset;
-      margin: 5px 10px;
-
-      input {
-        padding: 5px 10px;
-        width: 100%;
-      }
-      label {
-        font-size: 18px;
-      }
     }
   }
 `;
@@ -148,7 +135,7 @@ export const MemoContainer = styled.div`
   border-radius: 10px;
   padding: 15px;
 
-  background-color: #f3e9e7;
+  background-color: ${(props) => props.theme.bg.main};
 
   overflow-y: scroll;
   ::-webkit-scrollbar {
@@ -178,7 +165,7 @@ export const ColorSection = styled.div`
     transform: translateX(10px);
   }
   ${CircleColorPicker} {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
   }
   @media screen and (max-width: 767px) {
     margin-bottom: 10px;
@@ -200,7 +187,7 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-  color: #623933;
+  color: ${(props) => props.theme.text.content};
   font-size: 20px;
 
   padding: 20px;
@@ -214,7 +201,7 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
   }
   @media screen and (max-width: 767px) {
     font-size: 18px;

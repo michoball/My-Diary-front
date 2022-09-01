@@ -18,6 +18,7 @@ const logout = async () => {
   });
   if (res.status === 200) {
     localStorage.removeItem("user");
+    localStorage.removeItem("Theme");
   }
 };
 

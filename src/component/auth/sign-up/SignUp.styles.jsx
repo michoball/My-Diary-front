@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { FormInputContainer } from "../../../UI/formInput/FormInput.styles";
-import { border } from "../../../global.styles";
 
 export const SignUpContainer = styled.div`
   display: flex;
@@ -10,8 +9,8 @@ export const SignUpContainer = styled.div`
   min-width: 700px;
   height: 100%;
 
-  background-color: white;
-  ${border}
+  background-color: ${(props) => props.theme.bg.container};
+  border-radius: 10px;
 
   padding: 20px;
 
@@ -32,8 +31,6 @@ export const HeaderContainer = styled.div`
     font-size: 50px;
     display: flex;
     align-items: center;
-
-    color: #f2727d;
   }
   svg {
     fill: #f2727d;
@@ -61,8 +58,6 @@ export const ButtonContainer = styled.div`
     width: 50%;
     max-width: 500px;
     height: 55px;
-    border: none;
-    background-color: #2196f3;
   }
 
   @media screen and (max-width: 768px) {
@@ -115,19 +110,19 @@ export const LogInForm = styled.form`
     }
     :first-child {
       input {
-        border-color: #4caf50;
+        border-color: #607d8b;
       }
       label {
-        background-color: #4caf50;
+        background-color: #607d8b;
       }
     }
 
     &.password {
       input {
-        border-color: #607d8b;
+        border-color: #4caf50;
       }
       label {
-        background-color: #607d8b;
+        background-color: #4caf50;
       }
     }
     &.confirm {

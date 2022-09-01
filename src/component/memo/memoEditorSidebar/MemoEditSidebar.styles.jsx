@@ -4,7 +4,6 @@ import {
   CircleColorPicker,
   ColorPalletContainer,
 } from "../../colorPicker/ColorPicker.styles";
-import { border } from "../../../global.styles";
 
 export const SideBarViewContainer = styled.div`
   width: 100%;
@@ -17,6 +16,10 @@ export const SideBarViewContainer = styled.div`
     height: unset;
     max-width: unset;
   }
+  @media screen and (max-width: 767px) {
+    min-width: 500px;
+    max-width: unset;
+  }
 `;
 
 export const SideBarWrapper = styled.div`
@@ -24,9 +27,9 @@ export const SideBarWrapper = styled.div`
 
   height: 100%;
   padding: 20px;
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
 
-  ${border}
+  border-radius: 10px;
 `;
 
 export const NavLink = styled(Link)`
@@ -58,7 +61,7 @@ export const SideBtnWapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  border-top: 2px solid #f3e9e7;
+  border-top: 2px solid ${(props) => props.theme.bg.main};
 
   padding-top: 20px;
   svg {
@@ -69,7 +72,7 @@ export const SideBtnWapper = styled.div`
 export const SideBtn = styled.button`
   display: flex;
   justify-content: flex-start;
-  color: #623933;
+  color: ${(props) => props.theme.text.content};
   font-size: 20px;
   padding: 20px;
 
@@ -81,11 +84,11 @@ export const SideBtn = styled.button`
   background-color: transparent;
 
   :hover {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
   }
   &.delete {
     :hover {
-      background-color: rgba(244, 67, 54, 0.5);
+      background-color: ${(props) => `${props.theme.button.underline}7f`};
     }
   }
   @media screen and (max-width: 1023px) {
@@ -113,7 +116,7 @@ export const ColorSection = styled.div`
     transform: translateX(10px);
   }
   ${CircleColorPicker} {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
     span {
       width: 35px;
       height: 35px;

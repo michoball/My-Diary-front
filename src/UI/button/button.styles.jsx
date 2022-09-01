@@ -18,7 +18,7 @@ export const BaseButton = styled.button`
   cursor: pointer;
 
   &.delete {
-    background-color: rgba(245, 12, 4, 0.7);
+    background-color: ${(props) => props.theme.button.underline};
   }
 
   svg {
@@ -27,26 +27,41 @@ export const BaseButton = styled.button`
   :active {
     transform: scale(0.98);
   }
+  /* @media screen and (max-width: 1023px) {
+    width: 150px;
+    height: 35px;
+    font-size: 14px;
+  } */
 `;
 
 export const CreateButton = styled(BaseButton)`
-  width: 100px;
-  background-color: blanchedalmond;
-  color: #623933;
+  width: 90px;
+  background-color: ${(props) => props.theme.bg.optionBg};
+  color: ${(props) => props.theme.text.underline};
   svg {
     font-size: 20px;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
   }
 `;
 
 export const BanButton = styled(BaseButton)`
-  background-color: #f23d4c;
+  background-color: ${(props) => props.theme.button.underline};
   border-radius: 10px;
-  width: 100px;
-  color: #623933;
+  width: 90px;
+  color: ${(props) => props.theme.text.underline};
   margin-right: 10px;
 
   svg {
     font-size: 20px;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
   }
 `;
 

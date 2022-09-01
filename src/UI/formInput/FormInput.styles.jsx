@@ -32,7 +32,7 @@ export const Input = styled.input`
   letter-spacing: 1px;
 
   outline: none;
-  color: #623933;
+  color: ${(props) => props.theme.text.content};
 
   :disabled {
     border-radius: 10px;
@@ -50,7 +50,7 @@ export const Input = styled.input`
 
 export const FromInputLabel = styled.label`
   margin-right: 10px;
-  color: #623933;
+  color: ${(props) => props.theme.text.content};
   font-weight: bold;
   letter-spacing: 0.7px;
   white-space: nowrap;

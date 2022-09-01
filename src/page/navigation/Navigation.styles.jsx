@@ -5,15 +5,12 @@ export const NavigationContainer = styled.div`
   top: 0;
   height: 90px;
   width: 100%;
-  /* min-width: 1200px; */
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   padding: 0 30px;
-
-  background-color: #f3e9e7;
 `;
 
 export const LogoContainer = styled(Link)`
@@ -46,6 +43,9 @@ export const NavLinks = styled.div`
   justify-content: center;
   gap: 30px;
   @media screen and (max-width: 1023px) {
+    gap: 0;
+  }
+  @media screen and (max-width: 767px) {
     gap: 10px;
   }
 `;
@@ -56,7 +56,7 @@ export const NavLink = styled(Link)`
   align-items: center;
 
   border-radius: 10px;
-  color: #623933;
+
   font-size: 20px;
   padding: 10px 15px;
   cursor: pointer;
@@ -67,11 +67,12 @@ export const NavLink = styled(Link)`
   }
   :hover {
     border-radius: 10px;
-    background-color: #6239332f;
+    background-color: ${(props) => `${props.theme.bg.border}7f`};
   }
 
   @media screen and (max-width: 1023px) {
-    font-size: 18px;
+    font-size: 16px;
+    padding: 5px 10px;
   }
   @media screen and (max-width: 767px) {
     padding: 0;
@@ -83,7 +84,7 @@ export const NavLink = styled(Link)`
       margin-right: 5px;
     }
     :hover {
-      color: black;
+      color: ${(props) => props.theme.text.underline};
       background-color: transparent;
     }
   }
@@ -94,8 +95,6 @@ export const UserProfileContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   min-width: 300px;
-
-  color: #623933;
 
   p {
     font-weight: bold;
@@ -109,8 +108,8 @@ export const UserProfileContainer = styled.div`
     height: 40px;
 
     border: none;
-    color: white;
-    background-color: #f2a7a7;
+    color: ${(props) => props.theme.text.reverse};
+    background-color: ${(props) => props.theme.button.base};
     border-radius: 10px;
     padding: 5px 8px;
 
@@ -118,7 +117,7 @@ export const UserProfileContainer = styled.div`
 
     transition: background-color 0.2s ease-in;
     :hover {
-      background-color: #f23d4c;
+      background-color: ${(props) => props.theme.button.underline};
     }
   }
   @media screen and (max-width: 1023px) {
@@ -140,14 +139,14 @@ export const UserProfileContainer = styled.div`
       font-weight: bold;
       background-color: transparent;
       border-radius: 0;
-      color: #f2727d;
+      color: ${(props) => props.theme.text.head};
       margin-left: 0;
       width: 60px;
       height: unset;
 
       padding: 0;
       :hover {
-        color: #f23d4c;
+        color: ${(props) => props.theme.button.underline};
         background-color: transparent;
       }
     }

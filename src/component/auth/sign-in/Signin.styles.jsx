@@ -9,7 +9,6 @@ export const SignInHeader = styled.header`
   height: 20%;
   padding: 10px 0 20px;
   h1 {
-    color: #f2727d;
     display: flex;
     align-items: center;
 
@@ -123,10 +122,10 @@ export const LogInForm = styled.form`
 
     &.password {
       input {
-        border: 2px solid #607d8b;
+        border: 2px solid #4caf50;
       }
       label {
-        background-color: #607d8b;
+        background-color: #4caf50;
       }
     }
   }

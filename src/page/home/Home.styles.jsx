@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { calendarCss } from "../../utill/calendar/Calendar.styles";
 import { MemoCardContainer } from "../../component/memo/memoCard/MemoCard.styles";
 import { Link } from "react-router-dom";
-import { border } from "../../global.styles";
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -19,8 +18,10 @@ export const HomeContainer = styled.div`
     height: calc(100vh - 90px);
     min-height: 550px;
     padding: 0 30px 30px;
-    background-color: #f3e9e7;
     gap: 30px;
+    h1 {
+      font-size: 30px;
+    }
 
     @media screen and (max-width: 1023px) {
       flex-direction: column-reverse;
@@ -43,7 +44,6 @@ export const HomeNavContainer = styled.div`
 
   width: 100%;
   height: 90px;
-  background-color: #f3e9e7;
 
   svg {
     margin-left: 30px;
@@ -62,9 +62,9 @@ export const HomeCalendar = styled.div`
   min-width: 500px;
   padding: 20px;
 
-  ${border}
+  border-radius: 10px;
 
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
   @media screen and (max-width: 1023px) {
     width: 90%;
     height: 500px;
@@ -83,25 +83,14 @@ export const CalendarWrapper = styled.div`
   th {
     border: none;
   }
-  th {
-    border-right: none;
-  }
   .fc-theme-standard .fc-scrollgrid {
     border: none;
-    border-radius: 10px;
-    overflow: hidden;
   }
-  table .fc-col-header .fc-col-header-cell {
+  .fc-col-header .fc-col-header-cell {
     padding: 10px 0;
     height: 35px;
     .fc-col-header-cell-cushion {
       font-size: 20px;
-      color: #623933;
-    }
-    &.fc-day.fc-day-sun {
-      .fc-col-header-cell-cushion {
-        color: #f23d4c;
-      }
     }
   }
 `;
@@ -126,8 +115,8 @@ export const RightSideContainer = styled.div`
 export const MemosContianer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
-  ${border}
+  background-color: ${(props) => props.theme.bg.container};
+  border-radius: 10px;
 
   padding: 10px 20px;
   height: 55%;
@@ -135,7 +124,6 @@ export const MemosContianer = styled.div`
   width: 100%;
 
   h1 {
-    color: #f2727d;
     margin-top: 10px;
     height: 10%;
   }
@@ -184,9 +172,9 @@ export const NavContainer = styled.div`
 
   width: 40%;
   padding: 10px 20px;
-  color: #f2727d;
-  background-color: white;
-  ${border}
+
+  background-color: ${(props) => props.theme.bg.container};
+  border-radius: 10px;
 
   h1 {
     display: flex;
@@ -213,9 +201,8 @@ export const NavLink = styled(Link)`
   justify-content: flex-start;
   align-items: center;
 
-  color: #623933;
   width: 100%;
-  font-size: 25px;
+  font-size: 20px;
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -224,7 +211,7 @@ export const NavLink = styled(Link)`
   cursor: pointer;
 
   :hover {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
   }
 
   svg {
@@ -233,7 +220,7 @@ export const NavLink = styled(Link)`
 
   @media screen and (max-width: 767px) {
     justify-content: center;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 0;
   }
 `;
@@ -242,8 +229,8 @@ export const LoginContainer = styled.div`
   width: 60%;
   padding: 10px 20px;
 
-  background-color: white;
-  ${border}
+  background-color: ${(props) => props.theme.bg.container};
+  border-radius: 10px;
 
   .loading-container {
     height: 30vh;

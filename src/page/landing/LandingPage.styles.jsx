@@ -5,6 +5,7 @@ export const PageContainer = styled.div`
   flex-direction: column;
   width: 100%;
   min-width: 500px;
+  color: #623933;
 `;
 
 export const LandNavBarContainer = styled.div`
@@ -49,6 +50,7 @@ export const LinkContainer = styled.div`
   align-items: center;
   gap: 10px;
   font-size: 20px;
+  color: #623933;
   .demo {
     background-color: transparent;
     font-size: 20px;
@@ -65,6 +67,7 @@ export const LinkContainer = styled.div`
   }
 
   a {
+    color: #623933;
     font-size: 20px;
     border-radius: 10px;
     padding: 5px 10px;
@@ -76,6 +79,7 @@ export const LinkContainer = styled.div`
     &.start {
       button {
         font-size: 20px;
+        color: white;
       }
 
       :hover {
@@ -128,25 +132,24 @@ export const SectionContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 85%;
-  padding: 100px 0;
+  width: 100%;
+  padding: 100px;
 
   &.section-main {
-    width: 100%;
-    padding: 50px 100px 100px;
     background-color: white;
+  }
+  &.section-calendar {
+    background-color: #f3e9e7;
   }
 
   &.section-label {
     justify-content: center;
     gap: 5%;
-    width: 100%;
     background-color: white;
     padding-bottom: 50px;
   }
   &.section-memo {
-    width: 100%;
-    padding: 100px 7.5%;
+    background-color: #f3e9e7;
   }
   &.section-memoInfo {
     width: 100%;
@@ -156,6 +159,7 @@ export const SectionContainer = styled.section`
   &.section-end {
     height: 400px;
     justify-content: center;
+    background-color: #f3e9e7;
   }
 
   @media screen and (max-width: 1023px) {
@@ -370,8 +374,9 @@ export const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: #bbb;
 
-  background-color: rgba(98, 57, 51, 0.3);
+  background-color: #795548;
   width: 100%;
   height: 250px;
   svg.logo {

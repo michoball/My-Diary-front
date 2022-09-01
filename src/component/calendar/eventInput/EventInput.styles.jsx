@@ -6,7 +6,7 @@ export const EventCreatorContainer = styled.div`
   border-radius: 10px;
   border-top-left-radius: 0;
 
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
   padding: 10px;
 `;
 
@@ -34,13 +34,13 @@ export const EventTogger = styled.button`
   cursor: pointer;
 
   &.active {
-    background-color: #f23d4c;
+    background-color: ${(props) => props.theme.button.underline};
     border-top-right-radius: 15px;
   }
 
   :hover {
     border-top-right-radius: 15px;
-    background-color: blanchedalmond;
+    background-color: #ffebcd;
   }
   :active {
     transform: translateX(-2px);
@@ -71,7 +71,7 @@ export const OptionContainer = styled.div`
   gap: 15px;
   padding: 20px;
 
-  background-color: #f2a7a7;
+  background-color: ${(props) => props.theme.bg.optionBg};
   border-radius: 10px;
 `;
 

@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { border } from "../../../global.styles";
 
 export const MainViewContainer = styled.div`
-  width: 100%;
-
+  width: 75%;
   padding: 10px;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 
 export const MemoListViewContainer = styled.div`
@@ -16,16 +17,16 @@ export const MemoListViewContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  background-color: white;
-  ${border}
+  background-color: ${(props) => props.theme.bg.container};
+  border-radius: 10px;
 `;
 
 export const SideBarViewContainer = styled.div`
   padding: 10px 10px 10px 0;
-  width: 100%;
+  width: 25%;
 
   min-width: 250px;
-  max-width: 400px;
+
   @media screen and (max-width: 1023px) {
     max-width: 300px;
   }
@@ -38,7 +39,14 @@ export const SideBarViewContainer = styled.div`
 export const MemoViewHeader = styled.header`
   padding: 10px;
   font-weight: bold;
-  color: #f2727d;
+
+  font-size: 30px;
+  @media screen and (max-width: 1023px) {
+    font-size: 25px;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
 `;
 
 export const MemosContainer = styled.div`

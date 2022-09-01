@@ -6,7 +6,7 @@ export const LabelInputcontainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background-color: #f3e9e7;
+  background-color: ${(props) => props.theme.bg.main};
   padding: 20px;
 `;
 

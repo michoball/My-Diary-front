@@ -10,7 +10,7 @@ export const MemoViewContainer = styled.div`
   width: 100%;
   height: 75vh;
 
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
 
   border-radius: 10px;
   @media screen and (max-width: 767px) {
@@ -49,7 +49,7 @@ export const MemoHeader = styled.header`
 
   margin-bottom: 10px;
 
-  border-bottom: 2px solid #2d2d2d;
+  border-bottom: 2px solid #623933;
 
   .date {
     position: absolute;
@@ -57,6 +57,7 @@ export const MemoHeader = styled.header`
     bottom: 10px;
   }
   h1 {
+    color: ${(props) => props.theme.text.underline};
     width: 500px;
     display: flex;
     justify-content: center;

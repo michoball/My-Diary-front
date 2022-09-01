@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import FormInput from "../../../UI/formInput/FormInput";
-import { border } from "../../../global.styles";
 
 export const EditorFromContainer = styled.div`
   width: 100%;
-  min-width: 600px;
+  min-width: 700px;
   padding: 10px 0 30px 10px;
+  @media screen and (max-width: 1023px) {
+    min-width: 650px;
+    padding: 10px 10px 30px;
+  }
+  @media screen and (max-width: 767px) {
+    min-width: 500px;
+    padding: 10px 10px 30px;
+  }
 `;
 
 export const EditorContainer = styled.div`
@@ -15,10 +22,10 @@ export const EditorContainer = styled.div`
 
   padding: 20px;
 
-  ${border}
+  border-radius: 10px;
 
   height: 100%;
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
 `;
 
 export const BaseHeaderContainer = styled.div`
@@ -47,7 +54,8 @@ export const ToggleMainBtn = styled.button`
 
   svg {
     font-size: 25px;
-    fill: ${({ major }) => (major ? "#FF8A05" : "black")};
+    fill: ${(props) =>
+      props.major ? "#FF8A05" : `${props.theme.text.content}`};
   }
 
   :focus {
@@ -72,7 +80,7 @@ export const ToggleMainBtn = styled.button`
 export const EditorFormInput = styled(FormInput)`
   align-items: center;
 
-  border: 2px solid #623933;
+  border: 2px solid ${(props) => props.theme.bg.border};
   border-radius: 10px;
 
   margin: 0;
@@ -93,7 +101,7 @@ export const EditorFormInput = styled(FormInput)`
 `;
 
 export const MyEditor = styled.div`
-  background-color: white;
+  background-color: ${(props) => props.theme.bg.container};
   width: 100%;
   border-radius: 10px;
   height: 100%;
@@ -109,7 +117,7 @@ export const MyEditor = styled.div`
     background-color: ${({ bgcolors }) => `${bgcolors}b2`};
     padding: 10px 20px;
     height: calc(100% - 40px);
-    border: 2px solid #623933 !important;
+    border: 2px solid ${(props) => props.theme.bg.border} !important;
     border-radius: 10px;
 
     .public-DraftEditorPlaceholder-inner {
@@ -118,6 +126,7 @@ export const MyEditor = styled.div`
     }
     @media screen and (max-width: 1023px) {
       height: 400px;
+
       .DraftEditor-editorContainer,
       .DraftEditor-root,
       .public-DraftEditor-content {
@@ -127,7 +136,7 @@ export const MyEditor = styled.div`
   }
 
   .toolbar-class {
-    border: 2px solid #623933 !important;
+    border: 2px solid ${(props) => props.theme.bg.border} !important;
     border-radius: 10px;
     margin-bottom: 20px;
   }

@@ -33,6 +33,7 @@ import { getCalendars } from "../../features/calendar/calendar.thunk";
 
 import UserProfile from "../../component/profile/UserProfile";
 import Loading from "../../UI/loading/Loading";
+import ThemeToggler from "../../component/toggleTheme/ThemeToggler";
 
 function Home() {
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ function Home() {
         <Link to="/">
           <Mydiary className="logo"></Mydiary>
         </Link>
+        <ThemeToggler />
       </HomeNavContainer>
       <main>
         <HomeCalendar>

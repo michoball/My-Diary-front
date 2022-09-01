@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FormInput from "../../../UI/formInput/FormInput";
-import Button from "../../../UI/button/button";
+import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 import { userReset } from "../../../features/user/userSlice";
 import { register } from "../../../features/user/user.thunk";
 import {
@@ -128,7 +128,9 @@ const SignUpForm = () => {
             onChange={handleChange}
           />
           <ButtonContainer>
-            <Button type="submit">Sign Up</Button>
+            <Button type="submit" buttonType={BUTTON_TYPE_CLASSES.base}>
+              Sign Up
+            </Button>
           </ButtonContainer>
         </LogInForm>
       )}

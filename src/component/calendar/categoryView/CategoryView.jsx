@@ -34,7 +34,7 @@ const CategoryView = () => {
       )}
       <CategoryViewContainer>
         <TitleContainer>
-          <h2>My labels</h2>
+          <h1>My labels</h1>
           <CategoryAddBtn onClick={AddLabelHandler}>
             <PlusCircle />
           </CategoryAddBtn>

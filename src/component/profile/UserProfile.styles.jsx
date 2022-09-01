@@ -17,10 +17,10 @@ export const ProfileHeader = styled.header`
   justify-content: center;
   align-items: center;
   width: 100%;
-  color: #f2727d;
   margin: 10px 0 20px;
 
   svg {
+    fill: #f2727d;
     font-size: 30px;
     margin-right: 5px;
   }
@@ -52,5 +52,5 @@ export const UserAvatar = styled.img`
 export const LogoutButton = styled(Button)`
   border: none;
   height: 40px;
-  width: 100%;
+  width: 70%;
 `;

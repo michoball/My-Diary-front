@@ -16,7 +16,7 @@ export const SidebarCalendarContainer = styled.div`
       border: none;
     }
     .fc-toolbar-title {
-      font-size: 20px !important;
+      font-size: 16px !important;
       margin-right: 20px;
       color: #f2727d;
       @media screen and (max-width: 1023px) {
@@ -39,7 +39,7 @@ export const SidebarCalendarContainer = styled.div`
     .fc-button-primary:disabled {
       margin: 0;
       width: 50px;
-      font-size: 10px;
+      font-size: 10px !important;
       border: none;
       @media screen and (max-width: 1023px) {
         height: 23px;
@@ -62,22 +62,28 @@ export const SidebarCalendarContainer = styled.div`
     .fc-daygrid-day {
       .fc-daygrid-day-top {
         justify-content: center;
+        font-weight: 300 !important;
       }
       .fc-daygrid-day-bottom {
-        text-align: center;
-        font-size: 8px;
+        font-size: 8px !important;
         padding: 0;
         .fc-daygrid-more-link {
-          font-size: 10px;
-          color: orange;
+          font-size: 10px !important;
         }
       }
       .fc-daygrid-block-event,
       .fc-daygrid-dot-event {
+        font-weight: 100 !important;
       }
     }
     .fc-event-title {
+      font-size: 8px !important;
       padding: 0;
+    }
+    .fc-col-header .fc-col-header-cell {
+      .fc-col-header-cell-cushion {
+        font-size: 12px !important;
+      }
     }
   }
 `;

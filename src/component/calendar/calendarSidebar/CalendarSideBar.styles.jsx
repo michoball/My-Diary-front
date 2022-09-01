@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import { border } from "../../../global.styles";
 
 export const SideBarWrapper = styled.div`
   padding: 0 20px 20px 0;
   width: 30%;
 
   min-height: 400px;
-  min-width: 400px;
+  min-width: 350px;
   @media screen and (max-width: 1023px) {
+    padding: 0 0 20px 0;
     min-height: 350px;
-
+    width: 100%;
     height: 400px;
   }
-  @media screen and (max-width: 1023px) {
-    width: 100%;
+  @media screen and (max-width: 767px) {
     padding: 0 0 20px 0;
     min-height: 300px;
     height: 350px;
@@ -36,15 +35,16 @@ export const SideContentWapper = styled.div`
   padding: 10px 10px 0;
   width: 100%;
 
-  ${border}
-  background-color: white;
-  color: black;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.bg.container};
+
   @media screen and (max-width: 767px) {
     padding: 10px 10px 0;
   }
 `;
 
 export const ListViewBox = styled(SideContentWapper)`
+  padding-bottom: 10px;
   height: 40%;
   margin-top: 10px;
   @media screen and (max-width: 1023px) {

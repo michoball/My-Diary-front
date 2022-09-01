@@ -12,7 +12,6 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  color: #f2727d;
   padding: 5px;
 `;
 
@@ -21,8 +20,8 @@ export const CategoryAddBtn = styled.button`
   background-color: transparent;
   border: none;
   font-weight: bold;
-  font-size: 20px;
-
+  font-size: 24px;
+  transform: translateX(2px);
   cursor: pointer;
 
   :active {
@@ -30,7 +29,7 @@ export const CategoryAddBtn = styled.button`
   }
 
   svg {
-    font-size: 20px;
+    fill: ${(props) => props.theme.text.content};
   }
 `;
 

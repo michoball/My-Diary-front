@@ -1,10 +1,8 @@
-import { createGlobalStyle, css } from "styled-components";
-
-export const border = css`
-  border-radius: 10px;
-`;
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
 @font-face {
     font-family: 'SBAggroB';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
@@ -22,13 +20,14 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
 }
 body {
-  font-family: 'SBAggroL',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f3e9e7;
-  color: #623933;
-
+  font-family: 'SBAggroL','SBAggroB',sans-serif;
+  background-color: ${(props) => props.theme.bg.main};
+  color: ${(props) => props.theme.text.content};
+}
+h1, h2{
+  font-size: 25px;
+  font-weight: bold;
+  color: ${(props) => props.theme.text.head};
 }
 button{
   font-family: 'SBAggroL',
@@ -36,11 +35,7 @@ button{
 }
 a{
   text-decoration: none;
-  color: #623933;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  color: ${(props) => props.theme.text.content};
 }
    scrollbar-width: thin;
   ::-webkit-scrollbar {

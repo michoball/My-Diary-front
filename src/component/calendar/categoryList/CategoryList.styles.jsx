@@ -13,18 +13,18 @@ export const ListWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 8px;
-  color: #623933;
   border-radius: 10px;
   cursor: pointer;
 
   transition: background-color 0.2s ease-in;
   :hover {
-    background-color: #f3e9e7;
+    background-color: ${(props) => props.theme.bg.main};
   }
 `;
 
 export const ListItemContainer = styled.div`
   display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: bold;
   width: 100%;
@@ -38,7 +38,7 @@ export const ListInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  transform: translateY(30%);
+  transform: translateY(50%);
   margin-left: 10px;
   font-size: 10px;
   span {
@@ -72,6 +72,6 @@ export const DeleteBtn = styled.button`
   }
   svg {
     font-size: 16px;
-    color: red;
+    color: ${(props) => props.theme.button.underline};
   }
 `;

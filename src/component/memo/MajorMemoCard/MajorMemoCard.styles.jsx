@@ -13,7 +13,7 @@ export const MajorMemoCardContainer = styled.div`
   transition: all 0.3s ease-in-out;
   h5 {
     padding: 0 0 5px 5px;
-    border-bottom: 1px solid #f3e9e7;
+    border-bottom: 1px solid ${(props) => props.theme.bg.main};
   }
   :hover {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
