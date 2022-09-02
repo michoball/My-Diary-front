@@ -211,7 +211,7 @@ export const MemoDisplay = styled.div`
     margin-bottom: 0;
   }
 
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(243, 233, 231, 0.4) 50%,
@@ -224,7 +224,7 @@ export const MemoDisplay = styled.div`
       rgba(243, 233, 231, 0.4) 50%,
       rgba(255, 255, 255, 1) 100%
     );
-  }
+  } */
 
   @media screen and (max-width: 1023px) {
     height: 200px;
@@ -256,10 +256,11 @@ export const ImgContainer = styled.div`
     }
   }
   &.memoInfo-display {
+    padding: 10px;
     position: relative;
     display: flex;
     align-items: center;
-    background-color: unset;
+    /* background-color: unset; */
     overflow: hidden;
     width: 54%;
     height: 100%;
@@ -270,11 +271,15 @@ export const ImgContainer = styled.div`
     }
 
     img {
-      width: 85%;
+      width: 100%;
       height: 100%;
+      padding: 10px 0;
       border-radius: 10px;
+      overflow: hidden;
+
       &.memo1 {
         width: 100%;
+        left: 10px;
         position: absolute;
       }
       &.memo2 {

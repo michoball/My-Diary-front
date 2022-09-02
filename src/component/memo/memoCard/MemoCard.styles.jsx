@@ -38,7 +38,7 @@ export const MemoCardContainer = styled.div`
   }
   @media screen and (max-width: 767px) {
     width: 100%;
-    min-width: 220px;
-    height: 200px;
+    min-width: 200px;
+    height: 180px;
   }
 `;

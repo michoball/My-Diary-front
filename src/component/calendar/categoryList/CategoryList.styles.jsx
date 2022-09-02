@@ -23,6 +23,7 @@ export const ListWrapper = styled.div`
 `;
 
 export const ListItemContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -35,15 +36,11 @@ export const ListItemContainer = styled.div`
 `;
 
 export const ListInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  position: absolute;
+  right: 10px;
 
   transform: translateY(50%);
-  margin-left: 10px;
   font-size: 10px;
-  span {
-    margin-right: 5px;
-  }
 `;
 export const ListColor = styled.div`
   display: flex;

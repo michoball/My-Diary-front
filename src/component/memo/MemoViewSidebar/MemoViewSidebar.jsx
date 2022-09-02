@@ -9,10 +9,11 @@ import {
   ColorSection,
   SideBtnWapper,
   SideBtn,
+  MenuContent,
 } from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   PlusCircle,
   Search,
@@ -34,10 +35,17 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
   const majorMemo = useSelector(selectMajorMemos);
   const memoColorList = useSelector(selectColorValue);
   const dispatch = useDispatch();
+  const colorRef = useRef();
 
   useEffect(() => {
     dispatch(clearSelectMemo());
   }, [dispatch]);
+
+  const toggleColor = (e) => {
+    const colorSection = e.target.nextElementSibling;
+    let displayValue = colorSection.style.display;
+    colorSection.style.display = displayValue === "none" ? "flex" : "none";
+  };
 
   return (
     <SideBarWrapper>
@@ -52,27 +60,30 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
         </SearchButton>
       </SearchBarContainer>
       <SideContentWapper>
-        <NavLink to="/memo/editor">
-          <PlusCircle />
-          New Memo
-        </NavLink>
         <SideBtnWapper>
+          <NavLink to="/memo/editor">
+            <PlusCircle />
+            New Memo
+          </NavLink>
+
           <SideBtn onClick={() => onMemoView()}>
             <Collection />
             전체 메모
           </SideBtn>
+          <ColorSection>
+            <label onClick={toggleColor}>
+              <Palette />
+              Color Filter
+            </label>
+            <div ref={colorRef}>
+              <ColorPicker
+                onColorPick={(color) => onSelectColor(color)}
+                newColorTable={memoColorList && memoColorList}
+                disable={memoColorList ? false : true}
+              />
+            </div>
+          </ColorSection>
         </SideBtnWapper>
-        <ColorSection>
-          <label>
-            <Palette />
-            Color Filter
-          </label>
-          <ColorPicker
-            onColorPick={(color) => onSelectColor(color)}
-            newColorTable={memoColorList && memoColorList}
-            disable={memoColorList ? false : true}
-          />
-        </ColorSection>
 
         <MajorMemoContainer>
           <label>

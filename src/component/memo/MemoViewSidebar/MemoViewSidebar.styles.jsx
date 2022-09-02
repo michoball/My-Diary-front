@@ -8,8 +8,10 @@ import {
 
 export const SideBarWrapper = styled.div`
   height: 100%;
+
   @media screen and (max-width: 767px) {
     font-size: 14px;
+    padding-left: 10px;
   }
 `;
 
@@ -23,8 +25,20 @@ export const SideContentWapper = styled.div`
 
   padding: 10px;
   border-radius: 10px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column-reverse;
+  }
 `;
 
+export const SideBtnWapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  @media screen and (max-width: 767px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+`;
 export const NavLink = styled(Link)`
   display: flex;
   justify-content: flex-start;
@@ -47,6 +61,8 @@ export const NavLink = styled(Link)`
   @media screen and (max-width: 767px) {
     font-size: 18px;
     padding: 10px 20px;
+    align-items: unset;
+    height: 40px;
   }
 `;
 
@@ -97,6 +113,7 @@ export const SearchButton = styled.button`
     transform: scale(1.1);
   }
   svg {
+    fill: ${(props) => props.theme.text.content};
     font-size: 18px;
     cursor: pointer;
   }
@@ -106,7 +123,7 @@ export const MajorMemoContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: 20px;
+  padding: 0 20px 20px;
   height: 50%;
 
   label {
@@ -117,6 +134,7 @@ export const MajorMemoContainer = styled.div`
     margin-right: 10px;
   }
   @media screen and (max-width: 767px) {
+    padding: 10px 20px;
     label {
       font-size: 18px;
     }
@@ -141,21 +159,33 @@ export const MemoContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media screen and (max-width: 767px) {
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+  }
 `;
 
 export const ColorSection = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 0 20px;
   margin-bottom: 20px;
-
+  border: 10px;
+  cursor: pointer;
   label {
     font-size: 20px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
   }
+
   svg {
     margin-right: 10px;
   }
@@ -168,19 +198,25 @@ export const ColorSection = styled.div`
     background-color: ${(props) => props.theme.bg.main};
   }
   @media screen and (max-width: 767px) {
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 10px;
+    width: unset;
+
     label {
       font-size: 18px;
+      margin-bottom: 0;
     }
-  }
-`;
-
-export const SideBtnWapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  svg {
-    margin-right: 10px;
+    border-radius: 10px;
+    :hover {
+      background-color: ${(props) => props.theme.button.bg};
+    }
+    ${ColorPalletContainer} {
+      position: absolute;
+      top: 60px;
+      right: -10px;
+      width: 220px;
+    }
   }
 `;
 
@@ -202,6 +238,9 @@ export const SideBtn = styled.button`
 
   :hover {
     background-color: ${(props) => props.theme.bg.main};
+  }
+  svg {
+    margin-right: 10px;
   }
   @media screen and (max-width: 767px) {
     font-size: 18px;

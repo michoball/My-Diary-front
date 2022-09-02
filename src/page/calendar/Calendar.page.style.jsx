@@ -7,7 +7,7 @@ export const CalendarPageContainer = styled.div`
   padding: 10px 20px;
 
   @media screen and (max-width: 1023px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: unset;
   }
 `;

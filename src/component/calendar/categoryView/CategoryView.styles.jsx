@@ -13,6 +13,9 @@ export const TitleContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 5px;
+  h1 {
+    font-size: 20px;
+  }
 `;
 
 export const CategoryAddBtn = styled.button`

@@ -44,8 +44,9 @@ const CategoryList = ({ lists }) => {
             <span>{lists.labelTitle}</span>
 
             <ListInfoContainer>
-              <span>{lists.allDay && "종일"}</span>
-              <span>{lists.daysOfWeek && "정기"}</span>
+              <p>
+                {lists.allDay && "종일"} {lists.daysOfWeek && "정기"}
+              </p>
             </ListInfoContainer>
           </ListItemContainer>
           <ButtonContainer>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { calendarCss } from "../../../../utill/calendar/Calendar.styles";
 
 export const SidebarCalendarContainer = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
   position: relative;
   height: 100%;
 
@@ -9,8 +10,9 @@ export const SidebarCalendarContainer = styled.div`
     .fc-theme-standard .fc-scrollgrid {
       border: none;
     }
-    font-size: 10px;
-
+    font-family: "Roboto", sans-serif;
+    font-size: 8px;
+    letter-spacing: 1px;
     td,
     th {
       border: none;
@@ -68,17 +70,13 @@ export const SidebarCalendarContainer = styled.div`
         font-size: 8px !important;
         padding: 0;
         .fc-daygrid-more-link {
-          font-size: 10px !important;
+          font-size: 8px !important;
         }
-      }
-      .fc-daygrid-block-event,
-      .fc-daygrid-dot-event {
-        font-weight: 100 !important;
       }
     }
     .fc-event-title {
       font-size: 8px !important;
-      padding: 0;
+      padding: 1px;
     }
     .fc-col-header .fc-col-header-cell {
       .fc-col-header-cell-cushion {

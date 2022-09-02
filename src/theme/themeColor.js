@@ -32,9 +32,9 @@ const dark = {
   },
   text: {
     head: "#f2727d",
-    content: "#B5B5B5",
-    memoTitle: "#2D3940",
-    underline: "#ffffff",
+    content: "#ffffff",
+    memoTitle: "#ffffff",
+    underline: "#f3e9e7",
     reverse: "#ffffff",
   },
   button: {

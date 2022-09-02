@@ -16,8 +16,6 @@ export const CalendarWrapper = styled.div`
     padding-bottom: 30px;
   }
   @media screen and (max-width: 767px) {
-    margin-top: 50px;
-
     height: 500px;
     min-width: 570px;
   }
@@ -132,10 +130,12 @@ export const ButtonContainer = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  height: 35px;
 
   z-index: 5;
   @media screen and (max-width: 767px) {
-    top: -80px;
-    right: -20px;
+    position: absolute;
+    top: 395px;
+    right: 0;
   }
 `;

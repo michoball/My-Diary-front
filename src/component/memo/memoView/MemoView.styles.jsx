@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MainViewContainer = styled.div`
   width: 75%;
   padding: 10px;
+
   @media screen and (max-width: 767px) {
     width: 100%;
   }
@@ -65,6 +66,10 @@ export const MemosContainer = styled.div`
     border-radius: 5px;
     background-clip: padding-box;
     border: 1px solid transparent;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 500px;
   }
 `;
 
