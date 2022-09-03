@@ -54,7 +54,7 @@ export const ListViewBox = styled(SideContentWapper)`
   }
   @media screen and (max-width: 767px) {
     width: 40%;
-    min-width: 250px;
+    min-width: 260px;
     height: 100%;
     margin-top: 0;
   }
@@ -70,7 +70,7 @@ export const CalendarBox = styled(SideContentWapper)`
   }
   @media screen and (max-width: 767px) {
     width: 60%;
-    min-width: 330px;
+    min-width: 340px;
     height: 100%;
     margin-bottom: 0;
   }

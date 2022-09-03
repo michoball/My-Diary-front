@@ -132,26 +132,44 @@ export const SectionContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 30px;
   width: 100%;
   padding: 100px;
+  @media screen and (max-width: 1023px) {
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 0;
+  }
 
   &.section-main {
     background-color: white;
+    @media screen and (max-width: 1023px) {
+      flex-direction: column-reverse;
+    }
   }
   &.section-calendar {
     background-color: #f3e9e7;
+    @media screen and (max-width: 1023px) {
+      flex-direction: column-reverse;
+    }
   }
 
   &.section-label {
     justify-content: center;
     background-color: white;
-    padding-bottom: 50px;
-    height: 700px;
 
     .labelWrapper {
       display: flex;
       justify-content: center;
       max-width: 1200px;
+
+      @media screen and (max-width: 1023px) {
+        max-width: 900px;
+      }
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+        min-width: 300px;
+      }
     }
   }
   &.section-memo {
@@ -160,33 +178,26 @@ export const SectionContainer = styled.section`
   &.section-memoInfo {
     justify-content: center;
     background-color: white;
-    height: 800px;
+
     .memoInfo-wrapper {
       max-width: 1200px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      @media screen and (max-width: 1023px) {
+        min-width: 800px;
+      }
+      @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+      }
     }
   }
+
   &.section-end {
     height: 400px;
     justify-content: center;
     background-color: #f3e9e7;
-  }
-
-  @media screen and (max-width: 1023px) {
-    flex-direction: column;
-    gap: 30px;
-    padding: 50px 0;
-    &.section-main,
-    &.section-calendar {
-      flex-direction: column-reverse;
-    }
-
-    &.section-label {
-      justify-content: center;
-      flex-direction: row;
-      gap: 2%;
-    }
   }
 `;
 export const LabelDisplay = styled.div`
@@ -205,6 +216,12 @@ export const LabelDisplay = styled.div`
     height: 250px;
     min-height: 150px;
   }
+  @media screen and (max-width: 767px) {
+    width: 350px;
+    min-width: 250px;
+    height: 350px;
+    margin: 10px 0;
+  }
 `;
 
 export const MemoDisplay = styled.div`
@@ -215,7 +232,6 @@ export const MemoDisplay = styled.div`
   padding: 10px;
   min-width: 450px;
   height: 250px;
-  border-radius: 10px;
   margin: 30px 10px;
 
   :last-child {
@@ -224,19 +240,38 @@ export const MemoDisplay = styled.div`
 
   @media screen and (max-width: 1023px) {
     height: 200px;
-
     margin-bottom: 20px;
+  }
+  @media screen and (max-width: 767px) {
+    height: 300px;
+    padding: 30px 10px;
+    margin: 0;
+    border-bottom: 1px solid rgba(98, 57, 51, 0.3);
+    :last-child {
+      border-bottom: none;
+    }
   }
 `;
 
 export const ImgContainer = styled.div`
-  width: 50%;
+  width: 55%;
+  min-width: 600px;
   height: 450px;
   border-radius: 10px;
 
   background-color: rgba(98, 57, 51, 0.3);
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
 
+  @media screen and (max-width: 1023px) {
+    width: 90%;
+    min-width: 700px;
+    height: 500px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    min-width: 520px;
+    height: 350px;
+  }
   img {
     width: 100%;
     height: 100%;
@@ -249,14 +284,24 @@ export const ImgContainer = styled.div`
   &.label-display {
     padding: 10px;
     width: 100%;
+    min-width: 250px;
     height: 250px;
     box-shadow: none;
 
     img {
       border-radius: 10px;
     }
+    @media screen and (max-width: 1023px) {
+      height: 200px;
+    }
+    @media screen and (max-width: 767px) {
+      height: 250px;
+    }
   }
+
   &.memoInfo-display {
+    min-width: 250px;
+
     padding: 10px;
     position: relative;
     display: flex;
@@ -266,10 +311,13 @@ export const ImgContainer = styled.div`
     box-shadow: unset;
 
     img {
+      min-width: 200px;
+
       border-radius: 10px;
     }
 
     .memo-sub {
+      min-width: 200px;
       border: 2px solid rgba(98, 57, 51, 0.3);
       position: absolute;
       top: -10px;
@@ -277,13 +325,11 @@ export const ImgContainer = styled.div`
       width: 250px;
       height: 60px;
     }
-  }
-
-  @media screen and (max-width: 1023px) {
-    width: 90%;
-    &.label-display {
-      width: 95%;
-      height: 200px;
+    @media screen and (max-width: 1023px) {
+      width: 90%;
+    }
+    @media screen and (max-width: 767px) {
+      width: 60%;
     }
   }
 `;
@@ -293,7 +339,7 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 46%;
+  width: 45%;
   text-align: center;
 
   h3 {
@@ -304,29 +350,6 @@ export const ContentContainer = styled.div`
     font-weight: bold;
     font-size: 30px;
   }
-
-  &.label-content {
-    padding: 20px;
-    width: 100%;
-    p {
-      font-size: 18px;
-      line-height: 25px;
-    }
-  }
-  &.memoInfo-content {
-    height: 100%;
-    p {
-      font-size: 18px;
-      line-height: 25px;
-    }
-  }
-  &.end-content {
-    width: 100%;
-    h3 {
-      margin-bottom: 20px;
-    }
-  }
-
   @media screen and (max-width: 1023px) {
     flex-direction: row;
     width: 100%;
@@ -339,14 +362,26 @@ export const ContentContainer = styled.div`
       font-weight: bold;
       font-size: 20px;
     }
+  }
+
+  @media screen and (max-width: 1023px) {
     &.calendar-content,
     &.memo-content {
       p {
         margin-left: 20px;
       }
     }
+  }
 
-    &.label-content {
+  &.label-content {
+    padding: 20px;
+    width: 100%;
+    p {
+      font-size: 18px;
+      line-height: 25px;
+    }
+
+    @media screen and (max-width: 1023px) {
       padding: 10px;
       text-align: center;
       p {
@@ -354,10 +389,39 @@ export const ContentContainer = styled.div`
         line-height: 20px;
       }
     }
-    &.memoInfo-content {
-      text-align: center;
+    @media screen and (max-width: 767px) {
+      padding: 20px;
+      p {
+        font-size: 20px;
+      }
     }
-    &.end-content {
+  }
+  &.memoInfo-content {
+    height: 100%;
+    p {
+      font-size: 18px;
+      line-height: 25px;
+    }
+    @media screen and (max-width: 1023px) {
+      text-align: center;
+      p {
+        font-size: 14px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      text-align: center;
+      width: 40%;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  &.end-content {
+    width: 100%;
+    h3 {
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 1023px) {
       flex-direction: column;
       text-align: center;
     }

@@ -10,7 +10,7 @@ export const EditorFromContainer = styled.div`
     padding: 10px 10px 30px;
   }
   @media screen and (max-width: 767px) {
-    min-width: 500px;
+    min-width: 620px;
     padding: 10px 10px 30px;
   }
 `;
@@ -26,6 +26,9 @@ export const EditorContainer = styled.div`
 
   height: 100%;
   background-color: ${(props) => props.theme.bg.container};
+  @media screen and (max-width: 767px) {
+    padding-bottom: 60px;
+  }
 `;
 
 export const BaseHeaderContainer = styled.div`

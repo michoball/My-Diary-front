@@ -126,7 +126,7 @@ function LandingPage() {
           </ImgContainer>
         </SectionContainer>
 
-        {/* -----------------  calendar info section -------------------- */}
+        {/* -----------------  label section -------------------- */}
 
         <SectionContainer className="section-label" ref={scrollRef}>
           <div className="labelWrapper">

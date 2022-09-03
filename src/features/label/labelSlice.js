@@ -41,7 +41,6 @@ const initialState = {
   selectedLabel: null,
   isLoading: false,
   isError: false,
-  isSuccess: false,
   message: "",
 };
 
@@ -73,7 +72,6 @@ export const labelSlice = createSlice({
       })
       .addCase(createLabel.fulfilled, (state) => {
         state.isLoading = false;
-        state.isSuccess = true;
       })
       .addCase(createLabel.rejected, (state, action) => {
         state.isLoading = false;
@@ -85,7 +83,7 @@ export const labelSlice = createSlice({
       })
       .addCase(getLabels.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
+
         state.labelLists = action.payload;
       })
       .addCase(getLabels.rejected, (state, action) => {
@@ -99,7 +97,7 @@ export const labelSlice = createSlice({
       })
       .addCase(deleteLabel.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
+
         state.labelLists = state.labelLists.filter(
           (label) => label._id !== action.payload
         );
@@ -114,7 +112,7 @@ export const labelSlice = createSlice({
       })
       .addCase(updateLabel.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.isSuccess = true;
+
         state.labelLists = state.labelLists.map((label) =>
           label._id === action.payload._id
             ? { ...label, ...action.payload }

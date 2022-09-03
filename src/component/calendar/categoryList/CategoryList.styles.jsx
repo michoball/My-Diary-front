@@ -20,6 +20,9 @@ export const ListWrapper = styled.div`
   :hover {
     background-color: ${(props) => props.theme.bg.main};
   }
+  @media screen and (max-width: 767px) {
+    padding: 8px 5px;
+  }
 `;
 
 export const ListItemContainer = styled.div`
@@ -31,7 +34,7 @@ export const ListItemContainer = styled.div`
   width: 100%;
   letter-spacing: 1px;
   @media screen and (max-width: 767px) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
@@ -41,6 +44,9 @@ export const ListInfoContainer = styled.div`
 
   transform: translateY(50%);
   font-size: 10px;
+  @media screen and (max-width: 767px) {
+    right: 5px;
+  }
 `;
 export const ListColor = styled.div`
   display: flex;
@@ -70,5 +76,10 @@ export const DeleteBtn = styled.button`
   svg {
     font-size: 16px;
     color: ${(props) => props.theme.button.underline};
+  }
+  @media screen and (max-width: 767px) {
+    svg {
+      font-size: 14px;
+    }
   }
 `;

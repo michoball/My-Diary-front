@@ -34,7 +34,7 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
   const majorMemo = useSelector(selectMajorMemos);
   const memoColorList = useSelector(selectColorValue);
   const dispatch = useDispatch();
-  const [hideColor, setHideColor] = useState(false);
+  const [hideColor, setHideColor] = useState(true);
 
   useEffect(() => {
     dispatch(clearSelectMemo());

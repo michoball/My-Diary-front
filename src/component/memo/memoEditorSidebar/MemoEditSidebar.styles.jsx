@@ -19,7 +19,7 @@ export const SideBarViewContainer = styled.div`
   }
   @media screen and (max-width: 767px) {
     padding: 10px 10px 20px;
-    min-width: 500px;
+    min-width: 620px;
     max-width: unset;
   }
 `;
@@ -32,6 +32,10 @@ export const SideBarWrapper = styled.div`
   background-color: ${(props) => props.theme.bg.container};
 
   border-radius: 10px;
+  @media screen and (max-width: 767px) {
+    position: relative;
+    width: 100%;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -70,7 +74,17 @@ export const SideBtnWapper = styled.div`
     margin-right: 10px;
   }
   @media screen and (max-width: 767px) {
+    position: absolute;
+    top: 740px;
+    left: 0;
+    z-index: 10;
+
+    border-top: 0;
+    padding-top: 0;
+    padding: 0 20px;
+    width: 100%;
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
@@ -160,8 +174,8 @@ export const ColorSection = styled.div`
     }
     ${ColorPalletContainer} {
       position: absolute;
-      top: 30px;
-      right: -50px;
+      top: -100px;
+      right: -40px;
       width: 220px;
     }
   }

@@ -26,7 +26,7 @@ function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
   const memoLists = useSelector(selectMemoLists);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [hideColor, setHideColor] = useState(false);
+  const [hideColor, setHideColor] = useState(true);
   const saveMemoHandler = () => {
     try {
       dispatch(addMemo(memoLists, memoInfo));

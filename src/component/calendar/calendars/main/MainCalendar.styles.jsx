@@ -17,7 +17,7 @@ export const CalendarWrapper = styled.div`
   }
   @media screen and (max-width: 767px) {
     height: 600px;
-    min-width: 570px;
+    min-width: 620px;
   }
 `;
 
