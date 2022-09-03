@@ -118,6 +118,7 @@ export const calendarCss = css`
       }
       .fc-daygrid-event {
         font-size: 10px;
+
         &.fc-daygrid-block-event {
           text-align: center;
         }

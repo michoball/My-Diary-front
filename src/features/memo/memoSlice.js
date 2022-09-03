@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createMemos, deleteMemo, getMemos, updateMemo } from "./memo.thunk";
-import { HOME_DEFAULT_MEMO } from "../../page/home/HomeDefaultMemo";
 
 const initialState = {
   memoLists: [],

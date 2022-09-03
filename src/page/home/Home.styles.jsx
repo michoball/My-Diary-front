@@ -58,7 +58,7 @@ export const HomeCalendar = styled.div`
   align-items: center;
   justify-content: center;
 
-  width: 50%;
+  width: 55%;
   min-width: 500px;
   padding: 20px;
 
@@ -93,6 +93,13 @@ export const CalendarWrapper = styled.div`
       font-size: 20px;
     }
   }
+  .fc-daygrid-event {
+    font-size: 10px;
+    .fc-event-title {
+      font-size: 12px !important;
+      padding: 1px;
+    }
+  }
 `;
 
 export const RightSideContainer = styled.div`
@@ -102,7 +109,7 @@ export const RightSideContainer = styled.div`
   justify-content: space-between;
   gap: 20px;
 
-  width: 50%;
+  width: 45%;
   min-width: 500px;
 
   @media screen and (max-width: 1023px) {

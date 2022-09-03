@@ -12,7 +12,7 @@ export const SidebarCalendarContainer = styled.div`
     }
     font-family: "Roboto", sans-serif;
     font-size: 8px;
-    letter-spacing: 1px;
+
     td,
     th {
       border: none;
@@ -73,11 +73,13 @@ export const SidebarCalendarContainer = styled.div`
           font-size: 8px !important;
         }
       }
+      .fc-event-title {
+        font-weight: 300 !important;
+        font-size: 8px !important;
+        padding: 1px;
+      }
     }
-    .fc-event-title {
-      font-size: 8px !important;
-      padding: 1px;
-    }
+
     .fc-col-header .fc-col-header-cell {
       .fc-col-header-cell-cushion {
         font-size: 12px !important;

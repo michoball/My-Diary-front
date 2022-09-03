@@ -12,6 +12,7 @@ const DAYSOFWEEK = [
   { id: 6, day: "토", isChecked: false },
 ];
 function DayPicker({ onSelecteDay }) {
+  // eslint-disable-next-line no-unused-vars
   const [weeks, setWeeks] = useState(DAYSOFWEEK);
 
   const [selectDay, setSelectDay] = useState(new Set());

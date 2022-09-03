@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { selectCalendarEvents } from "../../features/calendar/calendar.select";
 import { selectRecentOrderMemoLists } from "../../features/memo/memo.select";
 import MemoCard from "../../component/memo/memoCard/MemoCard";
-import { HOME_DEFAULT_MEMO, HOME_DEFAULT_EVENT } from "./HomeDefaultMemo";
+import { HOME_DEFAULT_MEMO, HOME_DEFAULT_EVENT } from "./HomeDefaultValue";
 
 import { Calendar3, Journals } from "react-bootstrap-icons";
 import { ReactComponent as Mydiary } from "../../assets/Logo.svg";

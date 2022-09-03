@@ -46,7 +46,10 @@ const calendarSwiperImg = [
 
 const memoSwiperImg = [memoPage, memoEditPage, memoPreview, memoEditing];
 
-const demoModeUser = { email: "testEmail@gmail.com", password: "asdfasdf" };
+const demoModeUser = {
+  email: process.env.REACT_APP_DEMO_USER_ID,
+  password: process.env.REACT_APP_DEMO_USER_PASSWORD,
+};
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -89,7 +92,7 @@ function LandingPage() {
         <Mydiary className="logo" />
         <LinkContainer>
           <button className="demo" onClick={demoModeHandler}>
-            체험하기
+            데모모드
           </button>
           <Link to="/login">회원가입</Link>
           <Link to="/home" className="start">

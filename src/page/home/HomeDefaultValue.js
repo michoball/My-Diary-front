@@ -127,3 +127,33 @@ export const HOME_DEFAULT_EVENT = [
     endRecur: yearMonthMaker() + "-25T24:00",
   },
 ];
+
+export const DEFAULT_Label = [
+  {
+    _id: "1215gq4raf",
+    labelTitle: "기본일정",
+    allDay: false,
+    color: "#ffeb3b",
+  },
+  {
+    _id: "12afaef3",
+    labelTitle: "회사",
+    allDay: true,
+    color: "#4caf50",
+  },
+  {
+    _id: "1hwhw2",
+    color: "#f44336",
+    labelTitle: "집안 일",
+    daysOfWeek: ["0"],
+    allDay: true,
+  },
+
+  {
+    labelTitle: "가족 행사",
+    _id: "afea4",
+    daysOfWeek: undefined,
+    color: "#2196f3",
+    allDay: false,
+  },
+];

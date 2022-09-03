@@ -26,7 +26,6 @@ export const getLabels = createAsyncThunk(
   "labels/getLabels",
   async (_, thunkAPI) => {
     try {
-      console.log(thunkAPI.getState());
       const token = thunkAPI.getState().user.user.token;
       return await labelApi.getLabels(token);
     } catch (error) {

@@ -112,6 +112,14 @@ export const CalendarContainer = styled.div`
   }
   .fc-daygrid-event {
     font-size: 10px;
+    .fc-event-title {
+      font-size: 12px !important;
+      padding: 1px 0;
+    }
+    &.fc-daygrid-dot-event {
+      padding: 0;
+      transform: translateY(2px);
+    }
     &.fc-daygrid-block-event {
       text-align: center;
     }
