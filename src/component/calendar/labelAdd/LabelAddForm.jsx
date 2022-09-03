@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../../../UI/formInput/FormInput";
 
@@ -19,7 +19,10 @@ import Button, { BUTTON_TYPE_CLASSES } from "../../../UI/button/button";
 
 import Modal from "../../modal/Modal";
 import { addLabel } from "../../../features/label/label.action";
-import { selectLabelLists } from "../../../features/label/label.select";
+import {
+  selectLabelLists,
+  selectLabelsReducer,
+} from "../../../features/label/label.select";
 import { getLabels } from "../../../features/label/label.thunk";
 
 const defaultLabel = {
@@ -33,11 +36,18 @@ const abvancedLabel = {
 
 const LabelAddForm = ({ onConfirm }) => {
   const labelLists = useSelector(selectLabelLists);
+  const { isError, message } = useSelector(selectLabelsReducer);
   const [newLabel, setNewLabel] = useState(defaultLabel);
   const [isAdvanced, setIsAdvanced] = useState(false);
   const dispatch = useDispatch();
 
   const { labelTitle, color, allDay } = newLabel;
+
+  useEffect(() => {
+    if (isError) {
+      alert(`Login Failed ${message} `);
+    }
+  }, [isError, message]);
 
   const inputChangeHandler = (e) => {
     setNewLabel((prev) => {

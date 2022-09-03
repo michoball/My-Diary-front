@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const selectLabelsReducer = (state) => state.label;
+export const selectLabelsReducer = (state) => state.label;
 
 export const selectLabelLists = createSelector(
   [selectLabelsReducer],

@@ -12,11 +12,13 @@ export const SideBarViewContainer = styled.div`
   max-width: 350px;
   padding: 10px 10px 20px 0;
   height: calc(100vh - 100px);
+
   @media screen and (max-width: 1023px) {
     height: unset;
     max-width: unset;
   }
   @media screen and (max-width: 767px) {
+    padding: 10px 10px 20px;
     min-width: 500px;
     max-width: unset;
   }
@@ -67,6 +69,9 @@ export const SideBtnWapper = styled.div`
   svg {
     margin-right: 10px;
   }
+  @media screen and (max-width: 767px) {
+    flex-direction: row;
+  }
 `;
 
 export const SideBtn = styled.button`
@@ -95,21 +100,31 @@ export const SideBtn = styled.button`
     font-size: 18px;
     padding: 10px 20px;
   }
+  @media screen and (max-width: 767px) {
+    flex-direction: row;
+  }
 `;
 
 export const ColorSection = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
   margin: 20px 0;
-
+  cursor: pointer;
   label {
     font-size: 20px;
     display: flex;
+    cursor: pointer;
   }
   svg {
     margin-right: 10px;
   }
+
+  .hide {
+    display: none;
+  }
+
   ${ColorPalletContainer} {
     width: 220px;
     margin-top: 10px;
@@ -133,6 +148,21 @@ export const ColorSection = styled.div`
       height: 80px;
       width: 85%;
       margin-top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    :hover {
+      background-color: ${(props) => props.theme.button.bg};
+    }
+    ${ColorPalletContainer} {
+      position: absolute;
+      top: 30px;
+      right: -50px;
+      width: 220px;
     }
   }
 `;

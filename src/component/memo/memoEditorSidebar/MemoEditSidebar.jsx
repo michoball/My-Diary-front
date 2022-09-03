@@ -20,12 +20,13 @@ import { deleteMemo } from "../../../features/memo/memo.thunk";
 import { addMemo } from "../../../features/memo/memo.action";
 import { useNavigate } from "react-router-dom";
 import { selectMemoLists } from "../../../features/memo/memo.select";
+import { useState } from "react";
 
 function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
   const memoLists = useSelector(selectMemoLists);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [hideColor, setHideColor] = useState(false);
   const saveMemoHandler = () => {
     try {
       dispatch(addMemo(memoLists, memoInfo));
@@ -51,7 +52,9 @@ function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
       alert("error ocuured from RemoveMemo redux ", error);
     }
   };
-
+  const toggleColor = (e) => {
+    setHideColor(!hideColor);
+  };
   return (
     <SideBarViewContainer>
       <SideBarWrapper>
@@ -66,14 +69,16 @@ function MemoEditSidebar({ onPreview, memoInfo, setMemoInfo }) {
             <Easel3 /> Preview
           </SideBtn>
           <ColorSection>
-            <label>
+            <label onClick={toggleColor}>
               <Palette />
               Color
             </label>
-            <ColorPicker
-              colorSelected={memoInfo.color}
-              onColorPick={colorChangeHandler}
-            />
+            <div className={hideColor ? "hide" : ""}>
+              <ColorPicker
+                colorSelected={memoInfo.color}
+                onColorPick={colorChangeHandler}
+              />
+            </div>
           </ColorSection>
           <SideBtn className="delete" onClick={removeMemoHandler}>
             <Trash3 /> Delete

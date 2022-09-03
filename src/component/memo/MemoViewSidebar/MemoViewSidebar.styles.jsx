@@ -12,6 +12,7 @@ export const SideBarWrapper = styled.div`
   @media screen and (max-width: 767px) {
     font-size: 14px;
     padding-left: 10px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -144,14 +145,14 @@ export const MajorMemoContainer = styled.div`
 export const MemoContainer = styled.div`
   display: flex;
   flex-direction: column;
-
+  border: 5px solid ${(props) => props.theme.bg.main};
   gap: 15px;
   margin-top: 15px;
 
   height: 100%;
 
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
 
   background-color: ${(props) => props.theme.bg.main};
 
@@ -189,6 +190,9 @@ export const ColorSection = styled.div`
   svg {
     margin-right: 10px;
   }
+  .hide {
+    display: none;
+  }
   ${ColorPalletContainer} {
     width: 90%;
     height: 100%;
@@ -214,7 +218,7 @@ export const ColorSection = styled.div`
     ${ColorPalletContainer} {
       position: absolute;
       top: 60px;
-      right: -10px;
+      right: 0;
       width: 220px;
     }
   }

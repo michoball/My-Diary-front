@@ -17,14 +17,16 @@ import calendarDaliy from "../../assets/jpg/calendarDaliy.jpg";
 import calendarRecurr from "../../assets/jpg/calendarRecurr.jpg";
 import memoPage from "../../assets/jpg/memoPage.jpg";
 import memoColor from "../../assets/jpg/memoColor.jpg";
+import memoColorBtn from "../../assets/jpg/memoColorBtn.jpg";
 import memoMajor from "../../assets/jpg/memoMajor.jpg";
 import memoSearch from "../../assets/jpg/memoSearch.jpg";
+import memoSearchBtn from "../../assets/jpg/memoSearchBtn.jpg";
 import memoEditing from "../../assets/jpg/memoEditing.jpg";
 import memoEditPreview from "../../assets/jpg/memoEditPreview.jpg";
 import calendarWeek from "../../assets/jpg/calendarWeek.jpg";
 import labelAdd from "../../assets/jpg/labelAdd.jpg";
 import homeImg from "../../assets/jpg/mainPage.jpg";
-import mainLogin from "../../assets/jpg/mainLogin.jpg";
+
 import halidayImg from "../../assets/jpg/holidayImg.jpg";
 import memoEditPage from "../../assets/jpg/memoEditPage.jpg";
 import memoPreview from "../../assets/jpg/memoPreview.jpg";
@@ -99,7 +101,7 @@ function LandingPage() {
       <MainAppDisplayContainer>
         {/* -----------------  main section -------------------- */}
         <SectionContainer className="section-main">
-          <ImgContainer className="main">
+          <ImgContainer className="main-display">
             <img src={homeImg} alt="main-display" />
           </ImgContainer>
           <ContentContainer className="main-content">
@@ -127,38 +129,41 @@ function LandingPage() {
         {/* -----------------  calendar info section -------------------- */}
 
         <SectionContainer className="section-label" ref={scrollRef}>
-          <LabelDisplay>
-            <ImgContainer className="label-display">
-              <img src={calendarDnD} alt="label-display" />
-            </ImgContainer>
-            <ContentContainer className="label-content">
-              <p>
-                만든 일정을 드래그 또는 클릭하여
-                <br /> 일정을 변경하세요.
-              </p>
-            </ContentContainer>
-          </LabelDisplay>
-          <LabelDisplay>
-            <ImgContainer className="label-display">
-              <img src={labelAdd} alt="label-display" />
-            </ImgContainer>
-            <ContentContainer className="label-content">
-              <p>
-                라벨링 기능으로 일정을 미리 만들어 <br /> 간편하게 이용해보세요
-              </p>
-            </ContentContainer>
-          </LabelDisplay>
-          <LabelDisplay>
-            <ImgContainer className="label-display">
-              <img src={halidayImg} alt="label-display" />
-            </ImgContainer>
-            <ContentContainer className="label-content">
-              <p>
-                휴일지정 버튼으로
-                <br /> 휴일도 만들 수 있습니다.
-              </p>
-            </ContentContainer>
-          </LabelDisplay>
+          <div className="labelWrapper">
+            <LabelDisplay>
+              <ImgContainer className="label-display">
+                <img src={calendarDnD} alt="label-display" />
+              </ImgContainer>
+              <ContentContainer className="label-content">
+                <p>
+                  만든 일정을 드래그 또는 클릭하여
+                  <br /> 일정을 변경하세요.
+                </p>
+              </ContentContainer>
+            </LabelDisplay>
+            <LabelDisplay>
+              <ImgContainer className="label-display">
+                <img src={labelAdd} alt="label-display" />
+              </ImgContainer>
+              <ContentContainer className="label-content">
+                <p>
+                  라벨링 기능으로 일정을 미리 만들어 <br /> 간편하게
+                  이용해보세요
+                </p>
+              </ContentContainer>
+            </LabelDisplay>
+            <LabelDisplay>
+              <ImgContainer className="label-display">
+                <img src={halidayImg} alt="label-display" />
+              </ImgContainer>
+              <ContentContainer className="label-content">
+                <p>
+                  휴일지정 버튼으로
+                  <br /> 휴일도 만들 수 있습니다.
+                </p>
+              </ContentContainer>
+            </LabelDisplay>
+          </div>
         </SectionContainer>
 
         {/* -----------------  memo section -------------------- */}
@@ -180,34 +185,62 @@ function LandingPage() {
         {/* -----------------  memo info section -------------------- */}
 
         <SectionContainer className="section-memoInfo">
-          <MemoDisplay>
-            <ImgContainer className="memoInfo-display">
-              <img src={memoColor} alt="memoInfo-display" className="memo1" />
-              <img src={memoSearch} alt="memoInfo-display" className="memo2" />
-            </ImgContainer>
-            <ContentContainer className="memoInfo-content">
-              <p>
-                검색기능으로 메모를 찾거나 <br />
-                색깔별로 메모를 찾아보세요.
-              </p>
-            </ContentContainer>
-          </MemoDisplay>
-          <MemoDisplay>
-            <ContentContainer className="memoInfo-content">
-              <p>중요한 메모는 별표시로 표시해두세요</p>
-            </ContentContainer>
-            <ImgContainer className="memoInfo-display">
-              <img src={memoMajor} alt="memoInfo-display" />
-            </ImgContainer>
-          </MemoDisplay>
-          <MemoDisplay>
-            <ImgContainer className="memoInfo-display">
-              <img src={memoEditPreview} alt="memoInfo-display" />
-            </ImgContainer>
-            <ContentContainer className="memoInfo-content">
-              <p>작성중인 메모도 미리보기로 볼 수 있습니다.</p>
-            </ContentContainer>
-          </MemoDisplay>
+          <div className="memoInfo-wrapper">
+            <MemoDisplay>
+              <ImgContainer className="memoInfo-display">
+                <img src={memoSearch} alt="memoInfo-display" />
+                <img
+                  src={memoSearchBtn}
+                  className="memo-sub"
+                  alt="memoInfo-display"
+                />
+              </ImgContainer>
+              <ContentContainer className="memoInfo-content">
+                <p>
+                  검색기능으로 메모를 찾거나 <br />
+                  색깔별로 메모를 찾아보세요.
+                </p>
+              </ContentContainer>
+            </MemoDisplay>
+            <MemoDisplay>
+              <ImgContainer className="memoInfo-display">
+                <img src={memoColor} alt="memoInfo-display" />
+                <img
+                  src={memoColorBtn}
+                  className="memo-sub"
+                  alt="memoInfo-display"
+                />
+              </ImgContainer>
+              <ContentContainer className="memoInfo-content">
+                <p>
+                  검색기능으로 메모를 찾거나 <br />
+                  색깔별로 메모를 찾아보세요.
+                </p>
+              </ContentContainer>
+            </MemoDisplay>
+            <MemoDisplay>
+              <ImgContainer className="memoInfo-display">
+                <img src={memoMajor} alt="memoInfo-display" />
+              </ImgContainer>
+              <ContentContainer className="memoInfo-content">
+                <p>
+                  중요한 메모는 <br />
+                  별표시로 표시해두세요
+                </p>
+              </ContentContainer>
+            </MemoDisplay>
+            <MemoDisplay>
+              <ImgContainer className="memoInfo-display">
+                <img src={memoEditPreview} alt="memoInfo-display" />
+              </ImgContainer>
+              <ContentContainer className="memoInfo-content">
+                <p>
+                  작성중인 메모도 <br />
+                  미리보기로 볼 수 있습니다.
+                </p>
+              </ContentContainer>
+            </MemoDisplay>
+          </div>
         </SectionContainer>
 
         <SectionContainer className="section-end">

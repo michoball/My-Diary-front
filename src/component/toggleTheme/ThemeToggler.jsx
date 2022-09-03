@@ -29,7 +29,7 @@ const TogglerContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 30px;
   width: 150px;

@@ -16,7 +16,7 @@ export const CalendarWrapper = styled.div`
     padding-bottom: 30px;
   }
   @media screen and (max-width: 767px) {
-    height: 500px;
+    height: 600px;
     min-width: 570px;
   }
 `;
@@ -31,6 +31,9 @@ export const CalendarView = styled.div`
   background-color: ${(props) => props.theme.bg.container};
 
   border-radius: 10px;
+  @media screen and (max-width: 767px) {
+    padding-bottom: 60px;
+  }
 `;
 
 export const CalendarContainer = styled.div`
@@ -135,7 +138,7 @@ export const ButtonContainer = styled.div`
   z-index: 5;
   @media screen and (max-width: 767px) {
     position: absolute;
-    top: 395px;
+    top: 500px;
     right: 0;
   }
 `;

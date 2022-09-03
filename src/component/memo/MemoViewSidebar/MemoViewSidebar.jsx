@@ -9,11 +9,10 @@ import {
   ColorSection,
   SideBtnWapper,
   SideBtn,
-  MenuContent,
 } from "./MemoViewSidebar.styles";
 import FormInput from "../../../UI/formInput/FormInput";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   PlusCircle,
   Search,
@@ -35,16 +34,14 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
   const majorMemo = useSelector(selectMajorMemos);
   const memoColorList = useSelector(selectColorValue);
   const dispatch = useDispatch();
-  const colorRef = useRef();
+  const [hideColor, setHideColor] = useState(false);
 
   useEffect(() => {
     dispatch(clearSelectMemo());
   }, [dispatch]);
 
   const toggleColor = (e) => {
-    const colorSection = e.target.nextElementSibling;
-    let displayValue = colorSection.style.display;
-    colorSection.style.display = displayValue === "none" ? "flex" : "none";
+    setHideColor(!hideColor);
   };
 
   return (
@@ -75,7 +72,7 @@ function MemoViewSidar({ onSearch, searchWord, onSelectColor, onMemoView }) {
               <Palette />
               Color Filter
             </label>
-            <div ref={colorRef}>
+            <div className={hideColor ? "hide" : ""}>
               <ColorPicker
                 onColorPick={(color) => onSelectColor(color)}
                 newColorTable={memoColorList && memoColorList}

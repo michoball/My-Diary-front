@@ -144,17 +144,28 @@ export const SectionContainer = styled.section`
 
   &.section-label {
     justify-content: center;
-    gap: 5%;
     background-color: white;
     padding-bottom: 50px;
+    height: 700px;
+
+    .labelWrapper {
+      display: flex;
+      justify-content: center;
+      max-width: 1200px;
+    }
   }
   &.section-memo {
     background-color: #f3e9e7;
   }
   &.section-memoInfo {
-    width: 100%;
-    flex-direction: column;
+    justify-content: center;
     background-color: white;
+    height: 800px;
+    .memoInfo-wrapper {
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   &.section-end {
     height: 400px;
@@ -185,7 +196,7 @@ export const LabelDisplay = styled.div`
 
   width: 350px;
   min-width: 250px;
-  height: 350px;
+  margin: 0 30px;
 
   border-radius: 10px;
   @media screen and (max-width: 1023px) {
@@ -200,31 +211,16 @@ export const MemoDisplay = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  width: 70%;
-  min-width: 400px;
+  /* border: 1px solid rgba(98, 57, 51, 0.3); */
+  padding: 10px;
+  min-width: 450px;
   height: 250px;
   border-radius: 10px;
-  margin-bottom: 40px;
+  margin: 30px 10px;
 
   :last-child {
     margin-bottom: 0;
   }
-
-  /* background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(243, 233, 231, 0.4) 50%,
-    rgba(243, 233, 231, 0.6) 100%
-  );
-  :nth-child(2) {
-    background: linear-gradient(
-      90deg,
-      rgba(243, 233, 231, 0.6) 0%,
-      rgba(243, 233, 231, 0.4) 50%,
-      rgba(255, 255, 255, 1) 100%
-    );
-  } */
 
   @media screen and (max-width: 1023px) {
     height: 200px;
@@ -237,7 +233,7 @@ export const ImgContainer = styled.div`
   width: 50%;
   height: 450px;
   border-radius: 10px;
-  overflow: hidden;
+
   background-color: rgba(98, 57, 51, 0.3);
   box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
 
@@ -245,12 +241,17 @@ export const ImgContainer = styled.div`
     width: 100%;
     height: 100%;
   }
+  &.main-display,
+  &.calendar-display,
+  &.memo-display {
+    overflow: hidden;
+  }
   &.label-display {
     padding: 10px;
     width: 100%;
     height: 250px;
     box-shadow: none;
-    overflow: unset;
+
     img {
       border-radius: 10px;
     }
@@ -260,32 +261,21 @@ export const ImgContainer = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    /* background-color: unset; */
-    overflow: hidden;
-    width: 54%;
+    width: 60%;
     height: 100%;
     box-shadow: unset;
 
-    :nth-child(2) {
-      justify-content: flex-end;
+    img {
+      border-radius: 10px;
     }
 
-    img {
-      width: 100%;
-      height: 100%;
-      padding: 10px 0;
-      border-radius: 10px;
-      overflow: hidden;
-
-      &.memo1 {
-        width: 100%;
-        left: 10px;
-        position: absolute;
-      }
-      &.memo2 {
-        position: absolute;
-        left: 50%;
-      }
+    .memo-sub {
+      border: 2px solid rgba(98, 57, 51, 0.3);
+      position: absolute;
+      top: -10px;
+      left: -20px;
+      width: 250px;
+      height: 60px;
     }
   }
 
