@@ -38,6 +38,15 @@ export const getCalendars = createAsyncThunk(
 
       return thunkAPI.rejectWithValue(message);
     }
+  },
+  {
+    condition: (_, { getState, extra }) => {
+      const { calendar } = getState();
+      const fetchError = calendar.isError;
+      if (fetchError) {
+        return false;
+      }
+    },
   }
 );
 

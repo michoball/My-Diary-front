@@ -60,7 +60,6 @@ export const labelSlice = createSlice({
       const existingLabel = state.labelLists.find(
         (label) => label._id === action.payload
       );
-      console.log(existingLabel);
       return {
         ...state,
         selectedLabel: existingLabel,
@@ -92,6 +91,7 @@ export const labelSlice = createSlice({
       .addCase(getLabels.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+
         state.message = action.payload;
       })
       .addCase(deleteLabel.pending, (state) => {

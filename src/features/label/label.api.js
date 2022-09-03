@@ -33,7 +33,6 @@ const createLabel = async (labelData, token) => {
     },
   };
   const response = await axios.post(API_URL, labelData, config);
-
   return response.data;
 };
 

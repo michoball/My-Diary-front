@@ -45,7 +45,7 @@ const LabelAddForm = ({ onConfirm }) => {
 
   useEffect(() => {
     if (isError) {
-      alert(`Login Failed ${message} `);
+      alert(message);
     }
   }, [isError, message]);
 
@@ -72,13 +72,16 @@ const LabelAddForm = ({ onConfirm }) => {
 
   const defaultSetting = () => {
     setNewLabel(defaultLabel);
+    onConfirm();
   };
 
   const submitHanbler = (e) => {
     e.preventDefault();
 
     if (labelTitle === "") {
-      return alert("그룹명을 입력하시오");
+      return alert("라벨명을 입력하시오");
+    } else if (labelTitle.length > 10) {
+      return alert("라벨명은 100자 이하여야 합니다.");
     }
     const finalLabel = isAdvanced
       ? { ...newLabel, ...abvancedLabel }
@@ -88,7 +91,6 @@ const LabelAddForm = ({ onConfirm }) => {
       dispatch(getLabels())
     );
 
-    onConfirm();
     defaultSetting();
   };
 
@@ -109,7 +111,7 @@ const LabelAddForm = ({ onConfirm }) => {
       <LabelInputcontainer>
         <LabelInputForm onSubmit={submitHanbler}>
           <FormInput
-            label="그룹명"
+            label="라벨명"
             type="text"
             name="labelTitle"
             value={labelTitle}

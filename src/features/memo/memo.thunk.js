@@ -39,6 +39,15 @@ export const getMemos = createAsyncThunk(
 
       return thunkAPI.rejectWithValue(message);
     }
+  },
+  {
+    condition: (_, { getState, extra }) => {
+      const { memo } = getState();
+      const fetchError = memo.isError;
+      if (fetchError) {
+        return false;
+      }
+    },
   }
 );
 

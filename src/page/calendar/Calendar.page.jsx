@@ -13,8 +13,7 @@ function Calendar() {
   useEffect(() => {
     dispatch(getCalendars());
     dispatch(getLabels());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <CalendarPageContainer>
