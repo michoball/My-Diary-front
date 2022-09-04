@@ -29,7 +29,7 @@ export const HOME_DEFAULT_MEMO = [
     title: "memo",
     updatedAt: "2022-10-05T22:20:00",
     color: "#ffeb3b",
-    memo: `<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa consequatur dolor illo ratione dolore dolorem, alias corrupti blanditiis, saepe quas ex magni rem non quaerat repellat, perspiciatis prov_ident. Dolores nostrum, exercitationem rerum, modi corporis laboriosam odit alias perspiciatis minus nihil nisi reprehenderit est. Neque alias reiciendis cup_iditate magni architecto voluptate eaque ducimus eum aperiam, hic beatae corporis repellendus inventore dolor, quod molestias necessitatibus! Aliqu_id, similique accusantium a placeat fugit reiciendis sed alias qui rerum ipsum non aut nesciunt omnis consequatur facilis mollitia quam blanditiis numquam nulla odit repellat vero! Sed culpa fugit sapiente laudantium beatae alias. Tempora nam quas molestiae?</p>`,
+    memo: `<p> Lorem ipsum dolor sit amet consectetur adipisici elit. Ipsa consequatur dolor illo ratione dolore dolorem, alias corrupti blanditiis, saepe quas ex magni rem non quaerat repellat, perspiciatis prov_ident. Dolores nostrum, exercitationem rerum, modi corporis laboriosam odit alias perspiciatis minus nihil nisi reprehenderit est. Neque alias reiciendis cup_iditate magni architecto voluptate eaque ducimus eum aperiam, hic beatae corporis repellendus inventore dolor, quod molestias necessitatibus! Aliqu_id, similique accusantium a placeat fugit reiciendis sed alias qui rerum ipsum non aut nesciunt omnis consequatur facilis mollitia quam blanditiis numquam nulla odit repellat vero! Sed culpa fugit sapiente laudantium beatae alias. Tempora nam quas molestiae?</p>`,
     major: true,
   },
   {
